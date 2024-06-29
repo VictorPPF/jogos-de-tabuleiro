@@ -2,6 +2,6 @@
 //pq n aparece o trem no chain?
 int main() {
     std::cout << "defoe" << std::endl;
-    system("pause");
+    std::cin.get();
     return 0;
 }

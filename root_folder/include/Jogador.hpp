@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string> 
+#include <fstream>
 
 #ifndef JOGADOR_H
 #define JOGADOR_H
@@ -17,7 +18,8 @@ class Jogador{
         std:: string nome_jogo;   
 
     public: 
-        void criarCadastro(); 
+        Jogador(std:: string _nome, std:: string _apelido); 
+        void criarCadastro();
         void setNome(std::string _nome); 
         void setApelido(std::string _apelido); 
         std::string getNome(); 
@@ -25,6 +27,7 @@ class Jogador{
         void setResultado(std::string _nome_do_jogo, int _vitorias, int _derrotas, int _empates);
         void getResultado(); 
         void excluirConta();  
+
 }; 
 
 #endif 

@@ -2,36 +2,46 @@
 #include <string> 
 #include <fstream>
 #include "../include/Jogador.hpp"
- 
+
+//Função para procurar apelidos. 
 
 Jogador:: Jogador(std:: string _nome, std:: string _apelido){
+    // Acesso ao banco de dados
     this->nome = _nome; 
+    this-> apelido = _apelido;
+    // chama a cadastro}
+}
+Jogador:: Jogador(std:: string _apelido){
+    // Acesso ao banco de dados
+    // Puxando do banco de dados
     this-> apelido = _apelido; 
+}
+
+void Jogador:: criarCadastro(){
+    //conferimos a sua validade. 
     vitorias_reversi = 0 ; 
     derrotas_reversi = 0; 
     empates_reversi = 0; 
     vitorias_lig4 = 0; 
     derrotas_lig4 = 0; 
     empates_lig4 = 0; 
-}
-
-
-void Jogador:: criarCadastro(){
-    // Aqui o cadastro é criado, não é onde conferimos a sua validade. 
-    // Comunicar com o banco de dados para criar o cadastro. 
-    
+    //Comunicar com o banco de dados para criar o cadastro. 
 }
 
 void Jogador :: setNome(std::string _nome){
+    //Banco de dados 
     nome = _nome; 
 }
 void  Jogador:: setApelido(std::string _apelido){
+    //Banco de dados
     apelido = _apelido; 
 }
 std::string  Jogador:: getNome(){
+    //Banco de dados
     return nome;
 }
 std::string  Jogador:: getApelido(){
+    //Banco de dados
     return apelido; 
 }
 

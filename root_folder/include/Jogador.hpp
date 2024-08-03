@@ -19,6 +19,7 @@ class Jogador{
 
     public: 
         Jogador(std:: string _nome, std:: string _apelido); 
+        Jogador(std:: string _apelido); 
         void criarCadastro();
         void setNome(std::string _nome); 
         void setApelido(std::string _apelido); 

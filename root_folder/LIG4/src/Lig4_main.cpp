@@ -26,20 +26,23 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
+    float winWidth = 800.0f;
+    float winHeight = 600.0f;
+    sf::Color cor(255, 170, 203);
+    sf::RenderWindow window(sf::VideoMode(winWidth, winHeight), "Deluxe Edition");
     sf::CircleShape shape(50.f);
+    //cria uma variavel do tipo cor da cor azul
     shape.setFillColor(sf::Color::Blue);
     shape.setPosition(0.0, 0.0);
 
     Movimentacao movimentacao;
-
+    //roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
     {
+        // checa todos os eventos que ocorreram desde a última iteração do loop
         sf::Event event;
-        //função move circulo right,left,up and down com switch case
-
         
-        while (window.pollEvent(event))
+        while (window.pollEvent(event)) //pollEvent é uma função que retorna true se houver eventos na fila
         {
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -52,7 +55,7 @@ int main()
             
         }
 
-        window.clear();
+        window.clear(cor);
         window.draw(shape);
         window.display();
     }

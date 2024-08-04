@@ -80,7 +80,7 @@ Botao::Botao() {
     this->posicao = new PontoF(0.0, 0.0);
     this->isFocado = false;
     texto.setCharacterSize(24);
-    //retangulo.setFillColor(sf::Color::White);
+    retangulo.setFillColor(sf::Color::White);
     // Cria um retângulo de tamX x tamY pixels
     this->retangulo = sf::RectangleShape(sf::Vector2f(tamX, tamY));
     //Define a posição do retângulo (x, y)
@@ -155,7 +155,8 @@ PontoF Botao::getCentro() const{
 }
 
 void Botao::setCor(sf::Color cor) {
-    this->cor = cor;
+    retangulo.setFillColor(cor); //só assim pra mudar a cor
+    this->cor = cor; //alguma coisa muito errada tá acontecendo que isso nao funciona pra mudar a cor
 }
 
 sf::RectangleShape & Botao::getForma() {

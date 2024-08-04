@@ -13,6 +13,7 @@ int main()
     sf::Color cor(255, 130, 190); //variavel com parametros de valor de cor (vai de 0 a 255)
     sf::CircleShape circulo(50.f);
     //cria uma variavel do tipo cor da cor azul
+    float teste = 99.0;
     circulo.setFillColor(sf::Color::Blue);
     circulo.setPosition(0.0, 0.0);
 
@@ -30,8 +31,6 @@ int main()
     //cout << pos3 << endl;
     Botao botao1(pos1, 5*10.0, 5*10.0, sf::Color::Red);
     
-
-
     Movimentacao movimentacao;
     //roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
@@ -43,6 +42,16 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            // Obtenha a posição do mouse relativa à janela
+            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
+            // Verifique se o mouse está dentro do retângulo
+            if (loginBox.getForma().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+                //muda cor do retangulo
+                loginBox.setCor(sf::Color::Cyan);
+            }else {
+                loginBox.setCor(sf::Color::White);
+            }
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 // Simples verificação de clique no botão
@@ -52,6 +61,7 @@ int main()
                     loginBox.setFocado(false);
                 }
             }
+            
 
             if (loginBox.isFocado) {
                 loginBox.receberInput(event);
@@ -69,7 +79,7 @@ int main()
                 cout << "Centro: " << botao1.getCentro() << endl;
                 cout << "Posicao: " << botao1.getPosicao()<< endl;
                 cout << "Tamanho: " << botao1.tamX << " " << botao1.tamY << endl;
-                relogio.restart(); // Reinicia o clock
+                relogio.restart(); // Reinicia o relogio
             }
 
         }

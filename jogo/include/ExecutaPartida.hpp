@@ -128,7 +128,7 @@ public:
     Botao(PontoF &ponto, float tamX, float tamY, sf::Color cor_);
     Botao();
     ~Botao();
-
+    //tem que criar uma logica melhor pra criar campos
     void criarCampo(float tamX, float tamY, const std::string& fonteCaminho);
     void setFocado(bool foco);
     void receberInput(sf::Event event);

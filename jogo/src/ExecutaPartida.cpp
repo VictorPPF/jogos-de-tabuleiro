@@ -116,7 +116,7 @@ void Botao::setFocado(bool foco) {
     }
 }
 
-void Botao::receberInput(sf::Event event) {
+void Botao::receberInput(sf::Event event) { 
     if (isFocado) {
         if (event.type == sf::Event::TextEntered) {
             if (event.text.unicode < 128) { // ASCII check

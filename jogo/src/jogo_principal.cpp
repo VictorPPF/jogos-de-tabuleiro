@@ -4,22 +4,33 @@
 
 using namespace std;
 
+// Fonte global
+sf::Font font;
 
 int main()
 {
+    // Configuração inicial da janela do jogo
     float res_x = 800.0f;
     float res_y = 600.0f;
     sf::RenderWindow window(sf::VideoMode(res_x, res_y), "Deluxe Edition");
+
+    // Carregamento da fonte apenas uma vez
+    if (!font.loadFromFile("arial.ttf")) {
+        std::cerr << "Erro ao carregar a fonte 'arial.ttf'" << std::endl;
+        return -1;
+    }
+
+    // Configurações iniciais de cor e forma
     sf::Color cor(255, 130, 190); //variavel com parametros de valor de cor (vai de 0 a 255)
     sf::CircleShape circulo(50.f);
-    //cria uma variavel do tipo cor da cor azul
-    float teste = 99.0;
     circulo.setFillColor(sf::Color::Blue);
     circulo.setPosition(0.0, 0.0);
+
 
     PontoF pos1(2.0,3.0);
     PontoF pos2(200.0,200.0);
 
+    
     Botao loginBox;
     loginBox.criarCampo(300, 50, "arial.ttf");
     

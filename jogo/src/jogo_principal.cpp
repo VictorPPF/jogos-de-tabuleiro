@@ -32,7 +32,7 @@ int main()
     Botao botao1(pos1, 5*10.0, 5*10.0, sf::Color::Red);
     
     Movimentacao movimentacao;
-    //roda o programa enquanto a janela estiver aberta
+    // Roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
     {
         // checa todos os eventos que ocorreram desde a última iteração do loop

@@ -1,9 +1,12 @@
-#include "ExecutaPartida.hpp"
+#include "../include/ExecutaPartida.hpp"
 #include <iostream>
 
 // Construtor da classe Botao
-Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte, bool isCirculo, sf::Color corFonte)
-    : largura(largura), altura(altura), posicao(x, y), cor(cor), texto(texto), tamanhoFonte(tamanhoFonte), isCirculo(isCirculo), corFonte(corFonte) {
+Botao::Botao(float largura, float altura, float x, float y, sf::Color cor,
+             const std::string& texto, float tamanhoFonte, bool isCirculo, sf::Color corFonte)
+            : largura(largura), altura(altura), posicao(x, y), cor(cor), texto(texto), 
+            tamanhoFonte(tamanhoFonte), isCirculo(isCirculo), corFonte(corFonte) {
+                
     corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
 
     // Carregar a fonte

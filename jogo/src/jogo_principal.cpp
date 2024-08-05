@@ -18,10 +18,10 @@ void desenharMenu(sf::RenderWindow& window) {
     Wallpaper wallpaper("menuInicial.png");
     wallpaper.redimensionar(window.getSize());
 
-    Botao botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 0), "Nick do Jogador 1", 15.f, false);
+    Botao botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
     botaoJogador1.criarBotoes();
 
-    Botao botaoJogador2(306.0, 49.f, 177.0 + (306.0*1.5), 206.f, sf::Color(223, 232, 106, 0), "Nick do Jogador 2", 15.f, false);
+    Botao botaoJogador2(306.0, 49.f, 177.0 + (306.0*1.5), 206.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
     botaoJogador2.criarBotoes();
 
     Botao botaoCadastro(220.f, 65.f, 140.f, 368.f, sf::Color(150, 129, 250), "Cadastro", 25.f, false, sf::Color(43, 0, 108));
@@ -50,7 +50,27 @@ void desenharCadastro(sf::RenderWindow& window,sf::Font fonte) { //quando o usua
     
     Wallpaper wallpaper("menuCadastro.png");
     wallpaper.redimensionar(window.getSize());
+
+    Botao botaoNome(502.0, 49.f, 327.f, 283.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
+    botaoNome.criarBotoes();
+
+    Botao botaoApelido(502.0, 49.f, 327.f, 359.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
+    botaoApelido.criarBotoes();
     
+    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
+    botaoVoltar.criarBotoes();
+
+    wallpaper.desenhar(window);
+    botaoNome.desenhar(window);
+    botaoApelido.desenhar(window);
+    botaoVoltar.desenhar(window);
+}
+
+void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ListaDeJogadores, toda a lógica subseguinte será inteiramente implementada aqui dentro
+    
+    Wallpaper wallpaper("menuListaJogadores.png");
+    wallpaper.redimensionar(window.getSize());
+
     Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
     botaoVoltar.criarBotoes();
 
@@ -58,39 +78,39 @@ void desenharCadastro(sf::RenderWindow& window,sf::Font fonte) { //quando o usua
     botaoVoltar.desenhar(window);
 }
 
-void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ListaDeJogadores, toda a lógica subseguinte será inteiramente implementada aqui dentro
-    
-    sf::Text title("Lista de Jogadores", fonte, 50);
-    title.setPosition(300, 20);
-    window.draw(title);
-
-    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
-    botaoVoltar.criarBotoes();
-
-    botaoVoltar.desenhar(window);
-}
-
 void desenharExcluirConta(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ExcluirConta, toda a lógica subseguinte será inteiramente implementada aqui dentro
     
-    sf::Text title("Excluir Conta", fonte, 50);
-    title.setPosition(300, 20);
-    window.draw(title);
+    Wallpaper wallpaper("menuExcluirConta.png");
+    wallpaper.redimensionar(window.getSize());
+        
+    Botao botaoApelido(502.0, 49.f, 327.f, 264.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
+    botaoApelido.criarBotoes();
+
+    Botao botaoExcluir(350.f, 65.f, 171.f, 345.f, sf::Color(150, 129, 250), "Excluir Conta", 25.f, false, sf::Color(43, 0, 108));
+    botaoExcluir.criarBotoes();
 
     Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
     botaoVoltar.criarBotoes();
 
+    wallpaper.desenhar(window);
+    botaoApelido.desenhar(window);
+    botaoExcluir.desenhar(window);
     botaoVoltar.desenhar(window);
 }
 
 void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em Estatisticas, toda a lógica subseguinte será inteiramente implementada aqui dentro
     
-    sf::Text title("Estatísticas", fonte, 50);
-    title.setPosition(300, 20);
-    window.draw(title);
+    Wallpaper wallpaper("menuEstatisticas.png");
+    wallpaper.redimensionar(window.getSize());
+
+    Botao botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
+    botaoApelido.criarBotoes();
 
     Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
     botaoVoltar.criarBotoes();
 
+    wallpaper.desenhar(window);
+    botaoApelido.desenhar(window);
     botaoVoltar.desenhar(window);
 }
 

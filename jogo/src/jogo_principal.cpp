@@ -10,8 +10,8 @@ sf::Font font;
 int main()
 {
     // Configuração inicial da janela do jogo
-    float res_x = 800.0f;
-    float res_y = 600.0f;
+    float res_x = 1000.0f;
+    float res_y = 650.0f;
     sf::RenderWindow window(sf::VideoMode(res_x, res_y), "Deluxe Edition");
 
     // Carregamento da fonte apenas uma vez

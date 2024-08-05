@@ -48,13 +48,14 @@ void desenharMenu(sf::RenderWindow& window) {
 
 void desenharCadastro(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em Cadastro, toda a lógica subseguinte será inteiramente implementada aqui dentro 
     
-    sf::Text title("Cadastro", fonte, 50);
-    title.setPosition(300, 20);
-    window.draw(title);
+    Wallpaper wallpaper("menuCadastro.png");
+    wallpaper.redimensionar(window.getSize());
+    
+    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
+    botaoVoltar.criarBotoes();
 
-    sf::Text back("Voltar", fonte, 30);
-    back.setPosition(700, 20);
-    window.draw(back);
+    wallpaper.desenhar(window);
+    botaoVoltar.desenhar(window);
 }
 
 void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ListaDeJogadores, toda a lógica subseguinte será inteiramente implementada aqui dentro
@@ -63,9 +64,10 @@ void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte) { //quand
     title.setPosition(300, 20);
     window.draw(title);
 
-    sf::Text back("Voltar", fonte, 30);
-    back.setPosition(700, 20);
-    window.draw(back);
+    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
+    botaoVoltar.criarBotoes();
+
+    botaoVoltar.desenhar(window);
 }
 
 void desenharExcluirConta(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ExcluirConta, toda a lógica subseguinte será inteiramente implementada aqui dentro
@@ -74,9 +76,10 @@ void desenharExcluirConta(sf::RenderWindow& window,sf::Font fonte) { //quando o 
     title.setPosition(300, 20);
     window.draw(title);
 
-    sf::Text back("Voltar", fonte, 30);
-    back.setPosition(700, 20);
-    window.draw(back);
+    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
+    botaoVoltar.criarBotoes();
+
+    botaoVoltar.desenhar(window);
 }
 
 void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em Estatisticas, toda a lógica subseguinte será inteiramente implementada aqui dentro
@@ -85,9 +88,10 @@ void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte) { //quando o 
     title.setPosition(300, 20);
     window.draw(title);
 
-    sf::Text back("Voltar", fonte, 30);
-    back.setPosition(700, 20);
-    window.draw(back);
+    Botao botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108));
+    botaoVoltar.criarBotoes();
+
+    botaoVoltar.desenhar(window);
 }
 
 int main() {
@@ -176,7 +180,7 @@ int main() {
                         }
                     }
                 } else {
-                    if (mousePos.x > 700 && mousePos.x < 780 && mousePos.y > 20 && mousePos.y < 60) { //regiao retangular padrao do "botao" de voltar
+                    if (mousePos.x > 358 && mousePos.x < 642 && mousePos.y > 557 && mousePos.y < 624) { //regiao retangular padrao do "botao" de voltar
                         estadoAtual = "MenuPrincipal";
                     }
                 }

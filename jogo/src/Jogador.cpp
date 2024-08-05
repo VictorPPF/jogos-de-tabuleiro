@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string> 
 #include <fstream>
-#include "../include/Jogador.hpp"
+#include <memory> 
+#include "Jogador.hpp"
+#include "Historico.hpp" 
 
 //Função para procurar apelidos. 
 
 Jogador:: Jogador(std:: string _nome, std:: string _apelido){
-    // Acesso ao banco de dados
     this->nome = _nome; 
     this-> apelido = _apelido;
-    // chama a cadastro}
+    
+    
 }
 Jogador:: Jogador(std:: string _apelido){
     // Acesso ao banco de dados
@@ -71,3 +73,5 @@ void Jogador:: excluirConta(){
     // Comunicar com o banco de dados
 
 }
+
+//criar um para registrar V e D ou fazer um para J.vitorias += 1 ; 

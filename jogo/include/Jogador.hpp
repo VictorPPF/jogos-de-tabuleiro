@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string> 
 #include <fstream>
+#include<vector>
+#include <memory> 
+#include "Historico.hpp"
 
 #ifndef JOGADOR_H
 #define JOGADOR_H
@@ -15,7 +18,9 @@ class Jogador{
         int vitorias_lig4; 
         int derrotas_lig4; 
         int empates_lig4; 
-        std:: string nome_jogo;   
+        std:: string nome_jogo;
+        static Historico historico;
+
 
     public: 
         Jogador(std:: string _nome, std:: string _apelido); 
@@ -30,5 +35,7 @@ class Jogador{
         void excluirConta();  
 
 }; 
+
+
 
 #endif 

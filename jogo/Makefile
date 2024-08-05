@@ -1,7 +1,4 @@
-all: create_dirs compile link
-
-create_dirs:
-	mkdir -p obj bin
+all: compile link
 
 compile:
 	g++ -Iinclude -IC:\SFML-2.6.1\include -c src/ExecutaPartida.cpp -o obj/ExecutaPartida.o

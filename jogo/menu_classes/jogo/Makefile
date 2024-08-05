@@ -14,5 +14,5 @@ run:
 clean:
 	del obj\jogo_principal.o 
 	del obj\ExecutaPartida.o
-	del obj\EWallpaper.o
+	del obj\Wallpaper.o
 	del bin\Jogo_executavel.exe

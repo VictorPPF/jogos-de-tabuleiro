@@ -81,6 +81,14 @@ int main()
     //cout << pos3 << endl;
 
     Movimentacao movimentacao;
+
+    // Flag para controle dos menus
+    bool menuInicial = true;
+    // Flag para alternar entre os jogadores
+    bool isEnteringPlayer1 = true;
+    std::string jogador1;
+    std::string jogador2;
+
     // Roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
     {
@@ -89,20 +97,24 @@ int main()
         
         while (window.pollEvent(event)) //pollEvent é uma função que retorna true se houver eventos na fila
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed){
                 window.close();
-            // Obtenha a posição do mouse relativa à janela
-            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-
+            }
         }
-        
-        window.clear(cor);
-        //window.draw(loginBox.getForma());
-        //window.draw(loginBox.getTexto());
-        //window.draw(botao1.getForma());
-        window.draw(circulo);
-        window.display();
+        // Se está no menuInicial
+        if (menuInicial) {
+        // Desenha o menu se a flag estiver ativa
+        desenharMenu(window, jogador1, jogador2);
+        } else {
+            // Desenha o conteúdo do jogo
+            window.clear();
+            window.display();
+            menuInicial = false;
+            //window.draw(loginBox.getForma());
+            //window.draw(loginBox.getTexto());
+            //window.draw(botao1.getForma());
+            //window.draw(circulo);
+        }
     }
-
     return 0;
 }

@@ -1,24 +1,69 @@
 #include <SFML/Graphics.hpp>
+#include <windows.h>
+
+#include "../include/Wallpaper.hpp"
 #include "../include/ExecutaPartida.hpp"
 #include <iostream>
 
 using namespace std;
 
-// Fonte global
-sf::Font font;
+// Função para desenhar o menu
+void desenharMenu(sf::RenderWindow& window, std::string& jogador1, std::string& jogador2){
+    Wallpaper wallpaper("menuInicial.png");
+    wallpaper.redimensionar(window.getSize());
+
+    // Criação do botao: Largura, altura, posicao x, posicao y, cor (rgb - último número é transparência), conteudo, tamanho da fonte, se for circulo é false, cor fonte
+    Botao botaoJogador1(306.f, 49.f, 174.f, 206.f, sf::Color(223, 232, 106, 0), jogador1, 15.f, false);
+    botaoJogador1.criarBotoes();
+
+    Botao botaoJogador2(306.f, 49.f, 174.f, 206.f, sf::Color(223, 232, 106, 0), jogador2, 15.f, false);
+    botaoJogador2.criarBotoes();
+
+    Botao botaoCadastro(220.f, 65.f, 140.f, 368.f, sf::Color(150, 129, 250), "Cadastro", 25.f, false, sf::Color(43, 0, 108));
+    botaoCadastro.criarBotoes();
+
+    Botao botaoListaJogadores(500.f, 65.f, 390.f, 368.f, sf::Color(150, 129, 250), "Lista de Jogadores", 25.f, false, sf::Color(43, 0, 108));
+    botaoListaJogadores.criarBotoes();
+
+    Botao botaoExcluirConta(350.f, 65.f, 140.f, 458.f, sf::Color(150, 129, 250), "Excluir Conta", 25.f, false, sf::Color(43, 0, 108));
+    botaoExcluirConta.criarBotoes();
+
+    Botao botaoEstatistica(350.f, 65.f, 540.f, 458.f, sf::Color(150, 129, 250), "Estatisticas", 25.f, false, sf::Color(43, 0, 108));
+    botaoEstatistica.criarBotoes();
+
+    window.clear();
+    wallpaper.desenhar(window);
+    botaoJogador1.desenhar(window);
+    botaoJogador2.desenhar(window);
+    botaoCadastro.desenhar(window);
+    botaoListaJogadores.desenhar(window);
+    botaoExcluirConta.desenhar(window);
+    botaoEstatistica.desenhar(window);
+    window.display();
+
+}
 
 int main()
 {
-    // Configuração inicial da janela do jogo
-    float res_x = 1000.0f;
-    float res_y = 650.0f;
-    sf::RenderWindow window(sf::VideoMode(res_x, res_y), "Deluxe Edition");
+    //--------------- MÓDULO PARA INICIAR A TELA DO JOGO NAS DIMENSÕES DA TELA DA PESSOA-----------------//
+    // Obtém as dimensões da tela
+    RECT screenRect;
+    GetWindowRect(GetDesktopWindow(), &screenRect);
+    int screenWidth = screenRect.right - screenRect.left;
 
-    // Carregamento da fonte apenas uma vez
-    if (!font.loadFromFile("arial.ttf")) {
-        std::cerr << "Erro ao carregar a fonte 'arial.ttf'" << std::endl;
-        return -1;
-    }
+    // Define as dimensões da janela
+    int windowWidth = 1000;
+    int windowHeight = 690;
+
+    // Calcula a posição horizontal centralizada e define a posição vertical no topo da tela
+    int windowPosX = (screenWidth - windowWidth) / 2;
+    int windowPosY = 0; // Inicia no topo da tela
+
+    // Criação da janela com a posição ajustada
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Deluxe Collection");
+    window.setPosition(sf::Vector2i(windowPosX, windowPosY));  // Define a posição da janela
+
+    //---------------------------------------------------------------------------------------------//
 
     // Configurações iniciais de cor e forma
     sf::Color cor(255, 130, 190); //variavel com parametros de valor de cor (vai de 0 a 255)
@@ -26,22 +71,15 @@ int main()
     circulo.setFillColor(sf::Color::Blue);
     circulo.setPosition(0.0, 0.0);
 
-
     PontoF pos1(2.0,3.0);
     PontoF pos2(200.0,200.0);
-
-    
-    Botao loginBox;
-    loginBox.criarCampo(300, 50, "arial.ttf");
     
     sf::Clock relogio;
-
     
     PontoF pos3 = pos1 + pos2;
 
     //cout << pos3 << endl;
-    Botao botao1(pos1, 5*10.0, 5*10.0, sf::Color::Red);
-    
+
     Movimentacao movimentacao;
     // Roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
@@ -56,48 +94,12 @@ int main()
             // Obtenha a posição do mouse relativa à janela
             sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-            // Verifique se o mouse está dentro do retângulo
-            if (loginBox.getForma().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-                //muda cor do retangulo
-                loginBox.setCor(sf::Color::Cyan);
-            }else {
-                loginBox.setCor(sf::Color::White);
-            }
-
-            if (event.type == sf::Event::MouseButtonPressed) {
-                // Simples verificação de clique no botão
-                if (loginBox.getForma().getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-                    loginBox.setFocado(true);
-                } else {
-                    loginBox.setFocado(false);
-                }
-            }
-            
-            if (loginBox.isFocado) {
-                loginBox.receberInput(event);
-            }
-
-            // Verifica se uma tecla foi pressionada
-            if (event.type == sf::Event::KeyPressed) {
-                movimentacao.mover(circulo, event.key.code);
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                movimentacao.mover(botao1.getForma(), event.key.code);
-            }
-            //Verifica se 0.5 segundo se passou
-            if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
-                cout << "Centro: " << botao1.getCentro() << endl;
-                cout << "Posicao: " << botao1.getPosicao()<< endl;
-                cout << "Tamanho: " << botao1.tamX << " " << botao1.tamY << endl;
-                relogio.restart(); // Reinicia o relogio
-            }
-
         }
         
         window.clear(cor);
-        window.draw(loginBox.getForma());
-        window.draw(loginBox.getTexto());
-        window.draw(botao1.getForma());
+        //window.draw(loginBox.getForma());
+        //window.draw(loginBox.getTexto());
+        //window.draw(botao1.getForma());
         window.draw(circulo);
         window.display();
     }

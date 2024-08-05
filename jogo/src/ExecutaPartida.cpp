@@ -54,115 +54,82 @@ void Movimentacao::mover(sf::RectangleShape &retangulo, const sf::Keyboard::Key 
 
 
 // Implementação da classe Botao
+// Construtor da classe Botao
+Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte, bool isCirculo, sf::Color corFonte)
+    : largura(largura), altura(altura), posicao(x, y), cor(cor), texto(texto), tamanhoFonte(tamanhoFonte), isCirculo(isCirculo), corFonte(corFonte) {
+    corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
 
-
-Botao::Botao(PontoF &ponto, float tamX, float tamY, sf::Color cor_) {
-    this->tamX = tamX;
-    this->tamY = tamY;
-    this->cor = cor_;
-    this->isFocado = false;
-    texto.setCharacterSize(24);
-
-    this->retangulo = sf::RectangleShape(sf::Vector2f(tamX, tamY));
-    this->retangulo.setPosition(ponto.x, ponto.y);
-    retangulo.setFillColor(this->cor);
-
-    if (!fonte.loadFromFile("arial.ttf")) {
-        std::cerr << "opa, nao achou o arquivo da fonte\n";
+    // Carregar a fonte
+    if (!fonte.loadFromFile("font_arcade.ttf")) {
+        std::cout << "Erro ao carregar a fonte" << std::endl;
     }
 
-    texto.setFont(fonte);
-    
-}
-Botao::Botao() {
-    this->tamX = 0.0;
-    this->tamY = 0.0;
-    this->posicao = new PontoF(0.0, 0.0);
-    this->isFocado = false;
-    texto.setCharacterSize(24);
-    retangulo.setFillColor(sf::Color::White);
-    // Cria um retângulo de tamX x tamY pixels
-    this->retangulo = sf::RectangleShape(sf::Vector2f(tamX, tamY));
-    //Define a posição do retângulo (x, y)
-    this->retangulo.setPosition(this->posicao->x, this->posicao->y);
-    if (!fonte.loadFromFile("arial.ttf")) {
-        std::cerr << "opa, nao achou o arquivo da fonte\n";
-    }
-    texto.setFont(fonte);
-    
+    text.setFont(fonte);                                            // Define a fonte
+    text.setString(texto);                                          // Define o texto
+    text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte)); // Define o tamanho da fonte
+    text.setFillColor(corFonte);                                    // Define a cor da letra
 }
 
-Botao::~Botao() {
-    delete this->posicao;
-}
-
-void Botao::criarCampo(float tamX, float tamY, const std::string& fonteCaminho) {
-    this->tamX = tamX;
-    this->tamY = tamY;
-    retangulo.setSize(sf::Vector2f(tamX, tamY));
-    if (!fonte.loadFromFile(fonteCaminho)) {
-        std::cerr << "opa, nao achou o arquivo da fonte\n";
-    }
-    texto.setFont(fonte);
-    texto.setPosition(posicao->x + 5, posicao->y + 5);
-}
-
-void Botao::setFocado(bool foco) {
-    isFocado = foco;
-    if (foco) {
-        retangulo.setFillColor(sf::Color::Cyan); // Cor ao focar
+// Configura a forma e o texto do botão
+void Botao::criarBotoes() {
+    if (isCirculo) {
+        circulo.setRadius(largura / 2); // Define o raio do círculo
+        circulo.setPosition(posicao);   // Define a posição do círculo
+        circulo.setFillColor(cor);      // Define a cor do círculo
     } else {
-        retangulo.setFillColor(sf::Color::White); // Cor padrão ao desfocar
+        retangulo.setSize(sf::Vector2f(largura, altura)); // Define o tamanho do retângulo
+        retangulo.setPosition(posicao);                   // Define a posição do retângulo
+        retangulo.setFillColor(cor);                      // Define a cor do retângulo
     }
+    // Ajusta o ponto de origem do texto para o centro
+    sf::FloatRect textBounds = text.getLocalBounds(); // Obtém os limites locais do texto, o que inclui a largura e a altura do texto.
+    text.setOrigin(textBounds.width / 2.f, textBounds.height / 2.f + textBounds.top); //O ponto de origem é ajustado para o centro do texto horizontalmente e verticalmente
+
+    // Ajusta a posição do texto para que fique centralizado no botão
+    text.setPosition(posicao.x + largura / 2, posicao.y + altura / 2);
 }
 
-void Botao::receberInput(sf::Event event) { 
-    if (isFocado) {
-        if (event.type == sf::Event::TextEntered) {
-            if (event.text.unicode < 128) { // ASCII check
-                if (event.text.unicode == 8) { // tecla do backspace
-                    std::string str = texto.getString();
-                    if (!str.empty()) {
-                        str.pop_back();  // Remove o último caractere
-                    }
-                    texto.setString(str);
-                } else if (event.text.unicode == 13) { // tecla enter
-                    std::cout << "Texto inserido: " << texto.getString().toAnsiString() << std::endl;
-                    retangulo.setFillColor(sf::Color::Green); // Muda a cor do retângulo para verde
-                } else {
-                    texto.setString(texto.getString() + static_cast<char>(event.text.unicode));
-                }
-            }
+// Método para obter a cor atual do botão
+sf::Color Botao::getCor() const {
+    return cor;
+}
+
+// Atualiza a cor do botão com base na posição do mouse
+void Botao::mudarCor(sf::RenderWindow& window) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+    if (isCirculo) {
+        // Verifica se o mouse está sobre o círculo
+        if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+            circulo.setFillColor(corHover); // Muda a cor para a corHover
+        } else {
+            circulo.setFillColor(cor); // Muda de volta para a cor original
+        }
+    } else {
+        // Verifica se o mouse está sobre o retângulo
+        if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+            retangulo.setFillColor(corHover); // Muda a cor para a corHover
+        } else {
+            retangulo.setFillColor(cor); // Muda de volta para a cor original
         }
     }
 }
 
-sf::Text & Botao::getTexto() {
-    return texto;
+// Desenha o botão (forma e texto) na janela
+void Botao::desenhar(sf::RenderWindow& window) {
+    mudarCor(window); // Atualiza a cor do botão com base na posição do mouse
+    if (isCirculo) {
+        window.draw(circulo); // Desenha o círculo na janela
+    } else {
+        window.draw(retangulo); // Desenha o retângulo na janela
+    }
+    window.draw(text); // Desenha o texto do botão na janela
 }
 
-sf::Color Botao::getCor() {
-    return this->cor;
+// Definir o tamanho da fonte
+void Botao::setTamanhoFonte(float tamanho) {
+    tamanhoFonte = tamanho;
+    text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte));
 }
-
-PontoF Botao::getPosicao() const {
-    sf::Vector2f pos = retangulo.getPosition();
-    return PontoF(pos.x, pos.y);
-}
-PontoF Botao::getCentro() const{
-    
-    return PontoF(retangulo.getPosition().x + this->tamX/2 , retangulo.getPosition().y + this->tamY/2 );
-}
-
-void Botao::setCor(sf::Color cor) {
-    retangulo.setFillColor(cor); //só assim pra mudar a cor
-    this->cor = cor; //alguma coisa muito errada tá acontecendo que isso nao funciona pra mudar a cor
-}
-
-sf::RectangleShape & Botao::getForma() {
-    return retangulo;
-}
-
 
 
 

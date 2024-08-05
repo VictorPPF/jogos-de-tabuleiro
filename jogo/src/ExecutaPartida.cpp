@@ -53,6 +53,7 @@ void Movimentacao::mover(sf::RectangleShape &retangulo, const sf::Keyboard::Key 
 }
 
 
+
 // Implementação da classe Botao
 // Construtor da classe Botao
 Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte, bool isCirculo, sf::Color corFonte)
@@ -63,7 +64,8 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const
     if (!fonte.loadFromFile("font_arcade.ttf")) {
         std::cout << "Erro ao carregar a fonte" << std::endl;
     }
-
+    
+    bool clicou; //verifica se o botao foi clicado
     text.setFont(fonte);                                            // Define a fonte
     text.setString(texto);                                          // Define o texto
     text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte)); // Define o tamanho da fonte

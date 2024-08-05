@@ -7,16 +7,21 @@
 
 using namespace std;
 
-// Função para desenhar o menu
-void desenharMenu(sf::RenderWindow& window, std::string& jogador1, std::string& jogador2){
+//declarações de função (prototipagem) eh boa pratica
+void desenharMenu(sf::RenderWindow& window);
+void desenharCadastro(sf::RenderWindow& window,sf::Font fonte);
+void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte);
+void desenharExcluirConta(sf::RenderWindow& window,sf::Font fonte);
+void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte);
+
+void desenharMenu(sf::RenderWindow& window) {
     Wallpaper wallpaper("menuInicial.png");
     wallpaper.redimensionar(window.getSize());
 
-    // Criação do botao: Largura, altura, posicao x, posicao y, cor (rgb - último número é transparência), conteudo, tamanho da fonte, se for circulo é false, cor fonte
-    Botao botaoJogador1(306.f, 49.f, 174.f, 206.f, sf::Color(223, 232, 106, 0), jogador1, 15.f, false);
+    Botao botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 0), "Nick do Jogador 1", 15.f, false);
     botaoJogador1.criarBotoes();
 
-    Botao botaoJogador2(306.f, 49.f, 174.f, 206.f, sf::Color(223, 232, 106, 0), jogador2, 15.f, false);
+    Botao botaoJogador2(306.0, 49.f, 177.0 + (306.0*1.5), 206.f, sf::Color(223, 232, 106, 0), "Nick do Jogador 2", 15.f, false);
     botaoJogador2.criarBotoes();
 
     Botao botaoCadastro(220.f, 65.f, 140.f, 368.f, sf::Color(150, 129, 250), "Cadastro", 25.f, false, sf::Color(43, 0, 108));
@@ -31,7 +36,6 @@ void desenharMenu(sf::RenderWindow& window, std::string& jogador1, std::string& 
     Botao botaoEstatistica(350.f, 65.f, 540.f, 458.f, sf::Color(150, 129, 250), "Estatisticas", 25.f, false, sf::Color(43, 0, 108));
     botaoEstatistica.criarBotoes();
 
-    window.clear();
     wallpaper.desenhar(window);
     botaoJogador1.desenhar(window);
     botaoJogador2.desenhar(window);
@@ -39,12 +43,60 @@ void desenharMenu(sf::RenderWindow& window, std::string& jogador1, std::string& 
     botaoListaJogadores.desenhar(window);
     botaoExcluirConta.desenhar(window);
     botaoEstatistica.desenhar(window);
-    window.display();
-
 }
 
-int main()
-{
+
+void desenharCadastro(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em Cadastro, toda a lógica subseguinte será inteiramente implementada aqui dentro 
+    
+    sf::Text title("Cadastro", fonte, 50);
+    title.setPosition(300, 20);
+    window.draw(title);
+
+    sf::Text back("Voltar", fonte, 30);
+    back.setPosition(700, 20);
+    window.draw(back);
+}
+
+void desenharListaDeJogadores(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ListaDeJogadores, toda a lógica subseguinte será inteiramente implementada aqui dentro
+    
+    sf::Text title("Lista de Jogadores", fonte, 50);
+    title.setPosition(300, 20);
+    window.draw(title);
+
+    sf::Text back("Voltar", fonte, 30);
+    back.setPosition(700, 20);
+    window.draw(back);
+}
+
+void desenharExcluirConta(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em ExcluirConta, toda a lógica subseguinte será inteiramente implementada aqui dentro
+    
+    sf::Text title("Excluir Conta", fonte, 50);
+    title.setPosition(300, 20);
+    window.draw(title);
+
+    sf::Text back("Voltar", fonte, 30);
+    back.setPosition(700, 20);
+    window.draw(back);
+}
+
+void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte) { //quando o usuario clica em Estatisticas, toda a lógica subseguinte será inteiramente implementada aqui dentro
+    
+    sf::Text title("Estatísticas", fonte, 50);
+    title.setPosition(300, 20);
+    window.draw(title);
+
+    sf::Text back("Voltar", fonte, 30);
+    back.setPosition(700, 20);
+    window.draw(back);
+}
+
+int main() {
+    //carrega a fonte só uma vez
+    sf::Font fonte;
+    if (!fonte.loadFromFile("arial.ttf")) {
+        std::cerr << "Failed to load font" << std::endl;
+        return 1;
+    }
     //--------------- MÓDULO PARA INICIAR A TELA DO JOGO NAS DIMENSÕES DA TELA DA PESSOA-----------------//
     // Obtém as dimensões da tela
     RECT screenRect;
@@ -57,11 +109,13 @@ int main()
 
     // Calcula a posição horizontal centralizada e define a posição vertical no topo da tela
     int windowPosX = (screenWidth - windowWidth) / 2;
-    int windowPosY = 0; // Inicia no topo da tela
+    int windowPosY = 0;
 
     // Criação da janela com a posição ajustada
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Deluxe Collection");
-    window.setPosition(sf::Vector2i(windowPosX, windowPosY));  // Define a posição da janela
+    window.setPosition(sf::Vector2i(windowPosX, windowPosY));
+
+    string estadoAtual = "MenuPrincipal"; // I CANT STRESS ENOUGH HOW IMPORTANT THIS VARIABLE IS
 
     //---------------------------------------------------------------------------------------------//
 
@@ -87,39 +141,65 @@ int main()
     // Cria um objeto Movimentacao para gerenciar o movimento
     Movimentacao movimentacao;
 
-    // Flag para controle dos menus
-    bool menuInicial = true;
-    // Flag para alternar entre os jogadores
-    bool isEnteringPlayer1 = true;
-    std::string jogador1;
-    std::string jogador2;
+    while (window.isOpen()) {
 
-    // Roda o programa enquanto a janela estiver aberta
-    while (window.isOpen())
-    {
         // Checa todos os eventos que ocorreram desde a última iteração do loop
         sf::Event event;
-        
-        while (window.pollEvent(event)) //pollEvent é uma função que retorna true se houver eventos na fila
-        {
-            if (event.type == sf::Event::Closed){
+        while (window.pollEvent(event)) {    //pollEvent é uma função que retorna true se houver eventos na fila
+            if (event.type == sf::Event::Closed) {
                 window.close();
             }
+
+            if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+                sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+                //aparentemente a função mudar cor já tem conhecimento dessas regioes retangulares onde o mouse tá sobre
+                //entao tem como dar uma boa otimizada e simplificar essas verificaçoes
+                if (estadoAtual == "MenuPrincipal") {
+                    if (mousePos.x > 140 && mousePos.x < 360) {  
+                        if (mousePos.y > 368 && mousePos.y < 433) {
+                            estadoAtual = "Cadastro";
+                        }
+                    }
+                    if (mousePos.x > 390 && mousePos.x < 890) {
+                        if (mousePos.y > 368 && mousePos.y < 433) {
+                            estadoAtual = "ListaDeJogadores";
+                        }
+                    }
+                    if (mousePos.x > 140 && mousePos.x < 490) {
+                        if (mousePos.y > 458 && mousePos.y < 523) {
+                            estadoAtual = "ExcluirConta";
+                        }
+                    }
+                    if (mousePos.x > 540 && mousePos.x < 890) {
+                        if (mousePos.y > 458 && mousePos.y < 523) {
+                            estadoAtual = "Estatisticas";
+                        }
+                    }
+                } else {
+                    if (mousePos.x > 700 && mousePos.x < 780 && mousePos.y > 20 && mousePos.y < 60) { //regiao retangular padrao do "botao" de voltar
+                        estadoAtual = "MenuPrincipal";
+                    }
+                }
+            }
         }
-        // Se está no menuInicial
-        if (menuInicial) {
-        // Desenha o menu se a flag estiver ativa
-        desenharMenu(window, jogador1, jogador2);
-        } else {
-            // Desenha o conteúdo do jogo
-            window.clear();
-            window.display();
-            menuInicial = false;
-            //window.draw(loginBox.getForma());
-            //window.draw(loginBox.getTexto());
-            //window.draw(botao1.getForma());
-            //window.draw(circulo);
+
+        window.clear();
+
+        if (estadoAtual == "MenuPrincipal") {
+            desenharMenu(window);
+        } else if (estadoAtual == "Cadastro") {
+            desenharCadastro(window,fonte); //se o condicional da regiao do botao mudar o estadoAtual pra Cadastro entao chama a função desenharCadastro e assim por diante
+        } else if (estadoAtual == "ListaDeJogadores") {
+            desenharListaDeJogadores(window,fonte);
+        } else if (estadoAtual == "ExcluirConta") {
+            desenharExcluirConta(window,fonte);
+        } else if (estadoAtual == "Estatisticas") {
+            desenharEstatisticas(window,fonte);
         }
+
+        window.display();
     }
+
     return 0;
 }
+

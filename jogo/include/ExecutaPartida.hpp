@@ -114,33 +114,5 @@ typedef Ponto<unsigned int> PontoU;
 
 //classe Botao
 
-class Botao {
-public:
-    float tamX, tamY;
-    //std::unique_ptr<PontoF> posicao;
-    PontoF *posicao;
-    sf::Color cor;
-    sf::RectangleShape retangulo;
-    sf::Text texto;
-    sf::Font fonte;
-    bool isFocado;
-    
-    Botao(PontoF &ponto, float tamX, float tamY, sf::Color cor_);
-    Botao();
-    ~Botao();
-    //tem que criar uma logica melhor pra criar campos
-    void criarCampo(float tamX, float tamY, const std::string& fonteCaminho);
-    void setFocado(bool foco);
-    void receberInput(sf::Event event);
-    sf::Text & getTexto();
-
-    PontoF getPosicao() const;
-    sf::Color getCor();
-    PontoF getCentro() const;
-    void setCor(sf::Color cor);
-    sf::RectangleShape & getForma();
-    
-};
-
 
 #endif // EXECUTAPARTIDA_HPP

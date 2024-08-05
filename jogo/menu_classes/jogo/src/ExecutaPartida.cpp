@@ -1,4 +1,4 @@
-#include "ExecutaPartida.hpp"
+#include "../include/ExecutaPartida.hpp"
 #include <iostream>
 
 // Construtor da classe Botao

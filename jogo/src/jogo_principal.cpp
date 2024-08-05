@@ -26,22 +26,15 @@ int main()
     circulo.setFillColor(sf::Color::Blue);
     circulo.setPosition(0.0, 0.0);
 
-
     PontoF pos1(2.0,3.0);
     PontoF pos2(200.0,200.0);
-
-    
-    Botao loginBox;
-    loginBox.criarCampo(300, 50, "arial.ttf");
     
     sf::Clock relogio;
-
     
     PontoF pos3 = pos1 + pos2;
 
     //cout << pos3 << endl;
-    Botao botao1(pos1, 5*10.0, 5*10.0, sf::Color::Red);
-    
+
     Movimentacao movimentacao;
     // Roda o programa enquanto a janela estiver aberta
     while (window.isOpen())
@@ -56,48 +49,12 @@ int main()
             // Obtenha a posição do mouse relativa à janela
             sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-            // Verifique se o mouse está dentro do retângulo
-            if (loginBox.getForma().getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-                //muda cor do retangulo
-                loginBox.setCor(sf::Color::Cyan);
-            }else {
-                loginBox.setCor(sf::Color::White);
-            }
-
-            if (event.type == sf::Event::MouseButtonPressed) {
-                // Simples verificação de clique no botão
-                if (loginBox.getForma().getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y)) {
-                    loginBox.setFocado(true);
-                } else {
-                    loginBox.setFocado(false);
-                }
-            }
-            
-            if (loginBox.isFocado) {
-                loginBox.receberInput(event);
-            }
-
-            // Verifica se uma tecla foi pressionada
-            if (event.type == sf::Event::KeyPressed) {
-                movimentacao.mover(circulo, event.key.code);
-            }
-            if (event.type == sf::Event::KeyPressed) {
-                movimentacao.mover(botao1.getForma(), event.key.code);
-            }
-            //Verifica se 0.5 segundo se passou
-            if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
-                cout << "Centro: " << botao1.getCentro() << endl;
-                cout << "Posicao: " << botao1.getPosicao()<< endl;
-                cout << "Tamanho: " << botao1.tamX << " " << botao1.tamY << endl;
-                relogio.restart(); // Reinicia o relogio
-            }
-
         }
         
         window.clear(cor);
-        window.draw(loginBox.getForma());
-        window.draw(loginBox.getTexto());
-        window.draw(botao1.getForma());
+        //window.draw(loginBox.getForma());
+        //window.draw(loginBox.getTexto());
+        //window.draw(botao1.getForma());
         window.draw(circulo);
         window.display();
     }

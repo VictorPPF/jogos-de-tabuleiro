@@ -18,6 +18,9 @@ void desenharMenu(sf::RenderWindow& window) {
     Wallpaper wallpaper("menuInicial.png");
     wallpaper.redimensionar(window.getSize());
 
+    /*botao recebe: largura, altura, posicao x, posicao y, cor em rgb (a última coluna é transparencia), 
+    texto, tamanho da fonte, se for circulo é true, cor da fonte (o padrão é white)*/
+
     Botao botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 0), "", 15.f, false);
     botaoJogador1.criarBotoes();
 
@@ -115,7 +118,7 @@ void desenharEstatisticas(sf::RenderWindow& window,sf::Font fonte) { //quando o 
 }
 
 int main() {
-    //carrega a fonte só uma vez
+    //carrega a fonte só uma vez 
     sf::Font fonte;
     if (!fonte.loadFromFile("arial.ttf")) {
         std::cerr << "Failed to load font" << std::endl;

@@ -19,3 +19,5 @@ clean:
 	del obj\ExecutaPartida.o
 	del obj\Wallpaper.o
 	del bin\Jogo_executavel.exe
+
+all: compile link

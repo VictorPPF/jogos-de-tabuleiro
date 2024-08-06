@@ -2,29 +2,33 @@
 #include <string> 
 #include <fstream>
 #include <memory> 
-
+#include <filesystem>
 #include <sstream>
 
-#include "Historico.hpp"
-#include "Jogador.hpp"
+#include "../include/Historico.hpp"
+//#include "Jogador.hpp"
 
 Historico::Historico(){
+    nomeArquivo = "teste.csv";
+    if(std::filesystem::exists(nomeArquivo)){
+        std::cout << "Arquivo ja existe!\n";
+    }else{
     std::ofstream arquivo(nomeArquivo);
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
         "Empates Reversi", "Vitorias Lig4", "Derrotas Lig4", "Empates Lig4"
     };
-
     if (arquivo.is_open()) {
-        for (size_t i = 0; i < cabecalho.size(); ++i) {
+        for (int i = 0; i < cabecalho.size(); ++i) {
             arquivo << cabecalho[i];
             if (i < cabecalho.size() - 1) {
                 arquivo << ";"; 
+            }
         }
         arquivo << std::endl; 
-        }
     }
     arquivo.close();
+    }
 }
 
 void Historico::excluirLinha (std:: string apelido){ 
@@ -115,6 +119,22 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     std::rename("temp.csv", nomeArquivo.c_str());
 
     }
+}
+
+
+void Historico::criarLinha(){
+    std::ofstream arquivo(nomeArquivo, std::ios::app);
+    if(arquivo.is_open()){
+        arquivo << "Tuco" << ";";
+        arquivo << "Roberto Luiz" << ";";
+        arquivo << "0" << ";";
+        arquivo << "0" << ";";
+        arquivo << "0" << ";";
+        arquivo << "0" << ";";
+        arquivo << "0"  << ";";
+        arquivo << "0"  << std::endl;
+    }
+    arquivo.close();
 }
 
 /*void Historico::criarLinha(const Jogador& jogador){
@@ -226,7 +246,7 @@ bool Historico::addEstatistica(std:: string apelido, std:: string coluna){
                 }
                 estatistica++;
                 Editar(apelido, coluna, std::to_string(estatistica));
-                //Adicionar a nova estatistica na linha
+                
                 //Pra fazer isso preciso entender melhor como o arquivo funciona
             }else{
                 arquivoTemp << linha <<std::endl;
@@ -241,12 +261,11 @@ bool Historico::addEstatistica(std:: string apelido, std:: string coluna){
     std::remove(nomeArquivo.c_str());
     std::rename("temp.csv", nomeArquivo.c_str());
 
-    if(existeApelido){
-        return 0;
-    }else{
-        return -1;
+    if(!existeApelido){
         std::cout<< "ERRO!! Não existe esse apelido!" <<std::endl;
+        return -1;
     }
+    return 0;
 }
         
        

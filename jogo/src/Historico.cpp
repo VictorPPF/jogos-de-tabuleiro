@@ -10,14 +10,14 @@
 
 Historico::Historico(){
     nomeArquivo = "teste.csv";
-    if(std::filesystem::exists(nomeArquivo)){
-        std::cout << "Arquivo ja existe!\n";
-    }else{
-    std::ofstream arquivo(nomeArquivo);
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
         "Empates Reversi", "Vitorias Lig4", "Derrotas Lig4", "Empates Lig4"
     };
+    if(std::filesystem::exists(nomeArquivo)){
+        std::cout << "Arquivo ja existe!\n";
+    }else{
+    std::ofstream arquivo(nomeArquivo);
     if (arquivo.is_open()) {
         for (int i = 0; i < cabecalho.size(); ++i) {
             arquivo << cabecalho[i];
@@ -153,44 +153,54 @@ void Historico::criarLinha(){
 }*/
 
 std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
-//[acessa uma célula específica; se ele não achar o apelido ela retorna a string -1]
-
-    //Escolhendo qual tipo de dado retornar
-    int posicaoColuna = 0; 
-    for (size_t i = 0; i < cabecalho.size(); ++i) {
-        if (cabecalho[i] == coluna) {
-            posicaoColuna = i;
-            break;
-        }
-    }
-
 
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
+
     if (arquivo.is_open()){
-        getline(arquivo, linha); 
+        //Enquanto ainda ha linha para ler
         while (std::getline(arquivo, linha)){
-            std:: string apelidoLinha = linha.substr(0, linha.find(";"));
-            if (apelidoLinha == apelido){
-                return linha.substr(posicaoColuna, linha.find(";")); 
+            
+            //Variaveis para manipular os dados
+            std::stringstream ss(linha);
+            std::string dado;
+
+            //leio o apelido e testo se é esse mesmo;
+            std::string apelidoLido;
+            getline(ss, apelidoLido, ';');
+            if(apelidoLido==apelido){
+                //Leio o restante dos dados do jogador, tirando o apelido (i=1)
+                for (int i = 1; i < cabecalho.size(); ++i){
+                    getline(ss, dado, ';'); //Separo os dados por ;
+                    if(coluna==cabecalho[i]){ //Testo se é o dado que eu quero retornar
+                        return dado;
+                    }
+                }
             }
+            
         }
     arquivo.close();
     }
+
     return "-1"; 
 }
 
 
 std:: string Historico :: acessarDados( std::string apelido){
-//[acessa uma linha específica, se ele não achar o apelido ela retorna -1] 
+    //[acessa uma linha específica, se ele não achar o apelido ela retorna -1] 
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
-    if (arquivo.is_open()){
-        getline(arquivo, linha); 
+    if (arquivo.is_open()){ 
         while (std::getline(arquivo, linha)){
-            std:: string apelidoLinha = linha.substr(0, linha.find(";"));
-            if (apelidoLinha == apelido){
-                return linha; 
+
+            std::stringstream ss(linha);
+            std::string dado;
+
+            //leio o apelido e testo se é esse mesmo;
+            std::string apelidoLido;
+            getline(ss, apelidoLido, ';');
+            if(apelidoLido==apelido){
+                return linha;
             }
         }
     arquivo.close();

@@ -9,7 +9,7 @@
 //#include "Jogador.hpp"
 
 Historico::Historico(){
-    nomeArquivo = "teste.csv";
+    nomeArquivo = "../teste.csv";
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
         "Empates Reversi", "Vitorias Lig4", "Derrotas Lig4", "Empates Lig4"
@@ -36,7 +36,7 @@ void Historico::excluirLinha (std:: string apelido){
     bool existeApelido=false;
 
     std::ifstream arquivo(nomeArquivo);
-    std::ofstream arquivoTemp("temp.csv");
+    std::ofstream arquivoTemp("../temp.csv");
     std::string linha; 
     if (arquivo.is_open()){
         //Copiando o cabeçalho
@@ -88,7 +88,7 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     // }
 
     std::ifstream arquivo(nomeArquivo);
-    std::ofstream arquivoTemp("temp.csv");
+    std::ofstream arquivoTemp("../temp.csv");
     std::string linha;
 
     if (arquivo.is_open()){
@@ -130,36 +130,44 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     }
 }
 
+//Pra teste apenas
+// void Historico::criarLinha(){
+//     std::ofstream arquivo(nomeArquivo, std::ios::app);
+//     if(arquivo.is_open()){
+//         arquivo << "Tuco" << ";";
+//         arquivo << "Roberto Luiz" << ";";
+//         arquivo << "0" << ";";
+//         arquivo << "0" << ";";
+//         arquivo << "0" << ";";
+//         arquivo << "0" << ";";
+//         arquivo << "0"  << ";";
+//         arquivo << "0"  << std::endl;
+//     }
+//     arquivo.close();
+// }
 
-void Historico::criarLinha(){
+void Historico::criarLinha(const std::vector<std::string>& dados) {
+    
     std::ofstream arquivo(nomeArquivo, std::ios::app);
-    if(arquivo.is_open()){
-        arquivo << "Tuco" << ";";
-        arquivo << "Roberto Luiz" << ";";
-        arquivo << "0" << ";";
-        arquivo << "0" << ";";
-        arquivo << "0" << ";";
-        arquivo << "0" << ";";
-        arquivo << "0"  << ";";
-        arquivo << "0"  << std::endl;
+
+    // Verifica se o arquivo foi aberto corretamente
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo." << std::endl;
+        return;
+    }else{
+        // Constrói a linha a partir do vetor de strings
+        for (int i = 0; i < dados.size(); ++i) {
+            arquivo << dados[i];
+            if (i < dados.size() - 1) {
+                arquivo << ";"; // Adiciona ponto e vírgula entre os campos
+            }
+        }
+        arquivo << std::endl; // Nova linha após a última entrada
+
+        arquivo.close();
     }
-    arquivo.close();
 }
 
-/*void Historico::criarLinha(const Jogador& jogador){
-    std::ofstream arquivo(nomeArquivo, std::ios::app);
-    if (arquivo.is_open()){
-        arquivo << jogador.getApelido() << ";";
-        arquivo << jogador.getNome() << ";";
-        arquivo << jogador.getVitoriasReversi() << ";";
-        arquivo << jogador.getDerrotasReversi() << ";";
-        arquivo << jogador.getEmpatesReversi() << ";";
-        arquivo << jogador.getVitoriasLig4() << ";";
-        arquivo << jogador.getDerrotasLig4() << ";";
-        arquivo << jogador.getEmpatesLig4() << std::endl;
-    }
-    arquivo.close();
-}*/
 
 std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
 

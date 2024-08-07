@@ -24,7 +24,7 @@ class Historico{
         void acessarDados( ); 
         //Pensando se não devemos chamar de imprimirDados; 
         
-        bool addEstatistica(std:: string apelido, std:: string coluna); //Retorna 0 se ok -- Incompleto, preciso saber como o arquivo .csv vai ficar
+        void addEstatistica(std:: string apelido, std:: string coluna);
        
 
 }; 

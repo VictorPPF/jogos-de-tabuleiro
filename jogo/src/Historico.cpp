@@ -110,7 +110,7 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
                 //Leio o restante dos dados do jogador, tirando o apelido (i=1)
                 for (int i = 1; i < cabecalho.size(); ++i){
                     getline(ss, dado, ';'); //Separo os dados por ;
-                    
+
                     if(coluna==cabecalho[i]){ //Testo se é o dado que eu quero editar
                         dado=novoDado;
                     }
@@ -231,60 +231,15 @@ void Historico::acessarDados() {
     }
 }
 
-bool Historico::addEstatistica(std:: string apelido, std:: string coluna){
-    int posicaoColuna = 0; 
-    for (size_t i = 0; i < cabecalho.size(); ++i) {
-        if (cabecalho[i] == coluna) {
-            posicaoColuna = i;
-            break;
-        }
-    }
+void Historico::addEstatistica(std:: string apelido, std:: string coluna){
 
-    bool existeApelido=false;
+    std::string estatistica=acessarDados(apelido, coluna);
+    int numeroEstatistica=std::stoi(estatistica);
+    numeroEstatistica++;
+    estatistica=std::to_string(numeroEstatistica);
 
-    std::ifstream arquivo(nomeArquivo);
-    std::ofstream arquivoTemp("temp.csv");
-    std::string linha; 
-    
-    if (arquivo.is_open()){
-        getline(arquivo, linha); 
-        arquivoTemp << linha << std::endl; 
+    Editar(apelido, coluna, estatistica);
 
-        while (std::getline(arquivo, linha)){
-            std:: string apelidoLinha = linha.substr(0, linha.find(";"));
-            if(apelido == apelidoLinha){
-                existeApelido=true;
-
-                std::stringstream manipulaLinha(linha.substr(posicaoColuna, linha.find(";")));
-                //int estatistica = std::stoi(linha.substr(posicaoColuna, linha.find(";")));
-                int estatistica;
-                manipulaLinha >> estatistica;
-                if(manipulaLinha.fail()){ //Testa se a conversao falhou
-                    std::cout<< "ERRO!! Não foi possível manipular os dados corretamente!" <<std::endl;
-                    return -1;
-                }
-                estatistica++;
-                Editar(apelido, coluna, std::to_string(estatistica));
-                
-                //Pra fazer isso preciso entender melhor como o arquivo funciona
-            }else{
-                arquivoTemp << linha <<std::endl;
-            }
-        }
-    
-    }
-
-    arquivo.close();
-    arquivoTemp.close();
-
-    std::remove(nomeArquivo.c_str());
-    std::rename("temp.csv", nomeArquivo.c_str());
-
-    if(!existeApelido){
-        std::cout<< "ERRO!! Não existe esse apelido!" <<std::endl;
-        return -1;
-    }
-    return 0;
 }
         
        

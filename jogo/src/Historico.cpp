@@ -78,38 +78,47 @@ void Historico::excluirLinha (std:: string apelido){
 void Historico::Editar(std:: string apelido, std:: string coluna, std:: string novoDado){
     // Ainda precisa lidar com o caso de não encontrar o apelido
     //Minha dúvida está no Template 
-    int posicaoColuna = 0; 
-    for (size_t i = 0; i < cabecalho.size(); ++i) {
-        if (cabecalho[i] == coluna) {
-            posicaoColuna = i;
-            break;
-        }
-    }
+
+    // int posicaoColuna = 0; 
+    // for (size_t i = 0; i < cabecalho.size(); ++i) {
+    //     if (cabecalho[i] == coluna) {
+    //         posicaoColuna = i;
+    //         break;
+    //     }
+    // }
 
     std::ifstream arquivo(nomeArquivo);
     std::ofstream arquivoTemp("temp.csv");
-    std::string linha; 
+    std::string linha;
+
     if (arquivo.is_open()){
+        //Copiando o cabeçalho
         getline(arquivo, linha); 
-        arquivoTemp << linha << std::endl; 
+        arquivoTemp << linha << std::endl;  
 
         while (std::getline(arquivo, linha)){
-            std:: string apelidoLinha = linha.substr(0, linha.find(";"));
-            if (apelidoLinha != apelido){
-                arquivoTemp << linha <<std::endl;  
-            }else{
-                std:: string novaLinha = "";
-                for (size_t i = 0; i < cabecalho.size(); ++i) {
-                    if (i == posicaoColuna) {
-                        novaLinha += novoDado;
-                    } else {
-                        novaLinha = linha.substr(linha.find(";"));
+            //Manipular dados atraves dessas variaveis
+            std::stringstream ss(linha);
+            std::string dado;
+
+            //leio o apelido e testo se é esse mesmo;
+            std::string apelidoLido;
+            getline(ss, apelidoLido, ';');
+            if(apelidoLido==apelido){
+                arquivoTemp << apelidoLido << ";"; //Copio o apelido pro arquivo temp
+
+                //Leio o restante dos dados do jogador, tirando o apelido (i=1)
+                for (int i = 1; i < cabecalho.size(); ++i){
+                    getline(ss, dado, ';'); //Separo os dados por ;
+                    
+                    if(coluna==cabecalho[i]){ //Testo se é o dado que eu quero editar
+                        dado=novoDado;
                     }
-                    if (i < cabecalho.size() - 1) {
-                        novaLinha += ";";
-                    }
+                    arquivoTemp << dado << ";";
                 }
-                arquivoTemp << novaLinha <<  std::endl;
+                arquivoTemp << std::endl;
+            }else{//Se nao é o apelido que eu quero copio pro arquivo temp
+                arquivoTemp << linha << std::endl;
             }
         }
     arquivo.close();

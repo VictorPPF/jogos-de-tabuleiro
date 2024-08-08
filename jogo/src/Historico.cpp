@@ -9,6 +9,7 @@
 //#include "Jogador.hpp"
 
 Historico::Historico(){
+    /*É o contrutor da classe Historico, se o arquivo não existe ele o cria escreve o cabeçario, se ela já existe ele o abre*/
     nomeArquivo = "../teste.csv";
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
@@ -32,7 +33,7 @@ Historico::Historico(){
 }
 
 void Historico::excluirLinha (std:: string apelido){ 
-    // Ainda precisa lidar com o caso de não encontrar o apelido
+    /*Essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar */
     bool existeApelido=false;
 
     std::ifstream arquivo(nomeArquivo);
@@ -42,8 +43,6 @@ void Historico::excluirLinha (std:: string apelido){
         //Copiando o cabeçalho
         getline(arquivo, linha); 
         arquivoTemp << linha << std::endl; 
-
-        
 
         //Lendo linha por linha
         while (std::getline(arquivo, linha)){
@@ -76,17 +75,8 @@ void Historico::excluirLinha (std:: string apelido){
 
 
 void Historico::Editar(std:: string apelido, std:: string coluna, std:: string novoDado){
-    // Ainda precisa lidar com o caso de não encontrar o apelido
-    //Minha dúvida está no Template 
-
-    // int posicaoColuna = 0; 
-    // for (size_t i = 0; i < cabecalho.size(); ++i) {
-    //     if (cabecalho[i] == coluna) {
-    //         posicaoColuna = i;
-    //         break;
-    //     }
-    // }
-
+    /*Essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, 
+    apaga o arquivo original e renomeia o auxiliar */
     std::ifstream arquivo(nomeArquivo);
     std::ofstream arquivoTemp("../temp.csv");
     std::string linha;
@@ -130,26 +120,10 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     }
 }
 
-//Pra teste apenas
-// void Historico::criarLinha(){
-//     std::ofstream arquivo(nomeArquivo, std::ios::app);
-//     if(arquivo.is_open()){
-//         arquivo << "Tuco" << ";";
-//         arquivo << "Roberto Luiz" << ";";
-//         arquivo << "0" << ";";
-//         arquivo << "0" << ";";
-//         arquivo << "0" << ";";
-//         arquivo << "0" << ";";
-//         arquivo << "0"  << ";";
-//         arquivo << "0"  << std::endl;
-//     }
-//     arquivo.close();
-// }
 
 void Historico::criarLinha(const std::vector<std::string>& dados) {
-    
+    /*Adiciona  mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo*/
     std::ofstream arquivo(nomeArquivo, std::ios::app);
-
     // Verifica se o arquivo foi aberto corretamente
     if (!arquivo.is_open()) {
         std::cerr << "Erro ao abrir o arquivo." << std::endl;
@@ -170,7 +144,7 @@ void Historico::criarLinha(const std::vector<std::string>& dados) {
 
 
 std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
-
+    //[acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -1]
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
 
@@ -204,7 +178,7 @@ std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
 
 
 std:: string Historico :: acessarDados( std::string apelido){
-    //[acessa uma linha específica, se ele não achar o apelido ela retorna -1] 
+    /*acessa uma linha específica, se ele não achar o apelido ela retorna -1*/
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
     if (arquivo.is_open()){ 
@@ -228,7 +202,7 @@ std:: string Historico :: acessarDados( std::string apelido){
 
 
 void Historico::acessarDados() {
-    //[Imprime todos os dados]
+    /*Imprime todos os dados do arquivo csv*/
     std::ifstream arquivo(nomeArquivo);
     std::string linha;
     if (arquivo.is_open()) {
@@ -240,14 +214,17 @@ void Historico::acessarDados() {
 }
 
 void Historico::addEstatistica(std:: string apelido, std:: string coluna){
-
-    std::string estatistica=acessarDados(apelido, coluna);
-    int numeroEstatistica=std::stoi(estatistica);
-    numeroEstatistica++;
-    estatistica=std::to_string(numeroEstatistica);
-
-    Editar(apelido, coluna, estatistica);
-
+    /*Adiciona 1 a uma estatistica específica*/
+    if (coluna=="Apelido" || coluna=="Nome"){
+        std::cout << "Erro: Não é possível adicionar estatísticas a esse campo." << std::endl;
+        return;
+    }else{
+        std::string estatistica=acessarDados(apelido, coluna);
+        int numeroEstatistica=std::stoi(estatistica);
+        numeroEstatistica++;
+        estatistica=std::to_string(numeroEstatistica);
+        Editar(apelido, coluna, estatistica);
+    }
 }
         
        

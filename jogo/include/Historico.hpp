@@ -18,7 +18,6 @@ class Historico{
         void excluirLinha (std:: string apelido); 
         void Editar(std:: string apelido, std:: string coluna, std:: string novoDado); 
         void criarLinha(const std::vector<std::string>& dados); 
-        //void criarLinha(); era pra teste só
         std::string acessarDados(std:: string apelido, std:: string coluna); 
         std:: string acessarDados( std::string apelido);  
         void acessarDados( ); 

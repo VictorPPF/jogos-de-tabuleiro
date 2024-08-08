@@ -1,12 +1,12 @@
+#ifndef JOGADOR_H
+#define JOGADOR_H
+
 #include <iostream>
 #include <string> 
 #include <fstream>
 #include <vector>
 #include <memory> 
 #include "Historico.hpp"
-
-#ifndef JOGADOR_H
-#define JOGADOR_H
 
 class Jogador{
     private:
@@ -31,8 +31,9 @@ class Jogador{
         std::string getNome(); 
         std::string getApelido();
         void setResultado(std::string _nome_do_jogo, int _vitorias, int _derrotas, int _empates);
-        void setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor);
-        void setResultado(std::string _nome_do_jogo); 
+        // void vencedor(std::string perdedor, std::string _nome_do_jogo);
+        // void empate(std::string _nome_do_jogo);
+        void setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor,bool empatou);
         void getResultado(); 
         void excluirConta();  
 

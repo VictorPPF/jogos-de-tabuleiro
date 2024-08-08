@@ -10,7 +10,7 @@
 
 Historico::Historico(){
     /*É o contrutor da classe Historico, se o arquivo não existe ele o cria escreve o cabeçario, se ela já existe ele o abre*/
-    nomeArquivo = "../teste.csv";
+    nomeArquivo = "../dados.csv";
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
         "Empates Reversi", "Vitorias Lig4", "Derrotas Lig4", "Empates Lig4"
@@ -20,7 +20,7 @@ Historico::Historico(){
     }else{
     std::ofstream arquivo(nomeArquivo);
     if (arquivo.is_open()) {
-        for (int i = 0; i < cabecalho.size(); ++i) {
+        for (int i = 0; i < cabecalho.size(); i++) {
             arquivo << cabecalho[i];
             if (i < cabecalho.size() - 1) {
                 arquivo << ";"; 
@@ -104,7 +104,11 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
                     if(coluna==cabecalho[i]){ //Testo se é o dado que eu quero editar
                         dado=novoDado;
                     }
-                    arquivoTemp << dado << ";";
+
+                    arquivoTemp << dado;
+                    if (i < cabecalho.size() - 1) {
+                        arquivoTemp << ";"; 
+                    }
                 }
                 arquivoTemp << std::endl;
             }else{//Se nao é o apelido que eu quero copio pro arquivo temp
@@ -115,7 +119,7 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     arquivoTemp.close();
 
     std::remove(nomeArquivo.c_str());
-    std::rename("temp.csv", nomeArquivo.c_str());
+    std::rename("../temp.csv", nomeArquivo.c_str());
 
     }
 }
@@ -161,7 +165,7 @@ std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
             getline(ss, apelidoLido, ';');
             if(apelidoLido==apelido){
                 //Leio o restante dos dados do jogador, tirando o apelido (i=1)
-                for (int i = 1; i < cabecalho.size(); ++i){
+                for (int i = 1; i < cabecalho.size(); i++){
                     getline(ss, dado, ';'); //Separo os dados por ;
                     if(coluna==cabecalho[i]){ //Testo se é o dado que eu quero retornar
                         return dado;

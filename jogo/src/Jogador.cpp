@@ -3,8 +3,8 @@
 #include <string> 
 #include <fstream>
 #include <memory> 
-#include "Jogador.hpp"
-#include "Historico.hpp" 
+#include "../include/Jogador.hpp"
+//#include "../include/Historico.hpp" 
 
 // Inicialização do histórico (Era isso que você estava falando ?)
 Historico Jogador::historico;
@@ -21,16 +21,32 @@ Jogador:: Jogador(std:: string _nome, std:: string _apelido){
     empates_lig4 = 0; 
     criarCadastro(); 
 }
+
 Jogador:: Jogador(std:: string _apelido){
     // Acesso ao arquivo csv
     // Puxando do arquivo csv o jogador com o apelido _apelido
-    this->apelido = _apelido;
+    //this->apelido = _apelido;
     std::string dadosJogador = historico.acessarDados(_apelido);
     if (dadosJogador != "-1") {
         std::stringstream ss(dadosJogador);
+        std::string string_aux;
+        getline(ss, apelido, ';');
         getline(ss, nome, ';');
-        ss >> vitorias_reversi >> derrotas_reversi >> empates_reversi;
-        ss >> vitorias_lig4 >> derrotas_lig4 >> empates_lig4;
+        getline(ss, string_aux, ';');
+        vitorias_reversi = std::stoi(string_aux);
+        getline(ss, string_aux, ';');
+        derrotas_reversi = std::stoi(string_aux);
+        getline(ss, string_aux, ';');
+        empates_reversi = std::stoi(string_aux);
+        getline(ss, string_aux, ';');
+        vitorias_lig4 = std::stoi(string_aux);
+        getline(ss, string_aux, ';');
+        derrotas_lig4 = std::stoi(string_aux);
+        getline(ss, string_aux, ';');
+        empates_lig4 = std::stoi(string_aux);
+
+        // ss >> vitorias_reversi >> derrotas_reversi >> empates_reversi;
+        // ss >> vitorias_lig4 >> derrotas_lig4 >> empates_lig4;
     } else {
         std::cout << "Erro: Apelido não encontrado no histórico." << std::endl;
     }
@@ -40,7 +56,7 @@ void Jogador:: criarCadastro(){
     //Nessa função conferimos a se o apelido já existe. 
     
     if (historico.acessarDados(apelido) != "-1") {
-        std::cout << "Erro: Apelido já existente no histórico." << std::endl;
+        std::cout << "Erro: Apelido ja existente no historico." << std::endl;
         return;
     }
     std::vector<std::string> dados = {apelido, nome, "0", "0", "0", "0", "0", "0"};
@@ -69,14 +85,16 @@ std::string  Jogador:: getApelido(){
 void Jogador :: setResultado(std::string _nome_do_jogo, int _vitorias, int _derrotas, int _empates){
     //Aqui é para a gente mudar os resultados do jogador no arquivo csv
     //Jogador 
-    if (_nome_do_jogo == "reversi") {
+    if (_nome_do_jogo == "Reversi") {
         vitorias_reversi = _vitorias; 
         derrotas_reversi = _derrotas; 
         empates_reversi = _empates; 
-    } else if (_nome_do_jogo == "lig4") {
+    } else if (_nome_do_jogo == "Lig4") {
         vitorias_lig4 = _vitorias; 
         derrotas_lig4 = _derrotas; 
         empates_lig4 = _empates; 
+    }else{
+        std::cout<< "Erro: Nao existe esse jogo!\n";
     }
 
     //Histórico
@@ -88,32 +106,37 @@ void Jogador :: setResultado(std::string _nome_do_jogo, int _vitorias, int _derr
 
 //Eu queria fazer essas próximas duas funções com sobrecarga de operadores, mas não sei se ficaria bom:
 
-void Jogador :: setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor){
-    //Aqui é para a gente mudar os resultados do jogador no arquivo csv, após uma partida que não acaba em empate
-    if (ganhador == apelido) {
-        if (_nome_do_jogo == "reversi") {
-            vitorias_reversi++;
-        } else if (_nome_do_jogo == "lig4") {
-            vitorias_lig4++;
+void Jogador :: setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor, bool empatou){
+    if(empatou){
+        historico.addEstatistica(ganhador, "Empates " + _nome_do_jogo);
+        historico.addEstatistica(perdedor, "Empates " + _nome_do_jogo);
+    }else{
+        //Aqui é para a gente mudar os resultados do jogador no arquivo csv, após uma partida que não acaba em empate
+        if (ganhador == apelido) {
+            if (_nome_do_jogo == "Reversi") {
+                vitorias_reversi++;
+            } else if (_nome_do_jogo == "Lig4") {
+                vitorias_lig4++;
+            }
+        } else if (perdedor == apelido) {
+            if (_nome_do_jogo == "Reversi") {
+                derrotas_reversi++;
+            } else if (_nome_do_jogo == "Lig4") {
+                derrotas_lig4++;
+            }
         }
-    } else if (perdedor == apelido) {
-        if (_nome_do_jogo == "reversi") {
-            derrotas_reversi++;
-        } else if (_nome_do_jogo == "lig4") {
-            derrotas_lig4++;
-        }
-    }
 
-    historico.addEstatistica(ganhador, "Vitorias " + _nome_do_jogo);
-    historico.addEstatistica(perdedor, "Derrotas " + _nome_do_jogo);
+        historico.addEstatistica(ganhador, "Vitorias " + _nome_do_jogo);
+        historico.addEstatistica(perdedor, "Derrotas " + _nome_do_jogo);
+    }
     
 }
 void Jogador :: setResultado(std::string _nome_do_jogo){
     //Aqui é para a gente mudar os resultados do jogador no arquivo csv, após uma partida  e empate 
     //Se você pensar em como fundir essas duas funções eu gostaria 
-    if (_nome_do_jogo == "reversi") {
+    if (_nome_do_jogo == "Reversi") {
         empates_reversi++;
-    } else if (_nome_do_jogo == "lig4") {
+    } else if (_nome_do_jogo == "Lig4") {
         empates_lig4++;
     }
     historico.addEstatistica(apelido, "Empates " + _nome_do_jogo);

@@ -1,28 +1,30 @@
+#ifndef HISTORICO_H
+#define HISTORICO_H
+
 #include <iostream>
 #include <string> 
 #include <fstream>
 #include <vector>
+#include <memory> 
+//#include "Jogador.hpp"
 
-#ifndef HISTORICO_H
-#define HISTORICO_H
 
 class Historico{
     private: 
-        std::string nome_arquivo;
-        std::vector<std::string> cabecalho; 
+        std::string nomeArquivo;
+        std::vector<std::string> cabecalho;
     public: 
-        Historico(); 
-        void excluirLinha (); 
-        void Editar(); 
-        void criarLinha(); 
-        void excluirLinha();
+        Historico();
+        void excluirLinha (std:: string apelido); 
+        void Editar(std:: string apelido, std:: string coluna, std:: string novoDado); 
+        void criarLinha(const std::vector<std::string>& dados); 
         std::string acessarDados(std:: string apelido, std:: string coluna); 
-        template<typename T>
-        T acessarDados( std::string apelido);  
+        std:: string acessarDados( std::string apelido);  
         void acessarDados( ); 
         //Pensando se não devemos chamar de imprimirDados; 
+        
+        void addEstatistica(std:: string apelido, std:: string coluna);
        
 
 }; 
-
 #endif 

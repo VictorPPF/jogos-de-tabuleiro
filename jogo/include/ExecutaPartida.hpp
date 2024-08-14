@@ -1,6 +1,5 @@
 #ifndef EXECUTAPARTIDA_HPP
 #define EXECUTAPARTIDA_HPP
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>

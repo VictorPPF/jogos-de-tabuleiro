@@ -131,16 +131,19 @@ void Jogador :: setResultado(std::string _nome_do_jogo, std::string ganhador, st
     }
     
 }
-void Jogador :: setResultado(std::string _nome_do_jogo){
-    //Aqui é para a gente mudar os resultados do jogador no arquivo csv, após uma partida  e empate 
-    //Se você pensar em como fundir essas duas funções eu gostaria 
-    if (_nome_do_jogo == "Reversi") {
-        empates_reversi++;
-    } else if (_nome_do_jogo == "Lig4") {
-        empates_lig4++;
-    }
+
+void Jogador::empate(std::string _nome_do_jogo, std::string player2){
+    //Adiciona empate para ambos os jogadores
     historico.addEstatistica(apelido, "Empates " + _nome_do_jogo);
+    historico.addEstatistica(player2, "Empates " + _nome_do_jogo);
 }
+
+void Jogador::vencedor(std::string perdedor, std::string _nome_do_jogo){
+    //Adiciona vitoria para quem chamou a função e derrota pro segundo player;
+    historico.addEstatistica(apelido, "Vitorias " +_nome_do_jogo);
+    historico.addEstatistica(perdedor, "Derrotas " + _nome_do_jogo);
+}
+
 void Jogador:: getResultado(){
     //Aqui é para a gente acessar os resultados do jogador já puxado do csv
     std::cout << "Vitorias reversi: " << vitorias_reversi << std::endl; 

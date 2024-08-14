@@ -31,8 +31,8 @@ class Jogador{
         std::string getNome(); 
         std::string getApelido();
         void setResultado(std::string _nome_do_jogo, int _vitorias, int _derrotas, int _empates);
-        // void vencedor(std::string perdedor, std::string _nome_do_jogo);
-        // void empate(std::string _nome_do_jogo);
+        void vencedor(std::string perdedor, std::string _nome_do_jogo);
+        void empate(std::string _nome_do_jogo, std::string perdedor);
         void setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor,bool empatou);
         void getResultado(); 
         void excluirConta();  

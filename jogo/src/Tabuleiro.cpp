@@ -25,13 +25,13 @@
 //     }
 // }
 
-// Tabuleiro::Tabuleiro(){
-//     qtd_celulaX=3;
-//     qtd_celulaY=5;
-//     tamanho_celula=60;
-//     //Inicializa uma matriz 3x3 com zeros em todas as células
-//     matriz.resize(qtd_celulaX, std::vector<int>(qtd_celulaY, 0)); 
-// }
+Tabuleiro::Tabuleiro(){
+    qtd_celulaX=3;
+    qtd_celulaY=5;
+    tamanho_celula=60;
+    //Inicializa uma matriz 3x3 com zeros em todas as células
+    matriz.resize(qtd_celulaX, std::vector<int>(qtd_celulaY, 0)); 
+}
 
 void Tabuleiro::desenhar(sf::RenderWindow& window){
     sf::RectangleShape quadrado(sf::Vector2f(tamanho_celula, tamanho_celula));

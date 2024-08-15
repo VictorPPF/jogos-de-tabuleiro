@@ -8,13 +8,6 @@
 
 using namespace std;
 
-//declarações de função (prototipagem) eh boa pratica
-void desenharMenu();
-void desenharCadastro();
-void desenharListaDeJogadores();
-void desenharExcluirConta();
-void desenharEstatisticas();
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 // foi feito na pressa. acho que botao deveria ter um metodo que encapsula essa classe CampoTexto
@@ -286,7 +279,7 @@ public:
     TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
         
         botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
+        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI!", 25.f, false, sf::Color(43, 0, 108))
     {
         
         botaoApelido.criarBotoes();

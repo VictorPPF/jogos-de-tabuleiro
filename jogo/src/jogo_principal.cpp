@@ -281,7 +281,6 @@ public:
         botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
         botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI!", 25.f, false, sf::Color(43, 0, 108))
     {
-        
         botaoApelido.criarBotoes();
         botaoVoltar.criarBotoes();
     }

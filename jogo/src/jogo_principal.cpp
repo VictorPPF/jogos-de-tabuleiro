@@ -3,6 +3,7 @@
 
 #include "../include/Wallpaper.hpp"
 #include "../include/ExecutaPartida.hpp"
+#include "../include/Tabuleiro.hpp"
 #include <iostream>
 
 using namespace std;
@@ -433,7 +434,7 @@ int main() {
 
     // Criação dos campos de texto
     
-
+    Tabuleiro tabuleiro;
     
 
     TelaMenu telaMenu (window,fonte,event);
@@ -447,7 +448,7 @@ int main() {
 
     while (window.isOpen()) {
 
-        bool jogadores_validos = dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
+        bool jogadores_validos = true; //dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
@@ -654,6 +655,8 @@ int main() {
                         teste.mover(circulo, sf::Keyboard::D);
                     }
                 }
+
+                //matriz
                 
             }
             
@@ -677,6 +680,7 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
+                tabuleiro.desenhar(window);
             }
             
 

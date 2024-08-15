@@ -138,16 +138,25 @@ private:
 
 public:
     // Construtor da classe Botao
-    Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte = 24.f, bool isCirculo = false, sf::Color corFonte = sf::Color::White);
-
+    Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte = 24.f,
+        bool isCirculo = false, sf::Color corFonte = sf::Color::White);
+    Botao() = default;
     // Método para criar a forma do botão (retângulo ou círculo)
     void criarBotoes();
 
     // Método para obter a cor do botão
     sf::Color getCor() const;
 
+    sf::RectangleShape getRetangulo() const;
+
+    void setCorHover(sf::Color cor);
+
+    void setCor(sf::Color cor);
+
     // Método para mudar a cor do botão com base na posição do mouse
     void mudarCor(sf::RenderWindow& window);
+
+    bool passouMouse(sf::RenderWindow& window);
 
     // Método para desenhar o botão na janela
     void desenhar(sf::RenderWindow& window);

@@ -12,19 +12,19 @@ Movimentacao::Movimentacao() {
 
 // Implementação do método mover
 void Movimentacao::mover(sf::CircleShape &circulo, const sf::Keyboard::Key &TECLA) {
-    float velocidade = 5.0f; // Distância que o círculo se moverá a cada vez
+    float velocidade = 15.0f; // Distância que o círculo se moverá a cada vez
 
     switch (TECLA) {
-        case sf::Keyboard::Right:
+        case sf::Keyboard::Key::D:
             circulo.move(velocidade, 0);
             break;
-        case sf::Keyboard::Left:
+        case sf::Keyboard::Key::A:
             circulo.move(-velocidade, 0);
             break;
-        case sf::Keyboard::Up:
+        case sf::Keyboard::Key::W:
             circulo.move(0, -velocidade);
             break;
-        case sf::Keyboard::Down:
+        case sf::Keyboard::Key::S:
             circulo.move(0, velocidade);
             break;
         default:
@@ -32,7 +32,7 @@ void Movimentacao::mover(sf::CircleShape &circulo, const sf::Keyboard::Key &TECL
     }
 }
 void Movimentacao::mover(sf::RectangleShape &retangulo, const sf::Keyboard::Key &TECLA) {
-    float velocidade = 1.0f; // Distância que o círculo se moverá a cada vez
+    float velocidade = 10.0f; // Distância que o círculo se moverá a cada vez
 
     switch (TECLA) {
         case sf::Keyboard::Key::D:
@@ -65,7 +65,7 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const
         std::cout << "Erro ao carregar a fonte" << std::endl;
     }
     
-    bool clicou; //verifica se o botao foi clicado
+
     text.setFont(fonte);                                            // Define a fonte
     text.setString(texto);                                          // Define o texto
     text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte)); // Define o tamanho da fonte
@@ -96,6 +96,25 @@ sf::Color Botao::getCor() const {
     return cor;
 }
 
+
+sf::RectangleShape Botao::getRetangulo() const{
+    return retangulo;
+}
+
+void Botao::setCorHover(sf::Color cor){
+    this->corHover = cor;
+}
+
+void Botao::setCor(sf::Color cor) {
+    this->cor = cor;
+    corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
+    if (isCirculo) {
+        circulo.setFillColor(cor);
+    } else {
+        retangulo.setFillColor(cor);
+    }
+}
+
 // Atualiza a cor do botão com base na posição do mouse
 void Botao::mudarCor(sf::RenderWindow& window) {
     sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
@@ -103,15 +122,38 @@ void Botao::mudarCor(sf::RenderWindow& window) {
         // Verifica se o mouse está sobre o círculo
         if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
             circulo.setFillColor(corHover); // Muda a cor para a corHover
+            
         } else {
             circulo.setFillColor(cor); // Muda de volta para a cor original
+            
         }
     } else {
         // Verifica se o mouse está sobre o retângulo
         if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
             retangulo.setFillColor(corHover); // Muda a cor para a corHover
+            
         } else {
             retangulo.setFillColor(cor); // Muda de volta para a cor original
+            
+        }
+    }
+}
+
+bool Botao::passouMouse(sf::RenderWindow& window) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+    if (isCirculo) {
+        // Verifica se o mouse está sobre o círculo
+        if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        // Verifica se o mouse está sobre o retângulo
+        if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

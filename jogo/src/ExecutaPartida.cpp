@@ -71,6 +71,22 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const
     text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte)); // Define o tamanho da fonte
     text.setFillColor(corFonte);                                    // Define a cor da letra
 }
+//construtor das celulas do tabuleiro
+Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, bool isCirculo)
+    : largura(largura), altura(altura), posicao(x, y), cor(cor), isCirculo(isCirculo) {
+    corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
+    if (isCirculo) {
+        circulo.setRadius(largura / 2); // Define o raio do círculo
+        circulo.setPosition(posicao);   // Define a posição do círculo
+        circulo.setFillColor(cor);      // Define a cor do círculo
+    } else {
+        retangulo.setSize(sf::Vector2f(largura, altura)); // Define o tamanho do retângulo
+        retangulo.setPosition(posicao);                   // Define a posição do retângulo
+        retangulo.setFillColor(cor);                    // Define a cor do retângulo
+        retangulo.setOutlineColor(sf::Color::Black);
+        retangulo.setOutlineThickness(2);
+    }
+}
 
 // Configura a forma e o texto do botão
 void Botao::criarBotoes() {
@@ -117,25 +133,53 @@ void Botao::setCor(sf::Color cor) {
 
 // Atualiza a cor do botão com base na posição do mouse
 void Botao::mudarCor(sf::RenderWindow& window) {
+    // sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+    // if (isCirculo) {
+    //     // Verifica se o mouse está sobre o círculo
+    //     if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+    //         circulo.setFillColor(corHover); // Muda a cor para a corHover
+            
+    //     } else {
+    //         circulo.setFillColor(cor); // Muda de volta para a cor original
+            
+    //     }
+    // } else {
+    //     // Verifica se o mouse está sobre o retângulo
+    //     if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
+    //         retangulo.setFillColor(corHover); // Muda a cor para a corHover
+            
+    //     } else {
+    //         retangulo.setFillColor(cor); // Muda de volta para a cor original
+            
+    //     }
+    // }
     sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
-    if (isCirculo) {
-        // Verifica se o mouse está sobre o círculo
-        if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-            circulo.setFillColor(corHover); // Muda a cor para a corHover
-            
+    sf::FloatRect bounds;
+
+        if (isCirculo) {
+            bounds = circulo.getGlobalBounds();
         } else {
-            circulo.setFillColor(cor); // Muda de volta para a cor original
-            
+            bounds = retangulo.getGlobalBounds();
         }
-    } else {
-        // Verifica se o mouse está sobre o retângulo
-        if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-            retangulo.setFillColor(corHover); // Muda a cor para a corHover
-            
+
+        // Reduz a área de detecção para evitar a seleção de múltiplas células
+        bounds.left += retangulo.getOutlineThickness();
+        bounds.top += retangulo.getOutlineThickness();
+        bounds.width -= 2 * retangulo.getOutlineThickness();
+        bounds.height -= 2 * retangulo.getOutlineThickness();
+
+        if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {
+            if (isCirculo) {
+                circulo.setFillColor(corHover); // Muda a cor para a corHover
+            } else {
+                retangulo.setFillColor(corHover); // Muda a cor para a corHover
+            }
         } else {
-            retangulo.setFillColor(cor); // Muda de volta para a cor original
-            
-        }
+            if (isCirculo) {
+                circulo.setFillColor(cor); // Muda de volta para a cor original
+            } else {
+                retangulo.setFillColor(cor); // Muda de volta para a cor original
+            }
     }
 }
 

@@ -113,7 +113,7 @@ typedef Ponto<unsigned int> PontoU;
 
 //classe Botao
 class Botao {
-private:
+protected:
     // Atributos para definir as dimensões e posição do botão
     float largura;           // Largura do botão
     float altura;            // Altura do botão
@@ -134,12 +134,16 @@ private:
     sf::Text text;         // Texto SFML para desenhar o texto no botão
     sf::Color corFonte;    // Cor da fonte
     float tamanhoFonte;    // Tamanho da fonte do texto do botão
+    int windowLargura = 1000;
+    int windowAltura = 690;
 
 public:
     // Construtor da classe Botao
     Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte = 24.f,
         bool isCirculo = false, sf::Color corFonte = sf::Color::White);
     Botao() = default;
+    //construtor das celulas do tabuleiro
+    Botao(float largura, float altura, float x, float y, sf::Color cor, bool isCirculo = false);
     // Método para criar a forma do botão (retângulo ou círculo)
     void criarBotoes();
 

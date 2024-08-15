@@ -286,7 +286,7 @@ public:
     TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
         
         botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108))
+        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
     {
         
         botaoApelido.criarBotoes();
@@ -392,15 +392,15 @@ int main() {
     int screenWidth = screenRect.right - screenRect.left;
     sf::Event event;
     // Define as dimensões da janela
-    int windowWidth = 1000;
-    int windowHeight = 690;
+    int windowLargura = 1000;
+    int windowAltura = 690;
 
     // Calcula a posição horizontal centralizada e define a posição vertical no topo da tela
-    int windowPosX = (screenWidth - windowWidth) / 2;
+    int windowPosX = (screenWidth - windowLargura) / 2;
     int windowPosY = 0;
 
     // Criação da janela com a posição ajustada
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Deluxe Collection");
+    sf::RenderWindow window(sf::VideoMode(windowLargura, windowAltura), "Deluxe Collection");
     window.setPosition(sf::Vector2i(windowPosX, windowPosY));
 
     string estadoAtual = "MenuPrincipal"; // I CANT STRESS ENOUGH HOW IMPORTANT THIS VARIABLE IS

@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdexcept>
 #include <memory>
+#include "../include/Wallpaper.hpp"
 
 
 // Classe Movimentacao
@@ -167,5 +168,6 @@ public:
     // Método para definir o tamanho da fonte
     void setTamanhoFonte(float tamanho);
 };
+
 
 #endif // EXECUTAPARTIDA_HPP

@@ -4,6 +4,7 @@
 #include "../include/Wallpaper.hpp"
 #include "../include/ExecutaPartida.hpp"
 #include "../include/Tabuleiro.hpp"
+#include "../include/JogoLig4.hpp"
 #include <iostream>
 
 using namespace std;
@@ -18,6 +19,8 @@ void desenharEstatisticas();
 #include <SFML/Graphics.hpp>
 #include <iostream>
 // foi feito na pressa. acho que botao deveria ter um metodo que encapsula essa classe CampoTexto
+ 
+//o resto dos botoes ficam na classe Jogo
 class CampoTexto {
 public:
     
@@ -274,35 +277,6 @@ public:
     }
 };
 
-class TelaLig4 {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-
-    TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        
-        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
-    {
-        
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("wallpaper_lig4.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
-
 class TelaExcluirConta {
 private:
     sf::RenderWindow& window; 
@@ -370,8 +344,7 @@ public:
 bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
         if (campoJogador1.obterTexto() != "" && campoJogador2.obterTexto() != "" && 
         campoJogador1.deu_enter == 1 && campoJogador2.deu_enter == 1) {
-            // campoJogador1.deu_enter = 0;
-            // campoJogador2.deu_enter = 0;
+            
             return true;
         }
         return false;
@@ -433,13 +406,17 @@ int main() {
     //cout << pos3 << endl;
 
     // Criação dos campos de texto
-    
-    Tabuleiro tabuleiro;
+    float origemX = 238.0;
+    float origemY = 166.0;
+    int qtd_celulaX=7; //colunas
+    int qtd_celulaY=6; //linhas
+    float tamanho_celula= 75.0;
+    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula);
     
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);
-    TelaLig4 telaLig (window,fonte);
+    JogoLig4 telaLig (window,fonte);
     TelaCadastro telaCadastro (window,fonte);
     TelaLista telaLista (window,fonte);
     TelaExcluirConta telaExcluir (window,fonte);
@@ -447,6 +424,9 @@ int main() {
     bool nao_ignora_mouse = true;
 
     while (window.isOpen()) {
+
+        
+
 
         bool jogadores_validos = true; //dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
@@ -680,7 +660,7 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
-                tabuleiro.desenhar(window);
+                tabuleiroLIG4.desenhar(window);
             }
             
 

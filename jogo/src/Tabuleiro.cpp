@@ -56,7 +56,7 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
     static sf::Clock relogio;
     if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-        std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
+        //std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
         relogio.restart(); // Reinicia o relógio
     }
 

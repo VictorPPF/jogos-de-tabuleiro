@@ -37,7 +37,7 @@ class Jogador{
         void getResultado(); 
         void excluirConta();  
 
-        bool existeConta(std::string _apelido);
+        bool existeConta();
 
 }; 
 

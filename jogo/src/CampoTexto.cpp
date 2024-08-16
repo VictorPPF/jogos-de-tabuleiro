@@ -63,14 +63,14 @@ void CampoTexto::ativar() {
     ativo = true;
     retangulo.setFillColor(sf::Color(223, 232, 106, 200));
     retangulo.setOutlineColor(sf::Color(150, 129, 250));
-    retangulo.setOutlineThickness(5);
+    
 }
 
 void CampoTexto::desativar() {
     ativo = false;
     retangulo.setFillColor(sf::Color(223, 232, 106, 100));
     retangulo.setOutlineColor(sf::Color::Black);
-    retangulo.setOutlineThickness(2);
+    
 }
 
 void CampoTexto::adicionarCaractere(char c) {

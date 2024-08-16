@@ -10,7 +10,8 @@ class Tabuleiro : public Botao {
 private:
     int qtd_celulaX, qtd_celulaY;  // Tamanho do tabuleiro
     int tamanho_celula; //Tamanho de cada celula em pixels
-    int posicaoX, posicaoY;  // Posicao do tabuleiro
+    int origemX;
+    int origemY; 
     std::vector<std::vector<Botao>> matriz; //Matriz responsavel pelo tabuleiro
 public:
     // Construtor

@@ -1,36 +1,10 @@
 #include "../include/Tabuleiro.hpp"
 //#include "../include/ExecutaPartida.hpp"
 
-// Tabuleiro::Tabuleiro(){
-//     qtd_celulaX=3;
-//     qtd_celulaY=5;
-//     tamanho_celula=60;
-//     //Inicializa uma matriz 3x3 com zeros em todas as células
-//     matriz.resize(qtd_celulaX, std::vector<int>(qtd_celulaY, 0)); 
-// }
 
-// void Tabuleiro::desenhar(sf::RenderWindow& window){
-//     sf::RectangleShape quadrado(sf::Vector2f(tamanho_celula, tamanho_celula));
-//     quadrado.setFillColor(sf::Color::White);
-//     quadrado.setOutlineColor(sf::Color::Black);
-//     quadrado.setOutlineThickness(2);
+Tabuleiro::Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula) : 
+origemX(origx), origemY(origy), qtd_celulaX(qtd_celulaX), qtd_celulaY(qtd_celulaY), tamanho_celula(tamanho_celula) {
     
-//     for(int i=0; i<qtd_celulaX; i++){
-//         for(int j=0; j<qtd_celulaY; j++){
-//             if(matriz[i][j]==0){
-//                 quadrado.setPosition(i*tamanho_celula, j*tamanho_celula);
-//                 window.draw(quadrado);
-//             }
-//         }
-//     }
-// }
-
-Tabuleiro::Tabuleiro() {
-    qtd_celulaX=7; //colunas
-    qtd_celulaY=6; //linhas
-    tamanho_celula= 75;
-    int origemX = windowLargura - tamanho_celula*7.0;
-    int origemY = windowAltura/4.0;
     //Inicializa a matriz de retangulos com qtd_celula de colunas e vetores (linhas) de tamanho qtd_celulaY
     matriz.resize(qtd_celulaX, std::vector<Botao>(qtd_celulaY));
 
@@ -40,11 +14,23 @@ Tabuleiro::Tabuleiro() {
         }
     }
 }
+std::vector<std::vector<Botao>> * Tabuleiro::getMatriz() {
+    return &matriz;
+}
 
 void Tabuleiro::desenhar(sf::RenderWindow& window){
     for(int i=0; i < qtd_celulaX; i++){
         for(int j=0; j < qtd_celulaY; j++){
             matriz[i][j].desenhar(window);
+            
         }
+    }    
+    // Verifica se 0.5 segundo se passou
+    static sf::Clock relogio;
+    if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
+        relogio.restart(); // Reinicia o relógio
     }
+
 }

@@ -83,7 +83,6 @@ bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
         return false;
     };
 
-
 int main() {
     //carrega a fonte só uma vez 
     sf::Font fonte;

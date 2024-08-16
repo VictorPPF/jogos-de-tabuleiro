@@ -3,3 +3,9 @@ jogo/obj/ExecutaPartida.o
 jogo/obj/jogo_principal.o
 jogo/obj/Wallpaper.o
 dados.csv
+jogo/obj/JogoLig4.o
+jogo/obj/Historico.o
+jogo/obj/CampoTexto.o
+jogo/obj/Tabuleiro.o
+jogo/obj/Telas.o
+jogo/obj/Jogador.o

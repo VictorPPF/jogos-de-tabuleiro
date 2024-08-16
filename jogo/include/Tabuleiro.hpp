@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Interacao.hpp"
 #include <vector>
+
 class Celula{
     private: 
         int estado; 

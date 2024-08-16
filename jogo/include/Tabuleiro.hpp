@@ -5,23 +5,6 @@
 #include "../include/Interacao.hpp"
 #include <vector>
 
-// class Tabuleiro : public Botao {
-// private:
-//     int qtd_celulaX, qtd_celulaY;  // Tamanho do tabuleiro
-//     int tamanho_celula; //Tamanho de cada celula em pixels
-//     int posicaoX, posicaoY;  // Posicao do tabuleiro
-//     std::vector<std::vector<int>> matriz; //Matriz responsavel pelo tabuleiro
-// public:
-//     // Construtor
-//     Tabuleiro();
-
-//     // Método para desenhar o tabuleiro
-//     void desenhar(sf::RenderWindow& window);
-
-//     // Método para desenhar as peças no tabuleiro
-//     void desenhar_pecas();
-
-// };
 
 class Tabuleiro : public Botao {
 private:
@@ -31,14 +14,15 @@ private:
     std::vector<std::vector<Botao>> matriz; //Matriz responsavel pelo tabuleiro
 public:
     // Construtor
-    Tabuleiro();
-
+    Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula);
+    float origemX = 238.0;
+    float origemY = 166.0;
+    std::vector<std::vector<Botao>> * getMatriz();
     // Método para desenhar o tabuleiro
     void desenhar(sf::RenderWindow& window);
 
-    // Método para desenhar as peças no tabuleiro
-    void desenhar_pecas();
 
 };
+
 
 #endif 

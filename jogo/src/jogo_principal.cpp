@@ -6,6 +6,7 @@
 #include "../include/Tabuleiro.hpp"
 #include "../include/CampoTexto.hpp"
 #include "../include/Telas.hpp"
+#include "../include/Jogador.hpp"
 
 #include <iostream>
 
@@ -167,14 +168,28 @@ int main() {
             }
 
             if (estadoAtual == "MenuPrincipal") {
-                
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
+                
 
             }
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
+                if(telaCadastro.campoNome.deu_enter==1 && telaCadastro.campoApelido.deu_enter==1){
+                    std::cout<< "deu enter nos dois\n";
+                    telaCadastro.campoNome.deu_enter=0;
+                    telaCadastro.campoApelido.deu_enter=0;
+
+                    //Logico pra testar se o cadastro é valido e guardar ele
+                    Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
+                    if(cadastroJogador->existeConta(telaCadastro.campoApelido.obterTexto())){
+                        std::cout << "Cadastro criado com sucesso!" << std::endl;
+                    }else{
+                        std::cout << "Cadastro não realizado, tente novamente" << std::endl;
+                    }
+                }
+        
             }
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);

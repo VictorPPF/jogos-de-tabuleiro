@@ -158,5 +158,13 @@ void Jogador:: excluirConta(){
     // Comunicar com o barquivo csv e apagar a linha
     historico.excluirLinha(apelido);
 }
-
 //criar um para registrar V e D ou fazer um para J.vitorias += 1 (sobrecarga de operadores) ; 
+
+
+bool Jogador::existeConta(std::string _apelido){
+    if(historico.acessarDados(_apelido)!= "-1"){
+        return true;
+    }else{
+        return false;
+    }
+}

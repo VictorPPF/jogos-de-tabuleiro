@@ -25,6 +25,7 @@ origemX(origx), origemY(origy), qtd_celulaX(qtd_celulaX), qtd_celulaY(qtd_celula
         }
     }
 }
+Tabuleiro::Tabuleiro() : qtd_celulaX(0), qtd_celulaY(0), tamanho_celula(0), matriz(0, std::vector<Celula>(0)), origemX(0), origemY(0) {};
 /*std::vector<std::vector<Botao>> * Tabuleiro::getMatriz() {
     return &matriz;
 }*/

@@ -29,7 +29,7 @@ private:
 public:
     // Construtor
     Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula);
-    
+    Tabuleiro();
     //std::vector<std::vector<Botao>> * getMatriz();
     int get_celula_status(int linha, int coluna); 
     void set_celula_status(int linha, int coluna, int status);

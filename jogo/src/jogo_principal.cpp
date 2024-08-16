@@ -7,6 +7,7 @@
 #include "../include/CampoTexto.hpp"
 #include "../include/Telas.hpp"
 #include "../include/Jogador.hpp"
+#include "../include/JogoLig4.hpp"
 
 #include <iostream>
 

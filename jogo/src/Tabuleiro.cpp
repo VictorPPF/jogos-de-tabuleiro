@@ -1,7 +1,7 @@
 #include "../include/Tabuleiro.hpp"
 //#include "../include/Interacao.hpp"
 
-Celula::Celula(int estado, int posicaoX, int posicaoY, int _tamanho_celula)
+Celula::Celula(int estado, float posicaoX, float posicaoY, float _tamanho_celula)
     : estado(estado), posicaoX(posicaoX), posicaoY(posicaoY), _tamanho_celula(_tamanho_celula),
       botao(_tamanho_celula, _tamanho_celula, posicaoX, posicaoY, sf::Color(150, 129, 250), false) {}
 
@@ -21,7 +21,7 @@ origemX(origx), origemY(origy), qtd_celulaX(qtd_celulaX), qtd_celulaY(qtd_celula
     matriz.resize(qtd_celulaX, std::vector<Celula>(qtd_celulaY));
     for (int i = 0; i < qtd_celulaX; ++i) {
         for (int j = 0; j < qtd_celulaY; ++j) {
-            matriz[i][j] = Celula(0, posicaoX + i * tamanho_celula, posicaoY + j * tamanho_celula, tamanho_celula);
+            matriz[i][j] = Celula(0, origemX + i * tamanho_celula, origemY + j * tamanho_celula, tamanho_celula);
         }
     }
 }

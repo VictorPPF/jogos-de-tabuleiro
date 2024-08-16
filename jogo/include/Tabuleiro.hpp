@@ -8,11 +8,12 @@
 class Celula{
     private: 
         int estado; 
-        int posicaoX, posicaoY;
-        int _tamanho_celula;
+        float posicaoX, posicaoY;
+        float _tamanho_celula;
     public: 
         Botao botao;
-        Celula(int estado, int posicaoX, int posicaoY, int _tamanho_celula);
+        Celula() : estado(0), posicaoX(0), posicaoY(0), _tamanho_celula(0), botao(0, 0, 0, 0, sf::Color(150, 129, 250), false) {}
+        Celula(int estado, float posicaoX, float posicaoY, float _tamanho_celula);
         void setEstado(int estado);
         int getEstado();
 }; 
@@ -21,10 +22,10 @@ class Tabuleiro{
 private:
     int qtd_celulaX, qtd_celulaY;  // Tamanho do tabuleiro
     int tamanho_celula; //Tamanho de cada celula em pixels
-    int posicaoX, posicaoY;  // Posicao do tabuleiro
+    //int posicaoX, posicaoY;  // Posicao do tabuleiro
     std::vector<std::vector<Celula>> matriz; //Matriz responsavel pelo tabuleiro
-    float origemX = 238.0;
-    float origemY = 166.0;
+    float origemX;
+    float origemY;
 public:
     // Construtor
     Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula);

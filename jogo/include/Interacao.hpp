@@ -166,6 +166,9 @@ public:
 
     // Método para definir o tamanho da fonte
     void setTamanhoFonte(float tamanho);
+
+    // Método para verificar se o botão foi clicado
+    bool foiClicado(sf::RenderWindow& window);
 };
 
 #endif // EXECUTAPARTIDA_HPP

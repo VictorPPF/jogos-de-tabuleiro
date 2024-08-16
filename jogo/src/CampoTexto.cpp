@@ -25,6 +25,7 @@ void CampoTexto::desenhar(sf::RenderWindow& window) {
 }
 
 void CampoTexto::processarEventos(sf::Event& event, sf::RenderWindow& window) {
+    deu_enter=false;
     if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
         if (retangulo.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
@@ -43,12 +44,12 @@ void CampoTexto::processarEventos(sf::Event& event, sf::RenderWindow& window) {
             }
         }
     }
-
+    
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Enter) { // da enter
             if (ativo) {
                 std::cout << "Texto inserido: " << obterTexto() << std::endl;
-                deu_enter = 1;
+                deu_enter = true;
                 desativar();
             }
         }

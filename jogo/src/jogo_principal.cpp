@@ -2,220 +2,17 @@
 #include <windows.h>
 
 #include "../include/Wallpaper.hpp"
-#include "../include/ExecutaPartida.hpp"
+#include "../include/Interacao.hpp"
 #include "../include/Tabuleiro.hpp"
+#include "../include/CampoTexto.hpp"
+#include "../include/Telas.hpp"
+
 #include <iostream>
 
 using namespace std;
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-// foi feito na pressa. acho que botao deveria ter um metodo que encapsula essa classe CampoTexto
-class CampoTexto {
-public:
-    
-    CampoTexto(float largura, float altura, float posicaoX, float posicaoY) :
-        retangulo(sf::Vector2f(largura, altura)),
-        texto("", fonte, 25),
-        ativo(false) {
-        retangulo.setPosition(posicaoX, posicaoY);
-        retangulo.setFillColor(sf::Color(223, 232, 106, 100)); // cor semitransparente
-        retangulo.setOutlineThickness(2);
-        retangulo.setOutlineColor(sf::Color::Black);
-
-        texto.setPosition(posicaoX + 5, posicaoY + 10); // pequeno deslocamento pra dentro do retângulo
-        texto.setFillColor(sf::Color::Black);
-        
-        
-        if (!fonte.loadFromFile("font_arcade.ttf")) {
-            std::cerr << "deu ruim pra carregar a fonte" << std::endl;
-        }
-    }
-    int deu_enter = 0;
-    
-    void limparTexto() {
-            texto.setString("");
-    }
-
-    void desenhar(sf::RenderWindow& window) {
-        window.draw(retangulo);
-        window.draw(texto);
-    }
-
-    void processarEventos(sf::Event& event, sf::RenderWindow& window) {
-        if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
-            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-            if (retangulo.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                ativar();
-            } else {
-                desativar();
-            }
-        }
-
-        if (event.type == sf::Event::TextEntered) {
-            if (ativo) {
-                if (event.text.unicode == '\b') { // da backspace
-                    removerUltimoCaractere();
-                } else if (event.text.unicode < 128) {
-                    adicionarCaractere(static_cast<char>(event.text.unicode));
-                }
-            }
-        }
-
-        if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Enter) { // da enter
-                if (ativo) {
-                    cout << "Texto inserido: " << obterTexto() << endl;
-                    deu_enter = 1;
-                    desativar();
-                }
-            }
-        }
-    }
-
-    string obterTexto() const {
-        return texto.getString();
-    }
-
-private:
-    void ativar() {
-        ativo = true;
-        retangulo.setFillColor(sf::Color(223, 232, 106, 200));
-        retangulo.setOutlineColor(sf::Color(150, 129, 250));
-        retangulo.setOutlineThickness(5);
-    }
-
-    void desativar() {
-        ativo = false;
-        retangulo.setFillColor(sf::Color(223, 232, 106, 100));
-        retangulo.setOutlineColor(sf::Color::Black);
-        retangulo.setOutlineThickness(2);
-    }
-
-    void adicionarCaractere(char c) {
-        texto.setString(texto.getString() + c);
-    }
-
-    void removerUltimoCaractere() {
-        sf::String str = texto.getString();
-        if (str.getSize() > 0) {
-            str.erase(str.getSize() - 1);
-            texto.setString(str);
-        }
-    }
-
-    sf::RectangleShape retangulo;
-    sf::Text texto;
-    sf::Font fonte;
-    bool ativo;
-};
-
-class TelaMenu {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-    sf::Event& evento; 
-    
-public:
-    Botao botaoJogador1;
-    Botao botaoJogador2;
-    Botao botaoListaJogadores;
-    Botao botaoCadastro;
-    Botao botaoExcluirConta;
-    Botao botaoEstatistica;
-    Botao play1;
-    Botao play2;
-    CampoTexto campoJogador1;
-    CampoTexto campoJogador2;
-    TelaMenu(sf::RenderWindow& window, sf::Font& fonte,sf::Event& evento) : window(window), fonte(fonte), evento(evento),
-        /*botao recebe: largura, altura, posicao x, posicao y, cor em rgb (a última coluna é transparencia), 
-        texto, tamanho da fonte, se for circulo é true, cor da fonte (o padrão é white)*/
-        botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoJogador2(306.0, 49.f, 177.0 + (306.0*1.5), 206.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoCadastro(220.f, 65.f, 140.f, 368.f, sf::Color(150, 129, 250), "Cadastro", 25.f, false, sf::Color(43, 0, 108)),
-        botaoListaJogadores(500.f, 65.f, 390.f, 368.f, sf::Color(150, 129, 250), "Lista de Jogadores", 25.f, false, sf::Color(43, 0, 108)),
-        botaoExcluirConta(350.f, 65.f, 140.f, 458.f, sf::Color(150, 129, 250), "Excluir Conta", 25.f, false, sf::Color(43, 0, 108)),
-        botaoEstatistica(350.f, 65.f, 540.f, 458.f, sf::Color(150, 129, 250), "Estatisticas", 25.f, false, sf::Color(43, 0, 108)),
-        play1(200.f,100.f,140 + (350-200)/2,550.f, sf::Color(50, 50, 50), "REVERSI", 25.f, false, sf::Color(43, 0, 108)),
-        play2(200.f,100.f,540 - 140 + (540 - 100)/2,550.f, sf::Color(50, 50, 50), "LIG4", 25.f, false, sf::Color(43, 0, 108)),
-        campoJogador1(306.0, 49.f, 173.0, 206.f),
-        campoJogador2(306.0, 49.f, 177.0 + (306.0 * 1.5), 206.f)
-    {
-        botaoJogador1.criarBotoes();
-        botaoJogador2.criarBotoes();
-        botaoCadastro.criarBotoes();
-        botaoListaJogadores.criarBotoes();
-        botaoExcluirConta.criarBotoes();
-        botaoEstatistica.criarBotoes();
-        play1.criarBotoes();
-        play2.criarBotoes();
-        
-    }
-    void desenharMenu() {
-        Wallpaper wallpaper("menuInicial.png");
-        wallpaper.redimensionar(window.getSize());
-
-
-        wallpaper.desenhar(window);
-        botaoJogador1.desenhar(window);
-        botaoJogador2.desenhar(window);
-        botaoCadastro.desenhar(window);
-        botaoListaJogadores.desenhar(window);
-        botaoExcluirConta.desenhar(window);
-        botaoEstatistica.desenhar(window);
-        play1.desenhar(window);
-        play2.desenhar(window);
-        campoJogador1.desenhar(window);
-        campoJogador2.desenhar(window);
-    }
-
-    
-};
-
-class TelaCadastro {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoNome;
-    Botao botaoApelido;
-    Botao botaoConfirma;
-    Botao botaoVoltar;
-    CampoTexto campoNome;
-    CampoTexto campoApelido;
-
-    TelaCadastro(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        //223, 232, 106, 100
-        botaoNome(502.0, 49.f, 327.f, 283.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-        botaoApelido(502.0, 49.f, 327.f, 359.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-        botaoConfirma(502.0/3, 49.f, 327.f + 502*(2.f/3.f), 359.f + (359 - 283), sf::Color(220, 100, 180,100), "confirma", 15.f, false),
-        botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-        campoNome(502.0, 49.f, 327.f, 283.f),
-        campoApelido(502.0, 49.f, 327.f, 359.f)
-    {
-        
-        botaoNome.criarBotoes();
-        botaoApelido.criarBotoes();
-        botaoConfirma.criarBotoes();
-        botaoConfirma.setCorHover(sf::Color(255, 0, 20, 100));
-        botaoConfirma.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("menuCadastro.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoNome.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoConfirma.desenhar(window);
-        botaoVoltar.desenhar(window);
-        campoNome.desenhar(window);
-        campoApelido.desenhar(window);
-    }
-};
 
 class TelaReversi {
 private:
@@ -246,27 +43,6 @@ public:
     }
 };
 
-class TelaLista {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoVoltar;
-    TelaLista(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte), 
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)) {
-        botaoVoltar.criarBotoes();
-    }
-
-    
-    void desenharLista() {
-        Wallpaper wallpaper("menuListaJogadores.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
-
 class TelaLig4 {
 private:
     sf::RenderWindow& window; 
@@ -279,8 +55,9 @@ public:
     TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
         
         botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI!", 25.f, false, sf::Color(43, 0, 108))
+        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
     {
+        
         botaoApelido.criarBotoes();
         botaoVoltar.criarBotoes();
     }
@@ -292,69 +69,6 @@ public:
         wallpaper.desenhar(window);
         botaoApelido.desenhar(window);
         botaoVoltar.desenhar(window);
-    }
-};
-
-class TelaExcluirConta {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoApelido;
-    Botao botaoExcluir;
-    Botao botaoVoltar;
-    CampoTexto campoApelido;
-
-    TelaExcluirConta(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-    botaoApelido(502.0, 49.f, 327.f, 264.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-    botaoExcluir(350.f, 65.f, 171.f, 345.f, sf::Color(220, 100, 180,100), "Excluir Conta", 25.f, false),
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-    campoApelido(502.0, 49.f, 327.f, 264.f) {
-        botaoApelido.criarBotoes();
-        botaoExcluir.criarBotoes();
-        botaoExcluir.setCorHover(sf::Color(255, 0, 20, 100));
-        botaoVoltar.criarBotoes();
-    }
-    void desenharExcluirConta() {
-        Wallpaper wallpaper("menuExcluirConta.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoExcluir.desenhar(window);
-        botaoVoltar.desenhar(window);
-        campoApelido.desenhar(window);
-    }
-};
-
-class TelaEstatisticas {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-    Botao botaoPesquisa;
-    CampoTexto campoPesquisa;
-    TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-    botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-    botaoPesquisa(130.0, 49.f, 327.f + 25 + 502.0, 217.f, sf::Color(150, 129, 200,200), "Pesquisa", 15.f, false),
-    campoPesquisa(502.0, 49.f, 327.f, 217.f) {
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-        botaoPesquisa.criarBotoes();
-        botaoPesquisa.setCorHover(sf::Color(150, 129 - 50, 200,50)); //150, 129, 250 roxo padrao
-    }
-    void desenharEstatisticas() {
-        Wallpaper wallpaper("menuEstatisticas.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-        botaoPesquisa.desenhar(window);
-        campoPesquisa.desenhar(window);
     }
 };
 
@@ -427,7 +141,6 @@ int main() {
     // Criação dos campos de texto
     
     Tabuleiro tabuleiro;
-    
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);

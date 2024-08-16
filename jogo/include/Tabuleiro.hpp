@@ -2,7 +2,7 @@
 #define TABULEIRO_HPP
 
 #include <SFML/Graphics.hpp>
-#include "executaPartida.hpp"
+#include "../include/Interacao.hpp"
 #include <vector>
 
 // class Tabuleiro : public Botao {

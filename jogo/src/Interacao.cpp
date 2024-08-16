@@ -1,4 +1,4 @@
-#include "../include/ExecutaPartida.hpp"
+#include "../include/Interacao.hpp"
 #include <iostream>
 
 

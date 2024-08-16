@@ -1,4 +1,4 @@
-#include "../include/ExecutaPartida.hpp"
+#include "../include/Interacao.hpp"
 #include <iostream>
 
 
@@ -217,6 +217,26 @@ void Botao::desenhar(sf::RenderWindow& window) {
 void Botao::setTamanhoFonte(float tamanho) {
     tamanhoFonte = tamanho;
     text.setCharacterSize(static_cast<unsigned int>(tamanhoFonte));
+}
+
+// Método para verificar se o botão foi clicado
+bool Botao::foiClicado(sf::RenderWindow& window) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+
+    // Verifica se o mouse está sobre o botão e se o botão do mouse foi pressionado
+    if (isCirculo) {
+        if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)) &&
+            sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            return true;
+        }
+    } else {
+        if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)) &&
+            sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 

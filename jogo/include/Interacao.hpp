@@ -1,5 +1,5 @@
-#ifndef EXECUTAPARTIDA_HPP
-#define EXECUTAPARTIDA_HPP
+#ifndef INTERACAO_HPP
+#define INTERACAO_HPP
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
@@ -167,6 +167,9 @@ public:
 
     // Método para definir o tamanho da fonte
     void setTamanhoFonte(float tamanho);
+
+    // Método para verificar se o botão foi clicado
+    bool foiClicado(sf::RenderWindow& window);
 };
 
 

@@ -180,11 +180,10 @@ int main() {
 
                     //Logico pra testar se o cadastro é valido e guardar ele
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
-                    cadastroJogador->criarCadastro();
                     if(cadastroJogador->existeConta(telaCadastro.campoApelido.obterTexto())){
-                        std::cout << "Foi\n";
+                        std::cout << "Cadastro criado com sucesso!" << std::endl;
                     }else{
-                        std::cout << "Nao foi\n";
+                        std::cout << "Cadastro não realizado, tente novamente" << std::endl;
                     }
                 }
         

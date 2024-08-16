@@ -161,8 +161,10 @@ void Jogador:: excluirConta(){
 
 //criar um para registrar V e D ou fazer um para J.vitorias += 1 (sobrecarga de operadores) ; 
 // ISSO AQUI DEU UM CONFLITO E NAO SABIA SE PODIA APAGAR
-bool Jogador::existeConta(std::string _apelido){
-    if(historico.acessarDados(_apelido)!= "-1"){
+
+bool Jogador::existeConta(){
+    
+    if(historico.acessarDados(apelido)!= "-1"){
         return true;
     }else{
         return false;

@@ -55,11 +55,10 @@ public:
 
     TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
         
-        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
+        
         botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
     {
         
-        botaoApelido.criarBotoes();
         botaoVoltar.criarBotoes();
     }
 
@@ -68,7 +67,7 @@ public:
         wallpaper.redimensionar(window.getSize());
 
         wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
+        
         botaoVoltar.desenhar(window);
     }
 };
@@ -139,8 +138,12 @@ int main() {
     //cout << pos3 << endl;
 
     // Criação dos campos de texto
-    
-    Tabuleiro tabuleiro;
+    float origemX = 238.0;
+    float origemY = 166.0;
+    int qtd_celulaX=7; //colunas
+    int qtd_celulaY=6; //linhas
+    float tamanho_celula= 75.0;
+    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula);
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);
@@ -413,7 +416,7 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
-                tabuleiro.desenhar(window);
+                tabuleiroLIG4.desenhar(window);
             }
             
 

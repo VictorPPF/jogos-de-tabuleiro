@@ -13,10 +13,9 @@ JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, Tabuleiro & 
         tabuleiro.set_celula_status(posicao_meio, posicao_meio-1, 2);
         tabuleiro.set_celula_status(posicao_meio-1, posicao_meio, 2);
         }
-void JogoReversi::desenharJogo() {
+void JogoReversi::desenharJogo() { 
     Wallpaper wallpaper("wallpaper_lig4.png");
     wallpaper.redimensionar(window.getSize());
-
     wallpaper.desenhar(window);
     JogoReversi::botaoApelido.desenhar(window);
     JogoReversi::botaoVoltar.desenhar(window);

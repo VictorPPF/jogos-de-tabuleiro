@@ -17,7 +17,7 @@ Jogador:: Jogador(std:: string _nome, std:: string _apelido){
     derrotas_reversi = 0; 
     empates_reversi = 0; 
     vitorias_lig4 = 0; 
-    derrotas_lig4 = 0; 
+    derrotas_lig4 = 0;
     empates_lig4 = 0; 
     criarCadastro(); 
 }
@@ -158,9 +158,9 @@ void Jogador:: excluirConta(){
     // Comunicar com o barquivo csv e apagar a linha
     historico.excluirLinha(apelido);
 }
+
 //criar um para registrar V e D ou fazer um para J.vitorias += 1 (sobrecarga de operadores) ; 
-
-
+// ISSO AQUI DEU UM CONFLITO E NAO SABIA SE PODIA APAGAR
 bool Jogador::existeConta(std::string _apelido){
     if(historico.acessarDados(_apelido)!= "-1"){
         return true;

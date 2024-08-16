@@ -156,7 +156,10 @@ int main() {
 
     while (window.isOpen()) {
 
-        bool jogadores_validos = true; //dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
+        bool jogador1_valido = false; //Testa se os jogadores estão logados
+        bool jogador2_valido = false;
+        bool jogadores_validos=false;
+
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
@@ -171,16 +174,36 @@ int main() {
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
                 
+                if(telaMenu.campoJogador1.deu_enter){
+                    Jogador* jogador1 = new Jogador(telaMenu.campoJogador1.obterTexto());
+                    if(jogador1->existeConta(telaMenu.campoJogador1.obterTexto())){
+                        std::cout<< "Jogador 1 foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=true;
+                    }else{
+                        std::cout<< "Jogador 1 nao foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=false;
+                    }
+                }
+
+                if(telaMenu.campoJogador2.deu_enter){
+                    Jogador* jogador2 = new Jogador(telaMenu.campoJogador2.obterTexto());
+                    if(jogador2->existeConta(telaMenu.campoJogador2.obterTexto())){
+                        std::cout<< "Jogador 2 foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=true;
+                    }else{
+                        std::cout<< "Jogador 2 nao foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=false;
+                    }   
+                }
+                if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
 
             }
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
-                if(telaCadastro.campoNome.deu_enter==1 && telaCadastro.campoApelido.deu_enter==1){
-                    std::cout<< "deu enter nos dois\n";
-                    telaCadastro.campoNome.deu_enter=0;
-                    telaCadastro.campoApelido.deu_enter=0;
 
+                if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
+                
                     //Logico pra testar se o cadastro é valido e guardar ele
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
                     if(cadastroJogador->existeConta(telaCadastro.campoApelido.obterTexto())){

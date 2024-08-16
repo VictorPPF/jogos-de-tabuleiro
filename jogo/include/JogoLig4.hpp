@@ -1,7 +1,7 @@
 #ifndef JOGOLIG4_HPP
 #define JOGOLIG4_HPP
 #include <SFML/Graphics.hpp>
-#include "../include/ExecutaPartida.hpp"
+#include "../include/Interacao.hpp"
 class JogoLig4 {
 private:
     sf::RenderWindow& window; 

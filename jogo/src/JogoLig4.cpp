@@ -1,5 +1,6 @@
 #include "../include/JogoLig4.hpp"
 #include "../include/Wallpaper.hpp"
+
 JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
         origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), tamanho_celula(75.0),
         botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),

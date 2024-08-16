@@ -2,3 +2,4 @@ jogo/bin/Jogo_executavel.exe
 jogo/obj/ExecutaPartida.o
 jogo/obj/jogo_principal.o
 jogo/obj/Wallpaper.o
+dados.csv

@@ -55,8 +55,6 @@ public:
     Botao botaoVoltar;
 
     TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        
-        
         botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
     {
         

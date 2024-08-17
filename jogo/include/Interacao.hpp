@@ -152,6 +152,7 @@ public:
     sf::Color getCor() const;
 
     sf::RectangleShape getRetangulo() const;
+    sf::CircleShape getCirculo() const;
 
     void setCorHover(sf::Color cor);
 
@@ -169,7 +170,11 @@ public:
     void setTamanhoFonte(float tamanho);
 
     // Método para verificar se o botão foi clicado
+    //bool deuClique(sf::RenderWindow& window);
+
     bool foiClicado(sf::RenderWindow& window);
+
+    
 };
 
 

@@ -76,7 +76,7 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, bool 
     : largura(largura), altura(altura), posicao(x, y), cor(cor), isCirculo(isCirculo) {
     corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
     if (isCirculo) {
-        circulo.setRadius(largura / 2); // Define o raio do círculo
+        circulo.setRadius(largura); // Define o raio do círculo
         circulo.setPosition(posicao);   // Define a posição do círculo
         circulo.setFillColor(cor);      // Define a cor do círculo
     } else {

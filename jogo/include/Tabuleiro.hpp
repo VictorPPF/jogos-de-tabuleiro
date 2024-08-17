@@ -33,13 +33,14 @@ private:
     float borda; //distancia entre a celula e o circulo
 public:
     // Construtor
-    Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula, float borda);
+    Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula, float borda, sf::Event& evento);
     Tabuleiro();
     //std::vector<std::vector<Botao>> * getMatriz();
     int get_celula_status(int linha, int coluna); 
     void set_celula_status(int linha, int coluna, int status);
     int get_qtd_celulaX();
     int get_qtd_celulaY(); 
+    sf::Event& evento;
     void desenhar(sf::RenderWindow& window);
 };
 

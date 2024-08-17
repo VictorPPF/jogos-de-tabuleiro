@@ -121,7 +121,7 @@ int main() {
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);
-    JogoLig4 telaLig (window,fonte);
+    JogoLig4 telaLig (window,fonte,event);
     TelaCadastro telaCadastro (window,fonte);
     TelaLista telaLista (window,fonte);
     TelaExcluirConta telaExcluir (window,fonte);

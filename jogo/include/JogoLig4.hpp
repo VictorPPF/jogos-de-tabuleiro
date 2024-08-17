@@ -29,6 +29,7 @@ public:
     int jogadorAtual;
     void anima();
     bool verificaCondicaoVitoria(int jogador, int linha, int coluna);
+    void LimpaTabuleiro();
 };
 
 #endif

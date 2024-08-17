@@ -11,3 +11,8 @@ jogo/obj/Telas.o
 jogo/obj/JogoLig4.o
 dados.csv
 jogo/obj/JogoLig4.o
+jogo/obj/Historico.o
+jogo/obj/CampoTexto.o
+jogo/obj/Tabuleiro.o
+jogo/obj/Telas.o
+jogo/obj/Jogador.o

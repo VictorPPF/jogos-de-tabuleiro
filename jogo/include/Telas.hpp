@@ -88,4 +88,16 @@ class TelaEstatisticas {
         TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte);
         void desenharEstatisticas();
 };
+
+class FimDeJogoLig4 {
+    private:
+        sf::RenderWindow& window; 
+        sf::Font& fonte;
+
+    public:
+        Botao botaoMenu;
+        Botao botaoRestart;
+        FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte);
+        void desenharTelaFinal();
+};
 #endif // TELA_MENU_HPP

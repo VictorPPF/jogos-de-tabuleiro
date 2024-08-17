@@ -127,6 +127,7 @@ int main() {
     TelaLista telaLista (window,fonte);
     TelaExcluirConta telaExcluir (window,fonte);
     TelaEstatisticas telaEstat (window,fonte);
+    FimDeJogoLig4 fimDeJogoLig4 (window,fonte);
     bool nao_ignora_mouse = true;
 
     //Variaveis que testam se os jogadores estão logados
@@ -380,6 +381,16 @@ int main() {
                     
                     
                 }
+                if (estadoAtual == "FimDeJogoLig4") {
+
+                if (fimDeJogoLig4.botaoMenu.passouMouse(window)) { 
+                    estadoAtual = "MenuPrincipal";
+                    telaLig.fimDeJogo = false;
+                    
+                }
+                
+
+            }
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
@@ -422,13 +433,14 @@ int main() {
                     }
                 }
                 if (telaLig.fimDeJogo){
-                    estadoAtual = "MenuPrincipal";
+                    estadoAtual = "FimDeJogoLig4";
                     telaLig.fimDeJogo = false;
                 }
 
                 //matriz
                 
             }
+            
             
         }
 
@@ -450,6 +462,9 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
+            }else if (estadoAtual == "FimDeJogoLig4") {
+                fimDeJogoLig4.desenharTelaFinal();
+
             }
             
 

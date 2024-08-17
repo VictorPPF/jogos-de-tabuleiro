@@ -13,6 +13,8 @@ private:
     int qtd_celulaX; //colunas
     int qtd_celulaY; //linhas
     float tamanho_celula;
+    float raio;
+    float borda;
 
 public:
     Botao botaoApelido;

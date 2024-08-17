@@ -8,6 +8,7 @@
 #include "../include/Telas.hpp"
 #include "../include/Jogador.hpp"
 #include "../include/JogoLig4.hpp"
+#include "../include/JogoLig4.hpp"
 
 #include <iostream>
 
@@ -110,9 +111,18 @@ int main() {
 
     //cout << pos3 << endl;
 
+    // Criação dos campos de texto
+    // float origemX = 238.0;
+    // float origemY = 166.0;
+    // int qtd_celulaX=7; //colunas
+    // int qtd_celulaY=6; //linhas
+    // float tamanho_celula= 75.0;
+    // float borda=3;
+    // Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
+
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);
-    JogoLig4 telaLig (window,fonte);
+    JogoLig4 telaLig (window,fonte,event);
     TelaCadastro telaCadastro (window,fonte);
     TelaLista telaLista (window,fonte);
     TelaExcluirConta telaExcluir (window,fonte);
@@ -122,8 +132,8 @@ int main() {
     //Variaveis que testam se os jogadores estão logados
     bool jogador1_valido = false; 
     bool jogador2_valido = false;
-    bool jogadores_validos=false;
-
+    //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
+    bool jogadores_validos=true;
     while (window.isOpen()) {
  
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
@@ -328,6 +338,7 @@ int main() {
                 if (estadoAtual == "Lig4") {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
+                        std::cout << "Botao voltar clicado" << std::endl;
                         estadoAtual = "MenuPrincipal";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
@@ -410,6 +421,9 @@ int main() {
                         teste.mover(circulo, sf::Keyboard::D);
                     }
                 }
+                if (telaLig.fimDeJogo){
+                    estadoAtual = "MenuPrincipal";
+                }
 
                 //matriz
                 
@@ -435,7 +449,6 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
-                
             }
             
 

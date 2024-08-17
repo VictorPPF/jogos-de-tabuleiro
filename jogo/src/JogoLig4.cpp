@@ -17,11 +17,19 @@ JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
 
 void JogoLig4::acao() {
     if (tabuleiroLIG4.deuClique) {
-
+        // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
         circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
-        // Executa a função poePeca
+        // Executa a função poePeca pra encontrar a posição certa
         poePeca(tabuleiroLIG4.indice_i, tabuleiroLIG4.indice_j, jogadorAtual);
         std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroLIG4.indice_i << std::endl;
+        
+        // Verifica a condição de vitória
+        if (verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
+            std::cout << "Jogador " << jogadorAtual << " venceu!" << std::endl;
+            // aqui fica a logica pra TELA DE FIM DE JOGO
+            fimDeJogo = true;
+        }
+
         // Troca de jogador
         jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
 
@@ -56,17 +64,87 @@ void JogoLig4::anima() {
         
 
         if (circulo.getPosition().y < (origemY + tamanho_celula * (jocupado - 1) )) {
-            circulo.move(0, jocupado*3.5); // move para baixo, você pode ajustar a velocidade
+            circulo.move(0, jocupado*4); // move para baixo, você pode ajustar a velocidade
             window.draw(circulo);
             
         } else {
+            //alinha a peça certo com a ultima celula 
             circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY + tamanho_celula * (jocupado - 1));
             window.draw(circulo);
+            //atualiza o estado da peça
             tabuleiroLIG4.matriz[tabuleiroLIG4.indice_i][jocupado - 1].setEstado(jogadorAtual);
             tabuleiroLIG4.slots[tabuleiroLIG4.indice_i][jocupado - 1].botao.setCor(cor);
         }
     }
 }
+
+bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
+    // Verificação horizontal
+    int contador = 0;
+    for (int i = 0; i < qtd_celulaX; ++i) {
+        if (tabuleiroLIG4.matriz[i][coluna].getEstado() == jogador) {
+            contador++;
+            if (contador == 4) return true;
+        } else {
+            contador = 0;
+        }
+    }
+
+    // Verificação vertical
+    contador = 0;
+    for (int j = 0; j < qtd_celulaY; ++j) {
+        if (tabuleiroLIG4.matriz[linha][j].getEstado() == jogador) {
+            contador++;
+            if (contador == 4) return true;
+        } else {
+            contador = 0;
+        }
+    }
+
+    // Verificação diagonal (esquerda para direita)
+    contador = 0;
+    int startX = std::max(0, linha - coluna);
+    int startY = std::max(0, coluna - linha);
+    while (startX < qtd_celulaX && startY < qtd_celulaY) {
+        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogador) {
+            contador++;
+            if (contador == 4) return true;
+        } else {
+            contador = 0;
+        }
+        startX++;
+        startY++;
+    }
+
+    // Verificação diagonal (direita para esquerda)
+    contador = 0;
+    startX = std::min(qtd_celulaX - 1, linha + coluna);
+    startY = std::max(0, coluna - (qtd_celulaX - 1 - linha));
+    while (startX >= 0 && startY < qtd_celulaY) {
+        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogador) {
+            contador++;
+            if (contador == 4) return true;
+        } else {
+            contador = 0;
+        }
+        startX--;
+        startY++;
+    }
+
+    return false;
+}
+
+void JogoLig4::desenharJogo() {
+    Wallpaper wallpaper("wallpaper_lig4.png");
+    wallpaper.redimensionar(window.getSize());
+
+    wallpaper.desenhar(window);
+    botaoVoltar.desenhar(window);
+    tabuleiroLIG4.desenhar(window);
+
+    acao();
+}
+
     
 
 void JogoLig4::desenharJogo() {

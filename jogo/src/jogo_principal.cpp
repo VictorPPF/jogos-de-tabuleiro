@@ -420,6 +420,9 @@ int main() {
                         teste.mover(circulo, sf::Keyboard::D);
                     }
                 }
+                if (telaLig.fimDeJogo){
+                    estadoAtual = "MenuPrincipal";
+                }
 
                 //matriz
                 

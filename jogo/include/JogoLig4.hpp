@@ -19,6 +19,7 @@ private:
 
 public:
     Botao botaoVoltar;
+    bool fimDeJogo = false;
     sf::CircleShape circulo;
     Tabuleiro tabuleiroLIG4;
     JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
@@ -27,6 +28,7 @@ public:
     void poePeca(int i, int j, int jogador);
     int jogadorAtual;
     void anima();
+    bool verificaCondicaoVitoria(int jogador, int linha, int coluna);
 };
 
 #endif

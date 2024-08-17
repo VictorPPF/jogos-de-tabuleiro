@@ -31,6 +31,7 @@ JogoReversi::~JogoReversi() {
 
 bool JogoReversi::verificarJogadaValida(int linha, int coluna) {
     bool jogadaValida = false;
+
     if (linha < 0 || linha >= tabuleiro.get_qtd_celulaX() || coluna < 0 || coluna >= tabuleiro.get_qtd_celulaY()) {
         return jogadaValida;
     }
@@ -39,34 +40,7 @@ bool JogoReversi::verificarJogadaValida(int linha, int coluna) {
     }
 
     //Logica de 
-    int direcoes[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, 1}, {-1, 1}, {1, -1}};
-    //Cima, baixo, direita, esquerda, diagonal superior esquerda, diagonal inferior direita, diagonal superior direita, diagonal inferior esquerda
-
-    //Vendo se é o jogador 1 ou 2 que está jogando agora 
-    int jogador = jogadorAtual == jogador1 ? 1 : 2;
-    int adversario = jogador == 1 ? 2 : 1;
-
-    for (auto& dir : direcoes) {
-        int dx = dir[0], dy = dir[1];
-        int x = linha + dx, y = coluna + dy;
-        bool encontrouAdversario = false;
-        while (x >= 0 && x < tabuleiro.get_qtd_celulaX() && y >= 0 && y < tabuleiro.get_qtd_celulaY()) {
-            int status = tabuleiro.get_celula_status(x, y);
-            if (status == adversario) {
-                encontrouAdversario = true;
-            } else if (status == jogador && encontrouAdversario) {
-                jogadaValida = true;
-                break;
-            } else {
-                break;
-            }
-            x += dx;
-            y += dy;
-        }
-        if (jogadaValida) break;
-    }
-    return jogadaValida;
-}
+    
 
 
 void JogoReversi::realizarJogada(int linha, int coluna) {

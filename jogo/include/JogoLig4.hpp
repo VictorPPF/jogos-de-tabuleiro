@@ -14,16 +14,19 @@ private:
     int qtd_celulaX; //colunas
     int qtd_celulaY; //linhas
     float tamanho_celula;
-    float raio;
     float borda;
+    float icupado, jocupado; //indices da celula ocupada
 
 public:
-    Botao botaoApelido;
     Botao botaoVoltar;
+    sf::CircleShape circulo;
     Tabuleiro tabuleiroLIG4;
-    
     JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
     void desenharJogo();
+    void acao ();
+    void poePeca(int i, int j, int jogador);
+    int jogadorAtual;
+    void anima();
 };
 
 #endif

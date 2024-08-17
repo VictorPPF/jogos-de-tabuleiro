@@ -131,8 +131,8 @@ int main() {
     //Variaveis que testam se os jogadores estão logados
     bool jogador1_valido = false; 
     bool jogador2_valido = false;
-    bool jogadores_validos=false;
-
+    //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
+    bool jogadores_validos=true;
     while (window.isOpen()) {
  
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
@@ -337,6 +337,7 @@ int main() {
                 if (estadoAtual == "Lig4") {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
+                        std::cout << "Botao voltar clicado" << std::endl;
                         estadoAtual = "MenuPrincipal";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;

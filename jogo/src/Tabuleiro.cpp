@@ -1,4 +1,5 @@
 #include "../include/Tabuleiro.hpp"
+
 //#include "../include/Interacao.hpp"
 
 Celula::Celula(int estado, float posicaoX, float posicaoY, float _tamanho_celula,sf::Color cor, bool isCirculo) : 
@@ -52,13 +53,20 @@ int Tabuleiro::get_qtd_celulaX() {
 
 int Tabuleiro::get_qtd_celulaY() {
     return qtd_celulaY;
-}   
+}
 
 void Tabuleiro::desenhar(sf::RenderWindow& window){
+    
     for(int i=0; i < qtd_celulaX; i++){
         for(int j=0; j < qtd_celulaY; j++){
             matriz[i][j].botao.desenhar(window);
             slots[i][j].botao.desenhar(window);
+            
+            if (matriz[i][j].botao.foiClicado(window)) {
+                deuClique = true;
+                indice_i = i;
+                indice_j = j;
+            }
         }
     } 
 

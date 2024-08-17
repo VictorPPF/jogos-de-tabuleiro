@@ -117,6 +117,10 @@ sf::RectangleShape Botao::getRetangulo() const{
     return retangulo;
 }
 
+sf::CircleShape Botao::getCirculo() const{
+    return circulo;
+}
+
 void Botao::setCorHover(sf::Color cor){
     corHover = cor;
 }
@@ -133,26 +137,7 @@ void Botao::setCor(sf::Color cor) {
 
 // Atualiza a cor do botão com base na posição do mouse
 void Botao::mudarCor(sf::RenderWindow& window) {
-    // sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
-    // if (isCirculo) {
-    //     // Verifica se o mouse está sobre o círculo
-    //     if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-    //         circulo.setFillColor(corHover); // Muda a cor para a corHover
-            
-    //     } else {
-    //         circulo.setFillColor(cor); // Muda de volta para a cor original
-            
-    //     }
-    // } else {
-    //     // Verifica se o mouse está sobre o retângulo
-    //     if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos))) {
-    //         retangulo.setFillColor(corHover); // Muda a cor para a corHover
-            
-    //     } else {
-    //         retangulo.setFillColor(cor); // Muda de volta para a cor original
-            
-    //     }
-    // }
+    
     sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
     sf::FloatRect bounds;
 
@@ -202,6 +187,28 @@ bool Botao::passouMouse(sf::RenderWindow& window) {
     }
 }
 
+// bool Botao::deuClique(sf::RenderWindow& window) {
+//     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+//         sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+//         sf::FloatRect bounds;
+//         bounds = retangulo.getGlobalBounds();
+
+//         // Reduz a área de detecção para evitar a seleção de múltiplas células
+//         bounds.left += retangulo.getOutlineThickness();
+//         bounds.top += retangulo.getOutlineThickness();
+//         bounds.width -= 2 * retangulo.getOutlineThickness();
+//         bounds.height -= 2 * retangulo.getOutlineThickness();
+
+//         if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {    
+//             return true; 
+//         } else {
+//             return false;
+//         }
+//     } else {
+//         return false;
+//     }
+// }
+
 // Desenha o botão (forma e texto) na janela
 void Botao::desenhar(sf::RenderWindow& window) {
     mudarCor(window); // Atualiza a cor do botão com base na posição do mouse
@@ -221,18 +228,25 @@ void Botao::setTamanhoFonte(float tamanho) {
 
 // Método para verificar se o botão foi clicado
 bool Botao::foiClicado(sf::RenderWindow& window) {
+    static bool foiPressionado = false; // Mantém o estado do botão do mouse
     sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+    sf::FloatRect bounds = retangulo.getGlobalBounds();
 
-    // Verifica se o mouse está sobre o botão e se o botão do mouse foi pressionado
-    if (isCirculo) {
-        if (circulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)) &&
-            sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            return true;
-        }
-    } else {
-        if (retangulo.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePos)) &&
-            sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            return true;
+    // Reduz a área de detecção para evitar a seleção de múltiplas células
+    bounds.left += retangulo.getOutlineThickness();
+    bounds.top += retangulo.getOutlineThickness();
+    bounds.width -= 2 * retangulo.getOutlineThickness();
+    bounds.height -= 2 * retangulo.getOutlineThickness();
+
+    // Verifica se o mouse está sobre o botão
+    if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            if (!foiPressionado) {
+                foiPressionado = true; // Registra que o botão foi pressionado
+                return true;
+            }
+        } else {
+            foiPressionado = false; // Reseta o estado quando o botão é liberado
         }
     }
 

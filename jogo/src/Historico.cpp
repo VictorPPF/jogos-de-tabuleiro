@@ -61,7 +61,7 @@ void Historico::excluirLinha (std:: string apelido){
     arquivoTemp.close();
 
     std::remove(nomeArquivo.c_str());
-    std::rename("temp.csv", nomeArquivo.c_str());
+    std::rename("../temp.csv", nomeArquivo.c_str());
 
 
     //Lidando com o caso de não achar o apelido

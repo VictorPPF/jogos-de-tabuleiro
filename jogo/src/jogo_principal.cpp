@@ -423,6 +423,7 @@ int main() {
                 }
                 if (telaLig.fimDeJogo){
                     estadoAtual = "MenuPrincipal";
+                    telaLig.fimDeJogo = false;
                 }
 
                 //matriz

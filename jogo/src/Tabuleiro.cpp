@@ -16,7 +16,6 @@ int Celula::getEstado() {
 Tabuleiro::Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula) : 
 origemX(origx), origemY(origy), qtd_celulaX(qtd_celulaX), qtd_celulaY(qtd_celulaY), tamanho_celula(tamanho_celula) {
     //Inicializa a matriz de retangulos com qtd_celula de colunas e vetores (linhas) de tamanho qtd_celulaY
-
     //matriz.resize(qtd_celulaX, std::vector<Celula>(qtd_celulaY, Celula(0, 0, 0, tamanho_celula)));
     matriz.resize(qtd_celulaX, std::vector<Celula>(qtd_celulaY));
     for (int i = 0; i < qtd_celulaX; ++i) {
@@ -60,3 +59,14 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
     }
 
 }
+
+/*void Tabuleiro::verificar_celula_clicada(sf::RenderWindow& window) {
+    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    for (int i = 0; i < qtd_celulaX; i++) {
+        for (int j = 0; j < qtd_celulaY; j++) {
+            if (matriz[i][j].botao.contem_ponto(mousePos.x, mousePos.y)) {
+                matriz[i][j].botao.setCor(sf::Color::Red);
+            }
+        }
+    }
+}*/

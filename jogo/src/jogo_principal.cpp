@@ -16,34 +16,6 @@ using namespace std;
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-class TelaReversi {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-
-    TelaReversi(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        
-        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108))
-    {
-        
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("wallpaperflare.jpg");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
 
 class TelaLig4 {
 private:

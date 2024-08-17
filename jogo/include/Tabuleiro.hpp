@@ -31,11 +31,13 @@ public:
     Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula);
     
     //std::vector<std::vector<Botao>> * getMatriz();
+    Tabuleiro() = default;
     int get_celula_status(int linha, int coluna); 
     void set_celula_status(int linha, int coluna, int status);
     int get_qtd_celulaX();
     int get_qtd_celulaY(); 
     void desenhar(sf::RenderWindow& window);
+    //void verificar_celula_clicada(sf::RenderWindow& window); 
 };
 
 

@@ -1,19 +1,32 @@
 #ifndef JOGOREVERSI_HPP
 #define JOGOREVERSI_HPP
-#include <SFML/Graphics.hpp>
-#include "../include/Interacao.hpp"
-#include "../include/Tabuleiro.hpp"
 
-class JogoReversi {
+#include "Jogo.hpp" // Inclui o cabeçalho da classe Jogo
+#include "Tabuleiro.hpp" // Inclui o cabeçalho da classe Tabuleiro
+#include "Jogador.hpp" // Inclui o cabeçalho da classe Jogador
+
+class JogoReversi : public Jogo {
+public:
+    JogoReversi(sf::RenderWindow& window, sf::Font& fonte,int tamanhoTabuleiro, std::string apelido_a, std::string apelido_b); // Construtor
+    ~JogoReversi(); // Destrutor
+
+    // Métodos públicos
+    void iniciarJogo();
+    void realizarJogada(int linha, int coluna);
+    bool verificarJogadaValida(int linha, int coluna);
+    bool condicao_vitoria(); 
+    void desenharJogo();
+
 private:
+    // Atributos privados
+    Tabuleiro tabuleiro;
+    Jogador* jogador1;
+    Jogador* jogador2;
+    Jogador* jogadorAtual;
     sf::RenderWindow& window; 
     sf::Font& fonte;
-public:
-    Botao botaoApelido; // Eu sei que isso vai criar o botão de apelido, mas não sei o que ele faz, manti para combinar com o Lig4
+    Botao botaoApelido;
     Botao botaoVoltar;
-    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, Tabuleiro & tabuleiro );
-    
-    void desenharJogo();
 };
 
-#endif
+#endif // JOGOREVERSI_HPP

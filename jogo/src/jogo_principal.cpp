@@ -16,8 +16,7 @@ using namespace std;
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-
-class TelaLig4 {
+class TelaReversi {
 private:
     sf::RenderWindow& window; 
     sf::Font& fonte;
@@ -26,19 +25,22 @@ public:
     Botao botaoApelido;
     Botao botaoVoltar;
 
-    TelaLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108))
+    TelaReversi(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
+        
+        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
+        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108))
     {
         
+        botaoApelido.criarBotoes();
         botaoVoltar.criarBotoes();
     }
 
     void desenharJogo() {
-        Wallpaper wallpaper("wallpaper_lig4.png");
+        Wallpaper wallpaper("wallpaperflare.jpg");
         wallpaper.redimensionar(window.getSize());
 
         wallpaper.desenhar(window);
-        
+        botaoApelido.desenhar(window);
         botaoVoltar.desenhar(window);
     }
 };
@@ -113,7 +115,8 @@ int main() {
     int qtd_celulaX=7; //colunas
     int qtd_celulaY=6; //linhas
     float tamanho_celula= 75.0;
-    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula);
+    float borda=3;
+    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);
@@ -124,12 +127,13 @@ int main() {
     TelaEstatisticas telaEstat (window,fonte);
     bool nao_ignora_mouse = true;
 
+    //Variaveis que testam se os jogadores estão logados
+    bool jogador1_valido = false; 
+    bool jogador2_valido = false;
+    bool jogadores_validos=false;
+
     while (window.isOpen()) {
-
-        
-
-
-        bool jogadores_validos = true; //dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
+ 
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
@@ -144,19 +148,62 @@ int main() {
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
                 
+                //Logica caso os jogadores estejam logados
+                if(jogadores_validos){
+                    telaMenu.play1.setCor(sf::Color(150, 129, 200,200));
+                    telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
+
+                    if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
+                        std::cout << "Botao Reversi clicado!!!" << std::endl;
+                    }
+                    if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
+                        std::cout << "Botao Lig4 clicado!!!" << std::endl;
+                    }
+                }
+
+
+                if(telaMenu.play1.foiClicado(window) && jogadores_validos){//Testa se o botao Reversi foi clicado
+                    std::cout << "Botao Reversi clicado!!!" << std::endl;
+                }
+                if(telaMenu.play2.foiClicado(window) && jogadores_validos){//Testa se o botao Lig4 foi clicado
+                    std::cout << "Botao Lig4 clicado!!!" << std::endl;
+                }
+
+                if(telaMenu.campoJogador1.deu_enter){//Logica para jogador 1 logar
+                    Jogador* jogador1 = new Jogador(telaMenu.campoJogador1.obterTexto());
+                    if(jogador1->existeConta()){
+                        std::cout<< "Jogador 1 foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=true;
+                    }else{
+                        std::cout<< "Jogador 1 nao foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=false;
+                    }
+                }
+
+                if(telaMenu.campoJogador2.deu_enter){ //Logica para jogador 2 logar
+                    Jogador* jogador2 = new Jogador(telaMenu.campoJogador2.obterTexto());
+                    if(jogador2->existeConta()){
+                        std::cout<< "Jogador 2 foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=true;
+                    }else{
+                        std::cout<< "Jogador 2 nao foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=false;
+                    }   
+                }
+    
+                if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
 
             }
+
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
-                if(telaCadastro.campoNome.deu_enter==1 && telaCadastro.campoApelido.deu_enter==1){
-                    std::cout<< "deu enter nos dois\n";
-                    telaCadastro.campoNome.deu_enter=0;
-                    telaCadastro.campoApelido.deu_enter=0;
 
+                if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
+                
                     //Logico pra testar se o cadastro é valido e guardar ele
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
-                    if(cadastroJogador->existeConta(telaCadastro.campoApelido.obterTexto())){
+                    if(cadastroJogador->existeConta()){
                         std::cout << "Cadastro criado com sucesso!" << std::endl;
                     }else{
                         std::cout << "Cadastro não realizado, tente novamente" << std::endl;
@@ -164,14 +211,35 @@ int main() {
                 }
         
             }
+
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);
-
+                if(telaExcluir.botaoExcluir.foiClicado(window)){
+                    std::string apelidoDaConta = telaExcluir.campoApelido.obterTexto();
+                    Jogador* excluiJogador = new Jogador(apelidoDaConta);
+                    if(excluiJogador->existeConta()){
+                        excluiJogador->excluirConta();
+                        std::cout<< "Conta excluida com sucesso!" << std::endl;
+                    }else{
+                        std::cout<< "Conta nao existente!" << std::endl;
+                    }
+                }
             }
+
             if (estadoAtual == "Estatisticas") {
                 telaEstat.campoPesquisa.processarEventos(event, window);
                 if (!telaEstat.botaoPesquisa.passouMouse(window)) {
                         telaEstat.botaoPesquisa.setCor(sf::Color(150, 129, 200,200)); 
+                    }
+
+                    //Logica para mostrar estatisticas
+                    if(telaEstat.botaoPesquisa.foiClicado(window)){
+                        Jogador* estatisticaJogador = new Jogador(telaEstat.campoPesquisa.obterTexto());
+                        if(estatisticaJogador->existeConta()){
+                            estatisticaJogador->getResultado();
+                        }else{
+                            std::cout << "Erro! Conta nao existente!" <<std::endl;
+                        }
                     }
             }
             //agora se sabe q deu enter nos dois campos e tem condição pra comparar se sao validos
@@ -375,7 +443,6 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
                 window.draw(circulo);
-                tabuleiroLIG4.desenhar(window);
             }
             
 

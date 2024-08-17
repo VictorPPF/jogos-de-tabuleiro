@@ -48,15 +48,16 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
     for(int i=0; i < qtd_celulaX; i++){
         for(int j=0; j < qtd_celulaY; j++){
             matriz[i][j].botao.desenhar(window);
+            matriz[i][j].botao.desenhar(window);
         }
     }    
     // Verifica se 0.5 segundo se passou
-    static sf::Clock relogio;
-    if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-        std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
-        relogio.restart(); // Reinicia o relógio
-    }
+    // static sf::Clock relogio;
+    // if (relogio.getElapsedTime().asSeconds() >= 0.5f) {
+    //     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+    //     //std::cout << "Mouse Position: (" << mousePos.x << ", " << mousePos.y << ")" << std::endl;
+    //     relogio.restart(); // Reinicia o relógio
+    // }
 
 }
 

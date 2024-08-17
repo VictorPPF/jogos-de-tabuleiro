@@ -53,6 +53,7 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
     for(int i=0; i < qtd_celulaX; i++){
         for(int j=0; j < qtd_celulaY; j++){
             matriz[i][j].botao.desenhar(window);
+            slots[i][j].botao.desenhar(window);
         }
     }    
     // Verifica se 0.5 segundo se passou

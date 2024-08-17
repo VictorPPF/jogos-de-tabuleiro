@@ -118,7 +118,7 @@ sf::RectangleShape Botao::getRetangulo() const{
 }
 
 void Botao::setCorHover(sf::Color cor){
-    this->corHover = cor;
+    corHover = cor;
 }
 
 void Botao::setCor(sf::Color cor) {

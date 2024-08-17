@@ -111,13 +111,13 @@ int main() {
     //cout << pos3 << endl;
 
     // Criação dos campos de texto
-    float origemX = 238.0;
-    float origemY = 166.0;
-    int qtd_celulaX=7; //colunas
-    int qtd_celulaY=6; //linhas
-    float tamanho_celula= 75.0;
-    float borda=3;
-    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
+    // float origemX = 238.0;
+    // float origemY = 166.0;
+    // int qtd_celulaX=7; //colunas
+    // int qtd_celulaY=6; //linhas
+    // float tamanho_celula= 75.0;
+    // float borda=3;
+    // Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
 
     TelaMenu telaMenu (window,fonte,event);
     TelaReversi telaRever (window,fonte);

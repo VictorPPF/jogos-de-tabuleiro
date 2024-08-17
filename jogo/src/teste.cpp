@@ -1,0 +1,11 @@
+class TelaReversi {
+private:
+    
+    
+
+public:
+    
+
+    
+    
+};

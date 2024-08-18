@@ -102,6 +102,7 @@ int main() {
     FimDeJogoRevesi fimDeJogoReversi (window,fonte);
 
     bool nao_ignora_mouse = true;
+    bool ignorarProximoClique = false;
 
     //Variaveis que testam se os jogadores estão logados
     bool jogador1_valido = false; 
@@ -248,9 +249,8 @@ int main() {
                 telaEstat.botaoPesquisa.setCorHover(sf::Color(43, 246, 21,200));
             }
             
-            
 
-            if ( event.mouseButton.button == sf::Mouse::Left) {
+            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
                 
                 if (estadoAtual == "MenuPrincipal") {
@@ -258,31 +258,38 @@ int main() {
                     // os botoes excluir, estatistica e lista estão sobrepostos, então tem que ignorar o primeiro evento de clique
                     if (telaMenu.botaoCadastro.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "Cadastro";
+                        nao_ignora_mouse = true;
                     }
                     //nao_ignora_mouse = true;
                     if (telaMenu.botaoListaJogadores.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "ListaDeJogadores";
+                        nao_ignora_mouse = true;
                     }
                     //nao_ignora_mouse = true;
                     if (telaMenu.botaoExcluirConta.passouMouse(window)) {
                         estadoAtual = "ExcluirConta";
+                        nao_ignora_mouse = true;
                     }
                     if (telaMenu.botaoEstatistica.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "Estatisticas";
+                        nao_ignora_mouse = true;
                     }
                     // os botoes confirma e estatistica estão sobrepostos, então tem que ignorar o primeiro evento de clique
-                    nao_ignora_mouse = true;
+                    //nao_ignora_mouse = true;
 
                     if (telaMenu.play1.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO REVERSI
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Reversi";
+                        nao_ignora_mouse = true;
                     }
                     if (telaMenu.play2.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO LIG4
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Lig4";
+                        nao_ignora_mouse = true;
                     }
+                    
                     
                 } else {
                     //regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas
@@ -303,11 +310,13 @@ int main() {
                 }
                 if (estadoAtual == "Reversi") {
                     //botao de voltar do jogo vai ficar em posição diferente
-                    if (TelaReversi.botaoVoltar.passouMouse(window)) { 
+                    if (TelaReversi.botaoVoltar.passouMouse(window)) {
                         estadoAtual = "MenuPrincipal";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
+                        nao_ignora_mouse = true;
                     }
+                    
                 }
                 if (estadoAtual == "Lig4") {
                     //botao de voltar do jogo vai ficar em posição diferente
@@ -316,9 +325,10 @@ int main() {
                         estadoAtual = "MenuPrincipal";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
+                        nao_ignora_mouse = true;
                     }
+                    
                 }
-                
                 if (estadoAtual == "Cadastro") {
                     if (telaCadastro.botaoConfirma.passouMouse(window) && cadastro_valido) {
                         telaCadastro.campoNome.limparTexto();
@@ -326,8 +336,7 @@ int main() {
                         nao_ignora_mouse = false;
                         telaCadastro.botaoConfirma.setCor(sf::Color(220, 100, 180,100)); 
                         telaCadastro.botaoConfirma.setCorHover(sf::Color(255, 0, 20, 100));
-                        estadoAtual = "MenuPrincipal";
-                        
+                        estadoAtual = "MenuPrincipal";                        
                     }
                 }
                 if (estadoAtual == "ListaDeJogadores") { 
@@ -353,6 +362,12 @@ int main() {
                     if (fimDeJogoLig4.botaoMenu.passouMouse(window)) { 
                         estadoAtual = "MenuPrincipal";
                         telaLig.fimDeJogo = false;
+                        nao_ignora_mouse = true;
+                    }
+                    if (fimDeJogoLig4.botaoRestart.passouMouse(window)){
+                        estadoAtual = "Lig4";
+                        telaLig.fimDeJogo = false;
+                        nao_ignora_mouse = true;
                     }
                 }
                 if (estadoAtual == "FimDeJogoReversi") {
@@ -360,10 +375,16 @@ int main() {
                     if (fimDeJogoReversi.botaoMenu.passouMouse(window)) { 
                         estadoAtual = "MenuPrincipal";
                         TelaReversi.fimDeJogo = false;
-                    
+                    }
+                    if (fimDeJogoLig4.botaoRestart.passouMouse(window)){
+                        estadoAtual = "Reversi";
+                        telaLig.fimDeJogo = false;
+                        nao_ignora_mouse = true;
                     }
                 }
-
+                if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+                    ignorarProximoClique = false;
+                }
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
@@ -415,7 +436,5 @@ int main() {
 
         window.display();
     }
-
     return 0;
 }
-

@@ -5,7 +5,7 @@
 JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
 : window(window), fonte(fonte), evento(evento),
 origemX(260.0), origemY(155.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(60.0), borda(3),
-jogadorAtual(1), botaoVoltar(234.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108)),
+jogadorAtual(1), botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
 tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento) 
 {
     // cria o botão "Desisti" na tela

@@ -100,4 +100,18 @@ class FimDeJogoLig4 {
         FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte);
         void desenharTelaFinal();
 };
+
+//FimDeJogoRevesi
+class FimDeJogoRevesi {
+    private:
+        sf::RenderWindow& window; 
+        sf::Font& fonte;
+
+    public:
+        Botao botaoMenu;
+        Botao botaoRestart;
+        FimDeJogoRevesi(sf::RenderWindow& window, sf::Font& fonte);
+        void desenharTelaFinal();
+};
+
 #endif // TELA_MENU_HPP

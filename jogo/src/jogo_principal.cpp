@@ -99,6 +99,8 @@ int main() {
     TelaExcluirConta telaExcluir (window,fonte);
     TelaEstatisticas telaEstat (window,fonte);
     FimDeJogoLig4 fimDeJogoLig4 (window,fonte);
+    FimDeJogoRevesi fimDeJogoReversi (window,fonte);
+
     bool nao_ignora_mouse = true;
 
     //Variaveis que testam se os jogadores estão logados
@@ -348,55 +350,33 @@ int main() {
                 }
                 if (estadoAtual == "FimDeJogoLig4") {
 
-                if (fimDeJogoLig4.botaoMenu.passouMouse(window)) { 
-                    estadoAtual = "MenuPrincipal";
-                    telaLig.fimDeJogo = false;
-                    
+                    if (fimDeJogoLig4.botaoMenu.passouMouse(window)) { 
+                        estadoAtual = "MenuPrincipal";
+                        telaLig.fimDeJogo = false;
+                    }
                 }
-                
+                if (estadoAtual == "FimDeJogoReversi") {
 
-            }
+                    if (fimDeJogoReversi.botaoMenu.passouMouse(window)) { 
+                        estadoAtual = "MenuPrincipal";
+                        TelaReversi.fimDeJogo = false;
+                    
+                    }
+                }
+
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
-                // Verifica as teclas pressionadas e move o círculo
-                
-                if (event.type == sf::Event::KeyPressed) {
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                    teste.mover(retangulo, sf::Keyboard::W);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                        
-                        teste.mover(retangulo, sf::Keyboard::A);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                        teste.mover(retangulo, sf::Keyboard::S);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                        teste.mover(retangulo, sf::Keyboard::D);
-                    }
+
+                if (TelaReversi.fimDeJogo){
+                    estadoAtual = "FimDeJogoReversi";
+                    TelaReversi.fimDeJogo = false;
                 }
                 
             }
             if (estadoAtual == "Lig4") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
-                // Verifica as teclas pressionadas e move o círculo
                 
-                if (event.type == sf::Event::KeyPressed) {
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                    teste.mover(circulo, sf::Keyboard::W);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                        
-                        teste.mover(circulo, sf::Keyboard::A);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                        teste.mover(circulo, sf::Keyboard::S);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                        teste.mover(circulo, sf::Keyboard::D);
-                    }
-                }
                 if (telaLig.fimDeJogo){
                     estadoAtual = "FimDeJogoLig4";
                     telaLig.fimDeJogo = false;
@@ -423,13 +403,13 @@ int main() {
                 telaEstat.desenharEstatisticas();
             } else if (estadoAtual == "Reversi") {
                 TelaReversi.desenharJogo();
-                window.draw(retangulo);
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
-                window.draw(circulo);
             }else if (estadoAtual == "FimDeJogoLig4") {
                 fimDeJogoLig4.desenharTelaFinal();
-
+            }
+            else if (estadoAtual == "FimDeJogoReversi") {
+                fimDeJogoReversi.desenharTelaFinal();
             }
             
 

@@ -1,56 +1,49 @@
 #ifndef JOGOREVERSI_HPP
 #define JOGOREVERSI_HPP
 
-#include "Jogo.hpp" // Inclui o cabeçalho da classe Jogo
-#include "Tabuleiro.hpp" // Inclui o cabeçalho da classe Tabuleiro
-#include "Jogador.hpp" // Inclui o cabeçalho da classe Jogador
+#include "Tabuleiro.hpp"
+#include "Jogador.hpp"
 
-class JogoReversi  {
+class JogoReversi {
 private:
-
-    // Atributos privados
-    Jogador* jogador1;
+    Jogador* jogador1; // ponteiros para os jogadores (não utilizado no código atual, mas pode ser útil para futuras implementações)
     Jogador* jogador2;
-    int jogadorAtual;
+    int jogadorAtual; // indica qual jogador está na vez de jogar
 
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-    sf::Event& evento;
-    float borda;
+    sf::RenderWindow& window; // referência para a janela onde o jogo será desenhado
+    sf::Font& fonte;    // referência para a fonte usada no jogo
+    sf::Event& evento; // referência para os eventos de entrada do jogador
+    float borda; // margem para posicionar as peças dentro das células
 
-    float origemX;
-    float origemY;
-    int qtd_celulaX; //colunas
-    int qtd_celulaY; //linhas
-    float tamanho_celula;
-    float icupado, jocupado; //indices da celula ocupada
-    
+    float origemX; // posição X de origem do tabuleiro
+    float origemY; // posição Y de origem do tabuleiro
+    int qtd_celulaX; // número de células na horizontal (colunas)
+    int qtd_celulaY; // número de células na vertical (linhas)
+    float tamanho_celula; // tamanho de cada célula no tabuleiro
+
 public:
-    Tabuleiro tabuleiroREVERSI;
-    Botao botaoVoltar;
-    bool fimDeJogo = false;
-    sf::CircleShape circulo;
-    
-    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento); // Construtor
-    //, std::string apelido_a, std::string apelido_b
-    //~JogoReversi(); // Destrutor
+    Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
+    Botao botaoVoltar; // botão para desistir e voltar ao menu principal
+    bool fimDeJogo = false; // indica se o jogo terminou
 
-    // Métodos públicos
-    //void iniciarJogo();
+    // construtor que inicializa os elementos do jogo
+    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
+    // método para desenhar o estado atual do jogo na tela
     void desenharJogo();
-    //void anima();
+    // método para limpar o tabuleiro e preparar para um novo jogo
     void LimpaTabuleiro();
-
+    // verifica se uma jogada é válida em uma determinada direção
     bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
-    bool jogada_valida( int x, int y, int jogador);
-    
+    // verifica se uma jogada em uma célula específica é válida
+    bool jogada_valida(int x, int y, int jogador);
+    // verifica se o jogo terminou
     bool condicao_vitoria();
+    // calcula e retorna o jogador que venceu o jogo (ou empate)
     int Ganhador();
-    bool FazJogada( int x, int y); 
-
-    //void poePeca(int i, int j, int jogador);
-    void acao ();
-
+    // realiza a jogada e altera as peças do tabuleiro, se for válida
+    bool FazJogada(int x, int y);
+    // executa as ações relacionadas ao clique do jogador
+    void acao();
 };
 
 #endif // JOGOREVERSI_HPP

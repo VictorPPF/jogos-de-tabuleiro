@@ -140,7 +140,23 @@ FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window
         botaoRestart.criarBotoes();
     }
 void FimDeJogoLig4::desenharTelaFinal() {
-    Wallpaper wallpaper("wallpaperflare.jpg");
+    Wallpaper wallpaper("wallpaper_fim_de_jogo.jpg");
+    wallpaper.redimensionar(window.getSize());
+
+    wallpaper.desenhar(window);
+    botaoMenu.desenhar(window);
+    botaoRestart.desenhar(window);
+}
+
+//FimDeJogoRevesi
+FimDeJogoRevesi::FimDeJogoRevesi(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
+    botaoMenu(84.f*3, 65.f*1.5, 84/4, 84*1, sf::Color(150, 129, 250), "Menu", 25.f, false, sf::Color(43, 0, 108)),
+    botaoRestart(84.f*3, 65.f*1.5, 84/4, 84*3, sf::Color(150, 129, 250), "Restart", 25.f, false, sf::Color(43, 0, 108)) {
+        botaoMenu.criarBotoes();
+        botaoRestart.criarBotoes();
+    }
+void FimDeJogoRevesi::desenharTelaFinal() {
+    Wallpaper wallpaper("wallpaper_fim_de_jogo.jpg");
     wallpaper.redimensionar(window.getSize());
 
     wallpaper.desenhar(window);

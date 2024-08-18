@@ -66,6 +66,7 @@ void JogoLig4::anima() {
                 // aqui fica a logica pra TELA DE FIM DE JOGO
                 LimpaTabuleiro();
                 fimDeJogo = true;
+                std::cout << "entrou no desenhar jogo perdeno soq no anima\n";
             }
             //alinha a peça certo com a ultima celula 
             
@@ -160,11 +161,30 @@ void JogoLig4::desenharJogo() {
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
     if(verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
-        std::cout << "Entrou na condição de vitoria" << std::endl;
+
+        if(jogadorAtual==1){
+            jogador1.vencedor(jogador2.getApelido(), "Lig4");
+        }else{
+            jogador2.vencedor(jogador1.getApelido(), "Lig4");
+        }
+
         LimpaTabuleiro();
         fimDeJogo = true;
     }
     // window.draw(circulo);
     // circulo.move(0,15);
     acao();
+}
+
+void JogoLig4::setJogadores(Jogador& player1, Jogador& player2){
+    if(player1.existeConta()){
+        jogador1=player1;
+    }else{
+        std::cout << "Erro: Jogador nao existente" << std::endl;
+    }
+    if(player2.existeConta()){
+        jogador2=player2;
+    }else{
+        std::cout << "Erro: Jogador nao existente" << std::endl;
+    }
 }

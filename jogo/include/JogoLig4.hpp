@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Interacao.hpp"
 #include "../include/Tabuleiro.hpp"
+#include "../include/Jogador.hpp"
 #include "../include/Jogo.hpp"
 
 class JogoLig4 : public Jogo {
@@ -18,7 +19,10 @@ private:
     float borda;
     float icupado, jocupado; //indices da celula ocupada
 
+
 public:
+    Jogador jogador1, jogador2;
+    void setJogadores(Jogador& _jogador1, Jogador& _jogador2);
     Botao botaoVoltar;
     bool fimDeJogo = false;
     sf::CircleShape circulo;

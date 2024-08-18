@@ -1,7 +1,7 @@
 #include "../include/JogoReversi.hpp"
 #include <iostream>
 
-JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento, std::string apelido_a, std::string apelido_b) 
+JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento) 
 : window(window), fonte(fonte), evento(evento),
 origemX(238.0), origemY(166.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(70.0), borda(3),
 jogadorAtual(1),botaoVoltar(234.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108)),
@@ -23,16 +23,16 @@ tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, bor
     
  
     // Criar os jogadores
-    jogador1 = new Jogador(apelido_a);
-    jogador2 = new Jogador(apelido_b);
+    //jogador1 = new Jogador(apelido_a);
+    //jogador2 = new Jogador(apelido_b);
     //sf::Color cor_jogador1 = sf::Color(102, 0, 102);
     //sf::Color cor_jogador2 = sf::Color(0, 51, 102);  
     jogadorAtual = 1;
 }
-JogoReversi::~JogoReversi() {
-    delete jogador1;
-    delete jogador2;
-}
+/*JogoReversi::~JogoReversi() {
+    //delete jogador1;
+    //delete jogador2;
+}*/
 
 
 bool JogoReversi:: VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador){
@@ -58,7 +58,7 @@ bool JogoReversi:: VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogad
     }
     return false;
 }
-bool JogoReversi::VerificaJogada(int x, int y, int jogador) {
+bool JogoReversi::jogada_valida(int x, int y, int jogador) {
     int direcoes[8][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
     for (auto& direcao : direcoes) {
         if (VerificaJogadaDirecao( x, y, direcao[0], direcao[1], jogador)) {
@@ -91,7 +91,7 @@ bool JogoReversi::FazJogada(int x, int y) {
     return jogadaEfetuada;
 }
 
-bool JogoReversi:: condicaoDeVitoria() {
+bool JogoReversi:: condicao_vitoria()  {
     bool tabuleiroCheio = true;
     for (int y = 0; y < 8; ++y) {
         for (int x = 0; x < 8; ++x) {
@@ -107,10 +107,10 @@ bool JogoReversi:: condicaoDeVitoria() {
     for (int y = 0; y < 8; ++y) {
         for (int x = 0; x < 8; ++x) {
             if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
-                if (VerificaJogada(x, y, jogadorAtual)) {
+                if (jogada_valida(x, y, jogadorAtual)) {
                     semJogadasParaJogador = false;
                 }
-                if (VerificaJogada(x, y, (jogadorAtual == 1) ? 2 : 1)) {
+                if (jogada_valida(x, y, (jogadorAtual == 1) ? 2 : 1)) {
                     semJogadasParaAdversario = false;
                 }
             }
@@ -174,7 +174,7 @@ void JogoReversi::desenharJogo() {
     wallpaper.desenhar(window);
     JogoReversi::botaoVoltar.desenhar(window);
     JogoReversi::tabuleiroREVERSI.desenhar(window);
-    if(condicaoDeVitoria()) {
+    if(condicao_vitoria()) {
         LimpaTabuleiro();
         int ganhador =Ganhador(); 
         fimDeJogo = true;

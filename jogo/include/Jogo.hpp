@@ -23,7 +23,7 @@ public:
 
     // Métodos abstratos que devem ser implementados pelas classes derivadas
     virtual bool condicao_vitoria() const = 0; // Verifica a condição de vitória
-    virtual bool jogada_valida() const = 0;    // Verifica se a jogada é válida
+    virtual bool jogada_valida(int x, int y, int jogador) const = 0;    // Verifica se a jogada é válida
 
     // Métodos acessores
     std::string get_jogador_atual() const { return jogador_atual; }

@@ -5,7 +5,7 @@
 #include "Tabuleiro.hpp" // Inclui o cabeçalho da classe Tabuleiro
 #include "Jogador.hpp" // Inclui o cabeçalho da classe Jogador
 
-class JogoReversi : public Jogo {
+class JogoReversi  {
 private:
 
     // Atributos privados
@@ -31,20 +31,20 @@ public:
     bool fimDeJogo = false;
     sf::CircleShape circulo;
     
-    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento, std::string apelido_a, std::string apelido_b); // Construtor
-    ~JogoReversi(); // Destrutor
+    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento); // Construtor
+    //, std::string apelido_a, std::string apelido_b
+    //~JogoReversi(); // Destrutor
 
     // Métodos públicos
     //void iniciarJogo();
     void desenharJogo();
-    void anima();
+    //void anima();
     void LimpaTabuleiro();
 
     bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
-    bool VerificaJogada( int x, int y, int jogador);
-    bool FazJogada(int x, int y);
+    bool jogada_valida( int x, int y, int jogador);
     
-    bool condicaoDeVitoria();
+    bool condicao_vitoria();
     int Ganhador();
     bool FazJogada( int x, int y); 
 

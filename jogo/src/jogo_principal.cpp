@@ -8,7 +8,8 @@
 #include "../include/Telas.hpp"
 #include "../include/Jogador.hpp"
 #include "../include/JogoLig4.hpp"
-#include "../include/JogoLig4.hpp"
+//#include "../include/JogoLig4.hpp"
+#include"../include/JogoReversi.hpp"
 
 #include <iostream>
 
@@ -16,35 +17,6 @@ using namespace std;
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-class TelaReversi {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-
-    TelaReversi(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        
-        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108))
-    {
-        
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("wallpaperflare.jpg");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
 
  //logica idiota de teste pra validar entrada de campos de texto
 bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
@@ -119,9 +91,9 @@ int main() {
     // float tamanho_celula= 75.0;
     // float borda=3;
     // Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
-
+ 
     TelaMenu telaMenu (window,fonte,event);
-    TelaReversi telaRever (window,fonte);
+    JogoReversi TelaReversi(window,fonte,event);
     JogoLig4 telaLig (window,fonte,event);
     TelaCadastro telaCadastro (window,fonte);
     TelaLista telaLista (window,fonte);
@@ -330,7 +302,7 @@ int main() {
                 }
                 if (estadoAtual == "Reversi") {
                     //botao de voltar do jogo vai ficar em posição diferente
-                    if (telaRever.botaoVoltar.passouMouse(window)) { 
+                    if (TelaReversi.botaoVoltar.passouMouse(window)) { 
                         estadoAtual = "MenuPrincipal";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
@@ -357,9 +329,7 @@ int main() {
                         
                     }
                 }
-                if (estadoAtual == "ListaDeJogadores") {
-                    
-                        
+                if (estadoAtual == "ListaDeJogadores") { 
                 }
                 if (estadoAtual == "ExcluirConta") {
                     if (telaExcluir.botaoExcluir.passouMouse(window) && jogador_existe) {
@@ -374,12 +344,8 @@ int main() {
                 }
                 if (estadoAtual == "Estatisticas") { //AQUI CHAMA AS ESTATISTICAS CONSULTANDO O HISTÓRICO
                     if (telaEstat.botaoPesquisa.passouMouse(window) && event.mouseButton.button == sf::Mouse::Left) {
-
                         telaEstat.botaoPesquisa.setCor(sf::Color(100, 129 - 50, 200)); //150, 129, 250 roxo padrao
-
                     }
-                    
-                    
                 }
                 if (estadoAtual == "FimDeJogoLig4") {
 
@@ -457,7 +423,7 @@ int main() {
             } else if (estadoAtual == "Estatisticas") {
                 telaEstat.desenharEstatisticas();
             } else if (estadoAtual == "Reversi") {
-                telaRever.desenharJogo();
+                TelaReversi.desenharJogo();
                 window.draw(retangulo);
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();

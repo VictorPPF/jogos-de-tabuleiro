@@ -4,7 +4,7 @@ LIB_DIRS = -LC:\SFML-2.6.1\lib
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lopengl32 -lsfml-audio
 
 # Lista de arquivos objeto
-OBJECTS = obj/Interacao.o obj/Wallpaper.o obj/jogo_principal.o obj/Tabuleiro.o obj/Historico.o obj/Jogador.o obj/CampoTexto.o obj/Telas.o obj/JogoLig4.o
+OBJECTS = obj/Interacao.o obj/Wallpaper.o obj/jogo_principal.o obj/Tabuleiro.o obj/Historico.o obj/Jogador.o obj/CampoTexto.o obj/Telas.o obj/JogoLig4.o obj/JogoReversi.o
 
 # Alvo principal
 all: link

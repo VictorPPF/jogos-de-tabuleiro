@@ -9,6 +9,7 @@
 #include "../include/Jogador.hpp"
 #include "../include/JogoLig4.hpp"
 #include"../include/JogoReversi.hpp"
+#include"../include/Jogo.hpp"
 
 #include <iostream>
 
@@ -310,6 +311,7 @@ int main() {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
                         estadoAtual = "MenuPrincipal";
+                        TelaReversi.LimpaTabuleiro();
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
@@ -326,13 +328,11 @@ int main() {
                         telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
                     }
-                    
                 }
                 if (estadoAtual == "Cadastro") {
                     if (telaCadastro.botaoConfirma.passouMouse(window) && cadastro_valido) {
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
-                        nao_ignora_mouse = false;
                         telaCadastro.botaoConfirma.setCor(sf::Color(220, 100, 180,100)); 
                         telaCadastro.botaoConfirma.setCorHover(sf::Color(255, 0, 20, 100));
                         estadoAtual = "MenuPrincipal";                        

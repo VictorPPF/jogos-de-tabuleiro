@@ -304,14 +304,14 @@ int main() {
                         //pra nao ficar escrito na tela coisa antiga
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
-                        
-
                     }
                 }
                 if (estadoAtual == "Reversi") {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
                         estadoAtual = "MenuPrincipal";
+                        TelaReversi.fimDeJogo = false;
+                        TelaReversi.LimpaTabuleiro();
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
@@ -323,6 +323,7 @@ int main() {
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;
                         estadoAtual = "MenuPrincipal";
+                        telaLig.LimpaTabuleiro();
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
@@ -375,15 +376,16 @@ int main() {
                     if (fimDeJogoReversi.botaoMenu.passouMouse(window)) { 
                         estadoAtual = "MenuPrincipal";
                         TelaReversi.fimDeJogo = false;
+                        nao_ignora_mouse = true;
                     }
-                    if (fimDeJogoLig4.botaoRestart.passouMouse(window)){
+                    if (fimDeJogoReversi.botaoRestart.passouMouse(window)){
                         estadoAtual = "Reversi";
-                        telaLig.fimDeJogo = false;
+                        TelaReversi.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
                 }
                 if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
-                    ignorarProximoClique = false;
+                    nao_ignora_mouse = false;
                 }
             }
             if (estadoAtual == "Reversi") {

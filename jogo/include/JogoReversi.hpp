@@ -6,27 +6,51 @@
 #include "Jogador.hpp" // Inclui o cabeçalho da classe Jogador
 
 class JogoReversi : public Jogo {
+private:
+
+    // Atributos privados
+    Jogador* jogador1;
+    Jogador* jogador2;
+    int jogadorAtual;
+
+    sf::RenderWindow& window; 
+    sf::Font& fonte;
+    sf::Event& evento;
+    float borda;
+
+    float origemX;
+    float origemY;
+    int qtd_celulaX; //colunas
+    int qtd_celulaY; //linhas
+    float tamanho_celula;
+    float icupado, jocupado; //indices da celula ocupada
+    
 public:
-    JogoReversi(sf::RenderWindow& window, sf::Font& fonte,int tamanhoTabuleiro, std::string apelido_a, std::string apelido_b); // Construtor
+    Tabuleiro tabuleiroREVERSI;
+    Botao botaoVoltar;
+    bool fimDeJogo = false;
+    sf::CircleShape circulo;
+    
+    JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento, std::string apelido_a, std::string apelido_b); // Construtor
     ~JogoReversi(); // Destrutor
 
     // Métodos públicos
-    void iniciarJogo();
-    void realizarJogada(int linha, int coluna);
-    bool verificarJogadaValida(int linha, int coluna);
-    bool condicao_vitoria(); 
+    //void iniciarJogo();
     void desenharJogo();
+    void anima();
+    void LimpaTabuleiro();
 
-private:
-    // Atributos privados
-    Tabuleiro tabuleiro;
-    Jogador* jogador1;
-    Jogador* jogador2;
-    Jogador* jogadorAtual;
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-    Botao botaoApelido;
-    Botao botaoVoltar;
+    bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
+    bool VerificaJogada( int x, int y, int jogador);
+    bool FazJogada(int x, int y);
+    
+    bool condicaoDeVitoria();
+    int Ganhador();
+    bool FazJogada( int x, int y); 
+
+    //void poePeca(int i, int j, int jogador);
+    void acao ();
+
 };
 
 #endif // JOGOREVERSI_HPP

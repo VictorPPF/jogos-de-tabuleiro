@@ -23,7 +23,7 @@ void imprimirMatriz(const int matriz[8][8]) {
     }
 }
 
-// Verifica e inverte peças em uma direção
+// Verifica peças em uma direção
 bool VerificaDirecao(int matriz[8][8], int x, int y, int jogador, int dx, int dy) {
     int adversario = (jogador == 1) ? 2 : 1;
     bool encontrouAdversario = false;

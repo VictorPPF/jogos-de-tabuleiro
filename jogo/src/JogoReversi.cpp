@@ -1,129 +1,182 @@
 #include "../include/JogoReversi.hpp"
 #include <iostream>
 
-JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte,int tamanhoTabuleiro, std::string apelido_a, std::string apelido_b) 
-: window(window), fonte(fonte),
-botaoApelido(502.0f, 49.0f, 327.0f, 217.0f, sf::Color(223, 232, 106, 100), "", 15.0f, false),
-botaoVoltar(284.0f, 65.0f, 0.0f, 0.0f, sf::Color(150, 129, 250), "Voltar", 25.0f, false, sf::Color(43, 0, 108)){  
-    botaoApelido.criarBotoes();
-    botaoVoltar.criarBotoes();
-    // Inicializar o tabuleiro com as 4 peças iniciais
-    tabuleiro = Tabuleiro(498, 449, tamanhoTabuleiro, tamanhoTabuleiro, 50);
-    int posicao_meio = tamanhoTabuleiro / 2;
-    tabuleiro.set_celula_status(posicao_meio, posicao_meio, 1);
-    tabuleiro.set_celula_status(posicao_meio-1, posicao_meio-1, 1);
-    tabuleiro.set_celula_status(posicao_meio, posicao_meio-1, 2);
-    tabuleiro.set_celula_status(posicao_meio-1, posicao_meio, 2);
+JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento, std::string apelido_a, std::string apelido_b) 
+: window(window), fonte(fonte), evento(evento),
+origemX(238.0), origemY(166.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(70.0), borda(3),
+jogadorAtual(1),botaoVoltar(234.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108)),
+tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento)
 
+{  
+   
+    botaoVoltar.criarBotoes();
+    circulo.setRadius(tamanho_celula / 2 - borda);
+    circulo.setPosition(origemX + tabuleiroREVERSI.indice_i*tamanho_celula + borda, origemY - tamanho_celula);
+    circulo.setFillColor(sf::Color(255, 100, 250));
+
+    // Inicializar o tabuleiro com as 4 peças iniciais
+    int posicao_meio = qtd_celulaX / 2;
+    tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio, 1);
+    tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio-1, 1);
+    tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio-1, 2);
+    tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio, 2);
+    
+ 
     // Criar os jogadores
     jogador1 = new Jogador(apelido_a);
     jogador2 = new Jogador(apelido_b);
-    sf::Color cor_jogador1 = sf::Color(102, 0, 102);
-    sf::Color cor_jogador2 = sf::Color(0, 51, 102);  
-
-    jogadorAtual = jogador1;
+    //sf::Color cor_jogador1 = sf::Color(102, 0, 102);
+    //sf::Color cor_jogador2 = sf::Color(0, 51, 102);  
+    jogadorAtual = 1;
 }
-
 JogoReversi::~JogoReversi() {
     delete jogador1;
     delete jogador2;
 }
 
-bool JogoReversi::verificarJogadaValida(int linha, int coluna) {
-    bool jogadaValida = false;
 
-    if (linha < 0 || linha >= tabuleiro.get_qtd_celulaX() || coluna < 0 || coluna >= tabuleiro.get_qtd_celulaY()) {
-        return jogadaValida;
-    }
-    if (tabuleiro.get_celula_status(linha, coluna) != 0) {
-        return jogadaValida;
-    }
+bool JogoReversi:: VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador){
+    int adversario = (jogador == 1) ? 2 : 1;
+    bool encontrouAdversario = false;
+    int i = x + dx;
+    int j = y + dy;
 
-    //Logica de 
-    
-
-
-void JogoReversi::realizarJogada(int linha, int coluna) {
-    if (!verificarJogadaValida(linha, coluna)) return;
-
-    int jogador = jogadorAtual == jogador1 ? 1 : 2;
-    int adversario = jogador == 1 ? 2 : 1;
-    tabuleiro.set_celula_status(linha, coluna, jogador);
-
-    int direcoes[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, 1}, {-1, 1}, {1, -1}};
-    //Cima, baixo, direita, esquerda, diagonal superior esquerda, diagonal inferior direita, diagonal superior direita, diagonal inferior esquerda
-    for (auto& dir : direcoes) {
-        int dx = dir[0], dy = dir[1];
-        int x = linha + dx, y = coluna + dy;
-        bool encontrouAdversario = false;
-        std::vector<std::pair<int, int>> paraVirar;
-
-        while (x >= 0 && x < tabuleiro.get_qtd_celulaX() && y >= 0 && y < tabuleiro.get_qtd_celulaY()) {
-            int status = tabuleiro.get_celula_status(x, y);
-            if (status == adversario) {
-                paraVirar.push_back({x, y});
-                encontrouAdversario = true;
-            } else if (status == jogador && encontrouAdversario) {
-                for (auto& p : paraVirar) {
-                    tabuleiro.set_celula_status(p.first, p.second, jogador);
-                }
-                break;
+    while (i >= 0 && i < 8 && j >= 0 && j < 8) {
+        if (tabuleiroREVERSI.get_celula_status(x, y) == adversario) {
+            encontrouAdversario = true;
+        } else if (tabuleiroREVERSI.get_celula_status(x, y) == jogador) {
+            if (encontrouAdversario) {
+                return true;
             } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        i += dx;
+        j += dy;
+    }
+    return false;
+}
+bool JogoReversi::VerificaJogada(int x, int y, int jogador) {
+    int direcoes[8][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
+    for (auto& direcao : direcoes) {
+        if (VerificaJogadaDirecao( x, y, direcao[0], direcao[1], jogador)) {
+            return true;
+        }
+    }
+    return false;
+}
+bool JogoReversi::FazJogada(int x, int y) {
+    if (tabuleiroREVERSI.get_celula_status(x, y) != 0) {
+        return false;
+    }
+    bool jogadaEfetuada = false;
+    int direcoes[8][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
+    for (auto& direcao : direcoes) {
+        if (VerificaJogadaDirecao( x, y, direcao[0], direcao[1], jogadorAtual)) {
+            int i = x + direcao[0];
+            int j = y + direcao[1];
+            while (tabuleiroREVERSI.get_celula_status(j, i) != jogadorAtual) {
+                tabuleiroREVERSI.set_celula_status(j, i, jogadorAtual);
+                i += direcao[0];
+                j += direcao[1];
+            }
+            jogadaEfetuada = true;
+        }
+    }
+    if (jogadaEfetuada) {
+       tabuleiroREVERSI.set_celula_status(x, y, jogadorAtual); 
+    }
+    return jogadaEfetuada;
+}
+
+bool JogoReversi:: condicaoDeVitoria() {
+    bool tabuleiroCheio = true;
+    for (int y = 0; y < 8; ++y) {
+        for (int x = 0; x < 8; ++x) {
+            if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
+                tabuleiroCheio = false;
                 break;
             }
-            x += dx;
-            y += dy;
         }
+        if (!tabuleiroCheio) break;
     }
-
-    jogadorAtual = jogadorAtual == jogador1 ? jogador2 : jogador1;
-}
-
-bool JogoReversi::condicao_vitoria() {
-    int pontos_jogador1 = 0;
-    int pontos_jogador2 = 0;
-
-    for (int i = 0; i < tabuleiro.get_qtd_celulaX(); ++i) {
-        for (int j = 0; j < tabuleiro.get_qtd_celulaY(); ++j) {
-            int status = tabuleiro.get_celula_status(i, j);
-            if (status == 1) pontos_jogador1++;
-            if (status == 2) pontos_jogador2++;
-        }
-    }
-
-    // Verificar se não há mais jogadas válidas
-    for (int i = 0; i < tabuleiro.get_qtd_celulaX(); ++i) {
-        for (int j = 0; j < tabuleiro.get_qtd_celulaY(); ++j) {
-            if (verificarJogadaValida(i, j)) {
-                return false; // Ainda há jogadas possíveis
+    bool semJogadasParaJogador = true;
+    bool semJogadasParaAdversario = true;
+    for (int y = 0; y < 8; ++y) {
+        for (int x = 0; x < 8; ++x) {
+            if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
+                if (VerificaJogada(x, y, jogadorAtual)) {
+                    semJogadasParaJogador = false;
+                }
+                if (VerificaJogada(x, y, (jogadorAtual == 1) ? 2 : 1)) {
+                    semJogadasParaAdversario = false;
+                }
             }
         }
     }
-
-    // Determinar vencedor e imprimir resultado
-    if (pontos_jogador1 > pontos_jogador2) {
-        std::cout << "Jogador 1 vence com " << pontos_jogador1 << " pontos!" << std::endl;
-    } else if (pontos_jogador2 > pontos_jogador1) {
-        std::cout << "Jogador 2 vence com " << pontos_jogador2 << " pontos!" << std::endl;
-    } else {
-        std::cout << "Empate!" << std::endl;
+    return tabuleiroCheio || (semJogadasParaJogador && semJogadasParaAdversario);
+}
+int JogoReversi::Ganhador() {
+    int pts_jogador1 = 0;
+    int pts_jogador2 = 0;
+    for (int y = 0; y < 8; ++y) {
+        for (int x = 0; x < 8; ++x) {
+            if ( tabuleiroREVERSI.get_celula_status(x,y)== 1) {
+                jogador1++;
+            } else if (tabuleiroREVERSI.get_celula_status(x,y) == 2) {
+                jogador2++;
+            }
+        }
     }
-    return true;
+    if (jogador1 > jogador2) return 1;
+    if (jogador2 > jogador1) return 2;
+    return 0;
+}
+
+void JogoReversi::acao() {
+    if (tabuleiroREVERSI.deuClique) {
+        // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
+        circulo.setPosition(origemX + tabuleiroREVERSI.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
+        // Executa a função poePeca pra encontrar a posição certa
+        FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j);
+        std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroREVERSI.indice_i << std::endl;
+        // Troca de jogador
+        jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+        // Reseta o clique
+        tabuleiroREVERSI.deuClique = false;
+    }
 }
 
 
-
-
-void desenharJogo() {
-        Wallpaper wallpaper("wallpaperflare.jpg");
-        wallpaper.redimensionar(window.getSize());
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-        tabuleiro.desenhar(window);
+void JogoReversi::LimpaTabuleiro() {
+    for(int i=0; i < qtd_celulaX; i++){
+        for(int j=0; j < qtd_celulaY; j++){
+            tabuleiroREVERSI.matriz[i][j].setEstado(0);
+            tabuleiroREVERSI.slots[i][j].botao.setCor(sf::Color(121,122,147));
+        }
+    }
+    circulo.setFillColor(sf::Color(121,122,147));
+    // Reinicia a posição do círculo
+    circulo.setPosition(origemX + tabuleiroREVERSI.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
+    // Reinicia o estado do jogo
+    jogadorAtual = 1;
+    icupado = 0;
+    jocupado = 0;
+    fimDeJogo = false;
 }
 
-void handleEvent(sf::Event& event) {
-        //Eu não sei se isso era para estar aqui ou em tabuleiro mas é para me passar a linha e coluna referente ao boltao clicado se houver um
-        //Clique 
+void JogoReversi::desenharJogo() {
+    Wallpaper wallpaper("wallpaper_lig4.png");
+    wallpaper.redimensionar(window.getSize());
+
+    wallpaper.desenhar(window);
+    JogoReversi::botaoVoltar.desenhar(window);
+    JogoReversi::tabuleiroREVERSI.desenhar(window);
+    if(condicaoDeVitoria()) {
+        LimpaTabuleiro();
+        int ganhador =Ganhador(); 
+        fimDeJogo = true;
+    }
 }

@@ -89,6 +89,9 @@ bool JogoReversi::FazJogada(int x, int y) {
     return true;
 }
 
+// Variável para controlar se houve desistência
+bool jogadorDesistiu = false;
+
 // executa a ação do jogo quando o jogador clica em uma célula
 void JogoReversi::acao() {
     if (tabuleiroREVERSI.deuClique) {
@@ -99,22 +102,44 @@ void JogoReversi::acao() {
         }
         tabuleiroREVERSI.deuClique = false; // reseta o clique para não executar múltiplas jogadas
     }
+    // Verifica se o botão "Desistir" foi clicado
+    if (botaoVoltar.foiClicado(window)) {
+        jogadorDesistiu = true; // Define a flag de desistência
+    }
 }
 
+
 bool JogoReversi::condicao_vitoria() {
+    bool temEspacoVazio = false; // Variável para verificar se há espaços vazios no tabuleiro
+
     for (int y = 0; y < 8; ++y) {
         for (int x = 0; x < 8; ++x) {
-            if (tabuleiroREVERSI.get_celula_status(x, y) == 0 &&
-                (jogada_valida(x, y, 1) || jogada_valida(x, y, 2))) {
-                return false;
+            if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
+                temEspacoVazio = true; // Se encontrar um espaço vazio, define a variável como true
+                if (jogada_valida(x, y, 1) || jogada_valida(x, y, 2)) {
+                    return false; // Se houver jogada possível, retorna false (jogo não acabou)
+                }
             }
         }
     }
-    return true; // se não houver jogadas válidas, o jogo termina
+
+    // Se não encontrou nenhum espaço vazio, o tabuleiro está cheio e o jogo acabou
+    if (!temEspacoVazio) {
+        return true;
+    }
+
+    // Se chegou aqui e jogadorDesistiu é true, o jogo acabou por desistência
+    if (jogadorDesistiu) {
+        return true;
+    }
+
+    // Se chegou aqui, significa que há espaços vazios, mas nenhum jogador pode fazer uma jogada
+    return true; // Jogo acabou 
 }
 
 // calcula e retorna o ganhador com base na quantidade de peças de cada jogador
 int JogoReversi::Ganhador() {
+    
     int pts_jogador1 = 0;
     int pts_jogador2 = 0;
     for (int y = 0; y < 8; ++y) {
@@ -144,7 +169,9 @@ void JogoReversi::LimpaTabuleiro() {
     // reseta a vez para o jogador 1
     jogadorAtual = 1;
     // indica que o jogo não está mais no estado de fim de jogo
-    fimDeJogo = false;
+    //fimDeJogo = false;
+    // Reseta a flag de desistência ao reiniciar o jogo
+    jogadorDesistiu = false;
 }
 
 // desenha o estado atual do jogo na tela
@@ -157,6 +184,8 @@ void JogoReversi::desenharJogo() {
     // desenha o botão de "Desistir"
     botaoVoltar.desenhar(window);
     tabuleiroREVERSI.desenhar(window);
+    // executa as ações relacionadas ao clique do jogador
+    acao();
 
     // loop para destacar as jogadas válidas para o jogador atual
     for (int i = 0; i < qtd_celulaX; ++i) {
@@ -171,13 +200,17 @@ void JogoReversi::desenharJogo() {
             }
         }
     }
+
+    
+
     // verifica se o jogo terminou
-    if (condicao_vitoria()) {
-        // limpa o tabuleiro para um novo jogo
-        LimpaTabuleiro();
+    if (condicao_vitoria()) { //uma das duas tem que ser verdadeira
         // determina e imprime o ganhador ou se houve empate
         int ganhador = Ganhador();
-        fimDeJogo = true;
+        // limpa o tabuleiro para um novo jogo
+        LimpaTabuleiro();
+        
+        
         // Imprime o ganhador (ou empate) no terminal
         if (ganhador == 1) {
             std::cout << "Jogador 1 (Vermelho) venceu!" << std::endl;
@@ -186,8 +219,9 @@ void JogoReversi::desenharJogo() {
         } else {
             std::cout << "Empate!" << std::endl;
         }
+
+        fimDeJogo = true;
     }
 
-    // executa as ações relacionadas ao clique do jogador
-    acao();
+    
 }

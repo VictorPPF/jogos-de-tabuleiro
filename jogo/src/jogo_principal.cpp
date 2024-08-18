@@ -57,40 +57,12 @@ int main() {
     string estadoAtual = "MenuPrincipal"; // I CANT STRESS ENOUGH HOW IMPORTANT THIS VARIABLE IS
 
     //---------------------------------------------------------------------------------------------//
-
-    // Configurações iniciais de cor e forma
-    sf::Color cor(255, 130, 190); //variavel com parametros de valor de cor (vai de 0 a 255)
-    sf::CircleShape circulo(50.f);
-    circulo.setFillColor(sf::Color::Blue);
-
-    // Define a posição inicial do círculo
-    circulo.setPosition(0.0, 0.0);
-    //retangulo igual o circulo
-    sf::RectangleShape retangulo(sf::Vector2f(100.f, 100.f));
-    retangulo.setFillColor(sf::Color::Red);
-    retangulo.setPosition(0.0, 0.0);
-
-    // Cria dois pontos com coordenadas diferentes
-    PontoF pos1(2.0,3.0);
-    PontoF pos2(200.0,200.0);
-    Movimentacao teste;
-    
     
     // Cria um relógio para medir o tempo
     sf::Clock relogio;
-    
-    PontoF pos3 = pos1 + pos2;
 
     //cout << pos3 << endl;
 
-    // Criação dos campos de texto
-    // float origemX = 238.0;
-    // float origemY = 166.0;
-    // int qtd_celulaX=7; //colunas
-    // int qtd_celulaY=6; //linhas
-    // float tamanho_celula= 75.0;
-    // float borda=3;
-    // Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula,borda);
  
     TelaMenu telaMenu (window,fonte,event);
     JogoReversi TelaReversi(window,fonte,event);
@@ -304,8 +276,7 @@ int main() {
                 if (estadoAtual == "Reversi") {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
-                        estadoAtual = "MenuPrincipal";
-                        TelaReversi.LimpaTabuleiro();
+                        estadoAtual = "FimDeJogoReversi";
                         telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
@@ -319,6 +290,7 @@ int main() {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;
+                        telaLig.LimpaTabuleiro();
                         estadoAtual = "MenuPrincipal";
                         telaLig.LimpaTabuleiro();
                         nao_ignora_mouse = true;
@@ -367,26 +339,26 @@ int main() {
                 if (estadoAtual == "FimDeJogoReversi") {
 
                     if (fimDeJogoReversi.botaoMenu.passouMouse(window)) { 
-                        estadoAtual = "MenuPrincipal";
                         TelaReversi.fimDeJogo = false;
+                        estadoAtual = "MenuPrincipal";
                         nao_ignora_mouse = true;
                     }
                     if (fimDeJogoReversi.botaoRestart.passouMouse(window)){
                         estadoAtual = "Reversi";
-                        TelaReversi.fimDeJogo = false;
+                        TelaReversi.fimDeJogo = true;
                         nao_ignora_mouse = true;
                     }
                 }
-                if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
-                    nao_ignora_mouse = false;
-                }
+                // if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+                //     nao_ignora_mouse = false;
+                // }
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
 
                 if (TelaReversi.fimDeJogo){
                     estadoAtual = "FimDeJogoReversi";
-                    TelaReversi.fimDeJogo = false;
+                    //TelaReversi.fimDeJogo = false;
                 }
                 
             }

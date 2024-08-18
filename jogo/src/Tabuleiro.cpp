@@ -89,3 +89,6 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
         }
     }
 }*/
+
+// Exemplo de como capturar o clique e armazenar a posição
+

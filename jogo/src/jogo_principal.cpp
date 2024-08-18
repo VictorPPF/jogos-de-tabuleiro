@@ -8,7 +8,6 @@
 #include "../include/Telas.hpp"
 #include "../include/Jogador.hpp"
 #include "../include/JogoLig4.hpp"
-//#include "../include/JogoLig4.hpp"
 #include"../include/JogoReversi.hpp"
 
 #include <iostream>

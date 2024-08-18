@@ -3,7 +3,7 @@
 
 JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento) 
 : window(window), fonte(fonte), evento(evento),
-origemX(238.0), origemY(166.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(70.0), borda(3),
+origemX(260.0), origemY(155.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(60.0), borda(3),
 jogadorAtual(1),botaoVoltar(234.f, 65.f, 0, 0, sf::Color(150, 129, 250), "DESISTI !", 25.f, false, sf::Color(43, 0, 108)),
 tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento)
 
@@ -140,14 +140,18 @@ void JogoReversi::acao() {
         // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
         circulo.setPosition(origemX + tabuleiroREVERSI.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
         // Executa a função poePeca pra encontrar a posição certa
-        FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j);
-        std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroREVERSI.indice_i << std::endl;
+        if (FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j)) {
+            jogadorAtual = (jogadorAtual == 1) ? 2 : 1;  // Alterna o jogador
+        } else {
+            std::cout << "Jogada inválida. Tente novamente." << std::endl;
+        }
+        //std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroREVERSI.indice_i << std::endl;
         // Troca de jogador
         jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
         // Reseta o clique
         tabuleiroREVERSI.deuClique = false;
     }
-}
+} 
 
 
 void JogoReversi::LimpaTabuleiro() {
@@ -167,8 +171,8 @@ void JogoReversi::LimpaTabuleiro() {
     fimDeJogo = false;
 }
 
-void JogoReversi::desenharJogo() {
-    Wallpaper wallpaper("wallpaper_lig4.png");
+/*void JogoReversi::desenharJogo() {
+    Wallpaper wallpaper("wallpaper_reversi.png");
     wallpaper.redimensionar(window.getSize());
 
     wallpaper.desenhar(window);
@@ -179,4 +183,42 @@ void JogoReversi::desenharJogo() {
         int ganhador =Ganhador(); 
         fimDeJogo = true;
     }
+
+    acao(); 
+}*/
+void JogoReversi::desenharJogo() {
+    Wallpaper wallpaper("wallpaper_reversi.png");
+    wallpaper.redimensionar(window.getSize());
+
+    wallpaper.desenhar(window);
+    botaoVoltar.desenhar(window);
+    tabuleiroREVERSI.desenhar(window);
+
+    // Loop para verificar o status de cada célula e desenhar as bolinhas com a cor correspondente
+    for (int i = 0; i < qtd_celulaX; ++i) {
+        for (int j = 0; j < qtd_celulaY; ++j) {
+            int status = tabuleiroREVERSI.get_celula_status(i, j);
+
+            // Define a cor da bolinha com base no status da célula
+            if (status == 0) {
+                circulo.setFillColor(sf::Color(121,122,147)); // Cinza
+            } else if (status == 1) {
+                circulo.setFillColor(sf::Color::Red); // Vermelha
+            } else if (status == 2) {
+                circulo.setFillColor(sf::Color::Yellow); // Amarela
+            }
+
+            // Define a posição da bolinha e a desenha na tela
+            circulo.setPosition(origemX + i * tamanho_celula + borda, origemY + j * tamanho_celula + borda);
+            window.draw(circulo);
+        }
+    }
+
+    if (condicao_vitoria()) {
+        LimpaTabuleiro();
+        int ganhador = Ganhador(); 
+        fimDeJogo = true;
+    }
+
+    acao(); 
 }

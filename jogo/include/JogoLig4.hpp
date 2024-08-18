@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Interacao.hpp"
 #include "../include/Tabuleiro.hpp"
+#include "../include/Jogo.hpp"
 
-class JogoLig4 {
+class JogoLig4 : public Jogo {
 private:
     sf::RenderWindow& window; 
     sf::Font& fonte;
@@ -22,14 +23,15 @@ public:
     bool fimDeJogo = false;
     sf::CircleShape circulo;
     Tabuleiro tabuleiroLIG4;
-    JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
-    void desenharJogo();
-    void acao ();
-    void poePeca(int i, int j, int jogador);
     int jogadorAtual;
-    void anima();
-    bool verificaCondicaoVitoria(int jogador, int linha, int coluna);
-    void LimpaTabuleiro();
+
+    JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
+    void desenharJogo() override;
+    void acao () override;
+    void poePeca(int i, int j, int jogador) override;
+    void anima() override;
+    bool verificaCondicaoVitoria(int jogador, int linha, int coluna) override;
+    void LimpaTabuleiro() override;
 };
 
 #endif

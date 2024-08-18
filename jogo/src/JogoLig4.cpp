@@ -1,19 +1,17 @@
 #include "../include/JogoLig4.hpp"
 #include "../include/Wallpaper.hpp"
+#include "../include/Jogo.hpp"
 
-JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento) : window(window), fonte(fonte), evento(evento),
-        origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), tamanho_celula(75.0), borda(3), icupado(0), jocupado(0),
-        jogadorAtual(1),botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
-        tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento)
-        
-    {
-        //circulo(tamanho_celula / 2 - borda, 0, origemX, origemY - tamanho_celula, sf::Color(150, 129, 250), true),
-        botaoVoltar.criarBotoes();
-        circulo.setRadius(tamanho_celula / 2 - borda);
-        circulo.setPosition(origemX + tabuleiroLIG4.indice_i*tamanho_celula + borda, origemY - tamanho_celula);
-        circulo.setFillColor(sf::Color(255, 100, 250));
-
-    }
+JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
+    : window(window), fonte(fonte), evento(evento),  origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), 
+        tamanho_celula(75.0), fimDeJogo(false), botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
+        tabuleiroLIG4 (origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento), jogadorAtual (1), icupado(0), jocupado(0) {
+    
+    botaoVoltar.criarBotoes();
+    circulo.setRadius(tamanho_celula / 2 - borda);
+    circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
+    circulo.setFillColor(sf::Color(255, 100, 250));
+}
 
 void JogoLig4::acao() {
     if (tabuleiroLIG4.deuClique) {
@@ -154,6 +152,7 @@ void JogoLig4::LimpaTabuleiro() {
 }
 
 void JogoLig4::desenharJogo() {
+
     Wallpaper wallpaper("wallpaper_lig4.png");
     wallpaper.redimensionar(window.getSize());
 
@@ -161,6 +160,7 @@ void JogoLig4::desenharJogo() {
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
     if(verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
+        std::cout << "Entrou na condição de vitoria" << std::endl;
         LimpaTabuleiro();
         fimDeJogo = true;
     }

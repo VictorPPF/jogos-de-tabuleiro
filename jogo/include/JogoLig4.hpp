@@ -27,6 +27,7 @@ public:
     sf::CircleShape circulo;
     Tabuleiro tabuleiroLIG4;
     int jogadorAtual;
+    std::string nomeVencedor;
 
     //Métodos herdados
     JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
@@ -36,7 +37,7 @@ public:
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
     bool FazJogada(int i, int j) override;
     bool verificaCondicaoVitoria(int linha, int coluna);
-    
+    std::string getNomeVencedor() const override;
     void anima();
 };
 

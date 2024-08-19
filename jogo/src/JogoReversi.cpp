@@ -59,11 +59,19 @@ void JogoReversi::desenharJogo() {
 
     // verifica se o jogo terminou
     if (verificaCondicaoVitoria()) { //uma das duas tem que ser verdadeira
+        if(jogadorAtual==2){
+            jogador1.vencedor(jogador2.getApelido(), "Lig4");
+            nomeVencedor = jogador1.getApelido();
+            std::cout << "Jogador " << jogador1.getApelido() << " venceu!" << std::endl;
+        }else{
+            jogador2.vencedor(jogador1.getApelido(), "Lig4");
+            nomeVencedor = jogador2.getApelido();
+            std::cout << "Jogador " << jogador2.getApelido() << " venceu!" << std::endl;
+        }
         // determina e imprime o ganhador ou se houve empate
         int ganhador = Ganhador();
         // limpa o tabuleiro para um novo jogo
         LimpaTabuleiro();
-        
         
         // Imprime o ganhador (ou empate) no terminal
         if (ganhador == 1) {
@@ -185,6 +193,10 @@ bool JogoReversi::FazJogada(int x, int y) {
         return true;
     }
     return true;
+}
+
+std::string JogoReversi::getNomeVencedor() const {
+    return nomeVencedor;
 }
 
 bool JogoReversi::verificaCondicaoVitoria() {

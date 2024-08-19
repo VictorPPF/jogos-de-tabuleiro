@@ -32,9 +32,15 @@ bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
 int main() {
     //carrega a fonte só uma vez 
     sf::Font fonte;
-    if (!fonte.loadFromFile("arial.ttf")) {
-        std::cerr << "Failed to load font" << std::endl;
-        return 1;
+    // Carregar a fonte
+    try {
+        if (!fonte.loadFromFile("font_arcade.ttf")) {
+            throw std::runtime_error("Falha ao carregar a fonte.");
+        }
+    } catch (const std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        // Lançar a exceção para indicar falha de inicialização
+        throw;
     }
     //--------------- MÓDULO PARA INICIAR A TELA DO JOGO NAS DIMENSÕES DA TELA DA PESSOA-----------------//
     // Obtém as dimensões da tela
@@ -398,10 +404,12 @@ int main() {
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
             }else if (estadoAtual == "FimDeJogoLig4") {
-                fimDeJogoLig4.desenharTelaFinal();
+                std::string nomeVencedor = telaLig.getNomeVencedor();
+                fimDeJogoLig4.desenharTelaFinal(nomeVencedor);
             }
             else if (estadoAtual == "FimDeJogoReversi") {
-                fimDeJogoReversi.desenharTelaFinal();
+                std::string nomeVencedor = TelaReversi.getNomeVencedor();
+                fimDeJogoReversi.desenharTelaFinal(nomeVencedor);
             }
             
 

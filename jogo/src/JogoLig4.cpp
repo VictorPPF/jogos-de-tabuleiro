@@ -27,13 +27,13 @@ void JogoLig4::desenharJogo() {
 //88888888888888#################################
         if(jogadorAtual==2){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
+            nomeVencedor = jogador1.getApelido();
             std::cout << "Jogador " << jogador1.getApelido() << " venceu!" << std::endl;
         }else{
             jogador2.vencedor(jogador1.getApelido(), "Lig4");
+            nomeVencedor = jogador2.getApelido();
             std::cout << "Jogador " << jogador2.getApelido() << " venceu!" << std::endl;
         }
-
-        
         LimpaTabuleiro();
         fimDeJogo = true;
     }
@@ -163,6 +163,10 @@ bool JogoLig4::FazJogada(int i, int j) {
     return false;
 }
 
+std::string JogoLig4::getNomeVencedor() const {
+    return nomeVencedor;
+}
+
 void JogoLig4::anima() {
     if (jocupado != 0) {
         sf::Color cor = (jogadorAtual == 1) ? sf::Color::Yellow : sf::Color::Red;
@@ -194,9 +198,3 @@ void JogoLig4::anima() {
         }
     }
 }
-
-
-
-
-
-

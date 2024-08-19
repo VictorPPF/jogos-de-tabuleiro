@@ -93,12 +93,13 @@ class FimDeJogoLig4 {
     private:
         sf::RenderWindow& window; 
         sf::Font& fonte;
+        sf::Text textoVencedor;
 
     public:
         Botao botaoMenu;
         Botao botaoRestart;
         FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte);
-        void desenharTelaFinal();
+        void desenharTelaFinal(const std::string& nomeVencedor);
 };
 
 //FimDeJogoRevesi
@@ -106,12 +107,13 @@ class FimDeJogoRevesi {
     private:
         sf::RenderWindow& window; 
         sf::Font& fonte;
+        sf::Text textoVencedor;
 
     public:
         Botao botaoMenu;
         Botao botaoRestart;
         FimDeJogoRevesi(sf::RenderWindow& window, sf::Font& fonte);
-        void desenharTelaFinal();
+        void desenharTelaFinal(const std::string& nomeVencedor);
 };
 
 #endif // TELA_MENU_HPP

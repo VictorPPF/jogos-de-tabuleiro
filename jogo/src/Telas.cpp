@@ -157,8 +157,13 @@ FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window
     botaoRestart(254.f, 70.f, 570, 541, sf::Color(150, 129, 250), "Restart", 25.f, false, sf::Color(43, 0, 108)) {
         botaoMenu.criarBotoes();
         botaoRestart.criarBotoes();
+
+        textoVencedor.setFont(fonte);
+        textoVencedor.setCharacterSize(40); // Ajuste o tamanho da fonte conforme necessário
+        textoVencedor.setFillColor(sf::Color(255, 225, 97)); // Ajuste a cor conforme necessário
+        textoVencedor.setPosition(310.f, 300.f); // Ajuste a posição conforme necessário
     }
-void FimDeJogoLig4::desenharTelaFinal() {
+void FimDeJogoLig4::desenharTelaFinal(const std::string& nomeVencedor) {
     try {
         Wallpaper wallpaper("telaFimDeJogo.png");
         wallpaper.redimensionar(window.getSize());
@@ -166,7 +171,10 @@ void FimDeJogoLig4::desenharTelaFinal() {
     } catch (const std::runtime_error& e) {
         std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
     }
-
+    // Configura o texto do vencedor
+    textoVencedor.setString(nomeVencedor);
+    // Desenha os elementos na tela
+    window.draw(textoVencedor);
     botaoMenu.desenhar(window);
     botaoRestart.desenhar(window);
 }
@@ -177,8 +185,13 @@ FimDeJogoRevesi::FimDeJogoRevesi(sf::RenderWindow& window, sf::Font& fonte) : wi
     botaoRestart(254.f, 70.f, 570, 541, sf::Color(150, 129, 250), "Restart", 25.f, false, sf::Color(43, 0, 108)) {
         botaoMenu.criarBotoes();
         botaoRestart.criarBotoes();
+
+        textoVencedor.setFont(fonte);
+        textoVencedor.setCharacterSize(40); // Ajuste o tamanho da fonte conforme necessário
+        textoVencedor.setFillColor(sf::Color(255, 225, 97)); // Ajuste a cor conforme necessário
+        textoVencedor.setPosition(310.f, 300.f); // Ajuste a posição conforme necessário
     }
-void FimDeJogoRevesi::desenharTelaFinal() {
+void FimDeJogoRevesi::desenharTelaFinal(const std::string& nomeVencedor) {
     
     try {
         Wallpaper wallpaper("telaFimDeJogo.png");
@@ -188,6 +201,10 @@ void FimDeJogoRevesi::desenharTelaFinal() {
         std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
     }
     
+    // Configura o texto do vencedor
+    textoVencedor.setString(nomeVencedor);
+    // Desenha os elementos na tela
+    window.draw(textoVencedor);
     botaoMenu.desenhar(window);
     botaoRestart.desenhar(window);
 }

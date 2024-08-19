@@ -25,6 +25,7 @@ public:
     Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
     Botao botaoVoltar; // botão para desistir e voltar ao menu principal
     bool fimDeJogo = false; // indica se o jogo terminou
+    std::string nomeVencedor;
     
     //Métodos herdados
     // construtor que inicializa os elementos do jogo
@@ -38,7 +39,7 @@ public:
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
     // realiza a jogada e altera as peças do tabuleiro, se for válida
     bool FazJogada(int x, int y) override;
-    
+    std::string getNomeVencedor() const override;
     // verifica se o jogo terminou
     bool verificaCondicaoVitoria();
     

@@ -257,7 +257,6 @@ int main() {
                     // os botoes confirma e estatistica estão sobrepostos, então tem que ignorar o primeiro evento de clique
                     //nao_ignora_mouse = true;
 
-                    
                 } else {
                     //regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas
                     if (mousePos.x > 358 && mousePos.x < 642 && mousePos.y > 557 && mousePos.y < 624 
@@ -283,8 +282,7 @@ int main() {
                         TelaReversi.LimpaTabuleiro();
                         estadoAtual = "FimDeJogoReversi";
                         nao_ignora_mouse = true;
-                    }
-                    
+                    }  
                 }
                 if (estadoAtual == "Lig4") {
                     Jogador* jogador1 = new Jogador(apelido_jogador1);
@@ -295,8 +293,7 @@ int main() {
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;
                         telaLig.LimpaTabuleiro();
-                        estadoAtual = "MenuPrincipal";
-                        telaLig.LimpaTabuleiro();
+                        estadoAtual = "FimDeJogoLig4";
                         nao_ignora_mouse = true;
                     }
                 }
@@ -318,7 +315,6 @@ int main() {
                         telaExcluir.botaoExcluir.setCor(sf::Color(220, 100, 180,100)); 
                         telaExcluir.botaoExcluir.setCorHover(sf::Color(255, 0, 20, 100));
                         estadoAtual = "MenuPrincipal";
-                        
                     }
                         
                 }

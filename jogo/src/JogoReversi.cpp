@@ -172,6 +172,7 @@ void JogoReversi::LimpaTabuleiro() {
     //fimDeJogo = false;
     // Reseta a flag de desistência ao reiniciar o jogo
     jogadorDesistiu = false;
+    fimDeJogo = true;
 }
 
 // desenha o estado atual do jogo na tela
@@ -223,7 +224,7 @@ void JogoReversi::desenharJogo() {
             jogador1.empate("Lig4",jogador2.getApelido());
         }
 
-        fimDeJogo = true;
+        
     }
 }
 

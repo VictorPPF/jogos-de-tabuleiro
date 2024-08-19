@@ -307,6 +307,8 @@ int main() {
                     }
                 }
                 if (estadoAtual == "ListaDeJogadores") { 
+                    Historico hist;
+                    hist.acessarDados();
                 }
                 if (estadoAtual == "ExcluirConta") {
                     if (telaExcluir.botaoExcluir.passouMouse(window) && jogador_existe) {
@@ -319,6 +321,8 @@ int main() {
                         
                 }
                 if (estadoAtual == "Estatisticas") { //AQUI CHAMA AS ESTATISTICAS CONSULTANDO O HISTÓRICO
+    
+
                     if (telaEstat.botaoPesquisa.passouMouse(window) && event.mouseButton.button == sf::Mouse::Left) {
                         telaEstat.botaoPesquisa.setCor(sf::Color(100, 129 - 50, 200)); //150, 129, 250 roxo padrao
                     }

@@ -3,7 +3,7 @@
 #include "../include/Jogo.hpp"
 
 JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
-    : window(window), fonte(fonte), evento(evento),  origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), 
+    : window(window), fonte(fonte), evento(evento),  origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), borda(3),
         tamanho_celula(75.0), fimDeJogo(false), botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
         tabuleiroLIG4 (origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento), jogadorAtual (1), icupado(0), jocupado(0) {
     
@@ -12,6 +12,9 @@ JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
     circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
     circulo.setFillColor(sf::Color(255, 100, 250));
 }
+
+
+
 void JogoLig4::desenharJogo() {
 
     Wallpaper wallpaper("wallpaper_lig4.png");
@@ -20,8 +23,8 @@ void JogoLig4::desenharJogo() {
     wallpaper.desenhar(window);
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
-    if(verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
-
+    if(verificaCondicaoVitoria( tabuleiroLIG4.indice_i, jocupado - 1)) {
+//88888888888888#################################
         if(jogadorAtual==1){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
             std::cout << "Jogador " << jogador1.getApelido() << " venceu!" << std::endl;
@@ -43,7 +46,7 @@ void JogoLig4::acao() {
         // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
         circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
         // Executa a função FazJogada pra encontrar a posição certa
-        FazJogada(tabuleiroLIG4.indice_i, tabuleiroLIG4.indice_j, jogadorAtual);
+        FazJogada(tabuleiroLIG4.indice_i, tabuleiroLIG4.indice_j);
         std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroLIG4.indice_i << std::endl;
         
         // Troca de jogador
@@ -87,11 +90,11 @@ void JogoLig4::setJogadores(Jogador& player1, Jogador& player2){
     }
 }
 
-bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
+bool JogoLig4::verificaCondicaoVitoria( int linha, int coluna) {
     // Verificação horizontal
     int contador = 0;
     for (int i = 0; i < qtd_celulaX; ++i) {
-        if (tabuleiroLIG4.matriz[i][coluna].getEstado() == jogador) {
+        if (tabuleiroLIG4.matriz[i][coluna].getEstado() == jogadorAtual) {
             contador++;
             if (contador == 4) return true;
         } else {
@@ -102,7 +105,7 @@ bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
     // Verificação vertical
     contador = 0;
     for (int j = 0; j < qtd_celulaY; ++j) {
-        if (tabuleiroLIG4.matriz[linha][j].getEstado() == jogador) {
+        if (tabuleiroLIG4.matriz[linha][j].getEstado() == jogadorAtual) {
             contador++;
             if (contador == 4) return true;
         } else {
@@ -115,7 +118,7 @@ bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
     int startX = std::max(0, linha - coluna);
     int startY = std::max(0, coluna - linha);
     while (startX < qtd_celulaX && startY < qtd_celulaY) {
-        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogador) {
+        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogadorAtual) {
             contador++;
             if (contador == 4) return true;
         } else {
@@ -130,7 +133,7 @@ bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
     startX = std::min(qtd_celulaX - 1, linha + coluna);
     startY = std::max(0, coluna - (qtd_celulaX - 1 - linha));
     while (startX >= 0 && startY < qtd_celulaY) {
-        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogador) {
+        if (tabuleiroLIG4.matriz[startX][startY].getEstado() == jogadorAtual) {
             contador++;
             if (contador == 4) return true;
         } else {
@@ -143,7 +146,7 @@ bool JogoLig4::verificaCondicaoVitoria(int jogador, int linha, int coluna) {
     return false;
 }
 
-void JogoLig4::FazJogada(int i, int j, int jogador) {
+void JogoLig4::FazJogada(int i, int j) {
     jocupado = 0;
 
     for (int linha = 0; linha < 6; linha++) {

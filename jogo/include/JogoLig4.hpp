@@ -34,9 +34,10 @@ public:
     void acao () override;
     void LimpaTabuleiro() override;
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
+    
 
-    bool verificaCondicaoVitoria(int jogador, int linha, int coluna);
-    void FazJogada(int i, int j, int jogador);
+    bool verificaCondicaoVitoria( int linha, int coluna);
+    void FazJogada(int i, int j);
     
     void anima();
 };

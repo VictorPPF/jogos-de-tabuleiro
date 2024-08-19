@@ -1,6 +1,5 @@
 #ifndef TELA_HPP
 #define TELA_HPP
-#include <SFML/Graphics.hpp>
 #include <string>
 
 #include <SFML/Graphics.hpp>

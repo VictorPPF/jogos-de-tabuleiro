@@ -1,10 +1,6 @@
 /**
- * @class JogoReversi
- * @brief Representa um jogo Reversi
- * 
- * Essa classe herda da classe abstrata Jogo e implementa a lógica e funcionalidade de um jogo Reversi. 
- * Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica. 
- * 
+ * @file JogoReversi.hpp
+ * @brief Definição da classe Reversi que representa o jogo Reversi
  */
 #ifndef JOGOREVERSI_HPP
 #define JOGOREVERSI_HPP
@@ -12,6 +8,12 @@
 #include "Tabuleiro.hpp"
 #include "Jogador.hpp"
 #include "../include/Jogo.hpp"
+
+/**
+ * @class JogoReversi
+ * @brief Essa classe herda da classe abstrata Jogo e implementa a lógica e funcionalidade de um jogo Reversi. 
+ * Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica. 
+ */
 
 class JogoReversi : public Jogo {
 private:

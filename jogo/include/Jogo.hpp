@@ -1,6 +1,11 @@
+/**
+ * @file Jogo.hpp
+ * @class Jogo
+ * @brief Classe abstrata que representa um jogo.
+ * 
+ */
 #ifndef JOGO_HPP
 #define JOGO_HPP
-
 #include <string>
 #include "Jogador.hpp"
 

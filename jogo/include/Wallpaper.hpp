@@ -1,6 +1,5 @@
 /**
  * @file Wallpaper.hpp
- * @class Wallpaper
  * @brief Classe que gerencia a textura e o sprite do wallpaper
  */
 #ifndef WALLPAPER_HPP

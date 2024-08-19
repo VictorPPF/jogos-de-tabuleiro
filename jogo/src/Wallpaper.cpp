@@ -4,7 +4,7 @@
 // Construtor que carrega a textura a partir de um arquivo e configura o sprite
 Wallpaper::Wallpaper(const std::string& arquivo) {
     if (!textura.loadFromFile(arquivo)) {
-        std::cerr << "Erro ao carregar o wallpaper" << std::endl;
+        throw std::runtime_error("Erro ao carregar o wallpaper a partir do arquivo: " + arquivo);
     }
     sprite.setTexture(textura);  // Associa a textura ao sprite
 }

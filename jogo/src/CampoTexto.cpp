@@ -10,8 +10,14 @@ CampoTexto::CampoTexto(float largura, float altura, float posicaoX, float posica
     texto.setPosition(posicaoX + 5, posicaoY + 10); // pequeno deslocamento pra dentro do retângulo
     texto.setFillColor(sf::Color::Black);
     
-    if (!fonte.loadFromFile("font_arcade.ttf")) {
-        std::cerr << "Não foi possível carregar a fonte" << std::endl;
+    try {
+        if (!fonte.loadFromFile("font_arcade.ttf")) {
+            throw std::runtime_error("Falha ao carregar a fonte.");
+        }
+    } catch (const std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        // Lançar a exceção para indicar falha de inicialização
+        throw;
     }
 }
 

@@ -27,10 +27,14 @@ TelaMenu::TelaMenu(sf::RenderWindow& window, sf::Font& fonte,sf::Event& evento) 
     }
 
 void TelaMenu::desenharMenu() {
-    Wallpaper wallpaper("menuInicial.png");
-    wallpaper.redimensionar(window.getSize());
+    try {
+        Wallpaper wallpaper("menuInicial.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
 
-    wallpaper.desenhar(window);
     botaoJogador1.desenhar(window);
     botaoJogador2.desenhar(window);
     botaoCadastro.desenhar(window);
@@ -61,10 +65,14 @@ TelaCadastro::TelaCadastro(sf::RenderWindow& window, sf::Font& fonte)
     }
 
 void TelaCadastro::desenharJogo() {
-    Wallpaper wallpaper("menuCadastro.png");
-    wallpaper.redimensionar(window.getSize());
+    try {
+        Wallpaper wallpaper("menuCadastro.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
 
-    wallpaper.desenhar(window);
     botaoNome.desenhar(window);
     botaoApelido.desenhar(window);
     botaoConfirma.desenhar(window);
@@ -79,10 +87,13 @@ TelaLista::TelaLista(sf::RenderWindow& window, sf::Font& fonte) : window(window)
     }
 
 void TelaLista::desenharLista() {
-    Wallpaper wallpaper("menuListaJogadores.png");
-    wallpaper.redimensionar(window.getSize());
-
-    wallpaper.desenhar(window);
+    try {
+        Wallpaper wallpaper("menuListaJogadores.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
     botaoVoltar.desenhar(window);
 }
 
@@ -98,10 +109,14 @@ TelaExcluirConta::TelaExcluirConta(sf::RenderWindow& window, sf::Font& fonte) : 
     }
 
 void TelaExcluirConta::desenharExcluirConta() {
-    Wallpaper wallpaper("menuExcluirConta.png");
-    wallpaper.redimensionar(window.getSize());
+    try {
+        Wallpaper wallpaper("menuExcluirConta.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
 
-    wallpaper.desenhar(window);
     botaoApelido.desenhar(window);
     botaoExcluir.desenhar(window);
     botaoVoltar.desenhar(window);
@@ -122,10 +137,14 @@ TelaEstatisticas::TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte)
     }
 
 void TelaEstatisticas::desenharEstatisticas() {
-    Wallpaper wallpaper("menuEstatisticas.png");
-    wallpaper.redimensionar(window.getSize());
+    try {
+        Wallpaper wallpaper("menuEstatisticas.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
 
-    wallpaper.desenhar(window);
     botaoApelido.desenhar(window);
     botaoVoltar.desenhar(window);
     botaoPesquisa.desenhar(window);
@@ -140,10 +159,14 @@ FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window
         botaoRestart.criarBotoes();
     }
 void FimDeJogoLig4::desenharTelaFinal() {
-    Wallpaper wallpaper("telaFimDeJogo.png");
-    wallpaper.redimensionar(window.getSize());
+    try {
+        Wallpaper wallpaper("telaFimDeJogo.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
 
-    wallpaper.desenhar(window);
     botaoMenu.desenhar(window);
     botaoRestart.desenhar(window);
 }
@@ -156,10 +179,15 @@ FimDeJogoRevesi::FimDeJogoRevesi(sf::RenderWindow& window, sf::Font& fonte) : wi
         botaoRestart.criarBotoes();
     }
 void FimDeJogoRevesi::desenharTelaFinal() {
-    Wallpaper wallpaper("telaFimDeJogo.png");
-    wallpaper.redimensionar(window.getSize());
-
-    wallpaper.desenhar(window);
+    
+    try {
+        Wallpaper wallpaper("telaFimDeJogo.png");
+        wallpaper.redimensionar(window.getSize());
+        wallpaper.desenhar(window);
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
+    }
+    
     botaoMenu.desenhar(window);
     botaoRestart.desenhar(window);
 }

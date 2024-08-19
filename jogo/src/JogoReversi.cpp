@@ -48,7 +48,7 @@ void JogoReversi::acao() {
 }
 
 
-bool JogoReversi::condicao_vitoria() {
+bool JogoReversi::verificaCondicaoVitoria() {
     bool temEspacoVazio = false; // Variável para verificar se há espaços vazios no tabuleiro
 
     for (int y = 0; y < 8; ++y) {

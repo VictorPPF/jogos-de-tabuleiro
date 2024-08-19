@@ -207,6 +207,21 @@ void JogoReversi::LimpaTabuleiro() {
             tabuleiroREVERSI.slots[i][j].botao.setCor(sf::Color(121, 122, 147));
         }
     }
+    
+    //Reseta o tabuleiro paras condicoes iniciais
+    int posicao_meio = qtd_celulaX / 2; 
+    tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio, 1); 
+    tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio-1, 1);
+    tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio-1, 2);
+    tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio, 2);
+
+    // define as cores das peças iniciais no tabuleiro
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio].botao.setCor(sf::Color::Red);
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio-1].botao.setCor(sf::Color::Red);
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color::Yellow);
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color::Yellow);
+
+
     // reseta a vez para o jogador 1
     jogadorAtual = 1;
     // indica que o jogo não está mais no estado de fim de jogo

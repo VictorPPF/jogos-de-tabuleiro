@@ -7,22 +7,6 @@
 #include <memory>
 #include "../include/Wallpaper.hpp"
 
-
-// Classe Movimentacao
-class Movimentacao {
-public:
-    // Construtor
-    Movimentacao();
-
-    // Método público para movimentação
-    void mover(sf::CircleShape &circulo, const sf::Keyboard::Key &key);
-    void mover(sf::RectangleShape &retangulo, const sf::Keyboard::Key &key);
-
-private:
-    // Atributos privados podem ser adicionados aqui
-};
-
-
 //classe que representa um ponto no plano cartesiano ##########################
 template <typename T>
 class Ponto {

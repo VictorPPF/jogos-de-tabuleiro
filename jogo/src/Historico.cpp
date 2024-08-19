@@ -294,5 +294,4 @@ void Historico::addEstatistica(std:: string apelido, std:: string coluna){
     } catch (const std::exception& e) {
     std::cerr << "Erro ao adicionar estatística: " << e.what() << std::endl;
     }
-}  
-       
+}

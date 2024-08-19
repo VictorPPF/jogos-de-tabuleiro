@@ -9,10 +9,15 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const
     corHover = sf::Color(cor.r + 50, cor.g + 50, cor.b + 50);
 
     // Carregar a fonte
-    if (!fonte.loadFromFile("font_arcade.ttf")) {
-        std::cout << "Erro ao carregar a fonte" << std::endl;
+    try {
+        if (!fonte.loadFromFile("font_arcade.ttf")) {
+            throw std::runtime_error("Falha ao carregar a fonte.");
+        }
+    } catch (const std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        // Lançar a exceção para indicar falha de inicialização
+        throw;
     }
-    
 
     text.setFont(fonte);                                            // Define a fonte
     text.setString(texto);                                          // Define o texto
@@ -38,21 +43,26 @@ Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, bool 
 
 // Configura a forma e o texto do botão
 void Botao::criarBotoes() {
-    if (isCirculo) {
-        circulo.setRadius(largura / 2); // Define o raio do círculo
-        circulo.setPosition(posicao);   // Define a posição do círculo
-        circulo.setFillColor(cor);      // Define a cor do círculo
-    } else {
-        retangulo.setSize(sf::Vector2f(largura, altura)); // Define o tamanho do retângulo
-        retangulo.setPosition(posicao);                   // Define a posição do retângulo
-        retangulo.setFillColor(cor);                      // Define a cor do retângulo
-    }
-    // Ajusta o ponto de origem do texto para o centro
-    sf::FloatRect textBounds = text.getLocalBounds(); // Obtém os limites locais do texto, o que inclui a largura e a altura do texto.
-    text.setOrigin(textBounds.width / 2.f, textBounds.height / 2.f + textBounds.top); //O ponto de origem é ajustado para o centro do texto horizontalmente e verticalmente
+    try {
+        if (isCirculo) {
+            circulo.setRadius(largura / 2); // Define o raio do círculo
+            circulo.setPosition(posicao);   // Define a posição do círculo
+            circulo.setFillColor(cor);      // Define a cor do círculo
+        } else {
+            retangulo.setSize(sf::Vector2f(largura, altura)); // Define o tamanho do retângulo
+            retangulo.setPosition(posicao);                   // Define a posição do retângulo
+            retangulo.setFillColor(cor);                      // Define a cor do retângulo
+        }
+        // Ajusta o ponto de origem do texto para o centro
+        sf::FloatRect textBounds = text.getLocalBounds(); // Obtém os limites locais do texto, o que inclui a largura e a altura do texto.
+        text.setOrigin(textBounds.width / 2.f, textBounds.height / 2.f + textBounds.top); //O ponto de origem é ajustado para o centro do texto horizontalmente e verticalmente
 
-    // Ajusta a posição do texto para que fique centralizado no botão
-    text.setPosition(posicao.x + largura / 2, posicao.y + altura / 2);
+        // Ajusta a posição do texto para que fique centralizado no botão
+        text.setPosition(posicao.x + largura / 2, posicao.y + altura / 2);
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao criar botões: " << e.what() << std::endl;
+        // Opcional: definir um estado inválido ou tratar o erro conforme necessário
+    }
 }
 
 // Método para obter a cor atual do botão
@@ -176,32 +186,32 @@ void Botao::setTamanhoFonte(float tamanho) {
 
 // Método para verificar se o botão foi clicado
 bool Botao::foiClicado(sf::RenderWindow& window) {
-    static bool foiPressionado = false; // Mantém o estado do botão do mouse
-    sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
-    sf::FloatRect bounds = retangulo.getGlobalBounds();
+    try {
+        static bool foiPressionado = false; // Mantém o estado do botão do mouse
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
+        sf::FloatRect bounds = retangulo.getGlobalBounds();
 
-    // Reduz a área de detecção para evitar a seleção de múltiplas células
-    bounds.left += retangulo.getOutlineThickness();
-    bounds.top += retangulo.getOutlineThickness();
-    bounds.width -= 2 * retangulo.getOutlineThickness();
-    bounds.height -= 2 * retangulo.getOutlineThickness();
+        // Reduz a área de detecção para evitar a seleção de múltiplas células
+        bounds.left += retangulo.getOutlineThickness();
+        bounds.top += retangulo.getOutlineThickness();
+        bounds.width -= 2 * retangulo.getOutlineThickness();
+        bounds.height -= 2 * retangulo.getOutlineThickness();
 
-    // Verifica se o mouse está sobre o botão
-    if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            if (!foiPressionado) {
-                foiPressionado = true; // Registra que o botão foi pressionado
-                return true;
+        // Verifica se o mouse está sobre o botão
+        if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                if (!foiPressionado) {
+                    foiPressionado = true; // Registra que o botão foi pressionado
+                    return true;
+                }
+            } else {
+                foiPressionado = false; // Reseta o estado quando o botão é liberado
             }
-        } else {
-            foiPressionado = false; // Reseta o estado quando o botão é liberado
         }
+
+        return false;
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao verificar clique: " << e.what() << std::endl;
+        return false;
     }
-
-    return false;
 }
-
-
-
-
-

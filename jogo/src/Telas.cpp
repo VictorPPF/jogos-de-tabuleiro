@@ -237,7 +237,7 @@ void FimDeJogoLig4::desenharTelaFinal(const std::string& nomeVencedor) {
     // Desenha os elementos na tela
     window.draw(textoVencedor);
     botaoMenu.desenhar(window);
-    botaoRestart.desenhar(window);
+    //botaoRestart.desenhar(window);
 }
 
 //FimDeJogoRevesi
@@ -267,5 +267,5 @@ void FimDeJogoRevesi::desenharTelaFinal(const std::string& nomeVencedor) {
     // Desenha os elementos na tela
     window.draw(textoVencedor);
     botaoMenu.desenhar(window);
-    botaoRestart.desenhar(window);
+    //botaoRestart.desenhar(window);
 }

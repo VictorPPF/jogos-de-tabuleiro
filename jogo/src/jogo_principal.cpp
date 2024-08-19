@@ -326,12 +326,14 @@ int main() {
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
+                    /*
                     if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
                         telaLig.LimpaTabuleiro();
                         estadoAtual = "Lig4";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
+                    */
                 }
                 if (estadoAtual == "FimDeJogoReversi") {
 
@@ -340,11 +342,13 @@ int main() {
                         estadoAtual = "MenuPrincipal";
                         nao_ignora_mouse = true;
                     }
+                    /*
                     if (fimDeJogoReversi.botaoRestart.passouMouse(window)){
                         estadoAtual = "Reversi";
                         TelaReversi.fimDeJogo = true;
                         nao_ignora_mouse = true;
                     }
+                    */
                 }
                 // if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
                 //     nao_ignora_mouse = false;

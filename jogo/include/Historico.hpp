@@ -1,3 +1,8 @@
+/**
+ * @file Historico.hpp
+ * @brief Definição da classe Historico para gerenciar e manipular dados dos jogadores.
+ */
+
 #ifndef HISTORICO_H
 #define HISTORICO_H
 

@@ -5,9 +5,18 @@
 #include "../include/Tabuleiro.hpp"
 #include "../include/Jogador.hpp"
 #include "../include/Jogo.hpp"
-
+/**
+ * @class JogoLig4
+ * @brief Classe que representa o jogo Lig4
+ * 
+ * Essa classe herda da classe abstrata Jogo e implementa a lógica e funcionalidade de um jogo Lig4. 
+ * Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica. 
+ */
 class JogoLig4 : public Jogo {
 private:
+    /**
+     * @
+     */
     sf::RenderWindow& window; 
     sf::Font& fonte;
     sf::Event& evento;

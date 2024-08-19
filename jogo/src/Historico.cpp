@@ -147,10 +147,9 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
                     arquivoTemp << linha << std::endl;
                 }
             }
-        }
-        arquivo.close();
-        arquivoTemp.close();
-
+            arquivo.close();
+            arquivoTemp.close();
+        }       
         std::remove(nomeArquivo.c_str());
         if (std::remove(nomeArquivo.c_str()) != 0) {
             throw std::runtime_error("Não foi possível remover o arquivo original.");
@@ -225,7 +224,6 @@ std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
     }
 }
 
-
 std:: string Historico :: acessarDados( std::string apelido){
     try {
     /*acessa uma linha específica, se ele não achar o apelido ela retorna -1*/
@@ -234,7 +232,7 @@ std:: string Historico :: acessarDados( std::string apelido){
             throw std::runtime_error("Não foi possível abrir o arquivo para leitura.");
     }
     std::string linha; 
-    if (arquivo.is_open()){ 
+    
         while (std::getline(arquivo, linha)){
 
             std::stringstream ss(linha);
@@ -249,7 +247,7 @@ std:: string Historico :: acessarDados( std::string apelido){
             }
         arquivo.close();
         return "-1";
-        } 
+     
     } catch (const std::exception& e) {
         std::cerr << "Erro ao acessar dados: " << e.what() << std::endl;
         return "-1";

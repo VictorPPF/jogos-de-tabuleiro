@@ -146,10 +146,10 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
                 }else{//Se nao é o apelido que eu quero copio pro arquivo temp
                     arquivoTemp << linha << std::endl;
                 }
-            }
-            arquivo.close();
-            arquivoTemp.close();
-        }       
+            } 
+        } 
+        arquivo.close();
+        arquivoTemp.close();      
         std::remove(nomeArquivo.c_str());
         if (std::remove(nomeArquivo.c_str()) != 0) {
             throw std::runtime_error("Não foi possível remover o arquivo original.");
@@ -265,9 +265,9 @@ void Historico::acessarDados() {
         if (arquivo.is_open()) {
             while (std::getline(arquivo, linha)) {
                 std::cout << linha << std::endl;
-            }
-            arquivo.close();
+            } 
         }
+        arquivo.close();
     } catch (const std::exception& e) {
         std::cerr << "Erro ao acessar todos os dados: " << e.what() << std::endl;
     }

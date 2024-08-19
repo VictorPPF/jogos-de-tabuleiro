@@ -8,18 +8,36 @@
 class Jogo {
 public:
 
-    // Métodos abstratos que devem ser implementados pelas classes derivadas
+    /**
+     * Método abstrato para desenhar o jogo na tela.
+     */
     virtual void desenharJogo() = 0;
-    virtual void acao() = 0;
-    virtual void LimpaTabuleiro() = 0;
-    virtual void setJogadores (Jogador& player1, Jogador& player2) = 0;
-    virtual bool FazJogada (int i, int j) = 0;
-    virtual std::string getNomeVencedor() const = 0;
-    //virtual bool jogada_valida(int x, int y, int jogador) = 0;    // Verifica se a jogada é válida
 
-    // Métodos acessores
-    //std::string get_jogador_atual() { return jogador_atual; }
-    //void set_jogo_atual( std::string& jogo) { jogo_atual = jogo; }
+    /**
+     * Método abstrato responsável por lidar com as ações dos jogadores.
+     */
+    virtual void acao() = 0;
+
+    /**
+     * Método abstrato para limpar o tabueleiro e resetar as configurações.
+     */
+    virtual void LimpaTabuleiro() = 0;
+
+    /**
+     * Método abstrato para indicar os jogadores que irão jogar o jogo.
+     */
+    virtual void setJogadores (Jogador& player1, Jogador& player2) = 0;
+
+    /**
+     * Método abstrato que lida com a jogada válida.
+     */
+    virtual bool FazJogada (int i, int j) = 0;
+
+    /**
+     * Método abstrato para retornar quem venceu nos jogos.
+     */
+    virtual std::string getNomeVencedor() const = 0;
+    
 };
 
 

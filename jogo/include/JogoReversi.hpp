@@ -25,7 +25,7 @@ public:
     Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
     Botao botaoVoltar; // botão para desistir e voltar ao menu principal
     bool fimDeJogo = false; // indica se o jogo terminou
-
+    
     //Métodos herdados
     // construtor que inicializa os elementos do jogo
     JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);

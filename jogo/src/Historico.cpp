@@ -21,7 +21,7 @@ Historico::Historico(){
         } else {
             std::ofstream arquivo(nomeArquivo);
             if (!arquivo.is_open()) {
-                throw std::runtime_error("Não foi possível criar o arquivo.");
+                throw std::runtime_error("Nao foi possível criar o arquivo.");
             }
             if (arquivo.is_open()){
             for (int i = 0; i < cabecalho.size(); i++) {
@@ -46,12 +46,12 @@ void Historico::excluirLinha (std:: string apelido){
     try {
         std::ifstream arquivo(nomeArquivo);
         if (!arquivo.is_open()) {
-            throw std::runtime_error("Não foi possível abrir o arquivo para leitura.");
+            throw std::runtime_error("Nao foi possível abrir o arquivo para leitura.");
         }
 
         std::ofstream arquivoTemp("../temp.csv");
         if (!arquivoTemp.is_open()) {
-            throw std::runtime_error("Não foi possível criar o arquivo temporário.");
+            throw std::runtime_error("Nao foi possível criar o arquivo temporário.");
         }
 
         std::string linha;
@@ -79,11 +79,11 @@ void Historico::excluirLinha (std:: string apelido){
 
         std::remove(nomeArquivo.c_str());
         if (std::remove(nomeArquivo.c_str()) != 0) {
-                throw std::runtime_error("Não foi possível remover o arquivo original.");
+                throw std::runtime_error("Nao foi possível remover o arquivo original.");
             }
         std::rename("../temp.csv", nomeArquivo.c_str());
         if (std::rename("../temp.csv", nomeArquivo.c_str()) != 0) {
-            throw std::runtime_error("Não foi possível renomear o arquivo temporário.");
+            throw std::runtime_error("Nao foi possível renomear o arquivo temporário.");
         }
         //Como a função não retorna nada, só consigo escrever no terminal por enquanto o erro
         //Ideal -> trocar o tipo de função para bool para certificar que não há erros
@@ -103,12 +103,12 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     try {
         std::ifstream arquivo(nomeArquivo);
         if (!arquivo.is_open()) {
-            throw std::runtime_error("Não foi possível abrir o arquivo para leitura.");
+            throw std::runtime_error("Nao foi possível abrir o arquivo para leitura.");
         }
 
         std::ofstream arquivoTemp("../temp.csv");
         if (!arquivoTemp.is_open()) {
-            throw std::runtime_error("Não foi possível criar o arquivo temporário.");
+            throw std::runtime_error("Nao foi possível criar o arquivo temporário.");
         }
 
         std::string linha;
@@ -152,11 +152,11 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
         arquivoTemp.close();      
         std::remove(nomeArquivo.c_str());
         if (std::remove(nomeArquivo.c_str()) != 0) {
-            throw std::runtime_error("Não foi possível remover o arquivo original.");
+            throw std::runtime_error("Nao foi possível remover o arquivo original.");
         }
         std::rename("../temp.csv", nomeArquivo.c_str());
         if (std::rename("../temp.csv", nomeArquivo.c_str()) != 0) {
-            throw std::runtime_error("Não foi possível renomear o arquivo temporário.");
+            throw std::runtime_error("Nao foi possível renomear o arquivo temporário.");
         } 
     } catch (const std::exception& e) {
     std::cerr << "Erro ao editar dados: " << e.what() << std::endl;
@@ -169,7 +169,7 @@ void Historico::criarLinha(const std::vector<std::string>& dados) {
         std::ofstream arquivo(nomeArquivo, std::ios::app);
         // Verifica se o arquivo foi aberto corretamente
         if (!arquivo.is_open()) {
-            throw std::runtime_error("Não foi possível abrir o arquivo para escrita.");
+            throw std::runtime_error("Nao foi possível abrir o arquivo para escrita.");
             return;
         }else{
             // Constrói a linha a partir do vetor de strings
@@ -229,7 +229,7 @@ std:: string Historico :: acessarDados( std::string apelido){
     /*acessa uma linha específica, se ele não achar o apelido ela retorna -1*/
     std::ifstream arquivo(nomeArquivo);
     if (!arquivo.is_open()) {
-            throw std::runtime_error("Não foi possível abrir o arquivo para leitura.");
+            throw std::runtime_error("Nao foi possível abrir o arquivo para leitura.");
     }
     std::string linha; 
     

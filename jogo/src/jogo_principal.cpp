@@ -208,10 +208,7 @@ int main() {
                      */ 
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
                     }
-
-                    delete cadastroJogador;
-                }
-                
+                }    
         
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);

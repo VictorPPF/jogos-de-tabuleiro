@@ -20,13 +20,14 @@ private:
     int qtd_celulaX; // número de células na horizontal (colunas)
     int qtd_celulaY; // número de células na vertical (linhas)
     float tamanho_celula; // tamanho de cada célula no tabuleiro
+    
 
 public:
     Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
     Botao botaoVoltar; // botão para desistir e voltar ao menu principal
     bool fimDeJogo = false; // indica se o jogo terminou
     std::string nomeVencedor;
-    
+    bool jogadorDesistiu;
     //Métodos herdados
     // construtor que inicializa os elementos do jogo
     JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
@@ -42,8 +43,9 @@ public:
     std::string getNomeVencedor() const override;
     // verifica se o jogo terminou
     bool verificaCondicaoVitoria();
-    
-
+    void contaPeca();
+    int num_pecas_jogador1;
+    int num_pecas_jogador2;
     // verifica se uma jogada em uma célula específica é válida
     bool jogada_valida(int x, int y, int jogador);
     // verifica se uma jogada é válida em uma determinada direção

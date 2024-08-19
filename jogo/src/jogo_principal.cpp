@@ -285,6 +285,7 @@ int main() {
 
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
+                        TelaReversi.jogadorDesistiu = true;
                         TelaReversi.LimpaTabuleiro();
                         estadoAtual = "FimDeJogoReversi";
                         nao_ignora_mouse = true;
@@ -335,12 +336,14 @@ int main() {
                 }
                 if (estadoAtual == "FimDeJogoLig4") {
 
-                    if (fimDeJogoLig4.botaoMenu.passouMouse(window)) { 
+                    if (fimDeJogoLig4.botaoMenu.passouMouse(window)) {
+                        telaLig.LimpaTabuleiro();
                         estadoAtual = "MenuPrincipal";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
                     if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
+                        telaLig.LimpaTabuleiro();
                         estadoAtual = "Lig4";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
@@ -388,7 +391,7 @@ int main() {
         }
 
         window.clear();
-
+        
         if (estadoAtual == "MenuPrincipal") {
                 telaMenu.desenharMenu();
             } else if (estadoAtual == "Cadastro") { //se o condicional da regiao do botao mudar o estadoAtual

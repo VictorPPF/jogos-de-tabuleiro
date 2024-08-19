@@ -18,6 +18,7 @@ private:
     float tamanho_celula;
     float borda;
     float icupado, jocupado; //indices da celula ocupada
+    bool animando;
 
     Jogador jogador1, jogador2;
 

@@ -4,14 +4,14 @@
 
 // construtor da classe JogoReversi, inicializa os componentes do jogo
 JogoReversi::JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
-: window(window), fonte(fonte), evento(evento),
+: window(window), fonte(fonte), evento(evento), 
 origemX(260.0), origemY(155.0), qtd_celulaX(8), qtd_celulaY(8), tamanho_celula(60.0), borda(3),
 jogadorAtual(1), botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
-tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento) 
+tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento), num_pecas_jogador1(2), num_pecas_jogador2(2),
+jogadorDesistiu(false)
 {
     // cria o botão "Desisti" na tela
     botaoVoltar.criarBotoes();
-
     // define a posição inicial das peças no centro do tabuleiro
     int posicao_meio = qtd_celulaX / 2; 
     tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio, 1); 
@@ -25,11 +25,31 @@ tabuleiroREVERSI(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, bor
     tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color::Yellow);
     tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color::Yellow);
 
+    // int num_pecas_jogador1 = 2;
+    // int num_pecas_jogador2 = 2;
     // imprime de quem é a vez no início do jogo
     std::cout << "Vez do Jogador " << jogadorAtual << " - Cor: Vermelho" << std::endl;
 }
-// Variável para controlar se houve desistência
-bool jogadorDesistiu = false;
+
+
+   
+    
+void JogoReversi::contaPeca() {
+    num_pecas_jogador1 = 0;
+    num_pecas_jogador2 = 0;
+    for (int i = 0; i < qtd_celulaX; ++i) {
+        for (int j = 0; j < qtd_celulaY; ++j) {
+            if (tabuleiroREVERSI.get_celula_status(i,j) == 1) {
+                num_pecas_jogador1++;
+            }
+            if (tabuleiroREVERSI.get_celula_status(i,j) == 2) {
+                num_pecas_jogador2++;
+            }
+        }
+    }
+    std::cout << "Jogador 1: " << num_pecas_jogador1 << " pecas" << std::endl;
+    std::cout << "Jogador 2: " << num_pecas_jogador2 << " pecas" << std::endl;
+}
 // desenha o estado atual do jogo na tela
 void JogoReversi::desenharJogo() {
     // desenha o papel de parede do jogo
@@ -75,7 +95,7 @@ void JogoReversi::desenharJogo() {
         
         // Imprime o ganhador (ou empate) no terminal
         if (ganhador == 1) {
-            std::cout << "Jogador 1 - Vermelho ("<< jogador1.getApelido() <<") venceu!" << std::endl;
+            std::cout << "Jogador 1 - Vermelho ("<< jogador1.getApelido() <<") venceu!" <<  std::endl;
             jogador1.vencedor(jogador2.getApelido(), "Reversi");
         } else if (ganhador == 2) {
             std::cout << "Jogador 2 - Amarelo ("<< jogador2.getApelido() <<") venceu!" << std::endl;
@@ -93,6 +113,9 @@ void JogoReversi::desenharJogo() {
 void JogoReversi::acao() {
     if (tabuleiroREVERSI.deuClique) {
         if (FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j)) {
+            // CONTA PEÇASSSSSS
+                
+            contaPeca();
             // Verifica jogadas válidas para o próximo jogador
             if (!TemJogadasValidas((jogadorAtual == 1) ? 2 : 1)) {
                 std::cout << "Jogador " << ((jogadorAtual == 1) ? 2 : 1) << " não tem jogadas válidas. Verificando para outro jogador..." << std::endl;
@@ -105,6 +128,7 @@ void JogoReversi::acao() {
             } else {
                 // Troca o jogador apenas se o próximo tem jogadas válidas
                 jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+
                 std::cout << "Vez do Jogador " << jogadorAtual << std::endl;
             }
         } else {
@@ -150,6 +174,8 @@ void JogoReversi::LimpaTabuleiro() {
     tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color::Yellow);
     tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color::Yellow);
 
+    num_pecas_jogador1 = 2;
+    num_pecas_jogador2 = 2;
 
     // reseta a vez para o jogador 1
     jogadorAtual = 1;
@@ -192,6 +218,7 @@ bool JogoReversi::FazJogada(int x, int y) {
     // coloca a peça do jogador na célula onde ele fez a jogada
     tabuleiroREVERSI.set_celula_status(x, y, jogadorAtual);
     tabuleiroREVERSI.slots[x][y].botao.setCor(jogadorAtual == 1 ? sf::Color::Red : sf::Color::Yellow);
+
 
     // Verifica se o jogador tem jogadas válidas
     bool temJogadaValida = false;

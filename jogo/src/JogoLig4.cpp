@@ -5,7 +5,7 @@
 JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
     : window(window), fonte(fonte), evento(evento),  origemX(238.0), origemY(166.0), qtd_celulaX(7), qtd_celulaY(6), borda(3),
         tamanho_celula(75.0), fimDeJogo(false), botaoVoltar(150.f, 25.f, 32, 477, sf::Color(235, 64, 52), "DESISTIR!", 15.f, false, sf::Color(89, 7, 1)),
-        tabuleiroLIG4 (origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento), jogadorAtual (1), icupado(0), jocupado(0) {
+        tabuleiroLIG4 (origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, borda, evento), jogadorAtual (1), icupado(0), jocupado(0),animando(false) {
     
     botaoVoltar.criarBotoes();
     circulo.setRadius(tamanho_celula / 2 - borda);
@@ -24,7 +24,6 @@ void JogoLig4::desenharJogo() {
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
     if(verificaCondicaoVitoria(tabuleiroLIG4.indice_i, jocupado - 1)) {
-//88888888888888#################################
         if(jogadorAtual==2){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
             nomeVencedor = jogador1.getApelido();
@@ -43,7 +42,7 @@ void JogoLig4::desenharJogo() {
 }
 
 void JogoLig4::acao() {
-    if (tabuleiroLIG4.deuClique) {
+    if (tabuleiroLIG4.deuClique && !animando) { //SO ANIMA ESSA JOÇA DE NOVO SE JÁ POUSOU
         // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
         circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
         // Executa a função FazJogada pra encontrar a posição certa
@@ -51,8 +50,8 @@ void JogoLig4::acao() {
         std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroLIG4.indice_i << std::endl;
         
         // Troca de jogador
-        jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
-
+        //jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+        animando = true;
         // Reseta o clique
         tabuleiroLIG4.deuClique = false;
     }
@@ -75,7 +74,7 @@ void JogoLig4::LimpaTabuleiro() {
     jogadorAtual = 1;
     icupado = 0;
     jocupado = 0;
-    fimDeJogo = false;
+    //fimDeJogo = false;
 }
 
 void JogoLig4::setJogadores(Jogador& player1, Jogador& player2){
@@ -147,20 +146,30 @@ bool JogoLig4::verificaCondicaoVitoria( int linha, int coluna) {
     return false;
 }
 
-bool JogoLig4::FazJogada(int i, int j) {
-    jocupado = 0;
+// bool JogoLig4::FazJogada(int i, int j) {
+//     jocupado = 0;
 
-    for (int linha = 0; linha < 6; linha++) {
-        if (tabuleiroLIG4.matriz[i][linha].getEstado() != 0) {
-            jocupado = linha;
+//     for (int linha = 0; linha < 6; linha++) {
+//         if (tabuleiroLIG4.matriz[i][linha].getEstado() != 0) {
+//             jocupado = linha;
+//             return true;
+//         }
+//         if (linha == 5 && tabuleiroLIG4.matriz[i][linha].getEstado() == 0) {
+//             jocupado = 6;
+//             std::cout << "Coluna vazia" << std::endl;
+//         }
+//     }
+//     return false;
+// }
+bool JogoLig4::FazJogada(int i, int j) {
+    // Encontra a primeira posição não ocupada da coluna
+    for (int linha = qtd_celulaY - 1; linha >= 0; linha--) {
+        if (tabuleiroLIG4.matriz[i][linha].getEstado() == 0) {
+            jocupado = linha + 1; // Atualiza jocupado para a primeira posição livre
             return true;
         }
-        if (linha == 5 && tabuleiroLIG4.matriz[i][linha].getEstado() == 0) {
-            jocupado = 6;
-            std::cout << "Coluna vazia" << std::endl;
-        }
     }
-    return false;
+    return false; // Retorna falso se a coluna estiver cheia
 }
 
 std::string JogoLig4::getNomeVencedor() const {
@@ -168,7 +177,8 @@ std::string JogoLig4::getNomeVencedor() const {
 }
 
 void JogoLig4::anima() {
-    if (jocupado != 0) {
+    if (jocupado != 0 && animando) {
+        
         sf::Color cor = (jogadorAtual == 1) ? sf::Color::Yellow : sf::Color::Red;
         
         circulo.setFillColor(cor);
@@ -180,21 +190,18 @@ void JogoLig4::anima() {
             window.draw(circulo);
             
         } else {
-            //  Verifica a condição de vitória
-            // if (verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
-            //     std::cout << "Jogador " << jogadorAtual << " venceu!" << std::endl;
-            //     // aqui fica a logica pra TELA DE FIM DE JOGO
-            //     LimpaTabuleiro();
-            //     fimDeJogo = true;
-            //     std::cout << "entrou no desenhar jogo perdeno soq no anima\n";
-            // }
-            //alinha a peça certo com a ultima celula 
             
             circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY + tamanho_celula * (jocupado - 1));
             window.draw(circulo);
             //atualiza o estado da peça
             tabuleiroLIG4.matriz[tabuleiroLIG4.indice_i][jocupado - 1].setEstado(jogadorAtual);
             tabuleiroLIG4.slots[tabuleiroLIG4.indice_i][jocupado - 1].botao.setCor(cor);
+            animando = false; //CHEGAAAAAAAAAA
+            if(verificaCondicaoVitoria(tabuleiroLIG4.indice_i, jocupado - 1)) {
+                fimDeJogo = true; // Handle game end
+            }
+            jogadorAtual = (jogadorAtual == 1) ? 2 : 1; // Troca de jogador após a animação concluir
+            
         }
     }
 }

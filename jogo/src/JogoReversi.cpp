@@ -108,7 +108,6 @@ void JogoReversi::LimpaTabuleiro() {
             tabuleiroREVERSI.slots[i][j].botao.setCor(sf::Color(121, 122, 147));
         }
     }
-    
     //Reseta o tabuleiro paras condicoes iniciais
     int posicao_meio = qtd_celulaX / 2; 
     tabuleiroREVERSI.set_celula_status(posicao_meio, posicao_meio, 1); 
@@ -193,13 +192,31 @@ bool JogoReversi::FazJogada(int x, int y) {
     // coloca a peça do jogador na célula onde ele fez a jogada
     tabuleiroREVERSI.set_celula_status(x, y, jogadorAtual);
     tabuleiroREVERSI.slots[x][y].botao.setCor(jogadorAtual == 1 ? sf::Color::Red : sf::Color::Yellow);
+
+    // Verifica se o jogador tem jogadas válidas
+    bool temJogadaValida = false;
+    for (int i = 0; i < qtd_celulaX && !temJogadaValida; ++i) {
+        for (int j = 0; j < qtd_celulaY && !temJogadaValida; ++j) {
+            if (jogada_valida(i, j, jogadorAtual)) {
+                temJogadaValida = true;
+            }
+        }
+    }
+    
     // Imprime a vez do jogador após a jogada
     std::cout << "Vez do Jogador " << ((jogadorAtual == 1) ? 2 : 1) << " - Cor: "
               << ((jogadorAtual == 1) ? "Amarelo" : "Vermelho") << std::endl;
+
+    // Se o jogador não tiver jogadas válidas, passa a vez 
+    if (!temJogadaValida) {
+        std::cout << "Jogador " << jogadorAtual << " nao tem jogadas validas. Passando a vez." << std::endl;
+        //jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+        return true;
+    }
     return true;
 }
 
-// verifica se a jogada em uma célula específica é válida
+// verifica se a jogada em uma célula específica é válidamamke
 bool JogoReversi::jogada_valida(int x, int y, int jogador) {
     int direcoes[8][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}, {1, 1}, {-1, -1}, {-1, 1}, {1, -1}};
     for (auto& direcao : direcoes) {

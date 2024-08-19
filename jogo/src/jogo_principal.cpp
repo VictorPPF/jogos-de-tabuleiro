@@ -76,7 +76,7 @@ int main() {
 
     //---------------------------------------------------------------------------------------------//
     /**
-     * Nesta parte do código, temos algumas definições de variáveis
+     * Nesta parte do código, temos algumas definições de variáveis, chamar as classes, entre outros.
      */
     /**
      * Cria um relógio para medir o tempo
@@ -98,29 +98,52 @@ int main() {
     FimDeJogoLig4 fimDeJogoLig4 (window,fonte);
     FimDeJogoRevesi fimDeJogoReversi (window,fonte);
 
-
+    /**
+     * Aqui temos as variáveis que controlam os clique do mouse, evitando duplos clicks
+     */
     bool nao_ignora_mouse = true;
     bool ignorarProximoClique = false;
 
-    //Variaveis que testam se os jogadores estão logados
+     /**
+     * Variáveis que testam se os jogadores estão logados, para liberar o acesso aos dois jogos
+     */
     bool jogador1_valido = false; 
     bool jogador2_valido = false;
     std::string apelido_jogador1, apelido_jogador2;
-    //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
     bool jogadores_validos= false;
     while (window.isOpen()) {
+        /**
+         * Checa todos os eventos que ocorreram desde a última iteração do loop
+         */
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
-        // Checa todos os eventos que ocorreram desde a última iteração do loop
-        while (window.pollEvent(event)) {    //pollEvent é uma função que retorna true se houver eventos na fila
+        
+        /**
+         * pollEvent é uma função que retorna true se houver eventos na fila, nesse loop principal
+         * que o jogo é executado.
+         */
+        while (window.pollEvent(event)) {
+            /**
+             * caso o jogador clique em fechar a tela, o jogo será encerrado.
+             */    
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+
+            /**
+             * Nesta etapa, temos a dinâmica com a tela inicial 'Menu', onde temos os botões:
+             * 
+             * Inserir jogadores válidos, cadastrar novos jogadores, lista de todos os jogadores cadastrados,
+             * estatisticas de um jogador especifico e excluir um jogador específico.
+             */ 
             if (estadoAtual == "MenuPrincipal") {
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
-                //Logica caso os jogadores estejam logados
+                
+                /**
+                 * Quando entra com dois jogadores cadastrados, o botão para entrar nos jogos Reversi e Lig4 é liberado.
+                 */ 
                 if(jogadores_validos){
                     telaMenu.play1.setCor(sf::Color(150, 129, 200,200));
                     telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
@@ -142,6 +165,9 @@ int main() {
                     }
                 }
 
+                /**
+                 * Verifica se o jogador 1 foi logado com sucesso.
+                 */ 
                 if(telaMenu.campoJogador1.deu_enter){//Logica para jogador 1 logar
                     Jogador* jogador1 = new Jogador(telaMenu.campoJogador1.obterTexto());
                     if(jogador1->existeConta()){
@@ -152,8 +178,13 @@ int main() {
                         std::cout<< "Jogador 1 nao foi logado com sucesso!" <<std::endl;
                         jogador1_valido=false;
                     }
+                    delete jogador1;
                 }
-                if(telaMenu.campoJogador2.deu_enter){ //Logica para jogador 2 logar
+
+                /**
+                 * Verifica se o jogador 2 foi logado com sucesso.
+                 */ 
+                if(telaMenu.campoJogador2.deu_enter){ 
                     Jogador* jogador2 = new Jogador(telaMenu.campoJogador2.obterTexto());
                     if(jogador2->existeConta()){
                         std::cout<< "Jogador 2 foi logado com sucesso!" <<std::endl;
@@ -162,7 +193,8 @@ int main() {
                     }else{
                         std::cout<< "Jogador 2 nao foi logado com sucesso!" <<std::endl;
                         jogador2_valido=false;
-                    }   
+                    }
+                    delete jogador2;   
                 }
                 if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
             }
@@ -171,23 +203,29 @@ int main() {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
                 if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
-                    //Logico pra testar se o cadastro é valido e guardar ele
+                    /**
+                     * Logico pra testar se o cadastro é valido e guardar ele
+                     */ 
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
                     }
-                }
-                
+                }    
         
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);
                 if(telaExcluir.botaoExcluir.foiClicado(window)){
                     std::string apelidoDaConta = telaExcluir.campoApelido.obterTexto();
                     Jogador* excluiJogador = new Jogador(apelidoDaConta);
+                    /**
+                     * Se existe jogador cadastrado e o usuário quer exclui-lo, então será excluído
+                     */
                     if(excluiJogador->existeConta()){
                         excluiJogador->excluirConta();
                         std::cout<< "Conta excluida com sucesso!" << std::endl;
                     }else{
                         std::cout<< "Conta nao existente!" << std::endl;
                     }
+
+                    delete excluiJogador;
                 }
             }
 
@@ -197,10 +235,12 @@ int main() {
                         telaEstat.botaoPesquisa.setCor(sf::Color(150, 129, 200,200)); 
                     }
 
-                    //Logica para mostrar estatisticas
                     if(telaEstat.botaoPesquisa.foiClicado(window)){
                         std::string nomeJogador = telaEstat.campoPesquisa.obterTexto();
                         Jogador* estatisticaJogador = new Jogador(telaEstat.campoPesquisa.obterTexto());
+                        /**
+                         * Se o jogador está cadastrado, aqui ele mostra as estatísticas dele.
+                         */
                         if(estatisticaJogador->existeConta()){
                             estatisticaJogador->getResultado();
                             telaEstat.setJogador(*estatisticaJogador);
@@ -210,9 +250,10 @@ int main() {
                         delete estatisticaJogador;
                     }
             }
-            //agora se sabe q deu enter nos dois campos e tem condição pra comparar se sao validos
-            //pra entrar na tela de jogo
-            //logica idiota de teste pra validar entrada de campos de texto (substituir pela logica correta consultando no banco de dados)
+
+            /**
+            * Aqui verifica se as informações preenchidas nos campos são válidos.
+            */
             
             if (jogadores_validos) { 
                 telaMenu.play1.setCor(sf::Color(150, 129, 250));
@@ -222,13 +263,11 @@ int main() {
                 telaMenu.play1.setCor(sf::Color(50, 50, 50));
                 telaMenu.play2.setCor(sf::Color(50, 50, 50));
             }
-            //logica idiota de teste pra validar entrada de campos de texto (substituir pela logica correta consultando no banco de dados)
             
             if (cadastro_valido) { 
                 telaCadastro.botaoConfirma.setCor(sf::Color(43, 246, 21,100));
                 telaCadastro.botaoConfirma.setCorHover(sf::Color(43, 246, 21,200));
             }
-            //logica idiota de teste pra validar entrada de campos de texto (substituir pela logica correta consultando no banco de dados)
             
             if (jogador_existe) { 
                 telaExcluir.botaoExcluir.setCor(sf::Color(43, 246, 21,100));
@@ -240,13 +279,14 @@ int main() {
                 telaEstat.botaoPesquisa.setCorHover(sf::Color(43, 246, 21,200));
             }
             
-
-            if ( event.mouseButton.button == sf::Mouse::Left) {
+            /**
+            * Nesta etapa, verifica se os botões foram clicados, também inserimos uma lógica para evitar duplo click
+            */
+            if (event.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
                 
                 if (estadoAtual == "MenuPrincipal") {
-                    //sf::sleep(sf::milliseconds(1000)); // Atraso de 100 milissegundos
-                    // os botoes excluir, estatistica e lista estão sobrepostos, então tem que ignorar o primeiro evento de clique
+
                     if (telaMenu.botaoCadastro.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "Cadastro";
                         nao_ignora_mouse = true;
@@ -265,51 +305,60 @@ int main() {
                         estadoAtual = "Estatisticas";
                         nao_ignora_mouse = true;
                     }
-                    // os botoes confirma e estatistica estão sobrepostos, então tem que ignorar o primeiro evento de clique
-                    //nao_ignora_mouse = true;
 
                 } else {
-                    //regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas
+                    /**
+                    * Aqui definimos uma regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas.
+                    * Quando clica em voltar, limpa os campos escritos.
+                    */
                     if (mousePos.x > 358 && mousePos.x < 642 && mousePos.y > 557 && mousePos.y < 624 
                     && (estadoAtual == "Cadastro" || estadoAtual == "ListaDeJogadores" || 
                         estadoAtual == "ExcluirConta" || estadoAtual == "Estatisticas")) { 
                     
                         estadoAtual = "MenuPrincipal";
-                        telaMenu.campoJogador1.deu_enter = 0; //tem que desvalidar quem muda o estadoAtual para Jogo
+                        telaMenu.campoJogador1.deu_enter = 0;
                         telaMenu.campoJogador2.deu_enter = 0;
 
-                        //pra nao ficar escrito na tela coisa antiga
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
                         telaEstat.campoPesquisa.limparTexto();
                     }
                 }
+                /**
+                * Aqui conectamos os jogadores em seus respectivos jogos
+                */
                 if (estadoAtual == "Reversi") {
                     Jogador* jogador1 = new Jogador(apelido_jogador1);
                     Jogador* jogador2 = new Jogador(apelido_jogador2);
                     TelaReversi.setJogadores(*jogador1, *jogador2);
 
-                    //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
                         TelaReversi.jogadorDesistiu = true;
                         TelaReversi.LimpaTabuleiro();
                         estadoAtual = "FimDeJogoReversi";
                         nao_ignora_mouse = true;
-                    }  
+                    } 
+                    delete jogador1;
+                    delete jogador2; 
                 }
                 if (estadoAtual == "Lig4") {
                     Jogador* jogador1 = new Jogador(apelido_jogador1);
                     Jogador* jogador2 = new Jogador(apelido_jogador2);
                     telaLig.setJogadores(*jogador1, *jogador2);
                     
-                    //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;
                         telaLig.LimpaTabuleiro();
                         estadoAtual = "FimDeJogoLig4";
                         nao_ignora_mouse = true;
                     }
+                    delete jogador1;
+                    delete jogador2; 
                 }
+
+                /**
+                * Aqui limpa os campos quando cadastramos novos jogadores. Além das alterações de cor dos botões ao cadastrar os usuários.
+                */
                 if (estadoAtual == "Cadastro") {
                     if (telaCadastro.botaoConfirma.passouMouse(window) && cadastro_valido) {
                         telaCadastro.campoNome.limparTexto();
@@ -319,10 +368,16 @@ int main() {
                         estadoAtual = "MenuPrincipal";                        
                     }
                 }
+                /**
+                * Acessa o histórico de jogadores dentro da tela que exibe a lista de jogadores.
+                */
                 if (estadoAtual == "ListaDeJogadores") { 
                     Historico hist;
                     hist.acessarDados();
                 }
+                /**
+                * Dinâmica para mudar as cores dos botões da tela excluir conta, quando existe um jogador válido.
+                */
                 if (estadoAtual == "ExcluirConta") {
                     if (telaExcluir.botaoExcluir.passouMouse(window) && jogador_existe) {
                         telaExcluir.campoApelido.limparTexto();
@@ -333,13 +388,15 @@ int main() {
                     }
                         
                 }
-                if (estadoAtual == "Estatisticas") { //AQUI CHAMA AS ESTATISTICAS CONSULTANDO O HISTÓRICO
-    
+                if (estadoAtual == "Estatisticas") {     
 
                     if (telaEstat.botaoPesquisa.passouMouse(window) && event.mouseButton.button == sf::Mouse::Left) {
-                        telaEstat.botaoPesquisa.setCor(sf::Color(100, 129 - 50, 200)); //150, 129, 250 roxo padrao
+                        telaEstat.botaoPesquisa.setCor(sf::Color(100, 129 - 50, 200));
                     }
                 }
+                /**
+                * Nesta etapa, exibimos as telas de fim de jogo, quando a partida é finalizada.
+                */
                 if (estadoAtual == "FimDeJogoLig4") {
 
                     if (fimDeJogoLig4.botaoMenu.passouMouse(window)) {
@@ -372,9 +429,6 @@ int main() {
                     }
                     */
                 }
-                // if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
-                //     nao_ignora_mouse = false;
-                // }
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
@@ -391,21 +445,21 @@ int main() {
                 if (telaLig.fimDeJogo){
                     estadoAtual = "FimDeJogoLig4";
                     telaLig.fimDeJogo = false;
-                }
-
-                //matriz
-                
+                }   
             }
             
             
         }
 
         window.clear();
-        
+
+        /**
+        * Nesta etapa, desenhamos cada tela das nossas paginas.
+        */
         if (estadoAtual == "MenuPrincipal") {
                 telaMenu.desenharMenu();
-            } else if (estadoAtual == "Cadastro") { //se o condicional da regiao do botao mudar o estadoAtual
-                telaCadastro.desenharJogo();  //pra Cadastro entao chama a função desenharCadastro e assim por diante
+            } else if (estadoAtual == "Cadastro") { 
+                telaCadastro.desenharJogo();  
             } else if (estadoAtual == "ListaDeJogadores") {
                 
                 telaLista.desenharLista();

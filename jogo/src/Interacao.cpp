@@ -145,28 +145,6 @@ bool Botao::passouMouse(sf::RenderWindow& window) {
     }
 }
 
-// bool Botao::deuClique(sf::RenderWindow& window) {
-//     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-//         sf::Vector2i mousePos = sf::Mouse::getPosition(window); // Obtém a posição do mouse na janela
-//         sf::FloatRect bounds;
-//         bounds = retangulo.getGlobalBounds();
-
-//         // Reduz a área de detecção para evitar a seleção de múltiplas células
-//         bounds.left += retangulo.getOutlineThickness();
-//         bounds.top += retangulo.getOutlineThickness();
-//         bounds.width -= 2 * retangulo.getOutlineThickness();
-//         bounds.height -= 2 * retangulo.getOutlineThickness();
-
-//         if (bounds.contains(static_cast<sf::Vector2f>(mousePos))) {    
-//             return true; 
-//         } else {
-//             return false;
-//         }
-//     } else {
-//         return false;
-//     }
-// }
-
 // Desenha o botão (forma e texto) na janela
 void Botao::desenhar(sf::RenderWindow& window) {
     mudarCor(window); // Atualiza a cor do botão com base na posição do mouse

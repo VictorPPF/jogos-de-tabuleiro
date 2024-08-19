@@ -2,58 +2,6 @@
 #include <iostream>
 
 
-// Implementação da classe Movimentacao
-
-// Construtor
-Movimentacao::Movimentacao() {
-    // Inicialização dos atributos, se necessário
-}
-
-
-// Implementação do método mover
-void Movimentacao::mover(sf::CircleShape &circulo, const sf::Keyboard::Key &TECLA) {
-    float velocidade = 15.0f; // Distância que o círculo se moverá a cada vez
-
-    switch (TECLA) {
-        case sf::Keyboard::Key::D:
-            circulo.move(velocidade, 0);
-            break;
-        case sf::Keyboard::Key::A:
-            circulo.move(-velocidade, 0);
-            break;
-        case sf::Keyboard::Key::W:
-            circulo.move(0, -velocidade);
-            break;
-        case sf::Keyboard::Key::S:
-            circulo.move(0, velocidade);
-            break;
-        default:
-            break;
-    }
-}
-void Movimentacao::mover(sf::RectangleShape &retangulo, const sf::Keyboard::Key &TECLA) {
-    float velocidade = 10.0f; // Distância que o círculo se moverá a cada vez
-
-    switch (TECLA) {
-        case sf::Keyboard::Key::D:
-            retangulo.move(velocidade, 0);
-            break;
-        case sf::Keyboard::Key::A:
-            retangulo.move(-velocidade, 0);
-            break;
-        case sf::Keyboard::Key::W:
-            retangulo.move(0, -velocidade);
-            break;
-        case sf::Keyboard::Key::S:
-            retangulo.move(0, velocidade);
-            break;
-        default:
-            break;
-    }
-}
-
-
-
 // Implementação da classe Botao
 // Construtor da classe Botao
 Botao::Botao(float largura, float altura, float x, float y, sf::Color cor, const std::string& texto, float tamanhoFonte, bool isCirculo, sf::Color corFonte)

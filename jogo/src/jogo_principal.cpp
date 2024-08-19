@@ -15,9 +15,6 @@
 
 using namespace std;
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
  //logica idiota de teste pra validar entrada de campos de texto
 bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
         if (campoJogador1.obterTexto() != "" && campoJogador2.obterTexto() != "" && 
@@ -90,39 +87,30 @@ int main() {
     //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
     bool jogadores_validos= false;
     while (window.isOpen()) {
- 
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
         // Checa todos os eventos que ocorreram desde a última iteração do loop
-        
         while (window.pollEvent(event)) {    //pollEvent é uma função que retorna true se houver eventos na fila
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-
             if (estadoAtual == "MenuPrincipal") {
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
-                
                 //Logica caso os jogadores estejam logados
                 if(jogadores_validos){
                     telaMenu.play1.setCor(sf::Color(150, 129, 200,200));
                     telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
-
                     if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
-                        
                         std::cout << "Botao Reversi clicado!!!" << std::endl;
                         std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Reversi";
                         nao_ignora_mouse = true;
-
                     }
-
                     if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
-
                         std::cout << "Botao Lig4 clicado!!!" << std::endl;
                         std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
@@ -143,7 +131,6 @@ int main() {
                         jogador1_valido=false;
                     }
                 }
-
                 if(telaMenu.campoJogador2.deu_enter){ //Logica para jogador 2 logar
                     Jogador* jogador2 = new Jogador(telaMenu.campoJogador2.obterTexto());
                     if(jogador2->existeConta()){
@@ -155,28 +142,19 @@ int main() {
                         jogador2_valido=false;
                     }   
                 }
-    
                 if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
-
             }
 
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
-
                 if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
-                
                     //Logico pra testar se o cadastro é valido e guardar ele
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
-                    if(cadastroJogador->existeConta()){
-                        std::cout << "Cadastro criado com sucesso!" << std::endl;
-                    }else{
-                        std::cout << "Cadastro não realizado, tente novamente" << std::endl;
                     }
                 }
+                
         
-            }
-
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);
                 if(telaExcluir.botaoExcluir.foiClicado(window)){
@@ -207,7 +185,6 @@ int main() {
                         }else{
                             std::cout << "Erro! Conta nao existente!" <<std::endl;
                         }
-
                         delete estatisticaJogador;
                     }
             }

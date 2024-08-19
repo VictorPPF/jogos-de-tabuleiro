@@ -1,25 +1,41 @@
-// Wallpaper.hpp
+/**
+ * @file Wallpaper.hpp
+ * @class Wallpaper
+ * @brief Classe que gerencia a textura e o sprite do wallpaper
+ */
 #ifndef WALLPAPER_HPP
 #define WALLPAPER_HPP
 
 #include <SFML/Graphics.hpp>
 #include <string>
-
-// Classe que gerencia a textura e o sprite do wallpaper
 class Wallpaper {
 
 private:
-    sf::Texture textura;  // Textura do wallpaper
-    sf::Sprite sprite;    // Sprite que usa a textura
+    /**
+     * @param textura: textura do wallpaper
+     */
+    sf::Texture textura;  
+    /**
+     * @param sprite: sprite que usa a textura
+     */
+    sf::Sprite sprite;    
 
 public:
-    // Construtor que carrega a textura do arquivo e cria o sprite
+    /**
+     * @brief Construtor que carrega a textura do arquivo e cria o sprite
+     */
     Wallpaper(const std::string& arquivo);
-    
-    // Método para desenhar o wallpaper na janela
+    /**
+     * @brief desenhar é o método para desenhar o wallpaper na janela
+     * @param window: janela onde o wallpaper será desenhado
+     * @return void 
+     */
     void desenhar(sf::RenderWindow& window);
-    
-    // Método para ajustar o tamanho do sprite do wallpaper de acordo com o tamanho da janela
+    /**
+     * @brief Método para redimensionar o wallpaper
+     * @param tamanhoJanela: tamanho da janela onde o wallpaper será desenhado
+     * @return void
+     */
     void redimensionar(sf::Vector2u tamanhoJanela);
 };
 

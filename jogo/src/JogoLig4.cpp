@@ -24,7 +24,7 @@ void JogoLig4::desenharJogo() {
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
     if(verificaCondicaoVitoria(tabuleiroLIG4.indice_i, jocupado - 1)) {
-//88888888888888#################################
+
         if(jogadorAtual==2){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
             nomeVencedor = jogador1.getApelido();
@@ -43,12 +43,15 @@ void JogoLig4::desenharJogo() {
 }
 
 void JogoLig4::acao() {
+    
     if (tabuleiroLIG4.deuClique && !animando) {
+        
         // poe a posição inicial da peça na coluna clicada e no topo do tabuleiro
         circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY - tamanho_celula);
         // Executa a função FazJogada pra encontrar a posição certa
         FazJogada(tabuleiroLIG4.indice_i, tabuleiroLIG4.indice_j);
         std::cout << "Jogador " << jogadorAtual << " jogou na coluna " << tabuleiroLIG4.indice_i << std::endl;
+        
         
         // Troca de jogador
         jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
@@ -57,6 +60,7 @@ void JogoLig4::acao() {
 
         // Reseta o clique
         tabuleiroLIG4.deuClique = false;
+        std::cout << "Vez do Jogador " << jogadorAtual << std::endl;
     }
 
     // Chama a função anima para animar a peça caindo

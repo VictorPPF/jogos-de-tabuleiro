@@ -28,11 +28,8 @@ jogadorDesistiu(false)
     // int num_pecas_jogador1 = 2;
     // int num_pecas_jogador2 = 2;
     // imprime de quem é a vez no início do jogo
-    std::cout << "Vez do Jogador " << jogadorAtual << " - Cor: Vermelho" << std::endl;
-}
-
-
-   
+    //std::cout << "Vez do Jogador " << jogadorAtual << " - Cor: Vermelho" << std::endl;
+}  
     
 void JogoReversi::contaPeca() {
     num_pecas_jogador1 = 0;
@@ -118,6 +115,7 @@ void JogoReversi::acao() {
             contaPeca();
             // Verifica jogadas válidas para o próximo jogador
             if (!TemJogadasValidas((jogadorAtual == 1) ? 2 : 1)) {
+                std::cout << "Vez do Jogador " << jogadorAtual << std::endl;
                 std::cout << "Jogador " << ((jogadorAtual == 1) ? 2 : 1) << " não tem jogadas válidas. Verificando para outro jogador..." << std::endl;
                 if (!TemJogadasValidas(jogadorAtual)) {
                     std::cout << "Nenhum jogador tem jogadas válidas. Jogo deve terminar ou estado especial deve ser tratado aqui." << std::endl;

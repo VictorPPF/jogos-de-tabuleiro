@@ -111,8 +111,9 @@ int main() {
                     telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
 
                     if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
-
+                        
                         std::cout << "Botao Reversi clicado!!!" << std::endl;
+                        std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Reversi";
@@ -123,6 +124,7 @@ int main() {
                     if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
 
                         std::cout << "Botao Lig4 clicado!!!" << std::endl;
+                        std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Lig4";

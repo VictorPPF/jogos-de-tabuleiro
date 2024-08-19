@@ -28,13 +28,18 @@ public:
     bool fimDeJogo = false; // indica se o jogo terminou
     std::string nomeVencedor;
     bool jogadorDesistiu;
+    int num_pecas_jogador1;
+    int num_pecas_jogador2;
+    
     //Métodos herdados
     // construtor que inicializa os elementos do jogo
     JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
+    void contaPeca();
     // método para desenhar o estado atual do jogo na tela
-    void desenharJogo() override;
+    void desenharJogo() override; 
     // executa as ações relacionadas ao clique do jogador
     void acao() override;
+    bool TemJogadasValidas(int jogador);
     // método para limpar o tabuleiro e preparar para um novo jogo
     void LimpaTabuleiro() override;
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
@@ -43,17 +48,12 @@ public:
     std::string getNomeVencedor() const override;
     // verifica se o jogo terminou
     bool verificaCondicaoVitoria();
-    void contaPeca();
-    int num_pecas_jogador1;
-    int num_pecas_jogador2;
     // verifica se uma jogada em uma célula específica é válida
     bool jogada_valida(int x, int y, int jogador);
     // verifica se uma jogada é válida em uma determinada direção
     bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
     // calcula e retorna o jogador que venceu o jogo (ou empate)
     int Ganhador();
-    
-    bool TemJogadasValidas(int jogador);
     
 };
 

@@ -85,16 +85,37 @@ void JogoReversi::desenharJogo() {
 void JogoReversi::acao() {
     if (tabuleiroREVERSI.deuClique) {
         if (FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j)) {
-            jogadorAtual = (jogadorAtual == 1) ? 2 : 1; // troca o turno entre os jogadores
+            // Verifica jogadas válidas para o próximo jogador
+            if (!TemJogadasValidas((jogadorAtual == 1) ? 2 : 1)) {
+                std::cout << "Jogador " << ((jogadorAtual == 1) ? 2 : 1) << " não tem jogadas válidas. Verificando para outro jogador..." << std::endl;
+                if (!TemJogadasValidas(jogadorAtual)) {
+                    std::cout << "Nenhum jogador tem jogadas válidas. Jogo deve terminar ou estado especial deve ser tratado aqui." << std::endl;
+                } else {
+                    std::cout << "Mantendo a vez do Jogador " << jogadorAtual << std::endl;
+                    // Não troca o jogador se o próximo não tem jogadas
+                }
+            } else {
+                // Troca o jogador apenas se o próximo tem jogadas válidas
+                jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+                std::cout << "Vez do Jogador " << jogadorAtual << std::endl;
+            }
         } else {
             std::cout << "Jogada inválida. Tente novamente." << std::endl;
         }
         tabuleiroREVERSI.deuClique = false; // reseta o clique para não executar múltiplas jogadas
     }
-    // Verifica se o botão "Desistir" foi clicado
-    if (botaoVoltar.foiClicado(window)) {
-        jogadorDesistiu = true; // Define a flag de desistência
+}
+
+// Verifica se o jogador tem jogadas válidas no tabuleiro
+bool JogoReversi::TemJogadasValidas(int jogador) {
+    for (int i = 0; i < qtd_celulaX; ++i) {
+        for (int j = 0; j < qtd_celulaY; ++j) {
+            if (jogada_valida(i, j, jogador)) {
+                return true;
+            }
+        }
     }
+    return false;
 }
 
 // limpa o tabuleiro e reseta o jogo

@@ -49,7 +49,8 @@ public:
     bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
     // calcula e retorna o jogador que venceu o jogo (ou empate)
     int Ganhador();
- 
+    
+    bool TemJogadasValidas(int jogador);
     
 };
 

@@ -1,4 +1,5 @@
 /**
+ * @file JogoReversi.hpp
  * @class JogoReversi
  * @brief Representa um jogo Reversi
  * 

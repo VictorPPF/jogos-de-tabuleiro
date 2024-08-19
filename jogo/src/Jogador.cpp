@@ -9,6 +9,9 @@
 // Inicialização do histórico (Era isso que você estava falando ?)
 Historico Jogador::historico;
 
+Jogador::Jogador(){
+}
+
 Jogador:: Jogador(std:: string _nome, std:: string _apelido){
     //Cria um jogador do zero
     this->nome = _nome; 

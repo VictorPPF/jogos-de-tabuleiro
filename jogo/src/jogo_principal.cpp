@@ -80,6 +80,7 @@ int main() {
     //Variaveis que testam se os jogadores estão logados
     bool jogador1_valido = false; 
     bool jogador2_valido = false;
+    std::string apelido_jogador1, apelido_jogador2;
     //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
     bool jogadores_validos=true;
     while (window.isOpen()) {
@@ -104,19 +105,23 @@ int main() {
                     telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
 
                     if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
+
                         std::cout << "Botao Reversi clicado!!!" << std::endl;
+                        telaMenu.campoJogador1.limparTexto();
+                        telaMenu.campoJogador2.limparTexto();
+                        estadoAtual = "Reversi";
+                        nao_ignora_mouse = true;
+
                     }
+
                     if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
+
                         std::cout << "Botao Lig4 clicado!!!" << std::endl;
+                        telaMenu.campoJogador1.limparTexto();
+                        telaMenu.campoJogador2.limparTexto();
+                        estadoAtual = "Lig4";
+                        nao_ignora_mouse = true;
                     }
-                }
-
-
-                if(telaMenu.play1.foiClicado(window) && jogadores_validos){//Testa se o botao Reversi foi clicado
-                    std::cout << "Botao Reversi clicado!!!" << std::endl;
-                }
-                if(telaMenu.play2.foiClicado(window) && jogadores_validos){//Testa se o botao Lig4 foi clicado
-                    std::cout << "Botao Lig4 clicado!!!" << std::endl;
                 }
 
                 if(telaMenu.campoJogador1.deu_enter){//Logica para jogador 1 logar
@@ -124,6 +129,7 @@ int main() {
                     if(jogador1->existeConta()){
                         std::cout<< "Jogador 1 foi logado com sucesso!" <<std::endl;
                         jogador1_valido=true;
+                        apelido_jogador1=telaMenu.campoJogador1.obterTexto();
                     }else{
                         std::cout<< "Jogador 1 nao foi logado com sucesso!" <<std::endl;
                         jogador1_valido=false;
@@ -135,6 +141,7 @@ int main() {
                     if(jogador2->existeConta()){
                         std::cout<< "Jogador 2 foi logado com sucesso!" <<std::endl;
                         jogador2_valido=true;
+                        apelido_jogador2=telaMenu.campoJogador2.obterTexto();
                     }else{
                         std::cout<< "Jogador 2 nao foi logado com sucesso!" <<std::endl;
                         jogador2_valido=false;
@@ -250,20 +257,6 @@ int main() {
                     // os botoes confirma e estatistica estão sobrepostos, então tem que ignorar o primeiro evento de clique
                     //nao_ignora_mouse = true;
 
-                    if (telaMenu.play1.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO REVERSI
-                        telaMenu.campoJogador1.limparTexto();
-                        telaMenu.campoJogador2.limparTexto();
-                        TelaReversi.fimDeJogo = false;
-                        estadoAtual = "Reversi";
-                        nao_ignora_mouse = true;
-                    }
-                    if (telaMenu.play2.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO LIG4
-                        telaMenu.campoJogador1.limparTexto();
-                        telaMenu.campoJogador2.limparTexto();
-                        estadoAtual = "Lig4";
-                        nao_ignora_mouse = true;
-                    }
-                    
                     
                 } else {
                     //regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas
@@ -291,13 +284,15 @@ int main() {
                     
                 }
                 if (estadoAtual == "Lig4") {
+                    Jogador* jogador1 = new Jogador(apelido_jogador1);
+                    Jogador* jogador2 = new Jogador(apelido_jogador2);
+                    telaLig.setJogadores(*jogador1, *jogador2);
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;
                         telaLig.LimpaTabuleiro();
                         estadoAtual = "MenuPrincipal";
-                        telaMenu.campoJogador1.deu_enter = 0;
-                        telaMenu.campoJogador2.deu_enter = 0;
+                        telaLig.LimpaTabuleiro();
                         nao_ignora_mouse = true;
                     }
                 }

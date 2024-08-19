@@ -217,3 +217,27 @@ bool Jogador::existeConta(){
         return false;
     }
 }
+
+int Jogador::getVitoriasReversi() const {
+    return vitorias_reversi;
+}
+
+int Jogador::getDerrotasReversi() const {
+    return derrotas_reversi;
+}
+
+int Jogador::getEmpatesReversi() const {
+    return empates_reversi;
+}
+
+int Jogador::getVitoriasLig4() const {
+    return vitorias_lig4;
+}
+
+int Jogador::getDerrotasLig4() const {
+    return derrotas_lig4;
+}
+
+int Jogador::getEmpatesLig4() const {
+    return empates_lig4;
+}

@@ -8,6 +8,7 @@
 #include "../include/Wallpaper.hpp"
 #include "../include/Interacao.hpp"
 #include "../include/Historico.hpp"
+#include "../include/Jogador.hpp"
 
 class TelaMenu {
     private:
@@ -89,8 +90,11 @@ class TelaEstatisticas {
         Botao botaoVoltar;
         Botao botaoPesquisa;
         CampoTexto campoPesquisa;
+        Jogador jogador;
 
         TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte);
+        void desenharTexto(const std::string& texto, float x, float y, float tamanho, sf::Color cor);
+        void setJogador(const Jogador& jogador);
         void desenharEstatisticas();
 };
 

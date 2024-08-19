@@ -199,12 +199,16 @@ int main() {
 
                     //Logica para mostrar estatisticas
                     if(telaEstat.botaoPesquisa.foiClicado(window)){
+                        std::string nomeJogador = telaEstat.campoPesquisa.obterTexto();
                         Jogador* estatisticaJogador = new Jogador(telaEstat.campoPesquisa.obterTexto());
                         if(estatisticaJogador->existeConta()){
                             estatisticaJogador->getResultado();
+                            telaEstat.setJogador(*estatisticaJogador);
                         }else{
                             std::cout << "Erro! Conta nao existente!" <<std::endl;
                         }
+
+                        delete estatisticaJogador;
                     }
             }
             //agora se sabe q deu enter nos dois campos e tem condição pra comparar se sao validos

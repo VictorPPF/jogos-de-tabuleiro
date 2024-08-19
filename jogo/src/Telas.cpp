@@ -170,6 +170,19 @@ TelaEstatisticas::TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte)
         botaoPesquisa.criarBotoes();
         botaoPesquisa.setCorHover(sf::Color(150, 129 - 50, 200,50)); //150, 129, 250 roxo padrao
     }
+void TelaEstatisticas::desenharTexto(const std::string& texto, float x, float y, float tamanho, sf::Color cor) {
+    sf::Text textoSFML;
+    textoSFML.setFont(fonte);
+    textoSFML.setString(texto);
+    textoSFML.setCharacterSize(tamanho);
+    textoSFML.setFillColor(cor);
+    textoSFML.setPosition(x, y);
+    window.draw(textoSFML);
+}
+
+void TelaEstatisticas::setJogador(const Jogador& jogador) {
+    this->jogador = jogador;
+}
 
 void TelaEstatisticas::desenharEstatisticas() {
     try {
@@ -184,7 +197,22 @@ void TelaEstatisticas::desenharEstatisticas() {
     botaoVoltar.desenhar(window);
     botaoPesquisa.desenhar(window);
     campoPesquisa.desenhar(window);
+
+    // Exibir as estatísticas do jogador, se houver dados
+    if (jogador.getNome() != "") { // Assumindo que o nome não pode ser vazio para um jogador válido
+        desenharTexto("Nome: " + jogador.getNome(), 50.f, 50.f, 24.f, sf::Color::Black);
+        desenharTexto("Apelido: " + jogador.getApelido(), 50.f, 100.f, 24.f, sf::Color::Black);
+        desenharTexto("Vitorias Reversi: " + std::to_string(jogador.getVitoriasReversi()), 50.f, 150.f, 24.f, sf::Color::Black);
+        desenharTexto("Derrotas Reversi: " + std::to_string(jogador.getDerrotasReversi()), 50.f, 200.f, 24.f, sf::Color::Black);
+        desenharTexto("Empates Reversi: " + std::to_string(jogador.getEmpatesReversi()), 50.f, 250.f, 24.f, sf::Color::Black);
+        desenharTexto("Vitorias Lig4: " + std::to_string(jogador.getVitoriasLig4()), 50.f, 300.f, 24.f, sf::Color::Black);
+        desenharTexto("Derrotas Lig4: " + std::to_string(jogador.getDerrotasLig4()), 50.f, 350.f, 24.f, sf::Color::Black);
+        desenharTexto("Empates Lig4: " + std::to_string(jogador.getEmpatesLig4()), 50.f, 400.f, 24.f, sf::Color::Black);
+    } else {
+        desenharTexto("Nenhum jogador selecionado.", 327.f, 200.f, 15.f, sf::Color::Red);
+    }
 }
+
 
 
 FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),

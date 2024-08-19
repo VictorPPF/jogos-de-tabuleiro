@@ -23,7 +23,7 @@ Historico::Historico(){
         for (int i = 0; i < cabecalho.size(); i++) {
             arquivo << cabecalho[i];
             if (i < cabecalho.size() - 1) {
-                arquivo << ";"; 
+                arquivo << "; "; 
             }
         }
         arquivo << std::endl; 
@@ -61,7 +61,7 @@ void Historico::excluirLinha (std:: string apelido){
     arquivoTemp.close();
 
     std::remove(nomeArquivo.c_str());
-    std::rename("temp.csv", nomeArquivo.c_str());
+    std::rename("../temp.csv", nomeArquivo.c_str());
 
 
     //Lidando com o caso de não achar o apelido
@@ -95,7 +95,7 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
             std::string apelidoLido;
             getline(ss, apelidoLido, ';');
             if(apelidoLido==apelido){
-                arquivoTemp << apelidoLido << ";"; //Copio o apelido pro arquivo temp
+                arquivoTemp << apelidoLido << "; "; //Copio o apelido pro arquivo temp
 
                 //Leio o restante dos dados do jogador, tirando o apelido (i=1)
                 for (int i = 1; i < cabecalho.size(); ++i){
@@ -107,7 +107,7 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
 
                     arquivoTemp << dado;
                     if (i < cabecalho.size() - 1) {
-                        arquivoTemp << ";"; 
+                        arquivoTemp << "; "; 
                     }
                 }
                 arquivoTemp << std::endl;
@@ -137,7 +137,7 @@ void Historico::criarLinha(const std::vector<std::string>& dados) {
         for (int i = 0; i < dados.size(); ++i) {
             arquivo << dados[i];
             if (i < dados.size() - 1) {
-                arquivo << ";"; // Adiciona ponto e vírgula entre os campos
+                arquivo << "; "; // Adiciona ponto e vírgula entre os campos
             }
         }
         arquivo << std::endl; // Nova linha após a última entrada
@@ -230,5 +230,6 @@ void Historico::addEstatistica(std:: string apelido, std:: string coluna){
         Editar(apelido, coluna, estatistica);
     }
 }
-        
-       
+std::string Historico::getNomeArquivo() const {
+    return nomeArquivo;
+}

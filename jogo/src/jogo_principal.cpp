@@ -2,361 +2,45 @@
 #include <windows.h>
 
 #include "../include/Wallpaper.hpp"
-#include "../include/ExecutaPartida.hpp"
+#include "../include/Interacao.hpp"
 #include "../include/Tabuleiro.hpp"
+#include "../include/CampoTexto.hpp"
+#include "../include/Telas.hpp"
+#include "../include/Jogador.hpp"
 #include "../include/JogoLig4.hpp"
+#include"../include/JogoReversi.hpp"
+#include"../include/Jogo.hpp"
+
 #include <iostream>
 
 using namespace std;
 
-//declarações de função (prototipagem) eh boa pratica
-void desenharMenu();
-void desenharCadastro();
-void desenharListaDeJogadores();
-void desenharExcluirConta();
-void desenharEstatisticas();
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
-// foi feito na pressa. acho que botao deveria ter um metodo que encapsula essa classe CampoTexto
- 
-//o resto dos botoes ficam na classe Jogo
-class CampoTexto {
-public:
-    
-    CampoTexto(float largura, float altura, float posicaoX, float posicaoY) :
-        retangulo(sf::Vector2f(largura, altura)),
-        texto("", fonte, 25),
-        ativo(false) {
-        retangulo.setPosition(posicaoX, posicaoY);
-        retangulo.setFillColor(sf::Color(223, 232, 106, 100)); // cor semitransparente
-        retangulo.setOutlineThickness(2);
-        retangulo.setOutlineColor(sf::Color::Black);
-
-        texto.setPosition(posicaoX + 5, posicaoY + 10); // pequeno deslocamento pra dentro do retângulo
-        texto.setFillColor(sf::Color::Black);
-        
-        
-        if (!fonte.loadFromFile("font_arcade.ttf")) {
-            std::cerr << "deu ruim pra carregar a fonte" << std::endl;
-        }
-    }
-    int deu_enter = 0;
-    
-    void limparTexto() {
-            texto.setString("");
-    }
-
-    void desenhar(sf::RenderWindow& window) {
-        window.draw(retangulo);
-        window.draw(texto);
-    }
-
-    void processarEventos(sf::Event& event, sf::RenderWindow& window) {
-        if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
-            sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-            if (retangulo.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                ativar();
-            } else {
-                desativar();
-            }
-        }
-
-        if (event.type == sf::Event::TextEntered) {
-            if (ativo) {
-                if (event.text.unicode == '\b') { // da backspace
-                    removerUltimoCaractere();
-                } else if (event.text.unicode < 128) {
-                    adicionarCaractere(static_cast<char>(event.text.unicode));
-                }
-            }
-        }
-
-        if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Enter) { // da enter
-                if (ativo) {
-                    cout << "Texto inserido: " << obterTexto() << endl;
-                    deu_enter = 1;
-                    desativar();
-                }
-            }
-        }
-    }
-
-    string obterTexto() const {
-        return texto.getString();
-    }
-
-private:
-    void ativar() {
-        ativo = true;
-        retangulo.setFillColor(sf::Color(223, 232, 106, 200));
-        retangulo.setOutlineColor(sf::Color(150, 129, 250));
-        retangulo.setOutlineThickness(5);
-    }
-
-    void desativar() {
-        ativo = false;
-        retangulo.setFillColor(sf::Color(223, 232, 106, 100));
-        retangulo.setOutlineColor(sf::Color::Black);
-        retangulo.setOutlineThickness(2);
-    }
-
-    void adicionarCaractere(char c) {
-        texto.setString(texto.getString() + c);
-    }
-
-    void removerUltimoCaractere() {
-        sf::String str = texto.getString();
-        if (str.getSize() > 0) {
-            str.erase(str.getSize() - 1);
-            texto.setString(str);
-        }
-    }
-
-    sf::RectangleShape retangulo;
-    sf::Text texto;
-    sf::Font fonte;
-    bool ativo;
-};
-
-class TelaMenu {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-    sf::Event& evento; 
-    
-public:
-    Botao botaoJogador1;
-    Botao botaoJogador2;
-    Botao botaoListaJogadores;
-    Botao botaoCadastro;
-    Botao botaoExcluirConta;
-    Botao botaoEstatistica;
-    Botao play1;
-    Botao play2;
-    CampoTexto campoJogador1;
-    CampoTexto campoJogador2;
-    TelaMenu(sf::RenderWindow& window, sf::Font& fonte,sf::Event& evento) : window(window), fonte(fonte), evento(evento),
-        /*botao recebe: largura, altura, posicao x, posicao y, cor em rgb (a última coluna é transparencia), 
-        texto, tamanho da fonte, se for circulo é true, cor da fonte (o padrão é white)*/
-        botaoJogador1(306.0, 49.f, 174.0, 206.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoJogador2(306.0, 49.f, 177.0 + (306.0*1.5), 206.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoCadastro(220.f, 65.f, 140.f, 368.f, sf::Color(150, 129, 250), "Cadastro", 25.f, false, sf::Color(43, 0, 108)),
-        botaoListaJogadores(500.f, 65.f, 390.f, 368.f, sf::Color(150, 129, 250), "Lista de Jogadores", 25.f, false, sf::Color(43, 0, 108)),
-        botaoExcluirConta(350.f, 65.f, 140.f, 458.f, sf::Color(150, 129, 250), "Excluir Conta", 25.f, false, sf::Color(43, 0, 108)),
-        botaoEstatistica(350.f, 65.f, 540.f, 458.f, sf::Color(150, 129, 250), "Estatisticas", 25.f, false, sf::Color(43, 0, 108)),
-        play1(200.f,100.f,140 + (350-200)/2,550.f, sf::Color(50, 50, 50), "REVERSI", 25.f, false, sf::Color(43, 0, 108)),
-        play2(200.f,100.f,540 - 140 + (540 - 100)/2,550.f, sf::Color(50, 50, 50), "LIG4", 25.f, false, sf::Color(43, 0, 108)),
-        campoJogador1(306.0, 49.f, 173.0, 206.f),
-        campoJogador2(306.0, 49.f, 177.0 + (306.0 * 1.5), 206.f)
-    {
-        botaoJogador1.criarBotoes();
-        botaoJogador2.criarBotoes();
-        botaoCadastro.criarBotoes();
-        botaoListaJogadores.criarBotoes();
-        botaoExcluirConta.criarBotoes();
-        botaoEstatistica.criarBotoes();
-        play1.criarBotoes();
-        play2.criarBotoes();
-        
-    }
-    void desenharMenu() {
-        Wallpaper wallpaper("menuInicial.png");
-        wallpaper.redimensionar(window.getSize());
-
-
-        wallpaper.desenhar(window);
-        botaoJogador1.desenhar(window);
-        botaoJogador2.desenhar(window);
-        botaoCadastro.desenhar(window);
-        botaoListaJogadores.desenhar(window);
-        botaoExcluirConta.desenhar(window);
-        botaoEstatistica.desenhar(window);
-        play1.desenhar(window);
-        play2.desenhar(window);
-        campoJogador1.desenhar(window);
-        campoJogador2.desenhar(window);
-    }
-
-    
-};
-
-class TelaCadastro {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoNome;
-    Botao botaoApelido;
-    Botao botaoConfirma;
-    Botao botaoVoltar;
-    CampoTexto campoNome;
-    CampoTexto campoApelido;
-
-    TelaCadastro(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        //223, 232, 106, 100
-        botaoNome(502.0, 49.f, 327.f, 283.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-        botaoApelido(502.0, 49.f, 327.f, 359.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-        botaoConfirma(502.0/3, 49.f, 327.f + 502*(2.f/3.f), 359.f + (359 - 283), sf::Color(220, 100, 180,100), "confirma", 15.f, false),
-        botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-        campoNome(502.0, 49.f, 327.f, 283.f),
-        campoApelido(502.0, 49.f, 327.f, 359.f)
-    {
-        
-        botaoNome.criarBotoes();
-        botaoApelido.criarBotoes();
-        botaoConfirma.criarBotoes();
-        botaoConfirma.setCorHover(sf::Color(255, 0, 20, 100));
-        botaoConfirma.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("menuCadastro.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoNome.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoConfirma.desenhar(window);
-        botaoVoltar.desenhar(window);
-        campoNome.desenhar(window);
-        campoApelido.desenhar(window);
-    }
-};
-
-class TelaReversi {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-
-    TelaReversi(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-        
-        botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(223, 232, 106, 100), "", 15.f, false),
-        botaoVoltar(284.f, 65.f, 0, 0, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108))
-    {
-        
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-    }
-
-    void desenharJogo() {
-        Wallpaper wallpaper("wallpaperflare.jpg");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
-
-class TelaLista {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoVoltar;
-    TelaLista(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte), 
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)) {
-        botaoVoltar.criarBotoes();
-    }
-
-    
-    void desenharLista() {
-        Wallpaper wallpaper("menuListaJogadores.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoVoltar.desenhar(window);
-    }
-};
-
-class TelaExcluirConta {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoApelido;
-    Botao botaoExcluir;
-    Botao botaoVoltar;
-    CampoTexto campoApelido;
-
-    TelaExcluirConta(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-    botaoApelido(502.0, 49.f, 327.f, 264.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-    botaoExcluir(350.f, 65.f, 171.f, 345.f, sf::Color(220, 100, 180,100), "Excluir Conta", 25.f, false),
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-    campoApelido(502.0, 49.f, 327.f, 264.f) {
-        botaoApelido.criarBotoes();
-        botaoExcluir.criarBotoes();
-        botaoExcluir.setCorHover(sf::Color(255, 0, 20, 100));
-        botaoVoltar.criarBotoes();
-    }
-    void desenharExcluirConta() {
-        Wallpaper wallpaper("menuExcluirConta.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoExcluir.desenhar(window);
-        botaoVoltar.desenhar(window);
-        campoApelido.desenhar(window);
-    }
-};
-
-class TelaEstatisticas {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-public:
-    Botao botaoApelido;
-    Botao botaoVoltar;
-    Botao botaoPesquisa;
-    CampoTexto campoPesquisa;
-    TelaEstatisticas(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
-    botaoApelido(502.0, 49.f, 327.f, 217.f, sf::Color(203, 202, 106,100), "", 15.f, false),
-    botaoVoltar(284.f, 65.f, 358.f, 557.f, sf::Color(150, 129, 250), "Voltar", 25.f, false, sf::Color(43, 0, 108)),
-    botaoPesquisa(130.0, 49.f, 327.f + 25 + 502.0, 217.f, sf::Color(150, 129, 200,200), "Pesquisa", 15.f, false),
-    campoPesquisa(502.0, 49.f, 327.f, 217.f) {
-        botaoApelido.criarBotoes();
-        botaoVoltar.criarBotoes();
-        botaoPesquisa.criarBotoes();
-        botaoPesquisa.setCorHover(sf::Color(150, 129 - 50, 200,50)); //150, 129, 250 roxo padrao
-    }
-    void desenharEstatisticas() {
-        Wallpaper wallpaper("menuEstatisticas.png");
-        wallpaper.redimensionar(window.getSize());
-
-        wallpaper.desenhar(window);
-        botaoApelido.desenhar(window);
-        botaoVoltar.desenhar(window);
-        botaoPesquisa.desenhar(window);
-        campoPesquisa.desenhar(window);
-    }
-};
 
  //logica idiota de teste pra validar entrada de campos de texto
 bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
         if (campoJogador1.obterTexto() != "" && campoJogador2.obterTexto() != "" && 
         campoJogador1.deu_enter == 1 && campoJogador2.deu_enter == 1) {
-            
+            // campoJogador1.deu_enter = 0;
+            // campoJogador2.deu_enter = 0;
             return true;
         }
         return false;
     };
 
-
 int main() {
     //carrega a fonte só uma vez 
     sf::Font fonte;
-    if (!fonte.loadFromFile("arial.ttf")) {
-        std::cerr << "Failed to load font" << std::endl;
-        return 1;
+    // Carregar a fonte
+    try {
+        if (!fonte.loadFromFile("font_arcade.ttf")) {
+            throw std::runtime_error("Falha ao carregar a fonte.");
+        }
+    } catch (const std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        // Lançar a exceção para indicar falha de inicialização
+        throw;
     }
     //--------------- MÓDULO PARA INICIAR A TELA DO JOGO NAS DIMENSÕES DA TELA DA PESSOA-----------------//
     // Obtém as dimensões da tela
@@ -379,56 +63,34 @@ int main() {
     string estadoAtual = "MenuPrincipal"; // I CANT STRESS ENOUGH HOW IMPORTANT THIS VARIABLE IS
 
     //---------------------------------------------------------------------------------------------//
-
-    // Configurações iniciais de cor e forma
-    sf::Color cor(255, 130, 190); //variavel com parametros de valor de cor (vai de 0 a 255)
-    sf::CircleShape circulo(50.f);
-    circulo.setFillColor(sf::Color::Blue);
-
-    // Define a posição inicial do círculo
-    circulo.setPosition(0.0, 0.0);
-    //retangulo igual o circulo
-    sf::RectangleShape retangulo(sf::Vector2f(100.f, 100.f));
-    retangulo.setFillColor(sf::Color::Red);
-    retangulo.setPosition(0.0, 0.0);
-
-    // Cria dois pontos com coordenadas diferentes
-    PontoF pos1(2.0,3.0);
-    PontoF pos2(200.0,200.0);
-    Movimentacao teste;
-    
     
     // Cria um relógio para medir o tempo
     sf::Clock relogio;
-    
-    PontoF pos3 = pos1 + pos2;
 
     //cout << pos3 << endl;
 
-    // Criação dos campos de texto
-    float origemX = 238.0;
-    float origemY = 166.0;
-    int qtd_celulaX=7; //colunas
-    int qtd_celulaY=6; //linhas
-    float tamanho_celula= 75.0;
-    Tabuleiro tabuleiroLIG4(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula);
-    
-
+ 
     TelaMenu telaMenu (window,fonte,event);
-    TelaReversi telaRever (window,fonte);
-    JogoLig4 telaLig (window,fonte);
+    JogoReversi TelaReversi(window,fonte,event);
+    JogoLig4 telaLig (window,fonte,event);
     TelaCadastro telaCadastro (window,fonte);
     TelaLista telaLista (window,fonte);
     TelaExcluirConta telaExcluir (window,fonte);
     TelaEstatisticas telaEstat (window,fonte);
+    FimDeJogoLig4 fimDeJogoLig4 (window,fonte);
+    FimDeJogoRevesi fimDeJogoReversi (window,fonte);
+
     bool nao_ignora_mouse = true;
+    bool ignorarProximoClique = false;
 
+    //Variaveis que testam se os jogadores estão logados
+    bool jogador1_valido = false; 
+    bool jogador2_valido = false;
+    std::string apelido_jogador1, apelido_jogador2;
+    //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
+    bool jogadores_validos= false;
     while (window.isOpen()) {
-
-        
-
-
-        bool jogadores_validos = true; //dois_enter(telaMenu.campoJogador1,telaMenu.campoJogador2);
+ 
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);
         bool jogador_existe = telaExcluir.campoApelido.obterTexto() != "";
         bool jogador_encontrado = telaEstat.campoPesquisa.obterTexto() != "";
@@ -440,23 +102,113 @@ int main() {
             }
 
             if (estadoAtual == "MenuPrincipal") {
-                
                 telaMenu.campoJogador1.processarEventos(event, window);
                 telaMenu.campoJogador2.processarEventos(event, window);
+                
+                //Logica caso os jogadores estejam logados
+                if(jogadores_validos){
+                    telaMenu.play1.setCor(sf::Color(150, 129, 200,200));
+                    telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
+
+                    if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
+                        
+                        std::cout << "Botao Reversi clicado!!!" << std::endl;
+                        std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
+                        telaMenu.campoJogador1.limparTexto();
+                        telaMenu.campoJogador2.limparTexto();
+                        estadoAtual = "Reversi";
+                        nao_ignora_mouse = true;
+
+                    }
+
+                    if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
+
+                        std::cout << "Botao Lig4 clicado!!!" << std::endl;
+                        std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
+                        telaMenu.campoJogador1.limparTexto();
+                        telaMenu.campoJogador2.limparTexto();
+                        estadoAtual = "Lig4";
+                        nao_ignora_mouse = true;
+                    }
+                }
+
+                if(telaMenu.campoJogador1.deu_enter){//Logica para jogador 1 logar
+                    Jogador* jogador1 = new Jogador(telaMenu.campoJogador1.obterTexto());
+                    if(jogador1->existeConta()){
+                        std::cout<< "Jogador 1 foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=true;
+                        apelido_jogador1=telaMenu.campoJogador1.obterTexto();
+                    }else{
+                        std::cout<< "Jogador 1 nao foi logado com sucesso!" <<std::endl;
+                        jogador1_valido=false;
+                    }
+                }
+
+                if(telaMenu.campoJogador2.deu_enter){ //Logica para jogador 2 logar
+                    Jogador* jogador2 = new Jogador(telaMenu.campoJogador2.obterTexto());
+                    if(jogador2->existeConta()){
+                        std::cout<< "Jogador 2 foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=true;
+                        apelido_jogador2=telaMenu.campoJogador2.obterTexto();
+                    }else{
+                        std::cout<< "Jogador 2 nao foi logado com sucesso!" <<std::endl;
+                        jogador2_valido=false;
+                    }   
+                }
+    
+                if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
 
             }
+
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
+
+                if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
+                
+                    //Logico pra testar se o cadastro é valido e guardar ele
+                    Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
+                    if(cadastroJogador->existeConta()){
+                        std::cout << "Cadastro criado com sucesso!" << std::endl;
+                    }else{
+                        std::cout << "Cadastro não realizado, tente novamente" << std::endl;
+                    }
+                }
+        
             }
+
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);
-
+                if(telaExcluir.botaoExcluir.foiClicado(window)){
+                    std::string apelidoDaConta = telaExcluir.campoApelido.obterTexto();
+                    Jogador* excluiJogador = new Jogador(apelidoDaConta);
+                    if(excluiJogador->existeConta()){
+                        excluiJogador->excluirConta();
+                        std::cout<< "Conta excluida com sucesso!" << std::endl;
+                    }else{
+                        std::cout<< "Conta nao existente!" << std::endl;
+                    }
+                }
             }
+
             if (estadoAtual == "Estatisticas") {
                 telaEstat.campoPesquisa.processarEventos(event, window);
                 if (!telaEstat.botaoPesquisa.passouMouse(window)) {
                         telaEstat.botaoPesquisa.setCor(sf::Color(150, 129, 200,200)); 
+                    }
+
+                    //Logica para mostrar estatisticas
+                    if(telaEstat.botaoPesquisa.foiClicado(window)){
+                        std::string nomeJogador = telaEstat.campoPesquisa.obterTexto();
+                        Jogador* estatisticaJogador = new Jogador(telaEstat.campoPesquisa.obterTexto());
+                        if(estatisticaJogador->existeConta()){
+                            estatisticaJogador->getResultado();
+                            telaEstat.setJogador(*estatisticaJogador);
+                        }else{
+                            std::cout << "Erro! Conta nao existente!" <<std::endl;
+                        }
+
+                        delete estatisticaJogador;
                     }
             }
             //agora se sabe q deu enter nos dois campos e tem condição pra comparar se sao validos
@@ -489,7 +241,6 @@ int main() {
                 telaEstat.botaoPesquisa.setCorHover(sf::Color(43, 246, 21,200));
             }
             
-            
 
             if ( event.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
@@ -499,32 +250,25 @@ int main() {
                     // os botoes excluir, estatistica e lista estão sobrepostos, então tem que ignorar o primeiro evento de clique
                     if (telaMenu.botaoCadastro.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "Cadastro";
+                        nao_ignora_mouse = true;
                     }
                     //nao_ignora_mouse = true;
                     if (telaMenu.botaoListaJogadores.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "ListaDeJogadores";
+                        nao_ignora_mouse = true;
                     }
                     //nao_ignora_mouse = true;
                     if (telaMenu.botaoExcluirConta.passouMouse(window)) {
                         estadoAtual = "ExcluirConta";
+                        nao_ignora_mouse = true;
                     }
                     if (telaMenu.botaoEstatistica.passouMouse(window) && nao_ignora_mouse) {
                         estadoAtual = "Estatisticas";
+                        nao_ignora_mouse = true;
                     }
                     // os botoes confirma e estatistica estão sobrepostos, então tem que ignorar o primeiro evento de clique
-                    nao_ignora_mouse = true;
+                    //nao_ignora_mouse = true;
 
-                    if (telaMenu.play1.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO REVERSI
-                        telaMenu.campoJogador1.limparTexto();
-                        telaMenu.campoJogador2.limparTexto();
-                        estadoAtual = "Reversi";
-                    }
-                    if (telaMenu.play2.passouMouse(window) && jogadores_validos) { //AQUI ENTRA NO JOGO LIG4
-                        telaMenu.campoJogador1.limparTexto();
-                        telaMenu.campoJogador2.limparTexto();
-                        estadoAtual = "Lig4";
-                    }
-                    
                 } else {
                     //regiao retangular padrao do "botao" de voltar só pra ALGUMAS telas
                     if (mousePos.x > 358 && mousePos.x < 642 && mousePos.y > 557 && mousePos.y < 624 
@@ -538,41 +282,47 @@ int main() {
                         //pra nao ficar escrito na tela coisa antiga
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
-                        
-
+                        telaEstat.campoPesquisa.limparTexto();
                     }
                 }
                 if (estadoAtual == "Reversi") {
+                    Jogador* jogador1 = new Jogador(apelido_jogador1);
+                    Jogador* jogador2 = new Jogador(apelido_jogador2);
+                    TelaReversi.setJogadores(*jogador1, *jogador2);
+
                     //botao de voltar do jogo vai ficar em posição diferente
-                    if (telaRever.botaoVoltar.passouMouse(window)) { 
-                        estadoAtual = "MenuPrincipal";
-                        telaMenu.campoJogador1.deu_enter = 0;
-                        telaMenu.campoJogador2.deu_enter = 0;
-                    }
+                    if (TelaReversi.botaoVoltar.passouMouse(window)) {
+                        TelaReversi.jogadorDesistiu = true;
+                        TelaReversi.LimpaTabuleiro();
+                        estadoAtual = "FimDeJogoReversi";
+                        nao_ignora_mouse = true;
+                    }  
                 }
                 if (estadoAtual == "Lig4") {
+                    Jogador* jogador1 = new Jogador(apelido_jogador1);
+                    Jogador* jogador2 = new Jogador(apelido_jogador2);
+                    telaLig.setJogadores(*jogador1, *jogador2);
+                    
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
-                        estadoAtual = "MenuPrincipal";
-                        telaMenu.campoJogador1.deu_enter = 0;
-                        telaMenu.campoJogador2.deu_enter = 0;
+                        std::cout << "Botao voltar clicado" << std::endl;
+                        telaLig.LimpaTabuleiro();
+                        estadoAtual = "FimDeJogoLig4";
+                        nao_ignora_mouse = true;
                     }
                 }
-                
                 if (estadoAtual == "Cadastro") {
                     if (telaCadastro.botaoConfirma.passouMouse(window) && cadastro_valido) {
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
-                        nao_ignora_mouse = false;
                         telaCadastro.botaoConfirma.setCor(sf::Color(220, 100, 180,100)); 
                         telaCadastro.botaoConfirma.setCorHover(sf::Color(255, 0, 20, 100));
-                        estadoAtual = "MenuPrincipal";
-                        
+                        estadoAtual = "MenuPrincipal";                        
                     }
                 }
-                if (estadoAtual == "ListaDeJogadores") {
-                    
-                        
+                if (estadoAtual == "ListaDeJogadores") { 
+                    Historico hist;
+                    hist.acessarDados();
                 }
                 if (estadoAtual == "ExcluirConta") {
                     if (telaExcluir.botaoExcluir.passouMouse(window) && jogador_existe) {
@@ -581,92 +331,100 @@ int main() {
                         telaExcluir.botaoExcluir.setCor(sf::Color(220, 100, 180,100)); 
                         telaExcluir.botaoExcluir.setCorHover(sf::Color(255, 0, 20, 100));
                         estadoAtual = "MenuPrincipal";
-                        
                     }
                         
                 }
                 if (estadoAtual == "Estatisticas") { //AQUI CHAMA AS ESTATISTICAS CONSULTANDO O HISTÓRICO
+    
+
                     if (telaEstat.botaoPesquisa.passouMouse(window) && event.mouseButton.button == sf::Mouse::Left) {
-
                         telaEstat.botaoPesquisa.setCor(sf::Color(100, 129 - 50, 200)); //150, 129, 250 roxo padrao
-
                     }
-                    
-                    
                 }
+                if (estadoAtual == "FimDeJogoLig4") {
+
+                    if (fimDeJogoLig4.botaoMenu.passouMouse(window)) {
+                        telaLig.LimpaTabuleiro();
+                        estadoAtual = "MenuPrincipal";
+                        telaLig.fimDeJogo = false;
+                        nao_ignora_mouse = true;
+                    }
+                    if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
+                        telaLig.LimpaTabuleiro();
+                        estadoAtual = "Lig4";
+                        telaLig.fimDeJogo = false;
+                        nao_ignora_mouse = true;
+                    }
+                }
+                if (estadoAtual == "FimDeJogoReversi") {
+
+                    if (fimDeJogoReversi.botaoMenu.passouMouse(window)) { 
+                        TelaReversi.fimDeJogo = false;
+                        estadoAtual = "MenuPrincipal";
+                        nao_ignora_mouse = true;
+                    }
+                    if (fimDeJogoReversi.botaoRestart.passouMouse(window)){
+                        estadoAtual = "Reversi";
+                        TelaReversi.fimDeJogo = true;
+                        nao_ignora_mouse = true;
+                    }
+                }
+                // if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+                //     nao_ignora_mouse = false;
+                // }
             }
             if (estadoAtual == "Reversi") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
-                // Verifica as teclas pressionadas e move o círculo
-                
-                if (event.type == sf::Event::KeyPressed) {
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                    teste.mover(retangulo, sf::Keyboard::W);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                        
-                        teste.mover(retangulo, sf::Keyboard::A);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                        teste.mover(retangulo, sf::Keyboard::S);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                        teste.mover(retangulo, sf::Keyboard::D);
-                    }
+
+                if (TelaReversi.fimDeJogo){
+                    estadoAtual = "FimDeJogoReversi";
+                    //TelaReversi.fimDeJogo = false;
                 }
                 
             }
             if (estadoAtual == "Lig4") {
                 sf::Vector2i mousePos_jogo = sf::Mouse::getPosition(window);
-                // Verifica as teclas pressionadas e move o círculo
                 
-                if (event.type == sf::Event::KeyPressed) {
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                    teste.mover(circulo, sf::Keyboard::W);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                        
-                        teste.mover(circulo, sf::Keyboard::A);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                        teste.mover(circulo, sf::Keyboard::S);
-                    }
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                        teste.mover(circulo, sf::Keyboard::D);
-                    }
+                if (telaLig.fimDeJogo){
+                    estadoAtual = "FimDeJogoLig4";
+                    telaLig.fimDeJogo = false;
                 }
 
                 //matriz
                 
             }
             
+            
         }
 
         window.clear();
-
+        
         if (estadoAtual == "MenuPrincipal") {
                 telaMenu.desenharMenu();
             } else if (estadoAtual == "Cadastro") { //se o condicional da regiao do botao mudar o estadoAtual
                 telaCadastro.desenharJogo();  //pra Cadastro entao chama a função desenharCadastro e assim por diante
             } else if (estadoAtual == "ListaDeJogadores") {
+                
                 telaLista.desenharLista();
             } else if (estadoAtual == "ExcluirConta") {
                 telaExcluir.desenharExcluirConta();
             } else if (estadoAtual == "Estatisticas") {
                 telaEstat.desenharEstatisticas();
             } else if (estadoAtual == "Reversi") {
-                telaRever.desenharJogo();
-                window.draw(retangulo);
+                TelaReversi.desenharJogo();
             }else if (estadoAtual == "Lig4") {
                 telaLig.desenharJogo();
-                window.draw(circulo);
-                tabuleiroLIG4.desenhar(window);
+            }else if (estadoAtual == "FimDeJogoLig4") {
+                std::string nomeVencedor = telaLig.getNomeVencedor();
+                fimDeJogoLig4.desenharTelaFinal(nomeVencedor);
+            }
+            else if (estadoAtual == "FimDeJogoReversi") {
+                std::string nomeVencedor = TelaReversi.getNomeVencedor();
+                fimDeJogoReversi.desenharTelaFinal(nomeVencedor);
             }
             
 
         window.display();
     }
-
     return 0;
 }
-

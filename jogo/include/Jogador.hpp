@@ -23,6 +23,7 @@ class Jogador{
 
 
     public: 
+        Jogador();
         Jogador(std:: string _nome, std:: string _apelido); 
         Jogador(std:: string _apelido); 
         void criarCadastro();
@@ -36,6 +37,15 @@ class Jogador{
         void setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor,bool empatou);
         void getResultado(); 
         void excluirConta();  
+        bool existeConta();
+
+        int getVitoriasReversi() const;
+        int getDerrotasReversi() const;
+        int getEmpatesReversi() const;
+
+        int getVitoriasLig4() const;
+        int getDerrotasLig4() const;
+        int getEmpatesLig4() const;
 
 }; 
 

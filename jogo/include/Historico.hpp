@@ -24,6 +24,7 @@ class Historico{
         //Pensando se não devemos chamar de imprimirDados; 
         
         void addEstatistica(std:: string apelido, std:: string coluna);
+        std::string getNomeArquivo() const;
        
 
 }; 

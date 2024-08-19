@@ -33,8 +33,9 @@ void JogoLig4::desenharJogo() {
             std::cout << "Jogador " << jogador2.getApelido() << " venceu!" << std::endl;
         }
 
-        LimpaTabuleiro();
+        
         fimDeJogo = true;
+        LimpaTabuleiro();
     }
     // window.draw(circulo);
     // circulo.move(0,15);

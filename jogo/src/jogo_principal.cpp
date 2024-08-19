@@ -147,20 +147,15 @@ int main() {
                 if(jogadores_validos){
                     telaMenu.play1.setCor(sf::Color(150, 129, 200,200));
                     telaMenu.play2.setCor(sf::Color(150, 129, 200,200));
-
                     if(telaMenu.play1.foiClicado(window)){//Testa se o botao Reversi foi clicado
-                        
                         std::cout << "Botao Reversi clicado!!!" << std::endl;
                         std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
                         telaMenu.campoJogador2.limparTexto();
                         estadoAtual = "Reversi";
                         nao_ignora_mouse = true;
-
                     }
-
                     if(telaMenu.play2.foiClicado(window)){//Testa se o botao Lig4 foi clicado
-
                         std::cout << "Botao Lig4 clicado!!!" << std::endl;
                         std::cout << "Vez do Jogador " << jogador1_valido << " - Cor: Vermelho" << std::endl;
                         telaMenu.campoJogador1.limparTexto();
@@ -201,31 +196,23 @@ int main() {
                     }
                     delete jogador2;   
                 }
-    
                 if(jogador1_valido && jogador2_valido){jogadores_validos=true;}
-
             }
 
             if (estadoAtual == "Cadastro") {
                 telaCadastro.campoNome.processarEventos(event, window);
                 telaCadastro.campoApelido.processarEventos(event, window);
-
                 if(telaCadastro.campoNome.deu_enter && telaCadastro.campoApelido.deu_enter || telaCadastro.botaoConfirma.foiClicado(window)){
                     /**
                      * Logico pra testar se o cadastro é valido e guardar ele
                      */ 
                     Jogador* cadastroJogador = new Jogador(telaCadastro.campoNome.obterTexto(),telaCadastro.campoApelido.obterTexto());
-                    if(cadastroJogador->existeConta()){
-                        std::cout << "Cadastro criado com sucesso!" << std::endl;
-                    }else{
-                        std::cout << "Cadastro não realizado, tente novamente" << std::endl;
                     }
 
                     delete cadastroJogador;
                 }
+                
         
-            }
-
             if (estadoAtual == "ExcluirConta") {
                 telaExcluir.campoApelido.processarEventos(event, window);
                 if(telaExcluir.botaoExcluir.foiClicado(window)){
@@ -263,7 +250,6 @@ int main() {
                         }else{
                             std::cout << "Erro! Conta nao existente!" <<std::endl;
                         }
-
                         delete estatisticaJogador;
                     }
             }
@@ -422,12 +408,14 @@ int main() {
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
+                    
                     if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
                         telaLig.LimpaTabuleiro();
                         estadoAtual = "Lig4";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
+                    
                 }
                 if (estadoAtual == "FimDeJogoReversi") {
 
@@ -436,11 +424,13 @@ int main() {
                         estadoAtual = "MenuPrincipal";
                         nao_ignora_mouse = true;
                     }
+                    /*
                     if (fimDeJogoReversi.botaoRestart.passouMouse(window)){
                         estadoAtual = "Reversi";
                         TelaReversi.fimDeJogo = true;
                         nao_ignora_mouse = true;
                     }
+                    */
                 }
             }
             if (estadoAtual == "Reversi") {

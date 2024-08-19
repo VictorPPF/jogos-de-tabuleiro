@@ -3,8 +3,9 @@
 
 #include "Tabuleiro.hpp"
 #include "Jogador.hpp"
+#include "../include/Jogo.hpp"
 
-class JogoReversi {
+class JogoReversi : public Jogo {
 private:
     Jogador jogador1, jogador2;
     int jogadorAtual; // indica qual jogador está na vez de jogar
@@ -21,31 +22,34 @@ private:
     float tamanho_celula; // tamanho de cada célula no tabuleiro
 
 public:
-    
-    void setJogadores(Jogador& _jogador1, Jogador& _jogador2);
-
     Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
     Botao botaoVoltar; // botão para desistir e voltar ao menu principal
     bool fimDeJogo = false; // indica se o jogo terminou
 
+    //Métodos herdados
     // construtor que inicializa os elementos do jogo
     JogoReversi(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
     // método para desenhar o estado atual do jogo na tela
-    void desenharJogo();
+    void desenharJogo() override;
+    // executa as ações relacionadas ao clique do jogador
+    void acao() override;
     // método para limpar o tabuleiro e preparar para um novo jogo
-    void LimpaTabuleiro();
-    // verifica se uma jogada é válida em uma determinada direção
-    bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
-    // verifica se uma jogada em uma célula específica é válida
-    bool jogada_valida(int x, int y, int jogador);
+    void LimpaTabuleiro() override;
+    void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
+    
     // verifica se o jogo terminou
-    bool condicao_vitoria();
-    // calcula e retorna o jogador que venceu o jogo (ou empate)
-    int Ganhador();
+    bool verificaCondicaoVitoria();
     // realiza a jogada e altera as peças do tabuleiro, se for válida
     bool FazJogada(int x, int y);
-    // executa as ações relacionadas ao clique do jogador
-    void acao();
+
+    // verifica se uma jogada em uma célula específica é válida
+    bool jogada_valida(int x, int y, int jogador);
+    // verifica se uma jogada é válida em uma determinada direção
+    bool VerificaJogadaDirecao(int x, int y, int dx, int dy, int jogador);
+    // calcula e retorna o jogador que venceu o jogo (ou empate)
+    int Ganhador();
+ 
+    
 };
 
 #endif // JOGOREVERSI_HPP

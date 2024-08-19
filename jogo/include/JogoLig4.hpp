@@ -1,6 +1,6 @@
 /**
  * @file JogoLig4.hpp
- * @brief Classe que representa o jogo Lig4
+ * @brief Definição da classe JogoLig4 que representa o jogo Lig4
  */
 
 #ifndef JOGOLIG4_HPP

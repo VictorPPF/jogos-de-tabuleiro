@@ -6,10 +6,12 @@
 #include <sstream>
 
 #include "../include/Historico.hpp"
-//#include "Jogador.hpp"
 
+/**
+ * Construtor da classe Historico
+ * Faz um arquivo escrevendo o cabeçalho, caso o arquivo nao exista, caso exista ele o abre
+ */
 Historico::Historico(){
-    /*É o contrutor da classe Historico, se o arquivo não existe ele o cria escreve o cabeçario, se ela já existe ele o abre*/
     nomeArquivo = "../dados.csv";
     cabecalho = {
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
@@ -30,8 +32,12 @@ Historico::Historico(){
     }
 }
 
+/**
+ * @brief Função responsável por excluir linha do banco de dados
+ * Essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar
+ */
 void Historico::excluirLinha (std:: string apelido){ 
-    /*Essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar */
+    
     bool existeApelido=false;
 
     std::ifstream arquivo(nomeArquivo);
@@ -71,10 +77,13 @@ void Historico::excluirLinha (std:: string apelido){
 
 } 
 
-
+/**
+ * @brief Função responsável por editar os dados
+ * Essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, 
+ * apaga o arquivo original e renomeia o auxiliar
+ */
 void Historico::Editar(std:: string apelido, std:: string coluna, std:: string novoDado){
-    /*Essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, 
-    apaga o arquivo original e renomeia o auxiliar */
+    
     std::ifstream arquivo(nomeArquivo);
     std::ofstream arquivoTemp("../temp.csv");
     std::string linha;
@@ -122,9 +131,12 @@ void Historico::Editar(std:: string apelido, std:: string coluna, std:: string n
     }
 }
 
-
+/**
+ * @brief Função responsável por adicionar dados
+ * Adiciona  mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo
+ */
 void Historico::criarLinha(const std::vector<std::string>& dados) {
-    /*Adiciona  mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo*/
+    
     std::ofstream arquivo(nomeArquivo, std::ios::app);
     // Verifica se o arquivo foi aberto corretamente
     if (!arquivo.is_open()) {
@@ -144,9 +156,14 @@ void Historico::criarLinha(const std::vector<std::string>& dados) {
     }
 }
 
-
+/**
+ * @brief Função que acessa dados específicos
+ * Acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -1
+ * @param String contendo o nome do jogador e outra string indicando o tipo de dado
+ * @return String de dado específico, caso exista, caso contrário retorna -1
+ */
 std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
-    //[acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -1]
+    
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
 
@@ -178,9 +195,13 @@ std::string Historico::acessarDados(std:: string apelido, std:: string coluna){
     return "-1"; 
 }
 
-
+/**
+ * @brief Função que acessa dados gerais
+ * Acessa todos os datos do jogador ditado pelo apelido, se ele não achar o apelido ela retorna -1
+ * @param String contendo o nome do jogador
+ * @return String de dados contendo todas as informações daquele jogador, caso exista, caso contrário retorna -1
+ */
 std:: string Historico :: acessarDados( std::string apelido){
-    /*acessa uma linha específica, se ele não achar o apelido ela retorna -1*/
     std::ifstream arquivo(nomeArquivo);
     std::string linha; 
     if (arquivo.is_open()){ 
@@ -202,7 +223,10 @@ std:: string Historico :: acessarDados( std::string apelido){
 }
 
 
-
+/**
+ * @brief Função que acessa todos os dados
+ * Acessa todos os dados e os escreve na tela
+ */
 void Historico::acessarDados() {
     /*Imprime todos os dados do arquivo csv*/
     std::ifstream arquivo(nomeArquivo);
@@ -215,6 +239,11 @@ void Historico::acessarDados() {
     }
 }
 
+/**
+ * @brief Função que adiciona estatística para o jogador
+ * Acessa um jogador ditado pelo apelido e aumenta em 1 a estatística passada como parâmetro
+ * @param String contendo o nome do jogador e outra string indicando o tipo de dado que terá seu valor aumentado em 1
+ */
 void Historico::addEstatistica(std:: string apelido, std:: string coluna){
     /*Adiciona 1 a uma estatistica específica*/
     if (coluna=="Apelido" || coluna=="Nome"){
@@ -228,6 +257,12 @@ void Historico::addEstatistica(std:: string apelido, std:: string coluna){
         Editar(apelido, coluna, estatistica);
     }
 }
+
+/**
+ * @brief Função que retorna o nome do arquivo
+ * Acessa a variável contendo o nome do arquivo e a retorna como string
+ * @return String contendo o nome do arquivo
+ */
 std::string Historico::getNomeArquivo() const {
     return nomeArquivo;
 }

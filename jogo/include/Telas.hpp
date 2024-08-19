@@ -103,7 +103,7 @@ class FimDeJogoLig4 {
         sf::RenderWindow& window; 
         sf::Font& fonte;
         sf::Text textoVencedor;
-
+        
     public:
         Botao botaoMenu;
         Botao botaoRestart;

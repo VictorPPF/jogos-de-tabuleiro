@@ -212,6 +212,7 @@ void TelaEstatisticas::desenharEstatisticas() {
 }
 
 
+
 FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),
     botaoMenu(150.f, 70.f, 175, 541, sf::Color(150, 129, 250), "Menu", 25.f, false, sf::Color(43, 0, 108)),
     botaoRestart(254.f, 70.f, 570, 541, sf::Color(150, 129, 250), "Restart", 25.f, false, sf::Color(43, 0, 108)) {

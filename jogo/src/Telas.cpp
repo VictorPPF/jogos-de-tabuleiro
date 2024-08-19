@@ -200,19 +200,16 @@ void TelaEstatisticas::desenharEstatisticas() {
 
     // Exibir as estatísticas do jogador, se houver dados
     if (jogador.getNome() != "") { // Assumindo que o nome não pode ser vazio para um jogador válido
-        desenharTexto("Nome: " + jogador.getNome(), 50.f, 50.f, 24.f, sf::Color::Black);
-        desenharTexto("Apelido: " + jogador.getApelido(), 50.f, 100.f, 24.f, sf::Color::Black);
-        desenharTexto("Vitorias Reversi: " + std::to_string(jogador.getVitoriasReversi()), 50.f, 150.f, 24.f, sf::Color::Black);
-        desenharTexto("Derrotas Reversi: " + std::to_string(jogador.getDerrotasReversi()), 50.f, 200.f, 24.f, sf::Color::Black);
-        desenharTexto("Empates Reversi: " + std::to_string(jogador.getEmpatesReversi()), 50.f, 250.f, 24.f, sf::Color::Black);
-        desenharTexto("Vitorias Lig4: " + std::to_string(jogador.getVitoriasLig4()), 50.f, 300.f, 24.f, sf::Color::Black);
-        desenharTexto("Derrotas Lig4: " + std::to_string(jogador.getDerrotasLig4()), 50.f, 350.f, 24.f, sf::Color::Black);
-        desenharTexto("Empates Lig4: " + std::to_string(jogador.getEmpatesLig4()), 50.f, 400.f, 24.f, sf::Color::Black);
+        desenharTexto(std::to_string(jogador.getVitoriasReversi()), 425.f, 285.f, 24.f, sf::Color::White);
+        desenharTexto(std::to_string(jogador.getDerrotasReversi()), 425.f, 285+50.f, 24.f, sf::Color::White);
+        desenharTexto(std::to_string(jogador.getEmpatesReversi()), 425.f, 285+100.f, 24.f, sf::Color::White);
+        desenharTexto(std::to_string(jogador.getVitoriasLig4()), 425.f, 285+140.f, 24.f, sf::Color::White);
+        desenharTexto(std::to_string(jogador.getDerrotasLig4()), 425.f, 285+190.f, 24.f, sf::Color::White);
+        desenharTexto(std::to_string(jogador.getEmpatesLig4()), 425.f, 285+230.f, 24.f, sf::Color::White);
     } else {
         desenharTexto("Nenhum jogador selecionado.", 327.f, 200.f, 15.f, sf::Color::Red);
     }
 }
-
 
 
 FimDeJogoLig4::FimDeJogoLig4(sf::RenderWindow& window, sf::Font& fonte) : window(window), fonte(fonte),

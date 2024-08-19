@@ -274,6 +274,10 @@ int main() {
                     }
                 }
                 if (estadoAtual == "Reversi") {
+                    Jogador* jogador1 = new Jogador(apelido_jogador1);
+                    Jogador* jogador2 = new Jogador(apelido_jogador2);
+                    TelaReversi.setJogadores(*jogador1, *jogador2);
+
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
                         TelaReversi.LimpaTabuleiro();
@@ -286,6 +290,7 @@ int main() {
                     Jogador* jogador1 = new Jogador(apelido_jogador1);
                     Jogador* jogador2 = new Jogador(apelido_jogador2);
                     telaLig.setJogadores(*jogador1, *jogador2);
+                    
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (telaLig.botaoVoltar.passouMouse(window)) { 
                         std::cout << "Botao voltar clicado" << std::endl;

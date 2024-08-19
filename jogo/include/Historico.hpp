@@ -13,7 +13,6 @@
 #include <memory> 
 //#include "Jogador.hpp"
 
-
 class Historico{
     private: 
         /**

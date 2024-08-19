@@ -1,47 +1,3 @@
-#ifndef JOGOLIG4_HPP
-#define JOGOLIG4_HPP
-#include <SFML/Graphics.hpp>
-#include "../include/Interacao.hpp"
-#include "../include/Tabuleiro.hpp"
-#include "../include/Jogador.hpp"
-#include "../include/Jogo.hpp"
-
-class JogoLig4 : public Jogo {
-private:
-    sf::RenderWindow& window; 
-    sf::Font& fonte;
-    sf::Event& evento;
-    float origemX;
-    float origemY;
-    int qtd_celulaX; //colunas
-    int qtd_celulaY; //linhas
-    float tamanho_celula;
-    float borda;
-    float icupado, jocupado; //indices da celula ocupada
-
-    Jogador jogador1, jogador2;
-
-public:
-    Botao botaoVoltar;
-    bool fimDeJogo = false;
-    sf::CircleShape circulo;
-    Tabuleiro tabuleiroLIG4;
-    int jogadorAtual;
-
-    //Métodos herdados
-    JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
-    void desenharJogo() override;
-    void acao () override;
-    void LimpaTabuleiro() override;
-    void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
-    bool FazJogada(int i, int j) override;
-    bool verificaCondicaoVitoria(int linha, int coluna);
-    
-    void anima();
-};
-
-
-#endif
 #include "../include/JogoLig4.hpp"
 #include "../include/Wallpaper.hpp"
 #include "../include/Jogo.hpp"
@@ -67,9 +23,9 @@ void JogoLig4::desenharJogo() {
     wallpaper.desenhar(window);
     JogoLig4::botaoVoltar.desenhar(window);
     JogoLig4::tabuleiroLIG4.desenhar(window);
-    if(verificaCondicaoVitoria( tabuleiroLIG4.indice_i, jocupado - 1)) {
+    if(verificaCondicaoVitoria(tabuleiroLIG4.indice_i, jocupado - 1)) {
 //88888888888888#################################
-        if(jogadorAtual==1){
+        if(jogadorAtual==2){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
             std::cout << "Jogador " << jogador1.getApelido() << " venceu!" << std::endl;
         }else{
@@ -77,9 +33,9 @@ void JogoLig4::desenharJogo() {
             std::cout << "Jogador " << jogador2.getApelido() << " venceu!" << std::endl;
         }
 
+        
         LimpaTabuleiro();
         fimDeJogo = true;
-        
     }
     // window.draw(circulo);
     // circulo.move(0,15);
@@ -133,21 +89,6 @@ void JogoLig4::setJogadores(Jogador& player1, Jogador& player2){
     }else{
         std::cout << "Erro: Jogador nao existente" << std::endl;
     }
-}
-
-bool JogoLig4::FazJogada(int i, int j) {
-    jocupado = 0;
-
-    for (int linha = 0; linha < 6; linha++) {
-        if (tabuleiroLIG4.matriz[i][linha].getEstado() != 0) {
-            jocupado = linha;
-            return true;
-        }
-    }
-    // Se a coluna estiver cheia
-    jocupado = 6;
-    std::cout << "Coluna cheia" << std::endl;
-    return false; // Jogada não bem-sucedida, coluna cheia
 }
 
 bool JogoLig4::verificaCondicaoVitoria( int linha, int coluna) {
@@ -206,6 +147,22 @@ bool JogoLig4::verificaCondicaoVitoria( int linha, int coluna) {
     return false;
 }
 
+bool JogoLig4::FazJogada(int i, int j) {
+    jocupado = 0;
+
+    for (int linha = 0; linha < 6; linha++) {
+        if (tabuleiroLIG4.matriz[i][linha].getEstado() != 0) {
+            jocupado = linha;
+            return true;
+        }
+        if (linha == 5 && tabuleiroLIG4.matriz[i][linha].getEstado() == 0) {
+            jocupado = 6;
+            std::cout << "Coluna vazia" << std::endl;
+        }
+    }
+    return false;
+}
+
 void JogoLig4::anima() {
     if (jocupado != 0) {
         sf::Color cor = (jogadorAtual == 1) ? sf::Color::Yellow : sf::Color::Red;
@@ -237,3 +194,9 @@ void JogoLig4::anima() {
         }
     }
 }
+
+
+
+
+
+

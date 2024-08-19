@@ -334,7 +334,7 @@ int main() {
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
-                    if (fimDeJogoLig4.botaoRestart.passouMouse(window)){
+                    if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
                         estadoAtual = "Lig4";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;

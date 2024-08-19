@@ -1,3 +1,9 @@
+/**
+ * @file Jogador.hpp
+ * @class Jogador
+ * @brief Classe que representa um jogador.
+ */
+
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
@@ -7,6 +13,7 @@
 #include <vector>
 #include <memory> 
 #include "Historico.hpp"
+
 
 class Jogador{
     private:

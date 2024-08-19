@@ -82,7 +82,7 @@ int main() {
     bool jogador2_valido = false;
     std::string apelido_jogador1, apelido_jogador2;
     //bool jogadores_validos=false; *************TIRAR ESSE COMENTÁRIO QUANDO FOR DAR COMMIT
-    bool jogadores_validos=true;
+    bool jogadores_validos= false;
     while (window.isOpen()) {
  
         bool cadastro_valido = dois_enter(telaCadastro.campoNome,telaCadastro.campoApelido);

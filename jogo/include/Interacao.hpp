@@ -1,6 +1,6 @@
 /**
  * @file Interacao.hpp
- * @brief Definição das classes para representar pontos no plano cartesiano e botões na interface gráfica.
+ * @brief Definição das classes Ponto e Botao para representar pontos no plano cartesiano e botões na interface gráfica.
  */
 
 #ifndef INTERACAO_HPP

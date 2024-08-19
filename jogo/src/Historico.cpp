@@ -249,7 +249,7 @@ std:: string Historico :: acessarDados( std::string apelido){
             }
         arquivo.close();
         return "-1";
-        }
+        } 
     } catch (const std::exception& e) {
         std::cerr << "Erro ao acessar dados: " << e.what() << std::endl;
         return "-1";

@@ -36,11 +36,12 @@ public:
     // método para limpar o tabuleiro e preparar para um novo jogo
     void LimpaTabuleiro() override;
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
+    // realiza a jogada e altera as peças do tabuleiro, se for válida
+    bool FazJogada(int x, int y) override;
     
     // verifica se o jogo terminou
     bool verificaCondicaoVitoria();
-    // realiza a jogada e altera as peças do tabuleiro, se for válida
-    bool FazJogada(int x, int y);
+    
 
     // verifica se uma jogada em uma célula específica é válida
     bool jogada_valida(int x, int y, int jogador);

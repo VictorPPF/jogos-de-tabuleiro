@@ -142,35 +142,6 @@ void JogoReversi::setJogadores(Jogador& player1, Jogador& player2){
         std::cout << "Erro: Jogador nao existente" << std::endl;
     }
 }
-
-bool JogoReversi::verificaCondicaoVitoria() {
-    bool temEspacoVazio = false; // Variável para verificar se há espaços vazios no tabuleiro
-
-    for (int y = 0; y < 8; ++y) {
-        for (int x = 0; x < 8; ++x) {
-            if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
-                temEspacoVazio = true; // Se encontrar um espaço vazio, define a variável como true
-                if (jogada_valida(x, y, 1) || jogada_valida(x, y, 2)) {
-                    return false; // Se houver jogada possível, retorna false (jogo não acabou)
-                }
-            }
-        }
-    }
-
-    // Se não encontrou nenhum espaço vazio, o tabuleiro está cheio e o jogo acabou
-    if (!temEspacoVazio) {
-        return true;
-    }
-
-    // Se chegou aqui e jogadorDesistiu é true, o jogo acabou por desistência
-    if (jogadorDesistiu) {
-        return true;
-    }
-
-    // Se chegou aqui, significa que há espaços vazios, mas nenhum jogador pode fazer uma jogada
-    return true; // Jogo acabou 
-}
-
 // realiza a jogada e altera as peças do tabuleiro, se for válida
 bool JogoReversi::FazJogada(int x, int y) {
     if (!jogada_valida(x, y, jogadorAtual)) return false; // verifica se a jogada é válida
@@ -214,6 +185,34 @@ bool JogoReversi::FazJogada(int x, int y) {
         return true;
     }
     return true;
+}
+
+bool JogoReversi::verificaCondicaoVitoria() {
+    bool temEspacoVazio = false; // Variável para verificar se há espaços vazios no tabuleiro
+
+    for (int y = 0; y < 8; ++y) {
+        for (int x = 0; x < 8; ++x) {
+            if (tabuleiroREVERSI.get_celula_status(x, y) == 0) {
+                temEspacoVazio = true; // Se encontrar um espaço vazio, define a variável como true
+                if (jogada_valida(x, y, 1) || jogada_valida(x, y, 2)) {
+                    return false; // Se houver jogada possível, retorna false (jogo não acabou)
+                }
+            }
+        }
+    }
+
+    // Se não encontrou nenhum espaço vazio, o tabuleiro está cheio e o jogo acabou
+    if (!temEspacoVazio) {
+        return true;
+    }
+
+    // Se chegou aqui e jogadorDesistiu é true, o jogo acabou por desistência
+    if (jogadorDesistiu) {
+        return true;
+    }
+
+    // Se chegou aqui, significa que há espaços vazios, mas nenhum jogador pode fazer uma jogada
+    return true; // Jogo acabou 
 }
 
 // verifica se a jogada em uma célula específica é válidamamke

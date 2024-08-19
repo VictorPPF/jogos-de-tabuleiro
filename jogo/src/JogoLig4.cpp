@@ -146,13 +146,13 @@ bool JogoLig4::verificaCondicaoVitoria( int linha, int coluna) {
     return false;
 }
 
-void JogoLig4::FazJogada(int i, int j) {
+bool JogoLig4::FazJogada(int i, int j) {
     jocupado = 0;
 
     for (int linha = 0; linha < 6; linha++) {
         if (tabuleiroLIG4.matriz[i][linha].getEstado() != 0) {
             jocupado = linha;
-            break;
+            return true;
         }
         if (linha == 5 && tabuleiroLIG4.matriz[i][linha].getEstado() == 0) {
             jocupado = 6;

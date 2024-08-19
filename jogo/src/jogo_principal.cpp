@@ -15,31 +15,46 @@
 
 using namespace std;
 
- //logica idiota de teste pra validar entrada de campos de texto
+#include <SFML/Graphics.hpp>
+#include <iostream>
+
+/**
+ * Logica de teste para validar entrada do primeiro e do segundo jogador
+ * @param campoJogador1 um objeto do tipo CampoTexto. Este parâmetro representa o campo de texto do primeiro 
+ * jogador, contendo métodos para obter o texto digitado e verificar se o jogador pressionou "Enter".
+ * @param campoJogador1 um objeto do tipo CampoTexto. Este parâmetro representa o campo de texto do segndo jogador,
+ * tem o mesmo objetivo do primeiro 
+ * @return true se ambos os campos não estiverem vazios e se ambos os jogadores pressionaram "Enter".
+ */
+
 bool dois_enter(CampoTexto campoJogador1, CampoTexto campoJogador2) {
         if (campoJogador1.obterTexto() != "" && campoJogador2.obterTexto() != "" && 
         campoJogador1.deu_enter == 1 && campoJogador2.deu_enter == 1) {
-            // campoJogador1.deu_enter = 0;
-            // campoJogador2.deu_enter = 0;
             return true;
         }
         return false;
     };
 
 int main() {
-    //carrega a fonte só uma vez 
+    /**
+     * Ele carrega a fonte font_arcade.ttf e trata exceções adequadamente. 
+     * Se a fonte não for carregada, uma exceção std::runtime_error é lançada
+     *  e o erro é reportado via std::cerr. Em seguida, a exceção é relançada para que o 
+     * chamador possa tratá-la ou o programa seja encerrado adequadamente.
+     */
     sf::Font fonte;
-    // Carregar a fonte
     try {
         if (!fonte.loadFromFile("font_arcade.ttf")) {
             throw std::runtime_error("Falha ao carregar a fonte.");
         }
     } catch (const std::runtime_error& e) {
         std::cerr << e.what() << std::endl;
-        // Lançar a exceção para indicar falha de inicialização
         throw;
     }
-    //--------------- MÓDULO PARA INICIAR A TELA DO JOGO NAS DIMENSÕES DA TELA DA PESSOA-----------------//
+    /**
+     * Nesta etapa, carregamos os módulos para iniciar a tela do jogo nas dimensões da tela do usuário
+     */
+
     // Obtém as dimensões da tela
     RECT screenRect;
     GetWindowRect(GetDesktopWindow(), &screenRect);
@@ -60,13 +75,19 @@ int main() {
     string estadoAtual = "MenuPrincipal"; // I CANT STRESS ENOUGH HOW IMPORTANT THIS VARIABLE IS
 
     //---------------------------------------------------------------------------------------------//
-    
-    // Cria um relógio para medir o tempo
+    /**
+     * Nesta parte do código, temos algumas definições de variáveis
+     */
+    /**
+     * Cria um relógio para medir o tempo
+     */
     sf::Clock relogio;
-
-    //cout << pos3 << endl;
-
- 
+    /**
+     * Essas linhas de código são responsáveis por criar instâncias das classes TelaMenu, JogoReversi, 
+     * JogoLig4, TelaCadastro, TelaLista, TelaExcluirConta, TelaEstatisticas, FimDeJogoLig4, e FimDeJogoReversi. 
+     * Cada uma dessas classes representa uma tela ou estado específico dentro do 
+     * jogo e as instâncias são inicializadas com os mesmos parâmetros: window, fonte e, em alguns, event.
+     */
     TelaMenu telaMenu (window,fonte,event);
     JogoReversi TelaReversi(window,fonte,event);
     JogoLig4 telaLig (window,fonte,event);
@@ -76,6 +97,7 @@ int main() {
     TelaEstatisticas telaEstat (window,fonte);
     FimDeJogoLig4 fimDeJogoLig4 (window,fonte);
     FimDeJogoRevesi fimDeJogoReversi (window,fonte);
+
 
     bool nao_ignora_mouse = true;
     bool ignorarProximoClique = false;

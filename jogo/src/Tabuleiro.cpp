@@ -13,6 +13,7 @@ int Celula::getEstado() {
     return estado;
 }
 
+
 Tabuleiro::Tabuleiro(float origx, float origy, int qtd_celulaX, int qtd_celulaY, float tamanho_celula, float borda, sf::Event& evento): 
 origemX(origx), origemY(origy), qtd_celulaX(qtd_celulaX), qtd_celulaY(qtd_celulaY), tamanho_celula(tamanho_celula), borda(borda), evento(evento) {
     //Inicializa a matriz de retangulos com qtd_celula de colunas e vetores (linhas) de tamanho qtd_celulaY
@@ -90,4 +91,3 @@ void Tabuleiro::desenhar(sf::RenderWindow& window){
 }*/
 
 // Exemplo de como capturar o clique e armazenar a posição
-

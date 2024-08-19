@@ -34,8 +34,9 @@ void JogoLig4::desenharJogo() {
         }
 
         
-        fimDeJogo = true;
+        
         LimpaTabuleiro();
+        fimDeJogo = true;
     }
     // window.draw(circulo);
     // circulo.move(0,15);
@@ -160,6 +161,8 @@ bool JogoLig4::FazJogada(int i, int j) {
             std::cout << "Coluna vazia" << std::endl;
         }
     }
+    return false;
+
 }
 
 void JogoLig4::anima() {

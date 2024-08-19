@@ -11,7 +11,14 @@
 
 class Historico{
     private: 
+        /**
+         * @param nomeArquivo: variável que guarda o nome do arquivo que guarda as informações
+         */
         std::string nomeArquivo;
+
+        /**
+         * @param cabecalho: vetor de string que guarda o cabeçalho do arquivo, indicando os jogos, vitórias, derrotas, etc...
+         */
         std::vector<std::string> cabecalho;
     public: 
         /**

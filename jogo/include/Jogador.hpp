@@ -10,6 +10,9 @@
 
 class Jogador{
     private:
+        /**
+         * Atributos do jogador
+         */
         std:: string nome;  
         std::string apelido;
         int vitorias_reversi; 
@@ -19,6 +22,14 @@ class Jogador{
         int derrotas_lig4; 
         int empates_lig4; 
         std:: string nome_jogo;
+
+        /**
+         * @brief Histórico compartilhado entre todas as instâncias da classe.
+         *
+         * Esta variável estática é responsável por armazenar o histórico 
+         * de operações da classe. Ela faz parte da composição da classe, 
+         * onde o histórico é mantido para referência futura.
+         */
         static Historico historico;
 
 

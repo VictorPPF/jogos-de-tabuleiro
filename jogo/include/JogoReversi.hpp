@@ -1,9 +1,6 @@
 /**
  * @file JogoReversi.hpp
- * @brief Representa um jogo Reversi
- * 
- * 
- * 
+ * @brief Definição da classe Reversi que representa o jogo Reversi
  */
 #ifndef JOGOREVERSI_HPP
 #define JOGOREVERSI_HPP

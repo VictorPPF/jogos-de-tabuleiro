@@ -86,6 +86,40 @@ TelaLista::TelaLista(sf::RenderWindow& window, sf::Font& fonte) : window(window)
         botaoVoltar.criarBotoes();
     }
 
+std::vector<std::string> TelaLista::carregarDadosJogadores() {
+    std::vector<std::string> jogadores;
+    std::ifstream arquivo(historico.getNomeArquivo());
+    std::string linha;
+
+    if (arquivo.is_open()) {
+        // Ignorar o cabeçalho
+        std::getline(arquivo, linha);
+        
+        while (std::getline(arquivo, linha)) {
+            jogadores.push_back(linha);
+        }
+        arquivo.close();
+    } else {
+        std::cerr << "Erro ao abrir o arquivo de dados." << std::endl;
+    }
+    return jogadores; // Retorne a lista de jogadores
+}
+void TelaLista::desenharJogadores() {
+    sf::Text texto;
+    texto.setFont(fonte);
+    texto.setCharacterSize(15);
+    texto.setFillColor(sf::Color::Black);
+
+    float yOffset = 250.f;
+
+    for (const std::string& jogador : carregarDadosJogadores()) {
+        texto.setString(jogador);
+        texto.setPosition(180.f, yOffset);
+        window.draw(texto);
+        yOffset += 30.f;
+    }
+}
+
 void TelaLista::desenharLista() {
     try {
         Wallpaper wallpaper("menuListaJogadores.png");
@@ -94,6 +128,7 @@ void TelaLista::desenharLista() {
     } catch (const std::runtime_error& e) {
         std::cerr << "Erro ao carregar o wallpaper do menu: " << e.what() << std::endl;
     }
+    desenharJogadores();
     botaoVoltar.desenhar(window);
 }
 

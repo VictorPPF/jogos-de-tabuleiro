@@ -139,7 +139,7 @@ void Jogador :: setResultado(std::string _nome_do_jogo, int _vitorias, int _derr
 
 //Eu queria fazer essas próximas duas funções com sobrecarga de operadores, mas não sei se ficaria bom:
 
-void Jogador :: setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor, bool empatou){
+void Jogador::setResultado(std::string _nome_do_jogo, std::string ganhador, std::string perdedor, bool empatou){
     try {
         if(empatou){
             historico.addEstatistica(ganhador, "Empates " + _nome_do_jogo);

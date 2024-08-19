@@ -399,6 +399,7 @@ int main() {
             } else if (estadoAtual == "Cadastro") { //se o condicional da regiao do botao mudar o estadoAtual
                 telaCadastro.desenharJogo();  //pra Cadastro entao chama a função desenharCadastro e assim por diante
             } else if (estadoAtual == "ListaDeJogadores") {
+                
                 telaLista.desenharLista();
             } else if (estadoAtual == "ExcluirConta") {
                 telaExcluir.desenharExcluirConta();

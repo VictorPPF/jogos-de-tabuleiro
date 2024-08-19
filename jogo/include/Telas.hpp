@@ -7,6 +7,7 @@
 #include "../include/CampoTexto.hpp"
 #include "../include/Wallpaper.hpp"
 #include "../include/Interacao.hpp"
+#include "../include/Historico.hpp"
 
 class TelaMenu {
     private:
@@ -54,8 +55,12 @@ class TelaLista {
 
     public:
         Botao botaoVoltar;
+        Historico historico;
+        std::vector<std::string> jogadores;
 
         TelaLista(sf::RenderWindow& window, sf::Font& fonte);
+        std::vector<std::string> carregarDadosJogadores();
+        void desenharJogadores();
         void desenharLista();
 };
 

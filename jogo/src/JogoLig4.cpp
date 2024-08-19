@@ -13,8 +13,6 @@ JogoLig4::JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento)
     circulo.setFillColor(sf::Color(255, 100, 250));
 }
 
-
-
 void JogoLig4::desenharJogo() {
 
     Wallpaper wallpaper("wallpaper_lig4.png");

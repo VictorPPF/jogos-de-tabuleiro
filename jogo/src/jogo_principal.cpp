@@ -276,9 +276,8 @@ int main() {
                 if (estadoAtual == "Reversi") {
                     //botao de voltar do jogo vai ficar em posição diferente
                     if (TelaReversi.botaoVoltar.passouMouse(window)) {
+                        //TelaReversi.LimpaTabuleiro();
                         estadoAtual = "FimDeJogoReversi";
-                        telaMenu.campoJogador1.deu_enter = 0;
-                        telaMenu.campoJogador2.deu_enter = 0;
                         nao_ignora_mouse = true;
                     }
                     

@@ -223,7 +223,7 @@ int main() {
             }
             
 
-            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+            if ( event.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
                 
                 if (estadoAtual == "MenuPrincipal") {

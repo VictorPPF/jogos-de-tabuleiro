@@ -326,14 +326,14 @@ int main() {
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
-                    /*
+                    
                     if (fimDeJogoLig4.botaoRestart.foiClicado(window)){
                         telaLig.LimpaTabuleiro();
                         estadoAtual = "Lig4";
                         telaLig.fimDeJogo = false;
                         nao_ignora_mouse = true;
                     }
-                    */
+                    
                 }
                 if (estadoAtual == "FimDeJogoReversi") {
 

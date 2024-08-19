@@ -282,6 +282,7 @@ int main() {
                         //pra nao ficar escrito na tela coisa antiga
                         telaCadastro.campoNome.limparTexto();
                         telaCadastro.campoApelido.limparTexto();
+                        telaEstat.campoPesquisa.limparTexto();
                     }
                 }
                 if (estadoAtual == "Reversi") {

@@ -17,9 +17,7 @@ Historico::Historico(){
         "Apelido", "Nome", "Vitorias Reversi", "Derrotas Reversi", 
         "Empates Reversi", "Vitorias Lig4", "Derrotas Lig4", "Empates Lig4"
     };
-    if(std::filesystem::exists(nomeArquivo)){
-        std::cout << "Arquivo ja existe!\n";
-    }else{
+    if(!std::filesystem::exists(nomeArquivo)){
     std::ofstream arquivo(nomeArquivo);
     if (arquivo.is_open()) {
         for (int i = 0; i < cabecalho.size(); i++) {

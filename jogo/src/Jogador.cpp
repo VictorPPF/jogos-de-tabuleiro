@@ -71,7 +71,10 @@ void Jogador:: criarCadastro(){
     if (historico.acessarDados(apelido) != "-1") {
         std::cout << "Erro: Apelido ja existente no historico." << std::endl;
         return;
+    }else{
+        std::cout << "Cadastro criado com sucesso!" << std::endl;
     }
+
     std::vector<std::string> dados = {apelido, nome, "0", "0", "0", "0", "0", "0"};
     historico.criarLinha(dados);
     } catch (const std::exception& e) {
@@ -204,13 +207,13 @@ void Jogador:: getResultado(){
 void Jogador:: excluirConta(){
     // Comunicar com o barquivo csv e apagar a linha
     historico.excluirLinha(apelido);
+    
 }
+
 
 //criar um para registrar V e D ou fazer um para J.vitorias += 1 (sobrecarga de operadores) ; 
 // ISSO AQUI DEU UM CONFLITO E NAO SABIA SE PODIA APAGAR
-
 bool Jogador::existeConta(){
-    
     if(historico.acessarDados(apelido)!= "-1"){
         return true;
     }else{

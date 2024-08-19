@@ -13,6 +13,13 @@
 #include <memory> 
 //#include "Jogador.hpp"
 
+/**
+ * @class CampoTexto
+ * @brief Classe que representa um histórico, onde armazena os dados das partidas.
+ * 
+ * Esta classe gerencia a entrada e armazenamento de texto.
+ */
+
 class Historico{
     private: 
         /**

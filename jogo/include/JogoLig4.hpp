@@ -20,24 +20,24 @@ private:
     sf::RenderWindow& window; 
     sf::Font& fonte;
     sf::Event& evento;
-    float origemX;
-    float origemY;
+    float origemX; //posição X de origem do tabuleiro
+    float origemY;  //posição Y de origem do tabuleiro
     int qtd_celulaX; //colunas
     int qtd_celulaY; //linhas
-    float tamanho_celula;
-    float borda;
+    float tamanho_celula; //tamanho de cada célula no tabuleiro
+    float borda; //margem para posicionar as peças dentro das células
     float icupado, jocupado; //indices da celula ocupada
-    bool animando;
+    bool animando; //indica se a peça está em movimento
 
     Jogador jogador1, jogador2;
 
 public:
-    Botao botaoVoltar;
-    bool fimDeJogo = false;
-    sf::CircleShape circulo;
-    Tabuleiro tabuleiroLIG4;
-    int jogadorAtual;
-    std::string nomeVencedor;
+    Botao botaoVoltar; //botão para desistir e voltar ao menu principal
+    bool fimDeJogo = false; //indica se o jogo terminou
+    sf::CircleShape circulo; //peça temporária que se move
+    Tabuleiro tabuleiroLIG4;   //objeto que representa o tabuleiro do jogo
+    int jogadorAtual;   //indica qual jogador está na vez de jogar
+    std::string nomeVencedor;   //nome do jogador vencedor
 
     //Métodos herdados
     JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);

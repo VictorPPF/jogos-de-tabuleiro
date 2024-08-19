@@ -85,7 +85,7 @@ void JogoReversi::desenharJogo() {
 void JogoReversi::acao() {
     if (tabuleiroREVERSI.deuClique) {
         if (FazJogada(tabuleiroREVERSI.indice_i, tabuleiroREVERSI.indice_j)) {
-            //jogadorAtual = (jogadorAtual == 1) ? 2 : 1; // troca o turno entre os jogadores
+            jogadorAtual = (jogadorAtual == 1) ? 2 : 1; // troca o turno entre os jogadores
         } else {
             std::cout << "Jogada inválida. Tente novamente." << std::endl;
         }
@@ -210,10 +210,9 @@ bool JogoReversi::FazJogada(int x, int y) {
     // Se o jogador não tiver jogadas válidas, passa a vez 
     if (!temJogadaValida) {
         std::cout << "Jogador " << jogadorAtual << " nao tem jogadas validas. Passando a vez." << std::endl;
-        jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
+        //jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
         return true;
     }
-    jogadorAtual = (jogadorAtual == 1) ? 2 : 1;
     return true;
 }
 

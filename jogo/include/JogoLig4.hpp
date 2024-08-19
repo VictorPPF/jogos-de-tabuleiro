@@ -22,20 +22,23 @@ private:
     Jogador jogador1, jogador2;
 
 public:
-    void setJogadores(Jogador& _jogador1, Jogador& _jogador2);
     Botao botaoVoltar;
     bool fimDeJogo = false;
     sf::CircleShape circulo;
     Tabuleiro tabuleiroLIG4;
     int jogadorAtual;
 
+    //Métodos herdados
     JogoLig4(sf::RenderWindow& window, sf::Font& fonte, sf::Event& evento);
     void desenharJogo() override;
     void acao () override;
-    void poePeca(int i, int j, int jogador) override;
-    void anima() override;
-    bool verificaCondicaoVitoria(int jogador, int linha, int coluna) override;
     void LimpaTabuleiro() override;
+    void setJogadores(Jogador& _jogador1, Jogador& _jogador2) override;
+
+    bool verificaCondicaoVitoria(int jogador, int linha, int coluna);
+    void FazJogada(int i, int j, int jogador);
+    
+    void anima();
 };
 
 #endif

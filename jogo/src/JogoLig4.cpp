@@ -60,14 +60,14 @@ void JogoLig4::anima() {
             window.draw(circulo);
             
         } else {
-            // Verifica a condição de vitória
-            if (verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
-                std::cout << "Jogador " << jogadorAtual << " venceu!" << std::endl;
-                // aqui fica a logica pra TELA DE FIM DE JOGO
-                LimpaTabuleiro();
-                fimDeJogo = true;
-                std::cout << "entrou no desenhar jogo perdeno soq no anima\n";
-            }
+            //  Verifica a condição de vitória
+            // if (verificaCondicaoVitoria(jogadorAtual, tabuleiroLIG4.indice_i, jocupado - 1)) {
+            //     std::cout << "Jogador " << jogadorAtual << " venceu!" << std::endl;
+            //     // aqui fica a logica pra TELA DE FIM DE JOGO
+            //     LimpaTabuleiro();
+            //     fimDeJogo = true;
+            //     std::cout << "entrou no desenhar jogo perdeno soq no anima\n";
+            // }
             //alinha a peça certo com a ultima celula 
             
             circulo.setPosition(origemX + tabuleiroLIG4.indice_i * tamanho_celula + borda, origemY + tamanho_celula * (jocupado - 1));
@@ -164,8 +164,10 @@ void JogoLig4::desenharJogo() {
 
         if(jogadorAtual==1){
             jogador1.vencedor(jogador2.getApelido(), "Lig4");
+            std::cout << "Jogador " << jogador1.getApelido() << " venceu!" << std::endl;
         }else{
             jogador2.vencedor(jogador1.getApelido(), "Lig4");
+            std::cout << "Jogador " << jogador2.getApelido() << " venceu!" << std::endl;
         }
 
         LimpaTabuleiro();

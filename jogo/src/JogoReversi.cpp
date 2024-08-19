@@ -213,15 +213,30 @@ void JogoReversi::desenharJogo() {
         
         // Imprime o ganhador (ou empate) no terminal
         if (ganhador == 1) {
-            std::cout << "Jogador 1 (Vermelho) venceu!" << std::endl;
+            std::cout << "Jogador 1 - Vermelho ("<< jogador1.getApelido() <<") venceu!" << std::endl;
+            jogador1.vencedor(jogador2.getApelido(), "Reversi");
         } else if (ganhador == 2) {
-            std::cout << "Jogador 2 (Amarelo) venceu!" << std::endl;
+            std::cout << "Jogador 2 - Amarelo ("<< jogador2.getApelido() <<") venceu!" << std::endl;
+            jogador2.vencedor(jogador1.getApelido(), "Reversi");
         } else {
             std::cout << "Empate!" << std::endl;
+            jogador1.empate("Lig4",jogador2.getApelido());
         }
 
         fimDeJogo = true;
     }
-
-    
 }
+
+void JogoReversi::setJogadores(Jogador& player1, Jogador& player2){
+    if(player1.existeConta()){
+        jogador1=player1;
+    }else{
+        std::cout << "Erro: Jogador nao existente" << std::endl;
+    }
+    if(player2.existeConta()){
+        jogador2=player2;
+    }else{
+        std::cout << "Erro: Jogador nao existente" << std::endl;
+    }
+}
+

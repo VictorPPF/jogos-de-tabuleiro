@@ -6,8 +6,7 @@
 
 class JogoReversi {
 private:
-    Jogador* jogador1; // ponteiros para os jogadores (não utilizado no código atual, mas pode ser útil para futuras implementações)
-    Jogador* jogador2;
+    Jogador jogador1, jogador2;
     int jogadorAtual; // indica qual jogador está na vez de jogar
 
     sf::RenderWindow& window; // referência para a janela onde o jogo será desenhado
@@ -22,6 +21,9 @@ private:
     float tamanho_celula; // tamanho de cada célula no tabuleiro
 
 public:
+    
+    void setJogadores(Jogador& _jogador1, Jogador& _jogador2);
+
     Tabuleiro tabuleiroREVERSI; // objeto que representa o tabuleiro do jogo
     Botao botaoVoltar; // botão para desistir e voltar ao menu principal
     bool fimDeJogo = false; // indica se o jogo terminou

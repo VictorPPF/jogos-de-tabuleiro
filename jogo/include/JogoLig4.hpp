@@ -19,9 +19,9 @@ private:
     float borda;
     float icupado, jocupado; //indices da celula ocupada
 
+    Jogador jogador1, jogador2;
 
 public:
-    Jogador jogador1, jogador2;
     void setJogadores(Jogador& _jogador1, Jogador& _jogador2);
     Botao botaoVoltar;
     bool fimDeJogo = false;

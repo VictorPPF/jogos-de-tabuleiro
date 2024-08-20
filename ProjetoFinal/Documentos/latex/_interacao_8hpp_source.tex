@@ -1,0 +1,150 @@
+\doxysection{Interacao.\+hpp}
+\hypertarget{_interacao_8hpp_source}{}\label{_interacao_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Interacao.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Interacao.hpp}}
+\mbox{\hyperlink{_interacao_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ INTERACAO\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ INTERACAO\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../include/Wallpaper.hpp"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ponto}{Ponto}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ T\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_ponto_a8158fe1e6a58c03b05d7ab79a1badafc}{Ponto}}(T\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ T\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}})\ :\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}),\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}(\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}})\ \{\}}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}()\ :\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}(0),\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}(0)\ \{\}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ponto_af8da49d6bd2912e4a870f51c51607509}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ =\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ =\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}};}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ponto_a366c7098a3b5d6b2e99b2610c7276323}{operator+=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ +=\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ +=\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}};}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ponto_a7f120855c3ef361bf02684a4f613530b}{operator-\/=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ -\/=\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ -\/=\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ponto_ac801d9eff7fd330995242f69af24dec2}{operator*=}}(\textcolor{keywordtype}{double}\ escalar)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ =\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ *\ escalar;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ =\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ *\ escalar;}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ponto_aa1199224b843cdf94e420685d9275e1c}{operator/=}}(\textcolor{keywordtype}{double}\ escalar)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (escalar\ ==\ 0)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ERRO:\ calma\ la\ amigao!\ divisao\ por\ zero."{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ /=\ escalar;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ /=\ escalar;}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_aa848bb7efc8f3fbb33a9ddb1c3fb279b}{operator+}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ +\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ +\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}});}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_a879ad21b24cd686558981f4fcfa9941d}{operator-\/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ -\/\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ -\/\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}});}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_a4b048a976b7f3a9e3875ad8a199d5277}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ *\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ *\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}});}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_ad7b6de82ecb74793209b70c228c3203c}{operator*}}(\textcolor{keywordtype}{double}\ escalar)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ *\ escalar,\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ *\ escalar);}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_a615228dcd85e0bc7e08304f2b10a7431}{operator/}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ ==\ 0\ ||\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ ==\ 0)\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ERRO:\ calma\ la\ amigao!\ divisao\ por\ zero."{}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ /\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}},\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ /\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}});}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{class_ponto}{Ponto}}\ \mbox{\hyperlink{class_ponto_a4a1df21f9da29d82f1fab825c552237f}{operator/}}(\textcolor{keywordtype}{double}\ escalar)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (escalar\ ==\ 0)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}ERRO:\ calma\ la\ amigao!\ divisao\ por\ zero."{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}}(\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ /\ escalar,\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ /\ escalar);}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ponto_ac1e6ce0d5713ca6e170f98ba811959bd}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ outro)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ ==\ outro.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ \&\&\ \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ ==\ outro.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}};}
+\DoxyCodeLine{00159\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\&\ \mbox{\hyperlink{class_ponto_a70d9d799348f757bd8533fe590eb562b}{operator<<}}(std::ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_ponto}{Ponto}}\&\ ponto)\ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}["{}}\ <<\ ponto.\mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ ponto.\mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}\ <<\ \textcolor{stringliteral}{"{}]"{}};\ \textcolor{comment}{//imprime\ o\ ponto\ no\ formato\ [x,y]}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00170\ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \};}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ Instanciação\ explícita\ dos\ templates}}
+\DoxyCodeLine{00174\ \textcolor{keyword}{template}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ponto}{Ponto<double>}};\ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{template}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ponto}{Ponto<float>}};}
+\DoxyCodeLine{00176\ \textcolor{keyword}{template}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ponto}{Ponto<int>}};}
+\DoxyCodeLine{00177\ \textcolor{keyword}{template}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ponto}{Ponto<unsigned\ int>}};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ Definição\ dos\ typedefs}}
+\DoxyCodeLine{00180\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_ponto}{Ponto<double>}}\ \mbox{\hyperlink{_interacao_8hpp_aa399ae91a1ce0b49f5d150c1059e612b}{PontoD}};\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_ponto}{Ponto<float>}}\ \mbox{\hyperlink{_interacao_8hpp_a367f04997ae2eba791c1b59342f27662}{PontoF}};\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_ponto}{Ponto<int>}}\ \mbox{\hyperlink{_interacao_8hpp_a0fee167e843688e2471af96db6f5ae92}{PontoI}};\ }
+\DoxyCodeLine{00183\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{class_ponto}{Ponto<unsigned\ int>}}\ \mbox{\hyperlink{_interacao_8hpp_af5e1330d946530403104a0ebe71de00c}{PontoU}};\ }
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00191\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_botao}{Botao}}\ \{}
+\DoxyCodeLine{00192\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{comment}{//\ Atributos\ para\ definir\ as\ dimensões\ e\ posição\ do\ botão}}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_botao_af0072cc678b407856f41d4fd78ffbc6f}{largura}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_botao_a83881b84c56282b55527be9bb2870ac9}{altura}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_botao_a3802106f605d0c559f86af210a8bb295}{posicao}};\ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ Atributos\ para\ definir\ as\ cores\ do\ botão}}
+\DoxyCodeLine{00199\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00200\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_botao_ad9a3d7527bc7fafbfa05b30ad2f2cef8}{corHover}};\ \ \ \ \ \ }
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{comment}{//\ Atributos\ para\ definir\ a\ forma\ do\ botão}}
+\DoxyCodeLine{00203\ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{class_botao_a34659164b576b2f5bdaf117c76ccd4ba}{retangulo}};\ }
+\DoxyCodeLine{00204\ \ \ \ \ sf::CircleShape\ \mbox{\hyperlink{class_botao_ad000fcbcde19ef3a4059e3897313400b}{circulo}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d}{isCirculo}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{comment}{//\ Atributos\ para\ o\ texto\ do\ botão}}
+\DoxyCodeLine{00208\ \ \ \ \ std::string\ \mbox{\hyperlink{class_botao_ac56ebc1fa443d3057377bdd4041b4828}{texto}};\ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ sf::Font\ \mbox{\hyperlink{class_botao_a06d5b23e4e7df5345eb57761462b910c}{fonte}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00210\ \ \ \ \ sf::Text\ \mbox{\hyperlink{class_botao_a2b1caa2d8aaf0e41dd7a6dd9d24c4ced}{text}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00211\ \ \ \ \ sf::Color\ \mbox{\hyperlink{class_botao_a645989d7b6a70dc248c2622e1f25f0b9}{corFonte}};\ \ \ \ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_botao_a240973b79bc8dca1dc71fda7cf39ed8a}{tamanhoFonte}};\ \ \ \ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{int}\ windowLargura\ =\ 1000;\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordtype}{int}\ windowAltura\ =\ 690;\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//\ Construtor\ da\ classe\ Botao}}
+\DoxyCodeLine{00232\ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}(\textcolor{keywordtype}{float}\ largura,\ \textcolor{keywordtype}{float}\ altura,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ sf::Color\ cor,\ \textcolor{keyword}{const}\ std::string\&\ texto,\ \textcolor{keywordtype}{float}\ tamanhoFonte\ =\ 24.f,}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isCirculo\ =\ \textcolor{keyword}{false},\ sf::Color\ corFonte\ =\ sf::Color::White);}
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{class_botao_a02c65257718db8af01c9a5a6ed1a155d}{Botao}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00251\ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}(\textcolor{keywordtype}{float}\ largura,\ \textcolor{keywordtype}{float}\ altura,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ sf::Color\ cor,\ \textcolor{keywordtype}{bool}\ isCirculo\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ criarBotoes();}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00263\ \ \ \ \ sf::Color\ getCor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00270\ \ \ \ \ sf::RectangleShape\ getRetangulo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00277\ \ \ \ \ sf::CircleShape\ getCirculo()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keywordtype}{void}\ setCorHover(sf::Color\ cor);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keywordtype}{void}\ setCor(sf::Color\ cor);}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordtype}{void}\ mudarCor(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00306\ \ \ \ \ \textcolor{keywordtype}{bool}\ passouMouse(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordtype}{void}\ desenhar(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordtype}{void}\ setTamanhoFonte(\textcolor{keywordtype}{float}\ tamanho);}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00328\ \ \ \ \ \textcolor{keywordtype}{bool}\ foiClicado(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ }
+\DoxyCodeLine{00331\ \};}
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EXECUTAPARTIDA\_HPP}}
+
+\end{DoxyCode}

@@ -1,0 +1,95 @@
+\doxysection{Jogo Class Reference}
+\hypertarget{class_jogo}{}\label{class_jogo}\index{Jogo@{Jogo}}
+
+
+{\ttfamily \#include $<$Jogo.\+hpp$>$}
+
+Inheritance diagram for Jogo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{desenhar\+Jogo}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{acao}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{Limpa\+Tabuleiro}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{set\+Jogadores}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&player1, \mbox{\hyperlink{class_jogador}{Jogador}} \&player2)=0
+\item 
+virtual bool \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{Faz\+Jogada}} (int i, int j)=0
+\item 
+virtual std\+::string \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{get\+Nome\+Vencedor}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}\label{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0} 
+\index{Jogo@{Jogo}!acao@{acao}}
+\index{acao@{acao}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{acao()}{acao()}}
+{\footnotesize\ttfamily virtual void Jogo\+::acao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato responsável por lidar com as ações dos jogadores. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_abd948fd53e97d9f39a52e5c79dd270a6}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a0489d5ea5e6ee742b329be58f54d5b4e}{Jogo\+Reversi}}.
+
+\Hypertarget{class_jogo_ab43077aa9d485f5647a0016a37921c14}\label{class_jogo_ab43077aa9d485f5647a0016a37921c14} 
+\index{Jogo@{Jogo}!desenharJogo@{desenharJogo}}
+\index{desenharJogo@{desenharJogo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{desenharJogo()}{desenharJogo()}}
+{\footnotesize\ttfamily virtual void Jogo\+::desenhar\+Jogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato para desenhar o jogo na tela. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_a0c7f57d08199956570e3e7985a00c443}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a5a35a796f15dfeeeedc16455ce28e22e}{Jogo\+Reversi}}.
+
+\Hypertarget{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}\label{class_jogo_a0dc673e175b07dd0cf26ee4543a31030} 
+\index{Jogo@{Jogo}!FazJogada@{FazJogada}}
+\index{FazJogada@{FazJogada}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{FazJogada()}{FazJogada()}}
+{\footnotesize\ttfamily virtual bool Jogo\+::\+Faz\+Jogada (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato que lida com a jogada válida. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_ae0de5f78105f3620c85af771eca7a4fb}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a6d1bb18f587023e28c52c850b6d27b06}{Jogo\+Reversi}}.
+
+\Hypertarget{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}\label{class_jogo_a3e6f1e66a2b76dc801d822711a43de10} 
+\index{Jogo@{Jogo}!getNomeVencedor@{getNomeVencedor}}
+\index{getNomeVencedor@{getNomeVencedor}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getNomeVencedor()}{getNomeVencedor()}}
+{\footnotesize\ttfamily virtual std\+::string Jogo\+::get\+Nome\+Vencedor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato para retornar quem venceu nos jogos. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_a1a9ac128371aa9cb77f09a3003ad98e7}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a489822ae54cbe1a3f5a57009abb1f1e7}{Jogo\+Reversi}}.
+
+\Hypertarget{class_jogo_a79c096f337530940c88b54a3f21f7c43}\label{class_jogo_a79c096f337530940c88b54a3f21f7c43} 
+\index{Jogo@{Jogo}!LimpaTabuleiro@{LimpaTabuleiro}}
+\index{LimpaTabuleiro@{LimpaTabuleiro}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{LimpaTabuleiro()}{LimpaTabuleiro()}}
+{\footnotesize\ttfamily virtual void Jogo\+::\+Limpa\+Tabuleiro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato para limpar o tabueleiro e resetar as configurações. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_a373fb0f8d1b4852236a6b58c914bc1eb}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a29a6ecfe54797df06abdbe6e5a3f3bd0}{Jogo\+Reversi}}.
+
+\Hypertarget{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}\label{class_jogo_a30fce3f02f17e57a393c302e87aaba3c} 
+\index{Jogo@{Jogo}!setJogadores@{setJogadores}}
+\index{setJogadores@{setJogadores}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{setJogadores()}{setJogadores()}}
+{\footnotesize\ttfamily virtual void Jogo\+::set\+Jogadores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{player1,  }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{player2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Método abstrato para indicar os jogadores que irão jogar o jogo. 
+
+Implemented in \mbox{\hyperlink{class_jogo_lig4_a6ccae94a7bbdccea742c449e7a0bee6a}{Jogo\+Lig4}}, and \mbox{\hyperlink{class_jogo_reversi_a076fa29c0f499f62ff2246ce6199d24d}{Jogo\+Reversi}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_jogo_8hpp}{Jogo.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,99 @@
+\doxysection{C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/jogo\+\_\+principal.cpp File Reference}
+\hypertarget{jogo__principal_8cpp}{}\label{jogo__principal_8cpp}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/src/jogo\_principal.cpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/src/jogo\_principal.cpp}}
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include \"{}../include/\+Wallpaper.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Interacao.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Tabuleiro.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Campo\+Texto.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Telas.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Jogador.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Jogo\+Lig4.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Jogo\+Reversi.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}../include/\+Jogo.\+hpp\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{jogo__principal_8cpp_a7081f3e49c00ac1ebf698441e03d89b0}{dois\+\_\+enter}} (\mbox{\hyperlink{class_campo_texto}{Campo\+Texto}} campo\+Jogador1, \mbox{\hyperlink{class_campo_texto}{Campo\+Texto}} campo\+Jogador2)
+\item 
+int \mbox{\hyperlink{jogo__principal_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{jogo__principal_8cpp_a7081f3e49c00ac1ebf698441e03d89b0}\label{jogo__principal_8cpp_a7081f3e49c00ac1ebf698441e03d89b0} 
+\index{jogo\_principal.cpp@{jogo\_principal.cpp}!dois\_enter@{dois\_enter}}
+\index{dois\_enter@{dois\_enter}!jogo\_principal.cpp@{jogo\_principal.cpp}}
+\doxysubsubsection{\texorpdfstring{dois\_enter()}{dois\_enter()}}
+{\footnotesize\ttfamily bool dois\+\_\+enter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_campo_texto}{Campo\+Texto}}}]{campo\+Jogador1,  }\item[{\mbox{\hyperlink{class_campo_texto}{Campo\+Texto}}}]{campo\+Jogador2 }\end{DoxyParamCaption})}
+
+Logica de teste para validar entrada do primeiro e do segundo jogador 
+\begin{DoxyParams}{Parameters}
+{\em campo\+Jogador1} & um objeto do tipo \doxylink{class_campo_texto}{Campo\+Texto}. Este parâmetro representa o campo de texto do primeiro jogador, contendo métodos para obter o texto digitado e verificar se o jogador pressionou \"{}\+Enter\"{}. \\
+\hline
+{\em campo\+Jogador1} & um objeto do tipo \doxylink{class_campo_texto}{Campo\+Texto}. Este parâmetro representa o campo de texto do segndo jogador, tem o mesmo objetivo do primeiro \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se ambos os campos não estiverem vazios e se ambos os jogadores pressionaram \"{}\+Enter\"{}. 
+\end{DoxyReturn}
+\Hypertarget{jogo__principal_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{jogo__principal_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{jogo\_principal.cpp@{jogo\_principal.cpp}!main@{main}}
+\index{main@{main}!jogo\_principal.cpp@{jogo\_principal.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Ele carrega a fonte font\+\_\+arcade.\+ttf e trata exceções adequadamente. Se a fonte não for carregada, uma exceção std\+::runtime\+\_\+error é lançada e o erro é reportado via std\+::cerr. Em seguida, a exceção é relançada para que o chamador possa tratá-\/la ou o programa seja encerrado adequadamente.
+
+Nesta etapa, carregamos os módulos para iniciar a tela do jogo nas dimensões da tela do usuário
+
+Nesta parte do código, temos algumas definições de variáveis, chamar as classes, entre outros.
+
+Cria um relógio para medir o tempo
+
+Essas linhas de código são responsáveis por criar instâncias das classes \doxylink{class_tela_menu}{Tela\+Menu}, \doxylink{class_jogo_reversi}{Jogo\+Reversi}, \doxylink{class_jogo_lig4}{Jogo\+Lig4}, \doxylink{class_tela_cadastro}{Tela\+Cadastro}, \doxylink{class_tela_lista}{Tela\+Lista}, \doxylink{class_tela_excluir_conta}{Tela\+Excluir\+Conta}, \doxylink{class_tela_estatisticas}{Tela\+Estatisticas}, \doxylink{class_fim_de_jogo_lig4}{Fim\+De\+Jogo\+Lig4}, e Fim\+De\+Jogo\+Reversi. Cada uma dessas classes representa uma tela ou estado específico dentro do jogo e as instâncias são inicializadas com os mesmos parâmetros\+: window, fonte e, em alguns, event.
+
+Aqui temos as variáveis que controlam os clique do mouse, evitando duplos clicks
+
+Variáveis que testam se os jogadores estão logados, para liberar o acesso aos dois jogos
+
+Checa todos os eventos que ocorreram desde a última iteração do loop
+
+poll\+Event é uma função que retorna true se houver eventos na fila, nesse loop principal que o jogo é executado.
+
+caso o jogador clique em fechar a tela, o jogo será encerrado.
+
+Nesta etapa, temos a dinâmica com a tela inicial \textquotesingle{}Menu\textquotesingle{}, onde temos os botões\+:
+
+Inserir jogadores válidos, cadastrar novos jogadores, lista de todos os jogadores cadastrados, estatisticas de um jogador especifico e excluir um jogador específico.
+
+Quando entra com dois jogadores cadastrados, o botão para entrar nos jogos Reversi e Lig4 é liberado.
+
+Verifica se o jogador 1 foi logado com sucesso.
+
+Verifica se o jogador 2 foi logado com sucesso.
+
+Logico pra testar se o cadastro é valido e guardar ele
+
+Se existe jogador cadastrado e o usuário quer exclui-\/lo, então será excluído
+
+Se o jogador está cadastrado, aqui ele mostra as estatísticas dele.
+
+Aqui verifica se as informações preenchidas nos campos são válidos.
+
+Nesta etapa, verifica se os botões foram clicados, também inserimos uma lógica para evitar duplo click
+
+Aqui definimos uma regiao retangular padrao do \"{}botao\"{} de voltar só pra ALGUMAS telas. Quando clica em voltar, limpa os campos escritos.
+
+Aqui conectamos os jogadores em seus respectivos jogos
+
+Aqui limpa os campos quando cadastramos novos jogadores. Além das alterações de cor dos botões ao cadastrar os usuários.
+
+Acessa o histórico de jogadores dentro da tela que exibe a lista de jogadores.
+
+Dinâmica para mudar as cores dos botões da tela excluir conta, quando existe um jogador válido.
+
+Nesta etapa, exibimos as telas de fim de jogo, quando a partida é finalizada.
+
+Nesta etapa, desenhamos cada tela das nossas paginas.

@@ -1,0 +1,52 @@
+\doxysection{Jogo\+Lig4.\+hpp}
+\hypertarget{_jogo_lig4_8hpp_source}{}\label{_jogo_lig4_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/JogoLig4.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/JogoLig4.hpp}}
+\mbox{\hyperlink{_jogo_lig4_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ JOGOLIG4\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ JOGOLIG4\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../include/Interacao.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../include/Tabuleiro.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../include/Jogador.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../include/Jogo.hpp"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogo_lig4}{JogoLig4}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogo}{Jogo}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00029\ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00033\ \ \ \ \ sf::Event\&\ evento;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{float}\ origemX;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ origemY;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ qtd\_celulaX;\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ qtd\_celulaY;\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{float}\ tamanho\_celula;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ borda;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{float}\ icupado,\ jocupado;\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ animando;}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}\ jogador1,\ jogador2;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_jogo_lig4_a4c1724a2324ad50a0b92ee04cd4e244c}{botaoVoltar}};}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_lig4_a5348e56ba77dd899cc1a2dc46a3158da}{fimDeJogo}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00085\ \ \ \ \ sf::CircleShape\ \mbox{\hyperlink{class_jogo_lig4_a8577dc9fb9da0c7c67b547218096efba}{circulo}};}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{class_tabuleiro}{Tabuleiro}}\ \mbox{\hyperlink{class_jogo_lig4_a62e1ae31ecc32b8772bfeae055775359}{tabuleiroLIG4}};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogo_lig4_af791fe6c41a872d5721d7f0ca6952a8f}{jogadorAtual}};}
+\DoxyCodeLine{00097\ \ \ \ \ std::string\ \mbox{\hyperlink{class_jogo_lig4_a84c57677f4afe52c9aaccaed9dcd9572}{nomeVencedor}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//Métodos\ herdados}}
+\DoxyCodeLine{00103\ \textcolor{comment}{}\ \ \ \ \mbox{\hyperlink{class_jogo_lig4}{JogoLig4}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte,\ sf::Event\&\ evento);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_lig4_a0c7f57d08199956570e3e7985a00c443}{desenharJogo}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_lig4_abd948fd53e97d9f39a52e5c79dd270a6}{acao}}\ ()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_lig4_a373fb0f8d1b4852236a6b58c914bc1eb}{LimpaTabuleiro}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_lig4_a6ccae94a7bbdccea742c449e7a0bee6a}{setJogadores}}(\mbox{\hyperlink{class_jogador}{Jogador}}\&\ \_jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ \_jogador2)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_lig4_ae0de5f78105f3620c85af771eca7a4fb}{FazJogada}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00137\ \ \ \ \ std::string\ \mbox{\hyperlink{class_jogo_lig4_a1a9ac128371aa9cb77f09a3003ad98e7}{getNomeVencedor}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_lig4_a7f12f48ea61e7cb769e005491a3dcf1c}{verificaCondicaoVitoria}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna);}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_lig4_adb627b164b90111e4de49167c486b117}{anima}}();}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

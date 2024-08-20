@@ -1,0 +1,271 @@
+\doxysection{Tabuleiro Class Reference}
+\hypertarget{class_tabuleiro}{}\label{class_tabuleiro}\index{Tabuleiro@{Tabuleiro}}
+
+
+Representa o tabuleiro do jogo, incluindo a matriz de células e as ações associadas.  
+
+
+
+
+{\ttfamily \#include $<$Tabuleiro.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tabuleiro_a3693afab661d81e4eaad2449f1ccd403}{Tabuleiro}} (float origx, float origy, int qtd\+\_\+celulaX, int qtd\+\_\+celulaY, float tamanho\+\_\+celula, float borda, sf\+::\+Event \&\mbox{\hyperlink{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0}{evento}})
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_tabuleiro}{Tabuleiro}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}{Tabuleiro}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{class_tabuleiro}{Tabuleiro}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_tabuleiro_a9579b441979bc966d27156e337759622}{get\+\_\+celula\+\_\+status}} (int linha, int coluna)
+\begin{DoxyCompactList}\small\item\em Método que retorna o estado de uma célula. ~\newline
+ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tabuleiro_ad5259bea592e1f34141acffc7c70bcd9}{set\+\_\+celula\+\_\+status}} (int linha, int coluna, int status)
+\begin{DoxyCompactList}\small\item\em Método que define o estado de uma célula. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_tabuleiro_a1be6f503cdbc337c645c944a3d08812c}{get\+\_\+qtd\+\_\+celulaX}} ()
+\begin{DoxyCompactList}\small\item\em Método que retorna o número de células na horizontal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_tabuleiro_a3c84b85fadf893d1bf80b5a0dce93aaa}{get\+\_\+qtd\+\_\+celulaY}} ()
+\begin{DoxyCompactList}\small\item\em Método que retorna o número de células na vertical. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tabuleiro_ab08f749ee19f4aea813bb83b11e327ff}{poe\+Peca}} (int i, int j, int jogador)
+\begin{DoxyCompactList}\small\item\em Método que define qual celula tem que ocupada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tabuleiro_a7099c459a9068aa27a88e3eba5162669}{acao}} ()
+\begin{DoxyCompactList}\small\item\em Método que coordena as ações do tabuleiro e como jogadas são feitas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tabuleiro_aa6f8e249b29cc0ecebac95535995e904}{anima}} ()
+\begin{DoxyCompactList}\small\item\em Método que coordena quando e como a animação da peça caindo é feita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tabuleiro_afdb384006f37cb56d3acde40802f63df}{desenhar}} (sf\+::\+Render\+Window \&window)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_celula}{Celula}} $>$ $>$ \mbox{\hyperlink{class_tabuleiro_a811ccde29b269e9d04deae6fd57ab8e4}{matriz}}
+\begin{DoxyCompactList}\small\item\em Matriz responsável pelo tabuleiro. Cada célula da matriz representa uma posição no tabuleiro. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{class_celula}{Celula}} $>$ $>$ \mbox{\hyperlink{class_tabuleiro_a4b79bcd398368a1b6da33dfc7634c230}{slots}}
+\begin{DoxyCompactList}\small\item\em Matriz das bolinhas que mostram ao usuário onde ficarão as peças. Esta matriz é usada para indicar visualmente as posições válidas para colocar peças. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_tabuleiro_a409b804c258bc52ba4a369c03d7af82f}{deu\+Clique}} = false
+\item 
+float \mbox{\hyperlink{class_tabuleiro_a42de1dd73521067a49c43eadbcaff712}{indice\+\_\+i}} = 0
+\item 
+float \mbox{\hyperlink{class_tabuleiro_a443dbed149bfab2dc03ff8216f92cc38}{indice\+\_\+j}} = 0
+\item 
+int \mbox{\hyperlink{class_tabuleiro_a3d315190a519fc1d111304a6ca484fcb}{jogador\+Atual}} = 0
+\item 
+float \mbox{\hyperlink{class_tabuleiro_a2c52ad683134cb8fa53dd1f5501a1e8f}{jocupado}} = 0
+\item 
+sf\+::\+Event \& \mbox{\hyperlink{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0}{evento}}
+\begin{DoxyCompactList}\small\item\em Método que desenha o tabuleiro na janela. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa o tabuleiro do jogo, incluindo a matriz de células e as ações associadas. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_tabuleiro_a3693afab661d81e4eaad2449f1ccd403}\label{class_tabuleiro_a3693afab661d81e4eaad2449f1ccd403} 
+\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{Tabuleiro()}{Tabuleiro()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Tabuleiro\+::\+Tabuleiro (\begin{DoxyParamCaption}\item[{float}]{origx,  }\item[{float}]{origy,  }\item[{int}]{qtd\+\_\+celulaX,  }\item[{int}]{qtd\+\_\+celulaY,  }\item[{float}]{tamanho\+\_\+celula,  }\item[{float}]{borda,  }\item[{sf\+::\+Event \&}]{evento }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_tabuleiro}{Tabuleiro}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em origx} & Coordenada X da origem do tabuleiro. \\
+\hline
+{\em origy} & Coordenada Y da origem do tabuleiro. \\
+\hline
+{\em qtd\+\_\+celulaX} & Número de células na horizontal. \\
+\hline
+{\em qtd\+\_\+celulaY} & Número de células na vertical. \\
+\hline
+{\em tamanho\+\_\+celula} & Tamanho de cada célula em pixels. \\
+\hline
+{\em borda} & Distância entre a célula e o círculo. \\
+\hline
+{\em evento} & Referência ao evento SFML. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}\label{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5} 
+\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{Tabuleiro()}{Tabuleiro()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Tabuleiro\+::\+Tabuleiro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor padrão da classe \doxylink{class_tabuleiro}{Tabuleiro}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tabuleiro_a7099c459a9068aa27a88e3eba5162669}\label{class_tabuleiro_a7099c459a9068aa27a88e3eba5162669} 
+\index{Tabuleiro@{Tabuleiro}!acao@{acao}}
+\index{acao@{acao}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{acao()}{acao()}}
+{\footnotesize\ttfamily void Tabuleiro\+::acao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que coordena as ações do tabuleiro e como jogadas são feitas. 
+
+\Hypertarget{class_tabuleiro_aa6f8e249b29cc0ecebac95535995e904}\label{class_tabuleiro_aa6f8e249b29cc0ecebac95535995e904} 
+\index{Tabuleiro@{Tabuleiro}!anima@{anima}}
+\index{anima@{anima}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{anima()}{anima()}}
+{\footnotesize\ttfamily void Tabuleiro\+::anima (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que coordena quando e como a animação da peça caindo é feita. 
+
+\Hypertarget{class_tabuleiro_afdb384006f37cb56d3acde40802f63df}\label{class_tabuleiro_afdb384006f37cb56d3acde40802f63df} 
+\index{Tabuleiro@{Tabuleiro}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Tabuleiro\+::desenhar (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+\Hypertarget{class_tabuleiro_a9579b441979bc966d27156e337759622}\label{class_tabuleiro_a9579b441979bc966d27156e337759622} 
+\index{Tabuleiro@{Tabuleiro}!get\_celula\_status@{get\_celula\_status}}
+\index{get\_celula\_status@{get\_celula\_status}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{get\_celula\_status()}{get\_celula\_status()}}
+{\footnotesize\ttfamily int Tabuleiro\+::get\+\_\+celula\+\_\+status (\begin{DoxyParamCaption}\item[{int}]{linha,  }\item[{int}]{coluna }\end{DoxyParamCaption})}
+
+
+
+Método que retorna o estado de uma célula. ~\newline
+ 
+
+\Hypertarget{class_tabuleiro_a1be6f503cdbc337c645c944a3d08812c}\label{class_tabuleiro_a1be6f503cdbc337c645c944a3d08812c} 
+\index{Tabuleiro@{Tabuleiro}!get\_qtd\_celulaX@{get\_qtd\_celulaX}}
+\index{get\_qtd\_celulaX@{get\_qtd\_celulaX}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{get\_qtd\_celulaX()}{get\_qtd\_celulaX()}}
+{\footnotesize\ttfamily int Tabuleiro\+::get\+\_\+qtd\+\_\+celulaX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que retorna o número de células na horizontal. 
+
+\Hypertarget{class_tabuleiro_a3c84b85fadf893d1bf80b5a0dce93aaa}\label{class_tabuleiro_a3c84b85fadf893d1bf80b5a0dce93aaa} 
+\index{Tabuleiro@{Tabuleiro}!get\_qtd\_celulaY@{get\_qtd\_celulaY}}
+\index{get\_qtd\_celulaY@{get\_qtd\_celulaY}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{get\_qtd\_celulaY()}{get\_qtd\_celulaY()}}
+{\footnotesize\ttfamily int Tabuleiro\+::get\+\_\+qtd\+\_\+celulaY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método que retorna o número de células na vertical. 
+
+\Hypertarget{class_tabuleiro_ab08f749ee19f4aea813bb83b11e327ff}\label{class_tabuleiro_ab08f749ee19f4aea813bb83b11e327ff} 
+\index{Tabuleiro@{Tabuleiro}!poePeca@{poePeca}}
+\index{poePeca@{poePeca}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{poePeca()}{poePeca()}}
+{\footnotesize\ttfamily void Tabuleiro\+::poe\+Peca (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Método que define qual celula tem que ocupada. 
+
+\Hypertarget{class_tabuleiro_ad5259bea592e1f34141acffc7c70bcd9}\label{class_tabuleiro_ad5259bea592e1f34141acffc7c70bcd9} 
+\index{Tabuleiro@{Tabuleiro}!set\_celula\_status@{set\_celula\_status}}
+\index{set\_celula\_status@{set\_celula\_status}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{set\_celula\_status()}{set\_celula\_status()}}
+{\footnotesize\ttfamily void Tabuleiro\+::set\+\_\+celula\+\_\+status (\begin{DoxyParamCaption}\item[{int}]{linha,  }\item[{int}]{coluna,  }\item[{int}]{status }\end{DoxyParamCaption})}
+
+
+
+Método que define o estado de uma célula. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_tabuleiro_a409b804c258bc52ba4a369c03d7af82f}\label{class_tabuleiro_a409b804c258bc52ba4a369c03d7af82f} 
+\index{Tabuleiro@{Tabuleiro}!deuClique@{deuClique}}
+\index{deuClique@{deuClique}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{deuClique}{deuClique}}
+{\footnotesize\ttfamily bool Tabuleiro\+::deu\+Clique = false}
+
+
+\begin{DoxyParams}{Parameters}
+{\em deu\+Clique} & indica se o jogador deu um clique \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0}\label{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0} 
+\index{Tabuleiro@{Tabuleiro}!evento@{evento}}
+\index{evento@{evento}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{evento}{evento}}
+{\footnotesize\ttfamily sf\+::\+Event\& Tabuleiro\+::evento}
+
+
+
+Método que desenha o tabuleiro na janela. 
+
+\Hypertarget{class_tabuleiro_a42de1dd73521067a49c43eadbcaff712}\label{class_tabuleiro_a42de1dd73521067a49c43eadbcaff712} 
+\index{Tabuleiro@{Tabuleiro}!indice\_i@{indice\_i}}
+\index{indice\_i@{indice\_i}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{indice\_i}{indice\_i}}
+{\footnotesize\ttfamily float Tabuleiro\+::indice\+\_\+i = 0}
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice\+\_\+i} & índice da linha clicada \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a443dbed149bfab2dc03ff8216f92cc38}\label{class_tabuleiro_a443dbed149bfab2dc03ff8216f92cc38} 
+\index{Tabuleiro@{Tabuleiro}!indice\_j@{indice\_j}}
+\index{indice\_j@{indice\_j}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{indice\_j}{indice\_j}}
+{\footnotesize\ttfamily float Tabuleiro\+::indice\+\_\+j = 0}
+
+
+\begin{DoxyParams}{Parameters}
+{\em indice\+\_\+j} & índice da coluna clicada \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a2c52ad683134cb8fa53dd1f5501a1e8f}\label{class_tabuleiro_a2c52ad683134cb8fa53dd1f5501a1e8f} 
+\index{Tabuleiro@{Tabuleiro}!jocupado@{jocupado}}
+\index{jocupado@{jocupado}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{jocupado}{jocupado}}
+{\footnotesize\ttfamily float Tabuleiro\+::jocupado = 0}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jocupado} & índice da linha da primeira célula ocupada \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a3d315190a519fc1d111304a6ca484fcb}\label{class_tabuleiro_a3d315190a519fc1d111304a6ca484fcb} 
+\index{Tabuleiro@{Tabuleiro}!jogadorAtual@{jogadorAtual}}
+\index{jogadorAtual@{jogadorAtual}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{jogadorAtual}{jogadorAtual}}
+{\footnotesize\ttfamily int Tabuleiro\+::jogador\+Atual = 0}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Atual} & jogador atual \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tabuleiro_a811ccde29b269e9d04deae6fd57ab8e4}\label{class_tabuleiro_a811ccde29b269e9d04deae6fd57ab8e4} 
+\index{Tabuleiro@{Tabuleiro}!matriz@{matriz}}
+\index{matriz@{matriz}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{matriz}{matriz}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$\mbox{\hyperlink{class_celula}{Celula}}$>$ $>$ Tabuleiro\+::matriz}
+
+
+
+Matriz responsável pelo tabuleiro. Cada célula da matriz representa uma posição no tabuleiro. 
+
+\Hypertarget{class_tabuleiro_a4b79bcd398368a1b6da33dfc7634c230}\label{class_tabuleiro_a4b79bcd398368a1b6da33dfc7634c230} 
+\index{Tabuleiro@{Tabuleiro}!slots@{slots}}
+\index{slots@{slots}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{slots}{slots}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$\mbox{\hyperlink{class_celula}{Celula}}$>$ $>$ Tabuleiro\+::slots}
+
+
+
+Matriz das bolinhas que mostram ao usuário onde ficarão as peças. Esta matriz é usada para indicar visualmente as posições válidas para colocar peças. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_tabuleiro_8hpp}{Tabuleiro.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_tabuleiro_8cpp}{Tabuleiro.\+cpp}}\end{DoxyCompactItemize}

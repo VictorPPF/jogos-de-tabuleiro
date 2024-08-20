@@ -1,0 +1,312 @@
+\doxysection{Jogo\+Lig4 Class Reference}
+\hypertarget{class_jogo_lig4}{}\label{class_jogo_lig4}\index{JogoLig4@{JogoLig4}}
+
+
+classe herda da classe abstrata \doxylink{class_jogo}{Jogo} e implementa a lógica e funcionalidade de um jogo Lig4.  
+
+
+
+
+{\ttfamily \#include $<$Jogo\+Lig4.\+hpp$>$}
+
+Inheritance diagram for Jogo\+Lig4\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogo_lig4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_lig4_a65764a63f3d30a61588606921ebc013b}{Jogo\+Lig4}} (sf\+::\+Render\+Window \&window, sf\+::\+Font \&fonte, sf\+::\+Event \&evento)
+\begin{DoxyCompactList}\small\item\em Construtor que inicializa os elementos do jogo recebe a janela, a fonte e o evento como paraâmetros. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_lig4_a0c7f57d08199956570e3e7985a00c443}{desenhar\+Jogo}} () override
+\begin{DoxyCompactList}\small\item\em desenhar\+Jogo desenha o jogo na janela \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_lig4_abd948fd53e97d9f39a52e5c79dd270a6}{acao}} () override
+\begin{DoxyCompactList}\small\item\em acao executa a ação do jogo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_lig4_a373fb0f8d1b4852236a6b58c914bc1eb}{Limpa\+Tabuleiro}} () override
+\begin{DoxyCompactList}\small\item\em Limpa\+Tabuleiro limpa o tabuleiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_lig4_a6ccae94a7bbdccea742c449e7a0bee6a}{set\+Jogadores}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&\+\_\+jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&\+\_\+jogador2) override
+\begin{DoxyCompactList}\small\item\em set\+Jogadores responsável por definir os jogadores do jogo \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_lig4_ae0de5f78105f3620c85af771eca7a4fb}{Faz\+Jogada}} (int i, int j) override
+\begin{DoxyCompactList}\small\item\em Faz\+Jogada responsável por fazer a jogada. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_jogo_lig4_a1a9ac128371aa9cb77f09a3003ad98e7}{get\+Nome\+Vencedor}} () const override
+\begin{DoxyCompactList}\small\item\em get\+Nome\+Vencedor retorna o nome do vencedor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_lig4_a7f12f48ea61e7cb769e005491a3dcf1c}{verifica\+Condicao\+Vitoria}} (int linha, int coluna)
+\begin{DoxyCompactList}\small\item\em verifica\+Condicao\+Vitoria verifica se a condição de vitória foi atingida \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_lig4_adb627b164b90111e4de49167c486b117}{anima}} ()
+\begin{DoxyCompactList}\small\item\em anima é responsável por animar a peça \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{desenhar\+Jogo}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{acao}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{Limpa\+Tabuleiro}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{set\+Jogadores}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&player1, \mbox{\hyperlink{class_jogador}{Jogador}} \&player2)=0
+\item 
+virtual bool \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{Faz\+Jogada}} (int i, int j)=0
+\item 
+virtual std\+::string \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{get\+Nome\+Vencedor}} () const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_botao}{Botao}} \mbox{\hyperlink{class_jogo_lig4_a4c1724a2324ad50a0b92ee04cd4e244c}{botao\+Voltar}}
+\item 
+bool \mbox{\hyperlink{class_jogo_lig4_a5348e56ba77dd899cc1a2dc46a3158da}{fim\+De\+Jogo}} = false
+\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{class_jogo_lig4_a8577dc9fb9da0c7c67b547218096efba}{circulo}}
+\item 
+\mbox{\hyperlink{class_tabuleiro}{Tabuleiro}} \mbox{\hyperlink{class_jogo_lig4_a62e1ae31ecc32b8772bfeae055775359}{tabuleiro\+LIG4}}
+\item 
+int \mbox{\hyperlink{class_jogo_lig4_af791fe6c41a872d5721d7f0ca6952a8f}{jogador\+Atual}}
+\item 
+std\+::string \mbox{\hyperlink{class_jogo_lig4_a84c57677f4afe52c9aaccaed9dcd9572}{nome\+Vencedor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+classe herda da classe abstrata \doxylink{class_jogo}{Jogo} e implementa a lógica e funcionalidade de um jogo Lig4. 
+
+Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_jogo_lig4_a65764a63f3d30a61588606921ebc013b}\label{class_jogo_lig4_a65764a63f3d30a61588606921ebc013b} 
+\index{JogoLig4@{JogoLig4}!JogoLig4@{JogoLig4}}
+\index{JogoLig4@{JogoLig4}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{JogoLig4()}{JogoLig4()}}
+{\footnotesize\ttfamily Jogo\+Lig4\+::\+Jogo\+Lig4 (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Font \&}]{fonte,  }\item[{sf\+::\+Event \&}]{evento }\end{DoxyParamCaption})}
+
+
+
+Construtor que inicializa os elementos do jogo recebe a janela, a fonte e o evento como paraâmetros. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_jogo_lig4_abd948fd53e97d9f39a52e5c79dd270a6}\label{class_jogo_lig4_abd948fd53e97d9f39a52e5c79dd270a6} 
+\index{JogoLig4@{JogoLig4}!acao@{acao}}
+\index{acao@{acao}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{acao()}{acao()}}
+{\footnotesize\ttfamily void Jogo\+Lig4\+::acao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+acao executa a ação do jogo 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_adb627b164b90111e4de49167c486b117}\label{class_jogo_lig4_adb627b164b90111e4de49167c486b117} 
+\index{JogoLig4@{JogoLig4}!anima@{anima}}
+\index{anima@{anima}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{anima()}{anima()}}
+{\footnotesize\ttfamily void Jogo\+Lig4\+::anima (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+anima é responsável por animar a peça 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_lig4_a0c7f57d08199956570e3e7985a00c443}\label{class_jogo_lig4_a0c7f57d08199956570e3e7985a00c443} 
+\index{JogoLig4@{JogoLig4}!desenharJogo@{desenharJogo}}
+\index{desenharJogo@{desenharJogo}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{desenharJogo()}{desenharJogo()}}
+{\footnotesize\ttfamily void Jogo\+Lig4\+::desenhar\+Jogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+desenhar\+Jogo desenha o jogo na janela 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_ae0de5f78105f3620c85af771eca7a4fb}\label{class_jogo_lig4_ae0de5f78105f3620c85af771eca7a4fb} 
+\index{JogoLig4@{JogoLig4}!FazJogada@{FazJogada}}
+\index{FazJogada@{FazJogada}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{FazJogada()}{FazJogada()}}
+{\footnotesize\ttfamily bool Jogo\+Lig4\+::\+Faz\+Jogada (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Faz\+Jogada responsável por fazer a jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & linha \\
+\hline
+{\em j} & coluna \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_a1a9ac128371aa9cb77f09a3003ad98e7}\label{class_jogo_lig4_a1a9ac128371aa9cb77f09a3003ad98e7} 
+\index{JogoLig4@{JogoLig4}!getNomeVencedor@{getNomeVencedor}}
+\index{getNomeVencedor@{getNomeVencedor}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{getNomeVencedor()}{getNomeVencedor()}}
+{\footnotesize\ttfamily std\+::string Jogo\+Lig4\+::get\+Nome\+Vencedor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get\+Nome\+Vencedor retorna o nome do vencedor 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_a373fb0f8d1b4852236a6b58c914bc1eb}\label{class_jogo_lig4_a373fb0f8d1b4852236a6b58c914bc1eb} 
+\index{JogoLig4@{JogoLig4}!LimpaTabuleiro@{LimpaTabuleiro}}
+\index{LimpaTabuleiro@{LimpaTabuleiro}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{LimpaTabuleiro()}{LimpaTabuleiro()}}
+{\footnotesize\ttfamily void Jogo\+Lig4\+::\+Limpa\+Tabuleiro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Limpa\+Tabuleiro limpa o tabuleiro. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_a6ccae94a7bbdccea742c449e7a0bee6a}\label{class_jogo_lig4_a6ccae94a7bbdccea742c449e7a0bee6a} 
+\index{JogoLig4@{JogoLig4}!setJogadores@{setJogadores}}
+\index{setJogadores@{setJogadores}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{setJogadores()}{setJogadores()}}
+{\footnotesize\ttfamily void Jogo\+Lig4\+::set\+Jogadores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{\+\_\+jogador1,  }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{\+\_\+jogador2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set\+Jogadores responsável por definir os jogadores do jogo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+jogador1} & objeto que representa o jogador 1 \\
+\hline
+{\em \+\_\+jogador2} & objeto que representa o jogador 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{Jogo}}.
+
+\Hypertarget{class_jogo_lig4_a7f12f48ea61e7cb769e005491a3dcf1c}\label{class_jogo_lig4_a7f12f48ea61e7cb769e005491a3dcf1c} 
+\index{JogoLig4@{JogoLig4}!verificaCondicaoVitoria@{verificaCondicaoVitoria}}
+\index{verificaCondicaoVitoria@{verificaCondicaoVitoria}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{verificaCondicaoVitoria()}{verificaCondicaoVitoria()}}
+{\footnotesize\ttfamily bool Jogo\+Lig4\+::verifica\+Condicao\+Vitoria (\begin{DoxyParamCaption}\item[{int}]{linha,  }\item[{int}]{coluna }\end{DoxyParamCaption})}
+
+
+
+verifica\+Condicao\+Vitoria verifica se a condição de vitória foi atingida 
+
+
+\begin{DoxyParams}{Parameters}
+{\em linha} & linha \\
+\hline
+{\em coluna} & coluna \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_jogo_lig4_a4c1724a2324ad50a0b92ee04cd4e244c}\label{class_jogo_lig4_a4c1724a2324ad50a0b92ee04cd4e244c} 
+\index{JogoLig4@{JogoLig4}!botaoVoltar@{botaoVoltar}}
+\index{botaoVoltar@{botaoVoltar}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{botaoVoltar}{botaoVoltar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_botao}{Botao}} Jogo\+Lig4\+::botao\+Voltar}
+
+
+\begin{DoxyParams}{Parameters}
+{\em botao\+Voltar} & botão para voltar ao menu \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_lig4_a8577dc9fb9da0c7c67b547218096efba}\label{class_jogo_lig4_a8577dc9fb9da0c7c67b547218096efba} 
+\index{JogoLig4@{JogoLig4}!circulo@{circulo}}
+\index{circulo@{circulo}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{circulo}{circulo}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Jogo\+Lig4\+::circulo}
+
+
+\begin{DoxyParams}{Parameters}
+{\em circulo} & círculo que representa a peça do jogador atual \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_lig4_a5348e56ba77dd899cc1a2dc46a3158da}\label{class_jogo_lig4_a5348e56ba77dd899cc1a2dc46a3158da} 
+\index{JogoLig4@{JogoLig4}!fimDeJogo@{fimDeJogo}}
+\index{fimDeJogo@{fimDeJogo}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{fimDeJogo}{fimDeJogo}}
+{\footnotesize\ttfamily bool Jogo\+Lig4\+::fim\+De\+Jogo = false}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fim\+De\+Jogo} & indica se o jogo acabou \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_lig4_af791fe6c41a872d5721d7f0ca6952a8f}\label{class_jogo_lig4_af791fe6c41a872d5721d7f0ca6952a8f} 
+\index{JogoLig4@{JogoLig4}!jogadorAtual@{jogadorAtual}}
+\index{jogadorAtual@{jogadorAtual}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{jogadorAtual}{jogadorAtual}}
+{\footnotesize\ttfamily int Jogo\+Lig4\+::jogador\+Atual}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Atual} & indica qual jogador está na vez de jogar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_lig4_a84c57677f4afe52c9aaccaed9dcd9572}\label{class_jogo_lig4_a84c57677f4afe52c9aaccaed9dcd9572} 
+\index{JogoLig4@{JogoLig4}!nomeVencedor@{nomeVencedor}}
+\index{nomeVencedor@{nomeVencedor}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{nomeVencedor}{nomeVencedor}}
+{\footnotesize\ttfamily std\+::string Jogo\+Lig4\+::nome\+Vencedor}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Vencedor} & nome do jogador vencedor \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_lig4_a62e1ae31ecc32b8772bfeae055775359}\label{class_jogo_lig4_a62e1ae31ecc32b8772bfeae055775359} 
+\index{JogoLig4@{JogoLig4}!tabuleiroLIG4@{tabuleiroLIG4}}
+\index{tabuleiroLIG4@{tabuleiroLIG4}!JogoLig4@{JogoLig4}}
+\doxysubsubsection{\texorpdfstring{tabuleiroLIG4}{tabuleiroLIG4}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tabuleiro}{Tabuleiro}} Jogo\+Lig4\+::tabuleiro\+LIG4}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tabuleiro\+LIG4} & objeto que representa o tabuleiro do jogo \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_jogo_lig4_8hpp}{Jogo\+Lig4.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_jogo_lig4_8cpp}{Jogo\+Lig4.\+cpp}}\end{DoxyCompactItemize}

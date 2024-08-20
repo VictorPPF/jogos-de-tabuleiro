@@ -1,0 +1,381 @@
+\doxysection{Ponto\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_ponto}{}\label{class_ponto}\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+
+
+Representa um ponto no plano cartesiano.  
+
+
+
+
+{\ttfamily \#include $<$Interacao.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ponto_a8158fe1e6a58c03b05d7ab79a1badafc}{Ponto}} (T \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}, T \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}})
+\begin{DoxyCompactList}\small\item\em Construtor parametrizado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}{Ponto}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. Cria um ponto na origem (0,0). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ponto_af8da49d6bd2912e4a870f51c51607509}{operator=}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro)
+\begin{DoxyCompactList}\small\item\em Operador de atribuição. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ponto_a366c7098a3b5d6b2e99b2610c7276323}{operator+=}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro)
+\begin{DoxyCompactList}\small\item\em Operador de adição composta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ponto_a7f120855c3ef361bf02684a4f613530b}{operator-\/=}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro)
+\begin{DoxyCompactList}\small\item\em Operador de subtração composta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ponto_ac801d9eff7fd330995242f69af24dec2}{operator\texorpdfstring{$\ast$}{*}=}} (double escalar)
+\begin{DoxyCompactList}\small\item\em Operador de multiplicação composta por um escalar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ponto_aa1199224b843cdf94e420685d9275e1c}{operator/=}} (double escalar)
+\begin{DoxyCompactList}\small\item\em Operador de divisão composta por um escalar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_aa848bb7efc8f3fbb33a9ddb1c3fb279b}{operator+}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro) const
+\begin{DoxyCompactList}\small\item\em Operador de adição. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_a879ad21b24cd686558981f4fcfa9941d}{operator-\/}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro) const
+\begin{DoxyCompactList}\small\item\em Operador de subtração. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_a4b048a976b7f3a9e3875ad8a199d5277}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro) const
+\begin{DoxyCompactList}\small\item\em Operador de multiplicação. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_ad7b6de82ecb74793209b70c228c3203c}{operator\texorpdfstring{$\ast$}{*}}} (double escalar) const
+\begin{DoxyCompactList}\small\item\em Operador de multiplicação por um escalar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_a615228dcd85e0bc7e08304f2b10a7431}{operator/}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro) const
+\begin{DoxyCompactList}\small\item\em Operador de divisão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto_a4a1df21f9da29d82f1fab825c552237f}{operator/}} (double escalar) const
+\begin{DoxyCompactList}\small\item\em Operador de divisão por um escalar. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ponto_ac1e6ce0d5713ca6e170f98ba811959bd}{operator==}} (const \mbox{\hyperlink{class_ponto}{Ponto}} \&outro) const
+\begin{DoxyCompactList}\small\item\em Operador de igualdade. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \mbox{\hyperlink{class_ponto_a278fb13355b5a3436469c94a944aa94b}{x}}
+\item 
+T \mbox{\hyperlink{class_ponto_a16124d633919c53b794914a5dc9499f7}{y}}
+\begin{DoxyCompactList}\small\item\em Coordenada x, y do ponto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{class_ponto_a70d9d799348f757bd8533fe590eb562b}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_ponto}{Ponto}} \&ponto)
+\begin{DoxyCompactList}\small\item\em Operador de fluxo de saída. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Ponto$<$ T $>$}
+Representa um ponto no plano cartesiano. 
+
+Esta classe template permite a criação de pontos com diferentes tipos numéricos (double, float, int, unsigned int). Fornece operadores sobrecarregados para operações aritméticas e comparação entre pontos.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Tipo numérico para coordenadas do ponto. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ponto_a8158fe1e6a58c03b05d7ab79a1badafc}\label{class_ponto_a8158fe1e6a58c03b05d7ab79a1badafc} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!Ponto@{Ponto}}
+\index{Ponto@{Ponto}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Ponto()}{Ponto()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\mbox{\hyperlink{class_ponto}{\+::\+Ponto}} (\begin{DoxyParamCaption}\item[{T}]{x,  }\item[{T}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor parametrizado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordenada x do ponto. \\
+\hline
+{\em y} & Coordenada y do ponto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponto_a84e3608c4cc2329b3db69ab5b1747978}\label{class_ponto_a84e3608c4cc2329b3db69ab5b1747978} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!Ponto@{Ponto}}
+\index{Ponto@{Ponto}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Ponto()}{Ponto()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\mbox{\hyperlink{class_ponto}{\+::\+Ponto}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor padrão. Cria um ponto na origem (0,0). 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ponto_a4b048a976b7f3a9e3875ad8a199d5277}\label{class_ponto_a4b048a976b7f3a9e3875ad8a199d5277} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de multiplicação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} cujas coordenadas são multiplicadas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da multiplicação. 
+\end{DoxyReturn}
+\Hypertarget{class_ponto_ad7b6de82ecb74793209b70c228c3203c}\label{class_ponto_ad7b6de82ecb74793209b70c228c3203c} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{double}]{escalar }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de multiplicação por um escalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escalar} & Valor pelo qual as coordenadas são multiplicadas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da multiplicação. 
+\end{DoxyReturn}
+\Hypertarget{class_ponto_ac801d9eff7fd330995242f69af24dec2}\label{class_ponto_ac801d9eff7fd330995242f69af24dec2} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}}
+\index{operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}=()}{operator*=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator\texorpdfstring{$\ast$}{*}= (\begin{DoxyParamCaption}\item[{double}]{escalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de multiplicação composta por um escalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escalar} & Valor pelo qual as coordenadas são multiplicadas. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponto_aa848bb7efc8f3fbb33a9ddb1c3fb279b}\label{class_ponto_aa848bb7efc8f3fbb33a9ddb1c3fb279b} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de adição. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} a ser adicionado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da adição. 
+\end{DoxyReturn}
+\Hypertarget{class_ponto_a366c7098a3b5d6b2e99b2610c7276323}\label{class_ponto_a366c7098a3b5d6b2e99b2610c7276323} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de adição composta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} a ser adicionado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponto_a879ad21b24cd686558981f4fcfa9941d}\label{class_ponto_a879ad21b24cd686558981f4fcfa9941d} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de subtração. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} a ser subtraído. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da subtração. 
+\end{DoxyReturn}
+\Hypertarget{class_ponto_a7f120855c3ef361bf02684a4f613530b}\label{class_ponto_a7f120855c3ef361bf02684a4f613530b} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de subtração composta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} a ser subtraído. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponto_a615228dcd85e0bc7e08304f2b10a7431}\label{class_ponto_a615228dcd85e0bc7e08304f2b10a7431} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator/@{operator/}}
+\index{operator/@{operator/}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de divisão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} cujas coordenadas são divididas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da divisão. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & Se qualquer coordenada do ponto for zero. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_ponto_a4a1df21f9da29d82f1fab825c552237f}\label{class_ponto_a4a1df21f9da29d82f1fab825c552237f} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator/@{operator/}}
+\index{operator/@{operator/}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{class_ponto}{Ponto}} \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator/ (\begin{DoxyParamCaption}\item[{double}]{escalar }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de divisão por um escalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escalar} & Valor pelo qual as coordenadas são divididas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Novo ponto resultante da divisão. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & Se o escalar for zero. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_ponto_aa1199224b843cdf94e420685d9275e1c}\label{class_ponto_aa1199224b843cdf94e420685d9275e1c} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator/=()}{operator/=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator/= (\begin{DoxyParamCaption}\item[{double}]{escalar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de divisão composta por um escalar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em escalar} & Valor pelo qual as coordenadas são divididas. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & Se o escalar for zero. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_ponto_af8da49d6bd2912e4a870f51c51607509}\label{class_ponto_af8da49d6bd2912e4a870f51c51607509} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de atribuição. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & Outro ponto a ser copiado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ponto_ac1e6ce0d5713ca6e170f98ba811959bd}\label{class_ponto_ac1e6ce0d5713ca6e170f98ba811959bd} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{outro }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operador de igualdade. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outro} & \doxylink{class_ponto}{Ponto} a ser comparado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se os pontos forem iguais, false caso contrário. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_ponto_a70d9d799348f757bd8533fe590eb562b}\label{class_ponto_a70d9d799348f757bd8533fe590eb562b} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$ \&}]{ponto }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Operador de fluxo de saída. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Fluxo de saída. \\
+\hline
+{\em ponto} & \doxylink{class_ponto}{Ponto} a ser impresso. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Fluxo de saída com o ponto formatado. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ponto_a278fb13355b5a3436469c94a944aa94b}\label{class_ponto_a278fb13355b5a3436469c94a944aa94b} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!x@{x}}
+\index{x@{x}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::x}
+
+\Hypertarget{class_ponto_a16124d633919c53b794914a5dc9499f7}\label{class_ponto_a16124d633919c53b794914a5dc9499f7} 
+\index{Ponto$<$ T $>$@{Ponto$<$ T $>$}!y@{y}}
+\index{y@{y}!Ponto$<$ T $>$@{Ponto$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T \mbox{\hyperlink{class_ponto}{Ponto}}$<$ T $>$\+::y}
+
+
+
+Coordenada x, y do ponto. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_interacao_8hpp}{Interacao.\+hpp}}\end{DoxyCompactItemize}

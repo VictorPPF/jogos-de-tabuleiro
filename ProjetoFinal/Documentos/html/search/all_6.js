@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['ganhador_0',['Ganhador',['../class_jogo_reversi.html#a111fc04b9edbec23b04b8441f07b9166',1,'JogoReversi']]],
+  ['get_5fcelula_5fstatus_1',['get_celula_status',['../class_tabuleiro.html#a9579b441979bc966d27156e337759622',1,'Tabuleiro']]],
+  ['get_5fqtd_5fcelulax_2',['get_qtd_celulaX',['../class_tabuleiro.html#a1be6f503cdbc337c645c944a3d08812c',1,'Tabuleiro']]],
+  ['get_5fqtd_5fcelulay_3',['get_qtd_celulaY',['../class_tabuleiro.html#a3c84b85fadf893d1bf80b5a0dce93aaa',1,'Tabuleiro']]],
+  ['getapelido_4',['getApelido',['../class_jogador.html#a69bcabfdd275c3f5ef39cacce1c53592',1,'Jogador']]],
+  ['getcirculo_5',['getCirculo',['../class_botao.html#a7c5e8a1d15ae214bc5fc3bd86c05f7e6',1,'Botao']]],
+  ['getcor_6',['getCor',['../class_botao.html#a154b3001ec084c82993fc1439e771bbc',1,'Botao']]],
+  ['getderrotaslig4_7',['getDerrotasLig4',['../class_jogador.html#aab3317ad34e3a92ccb6d0b4cecccc04e',1,'Jogador']]],
+  ['getderrotasreversi_8',['getDerrotasReversi',['../class_jogador.html#a9fb4c016cdd1f431592498e424abb949',1,'Jogador']]],
+  ['getempateslig4_9',['getEmpatesLig4',['../class_jogador.html#a83a59dc9348f74992da539e98a309b67',1,'Jogador']]],
+  ['getempatesreversi_10',['getEmpatesReversi',['../class_jogador.html#a0c57d1f601fbe345bd4dafbc43b955bc',1,'Jogador']]],
+  ['getestado_11',['getEstado',['../class_celula.html#a505cf1bd5831296b77455ab8f432540e',1,'Celula']]],
+  ['getnome_12',['getNome',['../class_jogador.html#aa5c6ea943399895fd9ae9da8453e108c',1,'Jogador']]],
+  ['getnomearquivo_13',['getNomeArquivo',['../class_historico.html#afbea53ee0b1285c963b1a4bf642b1c4c',1,'Historico']]],
+  ['getnomevencedor_14',['getNomeVencedor',['../class_jogo.html#a3e6f1e66a2b76dc801d822711a43de10',1,'Jogo::getNomeVencedor()'],['../class_jogo_lig4.html#a1a9ac128371aa9cb77f09a3003ad98e7',1,'JogoLig4::getNomeVencedor()'],['../class_jogo_reversi.html#a489822ae54cbe1a3f5a57009abb1f1e7',1,'JogoReversi::getNomeVencedor()']]],
+  ['getresultado_15',['getResultado',['../class_jogador.html#afa6b97953281435a9b1ec7e439ff2090',1,'Jogador']]],
+  ['getretangulo_16',['getRetangulo',['../class_botao.html#a5f2718c0001f7a717b5e50895c9c195a',1,'Botao']]],
+  ['getvitoriaslig4_17',['getVitoriasLig4',['../class_jogador.html#ab73305554133ef6b1f4c6e74052989ea',1,'Jogador']]],
+  ['getvitoriasreversi_18',['getVitoriasReversi',['../class_jogador.html#a68f9478b7320d8fc9755a179494b9540',1,'Jogador']]]
+];

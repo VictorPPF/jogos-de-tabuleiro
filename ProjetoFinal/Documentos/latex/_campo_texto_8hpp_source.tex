@@ -1,0 +1,38 @@
+\doxysection{Campo\+Texto.\+hpp}
+\hypertarget{_campo_texto_8hpp_source}{}\label{_campo_texto_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/CampoTexto.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/CampoTexto.hpp}}
+\mbox{\hyperlink{_campo_texto_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ CAMPOTEXTO\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CAMPOTEXTO\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_af8a114f3a772a2c92561af54b926b451}{ativar}}();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_a3c1eff2df86e87b567efdca8e2c43e63}{desativar}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_ab60281bd7a3951a449b33b7ef9c99855}{adicionarCaractere}}(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_a97a44704c036a07e506e51320de2246f}{removerUltimoCaractere}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ sf::RectangleShape\ \mbox{\hyperlink{class_campo_texto_a012ad22298cd9735a98fcec5c0a05821}{retangulo}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ sf::Text\ \mbox{\hyperlink{class_campo_texto_a4d9a7a42008afaf86c4ea682dcc2f217}{texto}};\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ sf::Font\ \mbox{\hyperlink{class_campo_texto_a3d11978cf3d3f9400985450896563260}{fonte}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_campo_texto_aef5052ab0e5f43aabee8ace6f895df1e}{ativo}};\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_campo_texto_a5d5590f5d3eb2ca6ef64d415ef428a70}{deu\_enter}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}(\textcolor{keywordtype}{float}\ largura,\ \textcolor{keywordtype}{float}\ altura,\ \textcolor{keywordtype}{float}\ posicaoX,\ \textcolor{keywordtype}{float}\ posicaoY);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_a2896683c7b4f37ae1e562d423d1c2458}{limparTexto}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_a295c832db53c0b3c942bf37f8ea71b58}{desenhar}}(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_campo_texto_a7e496a785f43f7ea1edac0b33244c0b5}{processarEventos}}(sf::Event\&\ event,\ sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_campo_texto_a15b29a9b34e57b62a1e6c7dd10d4cfef}{obterTexto}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CAMPO\_TEXTO\_HPP}}
+
+\end{DoxyCode}

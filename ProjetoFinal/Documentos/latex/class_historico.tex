@@ -1,0 +1,161 @@
+\doxysection{Historico Class Reference}
+\hypertarget{class_historico}{}\label{class_historico}\index{Historico@{Historico}}
+
+
+{\ttfamily \#include $<$Historico.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_historico_a59748ffb61a920b0ec1e4ba7b14c3ba3}{Historico}} ()
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_historico}{Historico} -\/ Faz um arquivo escrevendo o cabeçalho, caso o arquivo nao exista, caso exista ele o abre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_historico_ac8adc277a242fa27671abd394447124c}{excluir\+Linha}} (std\+::string apelido)
+\begin{DoxyCompactList}\small\item\em Função responsável por excluir linha do banco de dados -\/ essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_historico_a3047273b30d5bc4982d8ab13c510d76b}{Editar}} (std\+::string apelido, std\+::string coluna, std\+::string novo\+Dado)
+\begin{DoxyCompactList}\small\item\em Função responsável por editar os dados -\/essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, apaga o arquivo original e renomeia o auxiliar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_historico_af0c2a7395a2bac3025d7e11be6c86a85}{criar\+Linha}} (const std\+::vector$<$ std\+::string $>$ \&dados)
+\begin{DoxyCompactList}\small\item\em Função responsável por adicionar dados -\/ Adiciona mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_historico_a86d62b45f15ba1242a82dc7d4b7a0324}{acessar\+Dados}} (std\+::string apelido, std\+::string coluna)
+\begin{DoxyCompactList}\small\item\em Função que acessa dados específicos -\/ Acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -\/1. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_historico_af72a29e4082afe25f38b1fc5345ceeeb}{acessar\+Dados}} (std\+::string apelido)
+\begin{DoxyCompactList}\small\item\em Função que acessa dados gerais -\/ Acessa todos os datos do jogador ditado pelo apelido, se ele não achar o apelido ela retorna -\/1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_historico_af04bd98208d33fb85e0094ef83cf9757}{acessar\+Dados}} ()
+\begin{DoxyCompactList}\small\item\em Função que acessa todos os dados -\/ Acessa todos os dados e os escreve na tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_historico_adc70caa50ac627b7a99c5c71f3a2bfc0}{add\+Estatistica}} (std\+::string apelido, std\+::string coluna)
+\begin{DoxyCompactList}\small\item\em Função que adiciona estatística para o jogador -\/ Acessa um jogador ditado pelo apelido e aumenta em 1 a estatística passada como parâmetro. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_historico_afbea53ee0b1285c963b1a4bf642b1c4c}{get\+Nome\+Arquivo}} () const
+\begin{DoxyCompactList}\small\item\em Função que retorna o nome do arquivo -\/ Acessa a variável contendo o nome do arquivo e a retorna como string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_historico_a59748ffb61a920b0ec1e4ba7b14c3ba3}\label{class_historico_a59748ffb61a920b0ec1e4ba7b14c3ba3} 
+\index{Historico@{Historico}!Historico@{Historico}}
+\index{Historico@{Historico}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{Historico()}{Historico()}}
+{\footnotesize\ttfamily Historico\+::\+Historico (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_historico}{Historico} -\/ Faz um arquivo escrevendo o cabeçalho, caso o arquivo nao exista, caso exista ele o abre. 
+
+Construtor da classe \doxylink{class_historico}{Historico} Faz um arquivo escrevendo o cabeçalho, caso o arquivo nao exista, caso exista ele o abre 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_historico_af04bd98208d33fb85e0094ef83cf9757}\label{class_historico_af04bd98208d33fb85e0094ef83cf9757} 
+\index{Historico@{Historico}!acessarDados@{acessarDados}}
+\index{acessarDados@{acessarDados}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{acessarDados()}{acessarDados()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Historico\+::acessar\+Dados (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função que acessa todos os dados -\/ Acessa todos os dados e os escreve na tela. 
+
+Função que acessa todos os dados Acessa todos os dados e os escreve na tela. \Hypertarget{class_historico_af72a29e4082afe25f38b1fc5345ceeeb}\label{class_historico_af72a29e4082afe25f38b1fc5345ceeeb} 
+\index{Historico@{Historico}!acessarDados@{acessarDados}}
+\index{acessarDados@{acessarDados}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{acessarDados()}{acessarDados()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::string Historico\+::acessar\+Dados (\begin{DoxyParamCaption}\item[{std\+::string}]{apelido }\end{DoxyParamCaption})}
+
+
+
+Função que acessa dados gerais -\/ Acessa todos os datos do jogador ditado pelo apelido, se ele não achar o apelido ela retorna -\/1. 
+
+Função que acessa dados gerais Acessa todos os datos do jogador ditado pelo apelido, se ele não achar o apelido ela retorna -\/1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & contendo o nome do jogador \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String de dados contendo todas as informações daquele jogador, caso exista, caso contrário retorna -\/1 
+\end{DoxyReturn}
+\Hypertarget{class_historico_a86d62b45f15ba1242a82dc7d4b7a0324}\label{class_historico_a86d62b45f15ba1242a82dc7d4b7a0324} 
+\index{Historico@{Historico}!acessarDados@{acessarDados}}
+\index{acessarDados@{acessarDados}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{acessarDados()}{acessarDados()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::string Historico\+::acessar\+Dados (\begin{DoxyParamCaption}\item[{std\+::string}]{apelido,  }\item[{std\+::string}]{coluna }\end{DoxyParamCaption})}
+
+
+
+Função que acessa dados específicos -\/ Acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -\/1. 
+
+Função que acessa dados específicos Acessa um dado específico ditado pelo apelido e coluna, se ele não achar o apelido ela retorna -\/1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & contendo o nome do jogador e outra string indicando o tipo de dado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String de dado específico, caso exista, caso contrário retorna -\/1 
+\end{DoxyReturn}
+\Hypertarget{class_historico_adc70caa50ac627b7a99c5c71f3a2bfc0}\label{class_historico_adc70caa50ac627b7a99c5c71f3a2bfc0} 
+\index{Historico@{Historico}!addEstatistica@{addEstatistica}}
+\index{addEstatistica@{addEstatistica}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{addEstatistica()}{addEstatistica()}}
+{\footnotesize\ttfamily void Historico\+::add\+Estatistica (\begin{DoxyParamCaption}\item[{std\+::string}]{apelido,  }\item[{std\+::string}]{coluna }\end{DoxyParamCaption})}
+
+
+
+Função que adiciona estatística para o jogador -\/ Acessa um jogador ditado pelo apelido e aumenta em 1 a estatística passada como parâmetro. 
+
+Função que adiciona estatística para o jogador Acessa um jogador ditado pelo apelido e aumenta em 1 a estatística passada como parâmetro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & contendo o nome do jogador e outra string indicando o tipo de dado que terá seu valor aumentado em 1 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_historico_af0c2a7395a2bac3025d7e11be6c86a85}\label{class_historico_af0c2a7395a2bac3025d7e11be6c86a85} 
+\index{Historico@{Historico}!criarLinha@{criarLinha}}
+\index{criarLinha@{criarLinha}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{criarLinha()}{criarLinha()}}
+{\footnotesize\ttfamily void Historico\+::criar\+Linha (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{dados }\end{DoxyParamCaption})}
+
+
+
+Função responsável por adicionar dados -\/ Adiciona mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo. 
+
+Função responsável por adicionar dados Adiciona mais uma linha ao arquivo csv com base em um vector de strings com os dados referente a cada campo. \Hypertarget{class_historico_a3047273b30d5bc4982d8ab13c510d76b}\label{class_historico_a3047273b30d5bc4982d8ab13c510d76b} 
+\index{Historico@{Historico}!Editar@{Editar}}
+\index{Editar@{Editar}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{Editar()}{Editar()}}
+{\footnotesize\ttfamily void Historico\+::\+Editar (\begin{DoxyParamCaption}\item[{std\+::string}]{apelido,  }\item[{std\+::string}]{coluna,  }\item[{std\+::string}]{novo\+Dado }\end{DoxyParamCaption})}
+
+
+
+Função responsável por editar os dados -\/essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, apaga o arquivo original e renomeia o auxiliar. 
+
+Função responsável por editar os dados Essa função copia todas as linhas em um arquivo auxiliar, mudando apenas o dado na posicao estabelecida pelo apelido e coluna, apaga o arquivo original e renomeia o auxiliar. \Hypertarget{class_historico_ac8adc277a242fa27671abd394447124c}\label{class_historico_ac8adc277a242fa27671abd394447124c} 
+\index{Historico@{Historico}!excluirLinha@{excluirLinha}}
+\index{excluirLinha@{excluirLinha}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{excluirLinha()}{excluirLinha()}}
+{\footnotesize\ttfamily void Historico\+::excluir\+Linha (\begin{DoxyParamCaption}\item[{std\+::string}]{apelido }\end{DoxyParamCaption})}
+
+
+
+Função responsável por excluir linha do banco de dados -\/ essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar. 
+
+Função responsável por excluir linha do banco de dados Essa função copia todas as linhas, menos a que será excluida, em um arquivo auxiliar, apaga o original e renomeia o auxiliar. \Hypertarget{class_historico_afbea53ee0b1285c963b1a4bf642b1c4c}\label{class_historico_afbea53ee0b1285c963b1a4bf642b1c4c} 
+\index{Historico@{Historico}!getNomeArquivo@{getNomeArquivo}}
+\index{getNomeArquivo@{getNomeArquivo}!Historico@{Historico}}
+\doxysubsubsection{\texorpdfstring{getNomeArquivo()}{getNomeArquivo()}}
+{\footnotesize\ttfamily std\+::string Historico\+::get\+Nome\+Arquivo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Função que retorna o nome do arquivo -\/ Acessa a variável contendo o nome do arquivo e a retorna como string. 
+
+Função que retorna o nome do arquivo Acessa a variável contendo o nome do arquivo e a retorna como string.
+
+\begin{DoxyReturn}{Returns}
+String contendo o nome do arquivo 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_historico_8hpp}{Historico.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_historico_8cpp}{Historico.\+cpp}}\end{DoxyCompactItemize}

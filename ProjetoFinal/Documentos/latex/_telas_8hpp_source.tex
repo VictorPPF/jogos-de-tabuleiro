@@ -1,0 +1,128 @@
+\doxysection{Telas.\+hpp}
+\hypertarget{_telas_8hpp_source}{}\label{_telas_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Telas.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Telas.hpp}}
+\mbox{\hyperlink{_telas_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ TELA\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ TELA\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../include/CampoTexto.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../include/Wallpaper.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../include/Interacao.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../include/Historico.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../include/Jogador.hpp"{}}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tela_menu}{TelaMenu}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ sf::Event\&\ evento;\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_ae1fade334c990201fa512d22efdb04ad}{botaoJogador1}};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_a253e6d9ab04b1f83cdccb3f79e904b22}{botaoJogador2}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_a22dc144614cb3b5f7d0e331fd24eea32}{botaoListaJogadores}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_a6b48b5bc0a2ecfc8b792d758630af126}{botaoCadastro}};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_a643ab379f06a427b57e2c53a5ef5344a}{botaoExcluirConta}};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_ac4caab166aa2aa7b174a0977a9a6e69c}{botaoEstatistica}};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_ac1fa00875636cc0de8b2018806746f62}{play1}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_menu_aeb5237f0daf9d44018aa52ce1af11612}{play2}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_menu_a230cfb3351a93a8490874934e60d92c4}{campoJogador1}};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_menu_a60ac0b5b0f394ce0224a81526fda09ee}{campoJogador2}};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tela_menu}{TelaMenu}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte,\ sf::Event\&\ evento);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_menu_a94f658874a519eefcea6231cc545ae1d}{desenharMenu}}();}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tela_cadastro}{TelaCadastro}}\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_cadastro_a1d8588b2a00d95ec5162cb7fad22aac1}{botaoNome}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_cadastro_ac9cdec6ba82b325bd4dd5e0919d002e3}{botaoApelido}};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_cadastro_a7e1bdbfbe9d85265f9fee4ee2a588781}{botaoConfirma}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_cadastro_a97b63890e17db09d6ea886c2a96fbf64}{botaoVoltar}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_cadastro_ae39445734c7476c4c1f874fdcd5bd655}{campoNome}};}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_cadastro_ab47a8844fa7b227135646c5f798c34b1}{campoApelido}};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tela_cadastro}{TelaCadastro}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_cadastro_ad46c4cd9e703f9366fbda1ba614061c3}{desenharJogo}}();}
+\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tela_lista}{TelaLista}}\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_lista_a574eab840d525006d28ed6696ba8d7e3}{botaoVoltar}};}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_historico}{Historico}}\ \mbox{\hyperlink{class_tela_lista_a94a020fdc86969ddc064b6acfa3897fb}{historico}};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_tela_lista_a39a22f5517ec00ef5f47ebccb15760a4}{jogadores}};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tela_lista}{TelaLista}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_tela_lista_af657b5ea2bf8ecbf834a061e864729e2}{carregarDadosJogadores}}();}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_lista_ab125dcda85be87eaade5712f428c8e02}{desenharJogadores}}();}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_lista_a85eeebd1a7e001896748aa80a4a673f8}{desenharLista}}();}
+\DoxyCodeLine{00172\ \};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tela_excluir_conta}{TelaExcluirConta}}\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_excluir_conta_abb52898c6ab3b6768315c572876eebc9}{botaoApelido}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_excluir_conta_a70ea54918b07a17517c9c03bea0392ff}{botaoExcluir}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_excluir_conta_a484f06cadd2a58c3a428427995003c83}{botaoVoltar}};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_excluir_conta_ad8aa66856e64457395fa319347f05362}{campoApelido}};}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tela_excluir_conta}{TelaExcluirConta}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_excluir_conta_a24ad6b837a7890653eb2c11ec892ad16}{desenharExcluirConta}}();}
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tela_estatisticas}{TelaEstatisticas}}\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_estatisticas_a972ec2bbb33707a33209e116a81c665e}{botaoApelido}};}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_estatisticas_a9f5839815af7e5e84e1e054888f130cf}{botaoVoltar}};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_tela_estatisticas_a0cc24b68c9fa5c31d9c1589e86fb2bee}{botaoPesquisa}};}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_campo_texto}{CampoTexto}}\ \mbox{\hyperlink{class_tela_estatisticas_a5cd7db5bb9b956c1af3a79db671a3a7e}{campoPesquisa}};}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}\ \mbox{\hyperlink{class_tela_estatisticas_a6b9733a249822aa167f362fcad3448b1}{jogador}};}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tela_estatisticas}{TelaEstatisticas}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_estatisticas_ae2442f4cb32937a7445f17790ef6e259}{desenharTexto}}(\textcolor{keyword}{const}\ std::string\&\ texto,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ tamanho,\ sf::Color\ cor);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_estatisticas_a1aa7c741e88b364797aaa26f0c752737}{setJogador}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ \mbox{\hyperlink{class_tela_estatisticas_a6b9733a249822aa167f362fcad3448b1}{jogador}});}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tela_estatisticas_ab0d205eae2ed8efc5dc994b04007eb2f}{desenharEstatisticas}}();}
+\DoxyCodeLine{00264\ \};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_fim_de_jogo_lig4}{FimDeJogoLig4}}\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ sf::Text\ textoVencedor;}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_fim_de_jogo_lig4_ae7b2768fcdd78b81fb5c9cb9f185fedf}{botaoMenu}};}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_fim_de_jogo_lig4_a08a67d6a01d3eeab041acb97a889068e}{botaoRestart}};}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_fim_de_jogo_lig4}{FimDeJogoLig4}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fim_de_jogo_lig4_a7b72058531fc59c207e48ac42c5c5fe4}{desenharTelaFinal}}(\textcolor{keyword}{const}\ std::string\&\ nomeVencedor);}
+\DoxyCodeLine{00298\ \};}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \textcolor{comment}{//FimDeJogoRevesi}}
+\DoxyCodeLine{00301\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_fim_de_jogo_revesi}{FimDeJogoRevesi}}\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ sf::Font\&\ fonte;}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ sf::Text\ textoVencedor;}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_fim_de_jogo_revesi_a212a69f604c1f8d8ec66b3ac51427798}{botaoMenu}};}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_fim_de_jogo_revesi_a5f2db6e4fe2f2692bb52c7f7b08c0883}{botaoRestart}};}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_fim_de_jogo_revesi}{FimDeJogoRevesi}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte);}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fim_de_jogo_revesi_aab06eb022cc9bb465c75ee0322789daa}{desenharTelaFinal}}(\textcolor{keyword}{const}\ std::string\&\ nomeVencedor);}
+\DoxyCodeLine{00334\ \};}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TELA\_MENU\_HPP}}
+
+\end{DoxyCode}

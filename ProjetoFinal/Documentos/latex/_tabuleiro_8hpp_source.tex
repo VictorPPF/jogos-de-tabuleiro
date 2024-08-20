@@ -1,0 +1,66 @@
+\doxysection{Tabuleiro.\+hpp}
+\hypertarget{_tabuleiro_8hpp_source}{}\label{_tabuleiro_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Tabuleiro.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Tabuleiro.hpp}}
+\mbox{\hyperlink{_tabuleiro_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ TABULEIRO\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ TABULEIRO\_HPP}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../include/Interacao.hpp"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_celula}{Celula}}\{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ estado;\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ posicaoX,\ posicaoY;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_tamanho\_celula;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isCirculo;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ sf::Color\ cor;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Botao\ circulo;}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_celula_a75eeaa5462688346dfee607e6e73f58c}{botao}};\textcolor{comment}{//sf::Color(150,\ 129,\ 250)}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_celula_a3c5017fbcec8cb564acc666aa7e21206}{Celula}}()\ :\ estado(0),\ posicaoX(0),\ posicaoY(0),\ \_tamanho\_celula(0),cor(sf::Color(0,0,0)),\ isCirculo(false),\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_celula_a75eeaa5462688346dfee607e6e73f58c}{botao}}(0,\ 0,\ 0,\ 0,\ sf::Color(150,\ 129,\ 250),\ false)\ \{\}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_celula_a3c5017fbcec8cb564acc666aa7e21206}{Celula}}(\textcolor{keywordtype}{int}\ estado,\ \textcolor{keywordtype}{float}\ posicaoX,\ \textcolor{keywordtype}{float}\ posicaoY,\ \textcolor{keywordtype}{float}\ \_tamanho\_celula,sf::Color\ cor,\ \textcolor{keywordtype}{bool}\ isCirculo);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_celula_a3e010b324dfb2bf301310474817726ea}{setEstado}}(\textcolor{keywordtype}{int}\ estado);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_celula_a505cf1bd5831296b77455ab8f432540e}{getEstado}}();}
+\DoxyCodeLine{00068\ \};\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tabuleiro}{Tabuleiro}}\{}
+\DoxyCodeLine{00075\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ qtd\_celulaX,\ qtd\_celulaY;\ \ \textcolor{comment}{//\ Tamanho\ do\ tabuleiro}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ tamanho\_celula;\ \textcolor{comment}{//Tamanho\ de\ cada\ celula\ em\ pixels}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{float}\ origemX;}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{float}\ origemY;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{float}\ borda;\ \textcolor{comment}{//distancia\ entre\ a\ celula\ e\ o\ circulo}}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}{Tabuleiro}}(\textcolor{keywordtype}{float}\ origx,\ \textcolor{keywordtype}{float}\ origy,\ \textcolor{keywordtype}{int}\ qtd\_celulaX,\ \textcolor{keywordtype}{int}\ qtd\_celulaY,\ \textcolor{keywordtype}{float}\ tamanho\_celula,\ \textcolor{keywordtype}{float}\ borda,\ sf::Event\&\ \mbox{\hyperlink{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0}{evento}});}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}{Tabuleiro}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \ \ std::vector<std::vector<Celula>>\ \mbox{\hyperlink{class_tabuleiro_a811ccde29b269e9d04deae6fd57ab8e4}{matriz}};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ \ \ std::vector<std::vector<Celula>>\ \mbox{\hyperlink{class_tabuleiro_a4b79bcd398368a1b6da33dfc7634c230}{slots}};}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro_a409b804c258bc52ba4a369c03d7af82f}{deuClique}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_tabuleiro_a42de1dd73521067a49c43eadbcaff712}{indice\_i}}\ =\ 0;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_tabuleiro_a443dbed149bfab2dc03ff8216f92cc38}{indice\_j}}\ =\ 0;}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tabuleiro_a3d315190a519fc1d111304a6ca484fcb}{jogadorAtual}}\ =\ 0;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_tabuleiro_a2c52ad683134cb8fa53dd1f5501a1e8f}{jocupado}}\ =\ 0;}
+\DoxyCodeLine{00130\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tabuleiro_a9579b441979bc966d27156e337759622}{get\_celula\_status}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna);}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_ad5259bea592e1f34141acffc7c70bcd9}{set\_celula\_status}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \textcolor{keywordtype}{int}\ status);}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tabuleiro_a1be6f503cdbc337c645c944a3d08812c}{get\_qtd\_celulaX}}();}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_tabuleiro_a3c84b85fadf893d1bf80b5a0dce93aaa}{get\_qtd\_celulaY}}();\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_ab08f749ee19f4aea813bb83b11e327ff}{poePeca}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ jogador);}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_a7099c459a9068aa27a88e3eba5162669}{acao}}();}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_aa6f8e249b29cc0ecebac95535995e904}{anima}}();}
+\DoxyCodeLine{00162\ \ \ \ \ sf::Event\&\ \mbox{\hyperlink{class_tabuleiro_a5af99aa6a239a00bfc7e4b229fd7c0f0}{evento}};}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_afdb384006f37cb56d3acde40802f63df}{desenhar}}(sf::RenderWindow\&\ window);}
+\DoxyCodeLine{00164\ \};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

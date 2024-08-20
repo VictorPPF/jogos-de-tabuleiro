@@ -70,7 +70,7 @@ void Historico::excluirLinha (std:: string apelido){
 
     //Lidando com o caso de não achar o apelido
     if(!existeApelido){
-         std::cout << "ERRO!! Apelido não encontrado!" << std::endl;
+         std::cout << "ERRO!! Apelido nao encontrado!" << std::endl;
     }
     //Como a função não retorna nada, só consigo escrever no terminal por enquanto o erro
     //Ideal -> trocar o tipo de função para bool para certificar que não há erros

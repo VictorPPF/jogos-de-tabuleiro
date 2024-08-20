@@ -9,8 +9,7 @@ TEST_CASE("Testando a inicialização de Tabuleiro") {
     int qtd_celulaY = 6;
     float tamanho_celula = 100.0f;
 
-    Tabuleiro tabuleiro(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula);
-
+    Tabuleiro tabuleiro(origemX, origemY, qtd_celulaX, qtd_celulaY, tamanho_celula, float borda, sf::Event& evento);
     auto matriz = tabuleiro.getMatriz();
 
     // Verifica se a matriz foi inicializada corretamente

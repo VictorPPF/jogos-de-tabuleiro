@@ -20,10 +20,10 @@ jogadorDesistiu(false)
     tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio, 2);
 
     // define as cores das peças iniciais no tabuleiro
-    tabuleiroREVERSI.slots[posicao_meio][posicao_meio].botao.setCor(sf::Color::Red);
-    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio-1].botao.setCor(sf::Color::Red);
-    tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color::Yellow);
-    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color::Yellow);
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio].botao.setCor(sf::Color(238, 68, 68));
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio-1].botao.setCor(sf::Color(238, 68, 68));
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color(255,222,10));
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color(255,222,10));
 
     // int num_pecas_jogador1 = 2;
     // int num_pecas_jogador2 = 2;
@@ -167,10 +167,10 @@ void JogoReversi::LimpaTabuleiro() {
     tabuleiroREVERSI.set_celula_status(posicao_meio-1, posicao_meio, 2);
 
     // define as cores das peças iniciais no tabuleiro
-    tabuleiroREVERSI.slots[posicao_meio][posicao_meio].botao.setCor(sf::Color::Red);
-    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio-1].botao.setCor(sf::Color::Red);
-    tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color::Yellow);
-    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color::Yellow);
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio].botao.setCor(sf::Color(238, 68, 68));
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio-1].botao.setCor(sf::Color(238, 68, 68));
+    tabuleiroREVERSI.slots[posicao_meio][posicao_meio-1].botao.setCor(sf::Color(255,222,10));
+    tabuleiroREVERSI.slots[posicao_meio-1][posicao_meio].botao.setCor(sf::Color(255,222,10));
 
     num_pecas_jogador1 = 2;
     num_pecas_jogador2 = 2;
@@ -207,7 +207,7 @@ bool JogoReversi::FazJogada(int x, int y) {
             // altera as peças do adversário até encontrar uma peça do próprio jogador
             while (tabuleiroREVERSI.get_celula_status(i, j) != jogadorAtual) {
                 tabuleiroREVERSI.set_celula_status(i, j, jogadorAtual);
-                tabuleiroREVERSI.slots[i][j].botao.setCor(jogadorAtual == 1 ? sf::Color::Red : sf::Color::Yellow);
+                tabuleiroREVERSI.slots[i][j].botao.setCor(jogadorAtual == 1 ? sf::Color(238, 68, 68) : sf::Color(255,222,10));
                 i += direcao[0];
                 j += direcao[1];
             }
@@ -215,7 +215,7 @@ bool JogoReversi::FazJogada(int x, int y) {
     }
     // coloca a peça do jogador na célula onde ele fez a jogada
     tabuleiroREVERSI.set_celula_status(x, y, jogadorAtual);
-    tabuleiroREVERSI.slots[x][y].botao.setCor(jogadorAtual == 1 ? sf::Color::Red : sf::Color::Yellow);
+    tabuleiroREVERSI.slots[x][y].botao.setCor(jogadorAtual == 1 ? sf::Color(238, 68, 68) : sf::Color(255,222,10));
 
 
     // Verifica se o jogador tem jogadas válidas

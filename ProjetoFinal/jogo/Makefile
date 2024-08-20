@@ -1,6 +1,6 @@
 # Diretórios e variáveis
-INCLUDE_DIRS = -Iinclude -IC:\SFML-2.6.1\include
-LIB_DIRS = -LC:\SFML-2.6.1\lib
+INCLUDE_DIRS = -Iinclude -I../SFML-2.6.1/include	
+LIB_DIRS = -L../SFML-2.6.1/lib
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lopengl32 -lsfml-audio
 
 # Lista de arquivos objeto

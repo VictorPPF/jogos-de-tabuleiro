@@ -1,0 +1,246 @@
+\doxysection{Campo\+Texto Class Reference}
+\hypertarget{class_campo_texto}{}\label{class_campo_texto}\index{CampoTexto@{CampoTexto}}
+
+
+Classe que representa um campo de texto interativo, permitindo entrada e exibição de texto.  
+
+
+
+
+{\ttfamily \#include $<$Campo\+Texto.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_campo_texto_a66e7827e3161d6ed94d5588a8166075d}{Campo\+Texto}} (float largura, float altura, float posicaoX, float posicaoY)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_campo_texto}{Campo\+Texto}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_a2896683c7b4f37ae1e562d423d1c2458}{limpar\+Texto}} ()
+\begin{DoxyCompactList}\small\item\em Limpa o texto no campo de texto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_a295c832db53c0b3c942bf37f8ea71b58}{desenhar}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Desenha o campo de texto na janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_a7e496a785f43f7ea1edac0b33244c0b5}{processar\+Eventos}} (sf\+::\+Event \&event, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Processa eventos relacionados ao campo de texto, como entrada de teclado. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_campo_texto_a15b29a9b34e57b62a1e6c7dd10d4cfef}{obter\+Texto}} () const
+\begin{DoxyCompactList}\small\item\em Obtém o texto atual do campo de texto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_campo_texto_a5d5590f5d3eb2ca6ef64d415ef428a70}{deu\+\_\+enter}}
+\begin{DoxyCompactList}\small\item\em Indica se a tecla Enter foi pressionada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_campo_texto_af8a114f3a772a2c92561af54b926b451}{ativar}} ()
+\begin{DoxyCompactList}\small\item\em Ativa o campo de texto, permitindo a entrada de texto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_a3c1eff2df86e87b567efdca8e2c43e63}{desativar}} ()
+\begin{DoxyCompactList}\small\item\em Desativa o campo de texto, desabilitando a entrada de texto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_ab60281bd7a3951a449b33b7ef9c99855}{adicionar\+Caractere}} (char c)
+\begin{DoxyCompactList}\small\item\em Adiciona um caractere ao texto atual. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_campo_texto_a97a44704c036a07e506e51320de2246f}{remover\+Ultimo\+Caractere}} ()
+\begin{DoxyCompactList}\small\item\em Remove o último caractere do texto atual. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_campo_texto_a012ad22298cd9735a98fcec5c0a05821}{retangulo}}
+\begin{DoxyCompactList}\small\item\em Forma retangular que representa o campo de texto. \end{DoxyCompactList}\item 
+sf\+::\+Text \mbox{\hyperlink{class_campo_texto_a4d9a7a42008afaf86c4ea682dcc2f217}{texto}}
+\begin{DoxyCompactList}\small\item\em Objeto de texto para exibir o texto no campo. \end{DoxyCompactList}\item 
+sf\+::\+Font \mbox{\hyperlink{class_campo_texto_a3d11978cf3d3f9400985450896563260}{fonte}}
+\begin{DoxyCompactList}\small\item\em Fonte usada para renderizar o texto. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_campo_texto_aef5052ab0e5f43aabee8ace6f895df1e}{ativo}}
+\begin{DoxyCompactList}\small\item\em Indica se o campo de texto está ativo ou não. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um campo de texto interativo, permitindo entrada e exibição de texto. 
+
+Classe que representa um histórico, onde armazena os dados das partidas.
+
+Esta classe gerencia a entrada de texto, a renderização e o estado do campo de texto na tela.
+
+Esta classe gerencia a entrada e armazenamento de texto. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_campo_texto_a66e7827e3161d6ed94d5588a8166075d}\label{class_campo_texto_a66e7827e3161d6ed94d5588a8166075d} 
+\index{CampoTexto@{CampoTexto}!CampoTexto@{CampoTexto}}
+\index{CampoTexto@{CampoTexto}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{CampoTexto()}{CampoTexto()}}
+{\footnotesize\ttfamily Campo\+Texto\+::\+Campo\+Texto (\begin{DoxyParamCaption}\item[{float}]{largura,  }\item[{float}]{altura,  }\item[{float}]{posicaoX,  }\item[{float}]{posicaoY }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_campo_texto}{Campo\+Texto}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em largura} & Largura do campo de texto. \\
+\hline
+{\em altura} & Altura do campo de texto. \\
+\hline
+{\em posicaoX} & Posição X do campo de texto. \\
+\hline
+{\em posicaoY} & Posição Y do campo de texto. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_campo_texto_ab60281bd7a3951a449b33b7ef9c99855}\label{class_campo_texto_ab60281bd7a3951a449b33b7ef9c99855} 
+\index{CampoTexto@{CampoTexto}!adicionarCaractere@{adicionarCaractere}}
+\index{adicionarCaractere@{adicionarCaractere}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{adicionarCaractere()}{adicionarCaractere()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::adicionar\+Caractere (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Adiciona um caractere ao texto atual. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & O caractere a ser adicionado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_campo_texto_af8a114f3a772a2c92561af54b926b451}\label{class_campo_texto_af8a114f3a772a2c92561af54b926b451} 
+\index{CampoTexto@{CampoTexto}!ativar@{ativar}}
+\index{ativar@{ativar}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{ativar()}{ativar()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::ativar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Ativa o campo de texto, permitindo a entrada de texto. 
+
+\Hypertarget{class_campo_texto_a3c1eff2df86e87b567efdca8e2c43e63}\label{class_campo_texto_a3c1eff2df86e87b567efdca8e2c43e63} 
+\index{CampoTexto@{CampoTexto}!desativar@{desativar}}
+\index{desativar@{desativar}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{desativar()}{desativar()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::desativar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Desativa o campo de texto, desabilitando a entrada de texto. 
+
+\Hypertarget{class_campo_texto_a295c832db53c0b3c942bf37f8ea71b58}\label{class_campo_texto_a295c832db53c0b3c942bf37f8ea71b58} 
+\index{CampoTexto@{CampoTexto}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::desenhar (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Desenha o campo de texto na janela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & A janela na qual o campo de texto será desenhado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_campo_texto_a2896683c7b4f37ae1e562d423d1c2458}\label{class_campo_texto_a2896683c7b4f37ae1e562d423d1c2458} 
+\index{CampoTexto@{CampoTexto}!limparTexto@{limparTexto}}
+\index{limparTexto@{limparTexto}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{limparTexto()}{limparTexto()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::limpar\+Texto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Limpa o texto no campo de texto. 
+
+\Hypertarget{class_campo_texto_a15b29a9b34e57b62a1e6c7dd10d4cfef}\label{class_campo_texto_a15b29a9b34e57b62a1e6c7dd10d4cfef} 
+\index{CampoTexto@{CampoTexto}!obterTexto@{obterTexto}}
+\index{obterTexto@{obterTexto}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{obterTexto()}{obterTexto()}}
+{\footnotesize\ttfamily std\+::string Campo\+Texto\+::obter\+Texto (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém o texto atual do campo de texto. 
+
+\begin{DoxyReturn}{Returns}
+O texto no campo de texto. 
+\end{DoxyReturn}
+\Hypertarget{class_campo_texto_a7e496a785f43f7ea1edac0b33244c0b5}\label{class_campo_texto_a7e496a785f43f7ea1edac0b33244c0b5} 
+\index{CampoTexto@{CampoTexto}!processarEventos@{processarEventos}}
+\index{processarEventos@{processarEventos}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{processarEventos()}{processarEventos()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::processar\+Eventos (\begin{DoxyParamCaption}\item[{sf\+::\+Event \&}]{event,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Processa eventos relacionados ao campo de texto, como entrada de teclado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & O evento a ser processado. \\
+\hline
+{\em window} & A janela onde o evento ocorre. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_campo_texto_a97a44704c036a07e506e51320de2246f}\label{class_campo_texto_a97a44704c036a07e506e51320de2246f} 
+\index{CampoTexto@{CampoTexto}!removerUltimoCaractere@{removerUltimoCaractere}}
+\index{removerUltimoCaractere@{removerUltimoCaractere}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{removerUltimoCaractere()}{removerUltimoCaractere()}}
+{\footnotesize\ttfamily void Campo\+Texto\+::remover\+Ultimo\+Caractere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Remove o último caractere do texto atual. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_campo_texto_aef5052ab0e5f43aabee8ace6f895df1e}\label{class_campo_texto_aef5052ab0e5f43aabee8ace6f895df1e} 
+\index{CampoTexto@{CampoTexto}!ativo@{ativo}}
+\index{ativo@{ativo}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{ativo}{ativo}}
+{\footnotesize\ttfamily bool Campo\+Texto\+::ativo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indica se o campo de texto está ativo ou não. 
+
+\Hypertarget{class_campo_texto_a5d5590f5d3eb2ca6ef64d415ef428a70}\label{class_campo_texto_a5d5590f5d3eb2ca6ef64d415ef428a70} 
+\index{CampoTexto@{CampoTexto}!deu\_enter@{deu\_enter}}
+\index{deu\_enter@{deu\_enter}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{deu\_enter}{deu\_enter}}
+{\footnotesize\ttfamily int Campo\+Texto\+::deu\+\_\+enter}
+
+
+
+Indica se a tecla Enter foi pressionada. 
+
+\Hypertarget{class_campo_texto_a3d11978cf3d3f9400985450896563260}\label{class_campo_texto_a3d11978cf3d3f9400985450896563260} 
+\index{CampoTexto@{CampoTexto}!fonte@{fonte}}
+\index{fonte@{fonte}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{fonte}{fonte}}
+{\footnotesize\ttfamily sf\+::\+Font Campo\+Texto\+::fonte\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Fonte usada para renderizar o texto. 
+
+\Hypertarget{class_campo_texto_a012ad22298cd9735a98fcec5c0a05821}\label{class_campo_texto_a012ad22298cd9735a98fcec5c0a05821} 
+\index{CampoTexto@{CampoTexto}!retangulo@{retangulo}}
+\index{retangulo@{retangulo}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{retangulo}{retangulo}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Campo\+Texto\+::retangulo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Forma retangular que representa o campo de texto. 
+
+\Hypertarget{class_campo_texto_a4d9a7a42008afaf86c4ea682dcc2f217}\label{class_campo_texto_a4d9a7a42008afaf86c4ea682dcc2f217} 
+\index{CampoTexto@{CampoTexto}!texto@{texto}}
+\index{texto@{texto}!CampoTexto@{CampoTexto}}
+\doxysubsubsection{\texorpdfstring{texto}{texto}}
+{\footnotesize\ttfamily sf\+::\+Text Campo\+Texto\+::texto\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Objeto de texto para exibir o texto no campo. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_campo_texto_8hpp}{Campo\+Texto.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_campo_texto_8cpp}{Campo\+Texto.\+cpp}}\end{DoxyCompactItemize}

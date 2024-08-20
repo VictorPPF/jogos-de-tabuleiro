@@ -1,0 +1,73 @@
+\doxysection{C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/reversi\+\_\+simples.cpp File Reference}
+\hypertarget{reversi__simples_8cpp}{}\label{reversi__simples_8cpp}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/src/reversi\_simples.cpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/src/reversi\_simples.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{reversi__simples_8cpp_a7c22ae53932044fd2ffa3f7264e0f454}{inicializar\+Matriz}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\item 
+void \mbox{\hyperlink{reversi__simples_8cpp_ad45cbfdc717bc1516c51b3a15723175d}{imprimir\+Matriz}} (const int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\item 
+bool \mbox{\hyperlink{reversi__simples_8cpp_a40e1163906ad7d99825f8a56e0deae9d}{Verifica\+Direcao}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}, int x, int y, int jogador, int dx, int dy)
+\item 
+bool \mbox{\hyperlink{reversi__simples_8cpp_af1e97a9db6e8f8c744eada761d990e88}{Faz\+Jogada}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}, int x, int y, int jogador)
+\item 
+bool \mbox{\hyperlink{reversi__simples_8cpp_a48f18350743f6adeef31335ecec0e352}{Verifica\+Jogada}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}, int x, int y, int jogador)
+\item 
+bool \mbox{\hyperlink{reversi__simples_8cpp_a3d79cb5da541408a202b708a792bf525}{condicao\+De\+Vitoria}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]}, int jogador)
+\item 
+int \mbox{\hyperlink{reversi__simples_8cpp_aea1effc460b1a2934f06fd61bea92b17}{Ganhador}} (int matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]})
+\item 
+int \mbox{\hyperlink{reversi__simples_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{reversi__simples_8cpp_a3d79cb5da541408a202b708a792bf525}\label{reversi__simples_8cpp_a3d79cb5da541408a202b708a792bf525} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!condicaoDeVitoria@{condicaoDeVitoria}}
+\index{condicaoDeVitoria@{condicaoDeVitoria}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{condicaoDeVitoria()}{condicaoDeVitoria()}}
+{\footnotesize\ttfamily bool condicao\+De\+Vitoria (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]},  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_af1e97a9db6e8f8c744eada761d990e88}\label{reversi__simples_8cpp_af1e97a9db6e8f8c744eada761d990e88} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!FazJogada@{FazJogada}}
+\index{FazJogada@{FazJogada}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{FazJogada()}{FazJogada()}}
+{\footnotesize\ttfamily bool Faz\+Jogada (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_aea1effc460b1a2934f06fd61bea92b17}\label{reversi__simples_8cpp_aea1effc460b1a2934f06fd61bea92b17} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!Ganhador@{Ganhador}}
+\index{Ganhador@{Ganhador}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{Ganhador()}{Ganhador()}}
+{\footnotesize\ttfamily int Ganhador (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_ad45cbfdc717bc1516c51b3a15723175d}\label{reversi__simples_8cpp_ad45cbfdc717bc1516c51b3a15723175d} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!imprimirMatriz@{imprimirMatriz}}
+\index{imprimirMatriz@{imprimirMatriz}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{imprimirMatriz()}{imprimirMatriz()}}
+{\footnotesize\ttfamily void imprimir\+Matriz (\begin{DoxyParamCaption}\item[{const int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_a7c22ae53932044fd2ffa3f7264e0f454}\label{reversi__simples_8cpp_a7c22ae53932044fd2ffa3f7264e0f454} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!inicializarMatriz@{inicializarMatriz}}
+\index{inicializarMatriz@{inicializarMatriz}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{inicializarMatriz()}{inicializarMatriz()}}
+{\footnotesize\ttfamily void inicializar\+Matriz (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{reversi__simples_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!main@{main}}
+\index{main@{main}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_a40e1163906ad7d99825f8a56e0deae9d}\label{reversi__simples_8cpp_a40e1163906ad7d99825f8a56e0deae9d} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!VerificaDirecao@{VerificaDirecao}}
+\index{VerificaDirecao@{VerificaDirecao}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{VerificaDirecao()}{VerificaDirecao()}}
+{\footnotesize\ttfamily bool Verifica\+Direcao (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jogador,  }\item[{int}]{dx,  }\item[{int}]{dy }\end{DoxyParamCaption})}
+
+\Hypertarget{reversi__simples_8cpp_a48f18350743f6adeef31335ecec0e352}\label{reversi__simples_8cpp_a48f18350743f6adeef31335ecec0e352} 
+\index{reversi\_simples.cpp@{reversi\_simples.cpp}!VerificaJogada@{VerificaJogada}}
+\index{VerificaJogada@{VerificaJogada}!reversi\_simples.cpp@{reversi\_simples.cpp}}
+\doxysubsubsection{\texorpdfstring{VerificaJogada()}{VerificaJogada()}}
+{\footnotesize\ttfamily bool Verifica\+Jogada (\begin{DoxyParamCaption}\item[{int}]{matriz\mbox{[}8\mbox{]}\mbox{[}8\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+

@@ -1,6 +1,6 @@
 /**
  * @file Jogador.hpp
- * @brief Classe que representa um jogador.
+ * @brief Definição da Classe Jogador que representa um jogador.
  */
 
 #ifndef JOGADOR_H

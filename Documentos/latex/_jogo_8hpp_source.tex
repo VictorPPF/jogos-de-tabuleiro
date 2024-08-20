@@ -1,0 +1,32 @@
+\doxysection{Jogo.\+hpp}
+\hypertarget{_jogo_8hpp_source}{}\label{_jogo_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Jogo.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Jogo.hpp}}
+\mbox{\hyperlink{_jogo_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ JOGO\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ JOGO\_HPP}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogador_8hpp}{Jogador.hpp}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ Classe\ abstrata\ Jogo}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogo}{Jogo}}\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{desenharJogo}}()\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{acao}}()\ =\ 0;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{LimpaTabuleiro}}()\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{setJogadores}}\ (\mbox{\hyperlink{class_jogador}{Jogador}}\&\ player1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ player2)\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{FazJogada}}\ (\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{getNomeVencedor}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

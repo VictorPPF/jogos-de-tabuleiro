@@ -1,9 +1,6 @@
 /**
- * @class Tabuleiro
- * @brief Classe que representa o tabuleiro do jogo
- * 
- * @details A classe Tabuleiro é responsável por criar e gerenciar o tabuleiro do jogo.
- * 
+ * @file Tabuleiro.hpp
+ * @brief Definição das classes Celula e Tabuleiro que representa o tabuleiro do jogo
  */
 #ifndef TABULEIRO_HPP
 #define TABULEIRO_HPP
@@ -11,6 +8,14 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Interacao.hpp"
 #include <vector>
+
+/**
+ * @class celula
+ * @brief Representa uma célula no tabuleiro de um jogo.
+ * 
+ * A classe `Celula` é responsável por armazenar e manipular informações sobre uma célula individual em um tabuleiro de jogo.
+ * Cada célula pode ter diferentes estados, posições e propriedades visuais, e pode ser representada como um círculo ou outro formato.
+ */
 
 class Celula{
     private: 

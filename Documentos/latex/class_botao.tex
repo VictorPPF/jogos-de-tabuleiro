@@ -1,0 +1,471 @@
+\doxysection{Botao Class Reference}
+\hypertarget{class_botao}{}\label{class_botao}\index{Botao@{Botao}}
+
+
+Representa um botão na interface gráfica.  
+
+
+
+
+{\ttfamily \#include $<$Interacao.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_botao_af302a5be952f3779efc90dd0e9732c71}{Botao}} (float \mbox{\hyperlink{class_botao_af0072cc678b407856f41d4fd78ffbc6f}{largura}}, float \mbox{\hyperlink{class_botao_a83881b84c56282b55527be9bb2870ac9}{altura}}, float x, float y, sf\+::\+Color \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}}, const std\+::string \&\mbox{\hyperlink{class_botao_ac56ebc1fa443d3057377bdd4041b4828}{texto}}, float \mbox{\hyperlink{class_botao_a240973b79bc8dca1dc71fda7cf39ed8a}{tamanho\+Fonte}}=24.f, bool \mbox{\hyperlink{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d}{is\+Circulo}}=false, sf\+::\+Color \mbox{\hyperlink{class_botao_a645989d7b6a70dc248c2622e1f25f0b9}{cor\+Fonte}}=sf\+::\+Color\+::\+White)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_botao}{Botao}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_botao_a02c65257718db8af01c9a5a6ed1a155d}{Botao}} ()=default
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{class_botao}{Botao}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_botao_a4578f66e71653e97022dbaefa98dc07a}{Botao}} (float \mbox{\hyperlink{class_botao_af0072cc678b407856f41d4fd78ffbc6f}{largura}}, float \mbox{\hyperlink{class_botao_a83881b84c56282b55527be9bb2870ac9}{altura}}, float x, float y, sf\+::\+Color \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}}, bool \mbox{\hyperlink{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d}{is\+Circulo}}=false)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_botao}{Botao} para células do tabuleiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_a83be83cda846f471034967d9fb03d5e3}{criar\+Botoes}} ()
+\begin{DoxyCompactList}\small\item\em Cria a forma do botão (retângulo ou círculo). \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_botao_a154b3001ec084c82993fc1439e771bbc}{get\+Cor}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a cor original do botão. \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_botao_a5f2718c0001f7a717b5e50895c9c195a}{get\+Retangulo}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a forma retangular do botão. \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{class_botao_a7c5e8a1d15ae214bc5fc3bd86c05f7e6}{get\+Circulo}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a forma circular do botão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_a3cc08b07c9c8854287ae3f35687906b5}{set\+Cor\+Hover}} (sf\+::\+Color \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}})
+\begin{DoxyCompactList}\small\item\em Define a cor do botão quando o mouse está sobre ele. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_a608539e0949d618ae423526acb47c630}{set\+Cor}} (sf\+::\+Color \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}})
+\begin{DoxyCompactList}\small\item\em Define a cor original do botão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_a3cdc039767c59903fe5e16efcc24ac30}{mudar\+Cor}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Muda a cor do botão com base na posição do mouse. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_botao_af17fb11da7c5bb3bf96e3c1247de4df5}{passou\+Mouse}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Verifica se o mouse passou sobre o botão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_ac1c2f392317773c940f1fb037f12faaf}{desenhar}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Desenha o botão na janela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_botao_a89cec309b23ca985908ede54efc1553a}{set\+Tamanho\+Fonte}} (float tamanho)
+\begin{DoxyCompactList}\small\item\em Define o tamanho da fonte do texto do botão. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_botao_a44fbd843554d86370a3d82bfacd0b7a0}{foi\+Clicado}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Verifica se o botão foi clicado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_botao_af0072cc678b407856f41d4fd78ffbc6f}{largura}}
+\begin{DoxyCompactList}\small\item\em Largura do botão. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_botao_a83881b84c56282b55527be9bb2870ac9}{altura}}
+\begin{DoxyCompactList}\small\item\em Altura do botão. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_botao_a3802106f605d0c559f86af210a8bb295}{posicao}}
+\begin{DoxyCompactList}\small\item\em Posição do botão na janela (x, y). \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}{cor}}
+\begin{DoxyCompactList}\small\item\em Cor original do botão. \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_botao_ad9a3d7527bc7fafbfa05b30ad2f2cef8}{cor\+Hover}}
+\begin{DoxyCompactList}\small\item\em Cor do botão quando o mouse está sobre ele. \end{DoxyCompactList}\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_botao_a34659164b576b2f5bdaf117c76ccd4ba}{retangulo}}
+\begin{DoxyCompactList}\small\item\em Forma retangular do botão. \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \mbox{\hyperlink{class_botao_ad000fcbcde19ef3a4059e3897313400b}{circulo}}
+\begin{DoxyCompactList}\small\item\em Forma circular do botão. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d}{is\+Circulo}}
+\begin{DoxyCompactList}\small\item\em Indica se o botão é circular. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_botao_ac56ebc1fa443d3057377bdd4041b4828}{texto}}
+\begin{DoxyCompactList}\small\item\em Texto exibido no botão. \end{DoxyCompactList}\item 
+sf\+::\+Font \mbox{\hyperlink{class_botao_a06d5b23e4e7df5345eb57761462b910c}{fonte}}
+\begin{DoxyCompactList}\small\item\em Fonte do texto. \end{DoxyCompactList}\item 
+sf\+::\+Text \mbox{\hyperlink{class_botao_a2b1caa2d8aaf0e41dd7a6dd9d24c4ced}{text}}
+\begin{DoxyCompactList}\small\item\em Texto SFML para desenhar o texto no botão. \end{DoxyCompactList}\item 
+sf\+::\+Color \mbox{\hyperlink{class_botao_a645989d7b6a70dc248c2622e1f25f0b9}{cor\+Fonte}}
+\begin{DoxyCompactList}\small\item\em Cor da fonte. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_botao_a240973b79bc8dca1dc71fda7cf39ed8a}{tamanho\+Fonte}}
+\begin{DoxyCompactList}\small\item\em Tamanho da fonte do texto do botão. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_botao_ad80daf4909ce70b992344cfa67903111}{window\+Largura}} = 1000
+\begin{DoxyCompactList}\small\item\em Largura da janela. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_botao_a3e048f1fcf0fead51d31d39d4981cb16}{window\+Altura}} = 690
+\begin{DoxyCompactList}\small\item\em Altura da janela. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa um botão na interface gráfica. 
+
+Esta classe fornece métodos para criar e manipular botões, incluindo definição de tamanho, posição, cor e forma. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_botao_af302a5be952f3779efc90dd0e9732c71}\label{class_botao_af302a5be952f3779efc90dd0e9732c71} 
+\index{Botao@{Botao}!Botao@{Botao}}
+\index{Botao@{Botao}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{Botao()}{Botao()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Botao\+::\+Botao (\begin{DoxyParamCaption}\item[{float}]{largura,  }\item[{float}]{altura,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{sf\+::\+Color}]{cor,  }\item[{const std\+::string \&}]{texto,  }\item[{float}]{tamanho\+Fonte = {\ttfamily 24.f},  }\item[{bool}]{is\+Circulo = {\ttfamily false},  }\item[{sf\+::\+Color}]{cor\+Fonte = {\ttfamily sf\+:\+:Color\+:\+:White} }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_botao}{Botao}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em largura} & Largura do botão. \\
+\hline
+{\em altura} & Altura do botão. \\
+\hline
+{\em x} & Posição x do botão na janela. \\
+\hline
+{\em y} & Posição y do botão na janela. \\
+\hline
+{\em cor} & Cor original do botão. \\
+\hline
+{\em texto} & Texto exibido no botão. \\
+\hline
+{\em tamanho\+Fonte} & Tamanho da fonte do texto. \\
+\hline
+{\em is\+Circulo} & Indica se o botão deve ser circular. \\
+\hline
+{\em cor\+Fonte} & Cor da fonte do texto. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_botao_a02c65257718db8af01c9a5a6ed1a155d}\label{class_botao_a02c65257718db8af01c9a5a6ed1a155d} 
+\index{Botao@{Botao}!Botao@{Botao}}
+\index{Botao@{Botao}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{Botao()}{Botao()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Botao\+::\+Botao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Construtor padrão da classe \doxylink{class_botao}{Botao}. 
+
+\Hypertarget{class_botao_a4578f66e71653e97022dbaefa98dc07a}\label{class_botao_a4578f66e71653e97022dbaefa98dc07a} 
+\index{Botao@{Botao}!Botao@{Botao}}
+\index{Botao@{Botao}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{Botao()}{Botao()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Botao\+::\+Botao (\begin{DoxyParamCaption}\item[{float}]{largura,  }\item[{float}]{altura,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{sf\+::\+Color}]{cor,  }\item[{bool}]{is\+Circulo = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_botao}{Botao} para células do tabuleiro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em largura} & Largura do botão. \\
+\hline
+{\em altura} & Altura do botão. \\
+\hline
+{\em x} & Posição x do botão na janela. \\
+\hline
+{\em y} & Posição y do botão na janela. \\
+\hline
+{\em cor} & Cor original do botão. \\
+\hline
+{\em is\+Circulo} & Indica se o botão deve ser circular. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_botao_a83be83cda846f471034967d9fb03d5e3}\label{class_botao_a83be83cda846f471034967d9fb03d5e3} 
+\index{Botao@{Botao}!criarBotoes@{criarBotoes}}
+\index{criarBotoes@{criarBotoes}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{criarBotoes()}{criarBotoes()}}
+{\footnotesize\ttfamily void Botao\+::criar\+Botoes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cria a forma do botão (retângulo ou círculo). 
+
+\Hypertarget{class_botao_ac1c2f392317773c940f1fb037f12faaf}\label{class_botao_ac1c2f392317773c940f1fb037f12faaf} 
+\index{Botao@{Botao}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Botao\+::desenhar (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Desenha o botão na janela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Janela onde o botão deve ser desenhado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_botao_a44fbd843554d86370a3d82bfacd0b7a0}\label{class_botao_a44fbd843554d86370a3d82bfacd0b7a0} 
+\index{Botao@{Botao}!foiClicado@{foiClicado}}
+\index{foiClicado@{foiClicado}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{foiClicado()}{foiClicado()}}
+{\footnotesize\ttfamily bool Botao\+::foi\+Clicado (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Verifica se o botão foi clicado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Janela onde o botão está sendo desenhado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se o botão foi clicado, false caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{class_botao_a7c5e8a1d15ae214bc5fc3bd86c05f7e6}\label{class_botao_a7c5e8a1d15ae214bc5fc3bd86c05f7e6} 
+\index{Botao@{Botao}!getCirculo@{getCirculo}}
+\index{getCirculo@{getCirculo}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{getCirculo()}{getCirculo()}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Botao\+::get\+Circulo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a forma circular do botão. 
+
+\begin{DoxyReturn}{Returns}
+Forma circular do botão. 
+\end{DoxyReturn}
+\Hypertarget{class_botao_a154b3001ec084c82993fc1439e771bbc}\label{class_botao_a154b3001ec084c82993fc1439e771bbc} 
+\index{Botao@{Botao}!getCor@{getCor}}
+\index{getCor@{getCor}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{getCor()}{getCor()}}
+{\footnotesize\ttfamily sf\+::\+Color Botao\+::get\+Cor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a cor original do botão. 
+
+\begin{DoxyReturn}{Returns}
+Cor original do botão. 
+\end{DoxyReturn}
+\Hypertarget{class_botao_a5f2718c0001f7a717b5e50895c9c195a}\label{class_botao_a5f2718c0001f7a717b5e50895c9c195a} 
+\index{Botao@{Botao}!getRetangulo@{getRetangulo}}
+\index{getRetangulo@{getRetangulo}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{getRetangulo()}{getRetangulo()}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Botao\+::get\+Retangulo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a forma retangular do botão. 
+
+\begin{DoxyReturn}{Returns}
+Forma retangular do botão. 
+\end{DoxyReturn}
+\Hypertarget{class_botao_a3cdc039767c59903fe5e16efcc24ac30}\label{class_botao_a3cdc039767c59903fe5e16efcc24ac30} 
+\index{Botao@{Botao}!mudarCor@{mudarCor}}
+\index{mudarCor@{mudarCor}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{mudarCor()}{mudarCor()}}
+{\footnotesize\ttfamily void Botao\+::mudar\+Cor (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Muda a cor do botão com base na posição do mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Janela onde o botão está sendo desenhado. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_botao_af17fb11da7c5bb3bf96e3c1247de4df5}\label{class_botao_af17fb11da7c5bb3bf96e3c1247de4df5} 
+\index{Botao@{Botao}!passouMouse@{passouMouse}}
+\index{passouMouse@{passouMouse}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{passouMouse()}{passouMouse()}}
+{\footnotesize\ttfamily bool Botao\+::passou\+Mouse (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Verifica se o mouse passou sobre o botão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & Janela onde o botão está sendo desenhado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True se o mouse passou sobre o botão, false caso contrário. 
+\end{DoxyReturn}
+\Hypertarget{class_botao_a608539e0949d618ae423526acb47c630}\label{class_botao_a608539e0949d618ae423526acb47c630} 
+\index{Botao@{Botao}!setCor@{setCor}}
+\index{setCor@{setCor}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{setCor()}{setCor()}}
+{\footnotesize\ttfamily void Botao\+::set\+Cor (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{cor }\end{DoxyParamCaption})}
+
+
+
+Define a cor original do botão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cor} & Cor a ser definida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_botao_a3cc08b07c9c8854287ae3f35687906b5}\label{class_botao_a3cc08b07c9c8854287ae3f35687906b5} 
+\index{Botao@{Botao}!setCorHover@{setCorHover}}
+\index{setCorHover@{setCorHover}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{setCorHover()}{setCorHover()}}
+{\footnotesize\ttfamily void Botao\+::set\+Cor\+Hover (\begin{DoxyParamCaption}\item[{sf\+::\+Color}]{cor }\end{DoxyParamCaption})}
+
+
+
+Define a cor do botão quando o mouse está sobre ele. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cor} & Cor a ser definida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_botao_a89cec309b23ca985908ede54efc1553a}\label{class_botao_a89cec309b23ca985908ede54efc1553a} 
+\index{Botao@{Botao}!setTamanhoFonte@{setTamanhoFonte}}
+\index{setTamanhoFonte@{setTamanhoFonte}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{setTamanhoFonte()}{setTamanhoFonte()}}
+{\footnotesize\ttfamily void Botao\+::set\+Tamanho\+Fonte (\begin{DoxyParamCaption}\item[{float}]{tamanho }\end{DoxyParamCaption})}
+
+
+
+Define o tamanho da fonte do texto do botão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tamanho} & Novo tamanho da fonte. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_botao_a83881b84c56282b55527be9bb2870ac9}\label{class_botao_a83881b84c56282b55527be9bb2870ac9} 
+\index{Botao@{Botao}!altura@{altura}}
+\index{altura@{altura}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{altura}{altura}}
+{\footnotesize\ttfamily float Botao\+::altura\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Altura do botão. 
+
+\Hypertarget{class_botao_ad000fcbcde19ef3a4059e3897313400b}\label{class_botao_ad000fcbcde19ef3a4059e3897313400b} 
+\index{Botao@{Botao}!circulo@{circulo}}
+\index{circulo@{circulo}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{circulo}{circulo}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape Botao\+::circulo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Forma circular do botão. 
+
+\Hypertarget{class_botao_aacb2f05e5aed3167e84cf24af410f7a4}\label{class_botao_aacb2f05e5aed3167e84cf24af410f7a4} 
+\index{Botao@{Botao}!cor@{cor}}
+\index{cor@{cor}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{cor}{cor}}
+{\footnotesize\ttfamily sf\+::\+Color Botao\+::cor\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cor original do botão. 
+
+\Hypertarget{class_botao_a645989d7b6a70dc248c2622e1f25f0b9}\label{class_botao_a645989d7b6a70dc248c2622e1f25f0b9} 
+\index{Botao@{Botao}!corFonte@{corFonte}}
+\index{corFonte@{corFonte}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{corFonte}{corFonte}}
+{\footnotesize\ttfamily sf\+::\+Color Botao\+::cor\+Fonte\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cor da fonte. 
+
+\Hypertarget{class_botao_ad9a3d7527bc7fafbfa05b30ad2f2cef8}\label{class_botao_ad9a3d7527bc7fafbfa05b30ad2f2cef8} 
+\index{Botao@{Botao}!corHover@{corHover}}
+\index{corHover@{corHover}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{corHover}{corHover}}
+{\footnotesize\ttfamily sf\+::\+Color Botao\+::cor\+Hover\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Cor do botão quando o mouse está sobre ele. 
+
+\Hypertarget{class_botao_a06d5b23e4e7df5345eb57761462b910c}\label{class_botao_a06d5b23e4e7df5345eb57761462b910c} 
+\index{Botao@{Botao}!fonte@{fonte}}
+\index{fonte@{fonte}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{fonte}{fonte}}
+{\footnotesize\ttfamily sf\+::\+Font Botao\+::fonte\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Fonte do texto. 
+
+\Hypertarget{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d}\label{class_botao_af4d01e1fbb27eb3c579a8c1ddd9cbd2d} 
+\index{Botao@{Botao}!isCirculo@{isCirculo}}
+\index{isCirculo@{isCirculo}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{isCirculo}{isCirculo}}
+{\footnotesize\ttfamily bool Botao\+::is\+Circulo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indica se o botão é circular. 
+
+\Hypertarget{class_botao_af0072cc678b407856f41d4fd78ffbc6f}\label{class_botao_af0072cc678b407856f41d4fd78ffbc6f} 
+\index{Botao@{Botao}!largura@{largura}}
+\index{largura@{largura}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{largura}{largura}}
+{\footnotesize\ttfamily float Botao\+::largura\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Largura do botão. 
+
+\Hypertarget{class_botao_a3802106f605d0c559f86af210a8bb295}\label{class_botao_a3802106f605d0c559f86af210a8bb295} 
+\index{Botao@{Botao}!posicao@{posicao}}
+\index{posicao@{posicao}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{posicao}{posicao}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Botao\+::posicao\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Posição do botão na janela (x, y). 
+
+\Hypertarget{class_botao_a34659164b576b2f5bdaf117c76ccd4ba}\label{class_botao_a34659164b576b2f5bdaf117c76ccd4ba} 
+\index{Botao@{Botao}!retangulo@{retangulo}}
+\index{retangulo@{retangulo}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{retangulo}{retangulo}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Botao\+::retangulo\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Forma retangular do botão. 
+
+\Hypertarget{class_botao_a240973b79bc8dca1dc71fda7cf39ed8a}\label{class_botao_a240973b79bc8dca1dc71fda7cf39ed8a} 
+\index{Botao@{Botao}!tamanhoFonte@{tamanhoFonte}}
+\index{tamanhoFonte@{tamanhoFonte}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{tamanhoFonte}{tamanhoFonte}}
+{\footnotesize\ttfamily float Botao\+::tamanho\+Fonte\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Tamanho da fonte do texto do botão. 
+
+\Hypertarget{class_botao_a2b1caa2d8aaf0e41dd7a6dd9d24c4ced}\label{class_botao_a2b1caa2d8aaf0e41dd7a6dd9d24c4ced} 
+\index{Botao@{Botao}!text@{text}}
+\index{text@{text}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily sf\+::\+Text Botao\+::text\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Texto SFML para desenhar o texto no botão. 
+
+\Hypertarget{class_botao_ac56ebc1fa443d3057377bdd4041b4828}\label{class_botao_ac56ebc1fa443d3057377bdd4041b4828} 
+\index{Botao@{Botao}!texto@{texto}}
+\index{texto@{texto}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{texto}{texto}}
+{\footnotesize\ttfamily std\+::string Botao\+::texto\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Texto exibido no botão. 
+
+\Hypertarget{class_botao_a3e048f1fcf0fead51d31d39d4981cb16}\label{class_botao_a3e048f1fcf0fead51d31d39d4981cb16} 
+\index{Botao@{Botao}!windowAltura@{windowAltura}}
+\index{windowAltura@{windowAltura}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{windowAltura}{windowAltura}}
+{\footnotesize\ttfamily int Botao\+::window\+Altura = 690\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Altura da janela. 
+
+\Hypertarget{class_botao_ad80daf4909ce70b992344cfa67903111}\label{class_botao_ad80daf4909ce70b992344cfa67903111} 
+\index{Botao@{Botao}!windowLargura@{windowLargura}}
+\index{windowLargura@{windowLargura}!Botao@{Botao}}
+\doxysubsubsection{\texorpdfstring{windowLargura}{windowLargura}}
+{\footnotesize\ttfamily int Botao\+::window\+Largura = 1000\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Largura da janela. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_interacao_8hpp}{Interacao.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_interacao_8cpp}{Interacao.\+cpp}}\end{DoxyCompactItemize}

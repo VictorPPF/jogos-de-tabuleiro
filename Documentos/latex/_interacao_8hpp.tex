@@ -1,0 +1,79 @@
+\doxysection{C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\+Interacao.hpp File Reference}
+\hypertarget{_interacao_8hpp}{}\label{_interacao_8hpp}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Interacao.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Interacao.hpp}}
+
+
+Definição das classes \doxylink{class_ponto}{Ponto} e \doxylink{class_botao}{Botao} para representar pontos no plano cartesiano e botões na interface gráfica.  
+
+
+{\ttfamily \#include $<$SFML/\+Graphics.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include \"{}../include/\+Wallpaper.\+hpp\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ponto}{Ponto$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Representa um ponto no plano cartesiano. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_botao}{Botao}}
+\begin{DoxyCompactList}\small\item\em Representa um botão na interface gráfica. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$ double $>$ \mbox{\hyperlink{_interacao_8hpp_aa399ae91a1ce0b49f5d150c1059e612b}{PontoD}}
+\begin{DoxyCompactList}\small\item\em Tipo para ponto com coordenadas double. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$ float $>$ \mbox{\hyperlink{_interacao_8hpp_a367f04997ae2eba791c1b59342f27662}{PontoF}}
+\begin{DoxyCompactList}\small\item\em Tipo para ponto com coordenadas float. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$ int $>$ \mbox{\hyperlink{_interacao_8hpp_a0fee167e843688e2471af96db6f5ae92}{PontoI}}
+\begin{DoxyCompactList}\small\item\em Tipo para ponto com coordenadas int. \end{DoxyCompactList}\item 
+typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$ unsigned int $>$ \mbox{\hyperlink{_interacao_8hpp_af5e1330d946530403104a0ebe71de00c}{PontoU}}
+\begin{DoxyCompactList}\small\item\em Tipo para ponto com coordenadas int. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definição das classes \doxylink{class_ponto}{Ponto} e \doxylink{class_botao}{Botao} para representar pontos no plano cartesiano e botões na interface gráfica. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_interacao_8hpp_aa399ae91a1ce0b49f5d150c1059e612b}\label{_interacao_8hpp_aa399ae91a1ce0b49f5d150c1059e612b} 
+\index{Interacao.hpp@{Interacao.hpp}!PontoD@{PontoD}}
+\index{PontoD@{PontoD}!Interacao.hpp@{Interacao.hpp}}
+\doxysubsubsection{\texorpdfstring{PontoD}{PontoD}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$double$>$ \mbox{\hyperlink{_interacao_8hpp_aa399ae91a1ce0b49f5d150c1059e612b}{PontoD}}}
+
+
+
+Tipo para ponto com coordenadas double. 
+
+\Hypertarget{_interacao_8hpp_a367f04997ae2eba791c1b59342f27662}\label{_interacao_8hpp_a367f04997ae2eba791c1b59342f27662} 
+\index{Interacao.hpp@{Interacao.hpp}!PontoF@{PontoF}}
+\index{PontoF@{PontoF}!Interacao.hpp@{Interacao.hpp}}
+\doxysubsubsection{\texorpdfstring{PontoF}{PontoF}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$float$>$ \mbox{\hyperlink{_interacao_8hpp_a367f04997ae2eba791c1b59342f27662}{PontoF}}}
+
+
+
+Tipo para ponto com coordenadas float. 
+
+\Hypertarget{_interacao_8hpp_a0fee167e843688e2471af96db6f5ae92}\label{_interacao_8hpp_a0fee167e843688e2471af96db6f5ae92} 
+\index{Interacao.hpp@{Interacao.hpp}!PontoI@{PontoI}}
+\index{PontoI@{PontoI}!Interacao.hpp@{Interacao.hpp}}
+\doxysubsubsection{\texorpdfstring{PontoI}{PontoI}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$int$>$ \mbox{\hyperlink{_interacao_8hpp_a0fee167e843688e2471af96db6f5ae92}{PontoI}}}
+
+
+
+Tipo para ponto com coordenadas int. 
+
+\Hypertarget{_interacao_8hpp_af5e1330d946530403104a0ebe71de00c}\label{_interacao_8hpp_af5e1330d946530403104a0ebe71de00c} 
+\index{Interacao.hpp@{Interacao.hpp}!PontoU@{PontoU}}
+\index{PontoU@{PontoU}!Interacao.hpp@{Interacao.hpp}}
+\doxysubsubsection{\texorpdfstring{PontoU}{PontoU}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_ponto}{Ponto}}$<$unsigned int$>$ \mbox{\hyperlink{_interacao_8hpp_af5e1330d946530403104a0ebe71de00c}{PontoU}}}
+
+
+
+Tipo para ponto com coordenadas int. 
+

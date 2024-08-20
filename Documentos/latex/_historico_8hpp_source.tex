@@ -1,0 +1,44 @@
+\doxysection{Historico.\+hpp}
+\hypertarget{_historico_8hpp_source}{}\label{_historico_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Historico.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/Historico.hpp}}
+\mbox{\hyperlink{_historico_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ HISTORICO\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ HISTORICO\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <memory>}\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//\#include\ "{}Jogador.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_historico}{Historico}}\{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::string\ nomeArquivo;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::vector<std::string>\ cabecalho;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_historico_a59748ffb61a920b0ec1e4ba7b14c3ba3}{Historico}}();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_historico_ac8adc277a242fa27671abd394447124c}{excluirLinha}}\ (std::\ string\ apelido);\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_historico_a3047273b30d5bc4982d8ab13c510d76b}{Editar}}(std::\ string\ apelido,\ std::\ string\ coluna,\ std::\ string\ novoDado);\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_historico_af0c2a7395a2bac3025d7e11be6c86a85}{criarLinha}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ dados);\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_historico_af04bd98208d33fb85e0094ef83cf9757}{acessarDados}}(std::\ string\ apelido,\ std::\ string\ coluna);\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ std::\ string\ \mbox{\hyperlink{class_historico_af04bd98208d33fb85e0094ef83cf9757}{acessarDados}}(\ std::string\ apelido);\ \ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_historico_af04bd98208d33fb85e0094ef83cf9757}{acessarDados}}(\ );\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_historico_adc70caa50ac627b7a99c5c71f3a2bfc0}{addEstatistica}}(std::\ string\ apelido,\ std::\ string\ coluna);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{class_historico_afbea53ee0b1285c963b1a4bf642b1c4c}{getNomeArquivo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \};\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif\ }}
+
+\end{DoxyCode}

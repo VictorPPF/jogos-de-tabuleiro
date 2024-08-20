@@ -1,0 +1,56 @@
+\doxysection{Jogo\+Reversi.\+hpp}
+\hypertarget{_jogo_reversi_8hpp_source}{}\label{_jogo_reversi_8hpp_source}\index{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/JogoReversi.hpp@{C:/Users/Letic/Documents/Leticia/UFMG/Materias/PDSII/tp-\/JogosDeTabuleiro/jogos-\/de-\/tabuleiro/jogo/include/JogoReversi.hpp}}
+\mbox{\hyperlink{_jogo_reversi_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ JOGOREVERSI\_HPP}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ JOGOREVERSI\_HPP}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_tabuleiro_8hpp}{Tabuleiro.hpp}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogador_8hpp}{Jogador.hpp}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../include/Jogo.hpp"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jogo_reversi}{JogoReversi}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogo}{Jogo}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_jogador}{Jogador}}\ jogador1,\ jogador2;\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ jogadorAtual;\ }
+\DoxyCodeLine{00032\ \ \ \ \ sf::RenderWindow\&\ window;\ }
+\DoxyCodeLine{00036\ \ \ \ \ sf::Font\&\ fonte;\ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ sf::Event\&\ evento;\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ borda;\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ origemX;\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{float}\ origemY;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ qtd\_celulaX;\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ qtd\_celulaY;\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{float}\ tamanho\_celula;\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_tabuleiro}{Tabuleiro}}\ \mbox{\hyperlink{class_jogo_reversi_abc32d49fd77fb7db335e2a2aa64db726}{tabuleiroREVERSI}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_botao}{Botao}}\ \mbox{\hyperlink{class_jogo_reversi_aff305cb8e938b4b7a83c12dd6e022796}{botaoVoltar}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_aa545ccf1fd49bf9ac69cdb7704066ffd}{fimDeJogo}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00083\ \ \ \ \ std::string\ \mbox{\hyperlink{class_jogo_reversi_aa3fe4da6c981557c8f712e03ebd952d5}{nomeVencedor}};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_ad77512abacaa80f0ecd3a0f5ce87cfbb}{jogadorDesistiu}};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogo_reversi_a964451cfaa3a9b51579c3f4dd10127a2}{num\_pecas\_jogador1}};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogo_reversi_a454a26613014f6ce9f3e263f7efb5e42}{num\_pecas\_jogador2}};}
+\DoxyCodeLine{00096\ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//Métodos\ herdados}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ construtor\ que\ inicializa\ os\ elementos\ do\ jogo}}
+\DoxyCodeLine{00103\ \textcolor{comment}{}\ \ \ \ \mbox{\hyperlink{class_jogo_reversi}{JogoReversi}}(sf::RenderWindow\&\ window,\ sf::Font\&\ fonte,\ sf::Event\&\ evento);}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_reversi_a1e6cc14ed1c22b9eb21075fddc9b544e}{contaPeca}}();}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_reversi_a5a35a796f15dfeeeedc16455ce28e22e}{desenharJogo}}()\ \textcolor{keyword}{override};\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_reversi_a0489d5ea5e6ee742b329be58f54d5b4e}{acao}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_a04733ae7c6fb8774a8aef0b614481068}{TemJogadasValidas}}(\textcolor{keywordtype}{int}\ jogador);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_reversi_a29a6ecfe54797df06abdbe6e5a3f3bd0}{LimpaTabuleiro}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jogo_reversi_a076fa29c0f499f62ff2246ce6199d24d}{setJogadores}}(\mbox{\hyperlink{class_jogador}{Jogador}}\&\ \_jogador1,\ \mbox{\hyperlink{class_jogador}{Jogador}}\&\ \_jogador2)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_a6d1bb18f587023e28c52c850b6d27b06}{FazJogada}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00143\ \ \ \ \ std::string\ \mbox{\hyperlink{class_jogo_reversi_a489822ae54cbe1a3f5a57009abb1f1e7}{getNomeVencedor}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_a969bfa9a9ed46acc362b2d7452d716b8}{verificaCondicaoVitoria}}();}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_a1bd3214f131b511b9bf51392c79a26de}{jogada\_valida}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ jogador);}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jogo_reversi_a1a0a5eb123edb66f084a78ad8032d157}{VerificaJogadaDirecao}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ dx,\ \textcolor{keywordtype}{int}\ dy,\ \textcolor{keywordtype}{int}\ jogador);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_jogo_reversi_a111fc04b9edbec23b04b8441f07b9166}{Ganhador}}();}
+\DoxyCodeLine{00164\ \ \ \ \ }
+\DoxyCodeLine{00165\ \};}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JOGOREVERSI\_HPP}}
+
+\end{DoxyCode}

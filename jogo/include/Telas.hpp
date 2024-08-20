@@ -1,6 +1,6 @@
 /**
  * @file Telas.hpp
- * @brief Classe que representa a tela de menu do jogo
+ * @brief Definição das Classes que representam as telas que apresentam
  */
 
 #ifndef TELA_HPP

@@ -1,0 +1,359 @@
+\doxysection{Jogo\+Reversi Class Reference}
+\hypertarget{class_jogo_reversi}{}\label{class_jogo_reversi}\index{JogoReversi@{JogoReversi}}
+
+
+Essa classe herda da classe abstrata \doxylink{class_jogo}{Jogo} e implementa a lógica e funcionalidade de um jogo Reversi. Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica.  
+
+
+
+
+{\ttfamily \#include $<$Jogo\+Reversi.\+hpp$>$}
+
+Inheritance diagram for Jogo\+Reversi\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogo_reversi}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_reversi_a1196bcd9e6e8eb802b6ae929f787eacd}{Jogo\+Reversi}} (sf\+::\+Render\+Window \&window, sf\+::\+Font \&fonte, sf\+::\+Event \&evento)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_jogo_reversi}{Jogo\+Reversi}, recebe a janela, a fonte e os eventos do jogo e cria um jogo reversi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_reversi_a1e6cc14ed1c22b9eb21075fddc9b544e}{conta\+Peca}} ()
+\begin{DoxyCompactList}\small\item\em Método conta\+Peca responsável por contar as peças de cada jogador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_reversi_a5a35a796f15dfeeeedc16455ce28e22e}{desenhar\+Jogo}} () override
+\begin{DoxyCompactList}\small\item\em Método desenha\+Peca responsável por desenhar as peças de cada jogador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_reversi_a0489d5ea5e6ee742b329be58f54d5b4e}{acao}} () override
+\begin{DoxyCompactList}\small\item\em Método acao responsável por executar as ações relacionadas ao clique do jogador. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_reversi_a04733ae7c6fb8774a8aef0b614481068}{Tem\+Jogadas\+Validas}} (int jogador)
+\begin{DoxyCompactList}\small\item\em Método Tem\+Jogadas\+Validas responsável por verificar se um jogador tem jogadas válidas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_reversi_a29a6ecfe54797df06abdbe6e5a3f3bd0}{Limpa\+Tabuleiro}} () override
+\begin{DoxyCompactList}\small\item\em Limpa\+Tabuleiro responsável por limpar o tabuleiro e preparar para um novo jogo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_jogo_reversi_a076fa29c0f499f62ff2246ce6199d24d}{set\+Jogadores}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&\+\_\+jogador1, \mbox{\hyperlink{class_jogador}{Jogador}} \&\+\_\+jogador2) override
+\begin{DoxyCompactList}\small\item\em set\+Jogadores responsável por definir os jogadores do jogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_reversi_a6d1bb18f587023e28c52c850b6d27b06}{Faz\+Jogada}} (int x, int y) override
+\begin{DoxyCompactList}\small\item\em Faz\+Jogada responsável por realizar uma jogada no tabuleiro alterando as peças. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_jogo_reversi_a489822ae54cbe1a3f5a57009abb1f1e7}{get\+Nome\+Vencedor}} () const override
+\begin{DoxyCompactList}\small\item\em get\+Nome\+Vencedor responsável por retornar o nome do jogador vencedor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_reversi_a969bfa9a9ed46acc362b2d7452d716b8}{verifica\+Condicao\+Vitoria}} ()
+\begin{DoxyCompactList}\small\item\em verifica\+Condicao\+Vitoria responsável por verificar se o jogo terminou. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_reversi_a1bd3214f131b511b9bf51392c79a26de}{jogada\+\_\+valida}} (int x, int y, int jogador)
+\begin{DoxyCompactList}\small\item\em jogada\+\_\+valida responsável por verificar se uma jogada é válida. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_jogo_reversi_a1a0a5eb123edb66f084a78ad8032d157}{Verifica\+Jogada\+Direcao}} (int x, int y, int dx, int dy, int jogador)
+\begin{DoxyCompactList}\small\item\em Verifica\+Jogada\+Direcao responsável por verificar se uma jogada é válida em uma determinada direção. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_jogo_reversi_a111fc04b9edbec23b04b8441f07b9166}{Ganhador}} ()
+\begin{DoxyCompactList}\small\item\em Ganhador responsável por calcular e retornar o jogador que venceu o jogo (ou empate). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{desenhar\+Jogo}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{acao}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{Limpa\+Tabuleiro}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{set\+Jogadores}} (\mbox{\hyperlink{class_jogador}{Jogador}} \&player1, \mbox{\hyperlink{class_jogador}{Jogador}} \&player2)=0
+\item 
+virtual bool \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{Faz\+Jogada}} (int i, int j)=0
+\item 
+virtual std\+::string \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{get\+Nome\+Vencedor}} () const =0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tabuleiro}{Tabuleiro}} \mbox{\hyperlink{class_jogo_reversi_abc32d49fd77fb7db335e2a2aa64db726}{tabuleiro\+REVERSI}}
+\item 
+\mbox{\hyperlink{class_botao}{Botao}} \mbox{\hyperlink{class_jogo_reversi_aff305cb8e938b4b7a83c12dd6e022796}{botao\+Voltar}}
+\item 
+bool \mbox{\hyperlink{class_jogo_reversi_aa545ccf1fd49bf9ac69cdb7704066ffd}{fim\+De\+Jogo}} = false
+\item 
+std\+::string \mbox{\hyperlink{class_jogo_reversi_aa3fe4da6c981557c8f712e03ebd952d5}{nome\+Vencedor}}
+\item 
+bool \mbox{\hyperlink{class_jogo_reversi_ad77512abacaa80f0ecd3a0f5ce87cfbb}{jogador\+Desistiu}}
+\item 
+int \mbox{\hyperlink{class_jogo_reversi_a964451cfaa3a9b51579c3f4dd10127a2}{num\+\_\+pecas\+\_\+jogador1}}
+\item 
+int \mbox{\hyperlink{class_jogo_reversi_a454a26613014f6ce9f3e263f7efb5e42}{num\+\_\+pecas\+\_\+jogador2}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Essa classe herda da classe abstrata \doxylink{class_jogo}{Jogo} e implementa a lógica e funcionalidade de um jogo Reversi. Ela toma contados jogadores, do tabuleiro e de parte da interface gráfica. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_jogo_reversi_a1196bcd9e6e8eb802b6ae929f787eacd}\label{class_jogo_reversi_a1196bcd9e6e8eb802b6ae929f787eacd} 
+\index{JogoReversi@{JogoReversi}!JogoReversi@{JogoReversi}}
+\index{JogoReversi@{JogoReversi}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{JogoReversi()}{JogoReversi()}}
+{\footnotesize\ttfamily Jogo\+Reversi\+::\+Jogo\+Reversi (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window,  }\item[{sf\+::\+Font \&}]{fonte,  }\item[{sf\+::\+Event \&}]{evento }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{class_jogo_reversi}{Jogo\+Reversi}, recebe a janela, a fonte e os eventos do jogo e cria um jogo reversi. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_jogo_reversi_a0489d5ea5e6ee742b329be58f54d5b4e}\label{class_jogo_reversi_a0489d5ea5e6ee742b329be58f54d5b4e} 
+\index{JogoReversi@{JogoReversi}!acao@{acao}}
+\index{acao@{acao}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{acao()}{acao()}}
+{\footnotesize\ttfamily void Jogo\+Reversi\+::acao (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Método acao responsável por executar as ações relacionadas ao clique do jogador. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a5ba2648a29f80729e0e7451e894aa2c0}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a1e6cc14ed1c22b9eb21075fddc9b544e}\label{class_jogo_reversi_a1e6cc14ed1c22b9eb21075fddc9b544e} 
+\index{JogoReversi@{JogoReversi}!contaPeca@{contaPeca}}
+\index{contaPeca@{contaPeca}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{contaPeca()}{contaPeca()}}
+{\footnotesize\ttfamily void Jogo\+Reversi\+::conta\+Peca (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Método conta\+Peca responsável por contar as peças de cada jogador. 
+
+\Hypertarget{class_jogo_reversi_a5a35a796f15dfeeeedc16455ce28e22e}\label{class_jogo_reversi_a5a35a796f15dfeeeedc16455ce28e22e} 
+\index{JogoReversi@{JogoReversi}!desenharJogo@{desenharJogo}}
+\index{desenharJogo@{desenharJogo}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{desenharJogo()}{desenharJogo()}}
+{\footnotesize\ttfamily void Jogo\+Reversi\+::desenhar\+Jogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Método desenha\+Peca responsável por desenhar as peças de cada jogador. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_ab43077aa9d485f5647a0016a37921c14}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a6d1bb18f587023e28c52c850b6d27b06}\label{class_jogo_reversi_a6d1bb18f587023e28c52c850b6d27b06} 
+\index{JogoReversi@{JogoReversi}!FazJogada@{FazJogada}}
+\index{FazJogada@{FazJogada}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{FazJogada()}{FazJogada()}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::\+Faz\+Jogada (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Faz\+Jogada responsável por realizar uma jogada no tabuleiro alterando as peças. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a0dc673e175b07dd0cf26ee4543a31030}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a111fc04b9edbec23b04b8441f07b9166}\label{class_jogo_reversi_a111fc04b9edbec23b04b8441f07b9166} 
+\index{JogoReversi@{JogoReversi}!Ganhador@{Ganhador}}
+\index{Ganhador@{Ganhador}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{Ganhador()}{Ganhador()}}
+{\footnotesize\ttfamily int Jogo\+Reversi\+::\+Ganhador (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Ganhador responsável por calcular e retornar o jogador que venceu o jogo (ou empate). 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_reversi_a489822ae54cbe1a3f5a57009abb1f1e7}\label{class_jogo_reversi_a489822ae54cbe1a3f5a57009abb1f1e7} 
+\index{JogoReversi@{JogoReversi}!getNomeVencedor@{getNomeVencedor}}
+\index{getNomeVencedor@{getNomeVencedor}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{getNomeVencedor()}{getNomeVencedor()}}
+{\footnotesize\ttfamily std\+::string Jogo\+Reversi\+::get\+Nome\+Vencedor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+get\+Nome\+Vencedor responsável por retornar o nome do jogador vencedor. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a3e6f1e66a2b76dc801d822711a43de10}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a1bd3214f131b511b9bf51392c79a26de}\label{class_jogo_reversi_a1bd3214f131b511b9bf51392c79a26de} 
+\index{JogoReversi@{JogoReversi}!jogada\_valida@{jogada\_valida}}
+\index{jogada\_valida@{jogada\_valida}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{jogada\_valida()}{jogada\_valida()}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::jogada\+\_\+valida (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+
+
+jogada\+\_\+valida responsável por verificar se uma jogada é válida. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+se a célula já estiver ocupada, pula para a próxima direção\Hypertarget{class_jogo_reversi_a29a6ecfe54797df06abdbe6e5a3f3bd0}\label{class_jogo_reversi_a29a6ecfe54797df06abdbe6e5a3f3bd0} 
+\index{JogoReversi@{JogoReversi}!LimpaTabuleiro@{LimpaTabuleiro}}
+\index{LimpaTabuleiro@{LimpaTabuleiro}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{LimpaTabuleiro()}{LimpaTabuleiro()}}
+{\footnotesize\ttfamily void Jogo\+Reversi\+::\+Limpa\+Tabuleiro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Limpa\+Tabuleiro responsável por limpar o tabuleiro e preparar para um novo jogo. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a79c096f337530940c88b54a3f21f7c43}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a076fa29c0f499f62ff2246ce6199d24d}\label{class_jogo_reversi_a076fa29c0f499f62ff2246ce6199d24d} 
+\index{JogoReversi@{JogoReversi}!setJogadores@{setJogadores}}
+\index{setJogadores@{setJogadores}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{setJogadores()}{setJogadores()}}
+{\footnotesize\ttfamily void Jogo\+Reversi\+::set\+Jogadores (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{\+\_\+jogador1,  }\item[{\mbox{\hyperlink{class_jogador}{Jogador}} \&}]{\+\_\+jogador2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+set\+Jogadores responsável por definir os jogadores do jogo. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_jogo_a30fce3f02f17e57a393c302e87aaba3c}{Jogo}}.
+
+\Hypertarget{class_jogo_reversi_a04733ae7c6fb8774a8aef0b614481068}\label{class_jogo_reversi_a04733ae7c6fb8774a8aef0b614481068} 
+\index{JogoReversi@{JogoReversi}!TemJogadasValidas@{TemJogadasValidas}}
+\index{TemJogadasValidas@{TemJogadasValidas}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{TemJogadasValidas()}{TemJogadasValidas()}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::\+Tem\+Jogadas\+Validas (\begin{DoxyParamCaption}\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Método Tem\+Jogadas\+Validas responsável por verificar se um jogador tem jogadas válidas. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_reversi_a969bfa9a9ed46acc362b2d7452d716b8}\label{class_jogo_reversi_a969bfa9a9ed46acc362b2d7452d716b8} 
+\index{JogoReversi@{JogoReversi}!verificaCondicaoVitoria@{verificaCondicaoVitoria}}
+\index{verificaCondicaoVitoria@{verificaCondicaoVitoria}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{verificaCondicaoVitoria()}{verificaCondicaoVitoria()}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::verifica\+Condicao\+Vitoria (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+verifica\+Condicao\+Vitoria responsável por verificar se o jogo terminou. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\Hypertarget{class_jogo_reversi_a1a0a5eb123edb66f084a78ad8032d157}\label{class_jogo_reversi_a1a0a5eb123edb66f084a78ad8032d157} 
+\index{JogoReversi@{JogoReversi}!VerificaJogadaDirecao@{VerificaJogadaDirecao}}
+\index{VerificaJogadaDirecao@{VerificaJogadaDirecao}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{VerificaJogadaDirecao()}{VerificaJogadaDirecao()}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::\+Verifica\+Jogada\+Direcao (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{dx,  }\item[{int}]{dy,  }\item[{int}]{jogador }\end{DoxyParamCaption})}
+
+
+
+Verifica\+Jogada\+Direcao responsável por verificar se uma jogada é válida em uma determinada direção. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_jogo_reversi_aff305cb8e938b4b7a83c12dd6e022796}\label{class_jogo_reversi_aff305cb8e938b4b7a83c12dd6e022796} 
+\index{JogoReversi@{JogoReversi}!botaoVoltar@{botaoVoltar}}
+\index{botaoVoltar@{botaoVoltar}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{botaoVoltar}{botaoVoltar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_botao}{Botao}} Jogo\+Reversi\+::botao\+Voltar}
+
+
+\begin{DoxyParams}{Parameters}
+{\em botao\+Voltar} & botão para desistir e voltar ao menu principal \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_aa545ccf1fd49bf9ac69cdb7704066ffd}\label{class_jogo_reversi_aa545ccf1fd49bf9ac69cdb7704066ffd} 
+\index{JogoReversi@{JogoReversi}!fimDeJogo@{fimDeJogo}}
+\index{fimDeJogo@{fimDeJogo}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{fimDeJogo}{fimDeJogo}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::fim\+De\+Jogo = false}
+
+
+\begin{DoxyParams}{Parameters}
+{\em fim\+De\+Jogo} & indica se o jogo terminou \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_ad77512abacaa80f0ecd3a0f5ce87cfbb}\label{class_jogo_reversi_ad77512abacaa80f0ecd3a0f5ce87cfbb} 
+\index{JogoReversi@{JogoReversi}!jogadorDesistiu@{jogadorDesistiu}}
+\index{jogadorDesistiu@{jogadorDesistiu}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{jogadorDesistiu}{jogadorDesistiu}}
+{\footnotesize\ttfamily bool Jogo\+Reversi\+::jogador\+Desistiu}
+
+
+\begin{DoxyParams}{Parameters}
+{\em jogador\+Desistiu} & indica se um jogador desistiu \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_aa3fe4da6c981557c8f712e03ebd952d5}\label{class_jogo_reversi_aa3fe4da6c981557c8f712e03ebd952d5} 
+\index{JogoReversi@{JogoReversi}!nomeVencedor@{nomeVencedor}}
+\index{nomeVencedor@{nomeVencedor}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{nomeVencedor}{nomeVencedor}}
+{\footnotesize\ttfamily std\+::string Jogo\+Reversi\+::nome\+Vencedor}
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome\+Vencedor} & nome do jogador vencedor \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_a964451cfaa3a9b51579c3f4dd10127a2}\label{class_jogo_reversi_a964451cfaa3a9b51579c3f4dd10127a2} 
+\index{JogoReversi@{JogoReversi}!num\_pecas\_jogador1@{num\_pecas\_jogador1}}
+\index{num\_pecas\_jogador1@{num\_pecas\_jogador1}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{num\_pecas\_jogador1}{num\_pecas\_jogador1}}
+{\footnotesize\ttfamily int Jogo\+Reversi\+::num\+\_\+pecas\+\_\+jogador1}
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+pecas\+\_\+jogador1} & número de peças do jogador 1 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_a454a26613014f6ce9f3e263f7efb5e42}\label{class_jogo_reversi_a454a26613014f6ce9f3e263f7efb5e42} 
+\index{JogoReversi@{JogoReversi}!num\_pecas\_jogador2@{num\_pecas\_jogador2}}
+\index{num\_pecas\_jogador2@{num\_pecas\_jogador2}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{num\_pecas\_jogador2}{num\_pecas\_jogador2}}
+{\footnotesize\ttfamily int Jogo\+Reversi\+::num\+\_\+pecas\+\_\+jogador2}
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+pecas\+\_\+jogador2} & número de peças do jogador 2 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_jogo_reversi_abc32d49fd77fb7db335e2a2aa64db726}\label{class_jogo_reversi_abc32d49fd77fb7db335e2a2aa64db726} 
+\index{JogoReversi@{JogoReversi}!tabuleiroREVERSI@{tabuleiroREVERSI}}
+\index{tabuleiroREVERSI@{tabuleiroREVERSI}!JogoReversi@{JogoReversi}}
+\doxysubsubsection{\texorpdfstring{tabuleiroREVERSI}{tabuleiroREVERSI}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_tabuleiro}{Tabuleiro}} Jogo\+Reversi\+::tabuleiro\+REVERSI}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tabuleiro\+REVERSI} & objeto que representa o tabuleiro do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/include/\mbox{\hyperlink{_jogo_reversi_8hpp}{Jogo\+Reversi.\+hpp}}\item 
+C\+:/\+Users/\+Letic/\+Documents/\+Leticia/\+UFMG/\+Materias/\+PDSII/tp-\/\+Jogos\+De\+Tabuleiro/jogos-\/de-\/tabuleiro/jogo/src/\mbox{\hyperlink{_jogo_reversi_8cpp}{Jogo\+Reversi.\+cpp}}\end{DoxyCompactItemize}

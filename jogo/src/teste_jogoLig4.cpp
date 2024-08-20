@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest/doctest.h"
+#include "doctest.h"
 #include "../include/JogoLig4.hpp"
 
 TEST_CASE("Testando a inicialização de JogoLig4") {

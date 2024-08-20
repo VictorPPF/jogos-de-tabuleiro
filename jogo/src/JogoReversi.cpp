@@ -130,7 +130,7 @@ void JogoReversi::acao() {
                 std::cout << "Vez do Jogador " << jogadorAtual << std::endl;
             }
         } else {
-            std::cout << "Jogada inválida. Tente novamente." << std::endl;
+            std::cout << "Jogada invalida. Tente novamente." << std::endl;
         }
         tabuleiroREVERSI.deuClique = false; // reseta o clique para não executar múltiplas jogadas
     }

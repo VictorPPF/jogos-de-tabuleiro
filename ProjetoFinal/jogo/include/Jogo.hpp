@@ -42,6 +42,8 @@ public:
      */
     virtual std::string getNomeVencedor() const = 0;
     
+    virtual ~Jogo() = default;
+
 };
 
 
